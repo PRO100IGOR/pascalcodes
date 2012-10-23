@@ -1,0 +1,382 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title> New Document </title>
+ <link href="table.css" rel="stylesheet" type="text/css"/>
+  <link href="../style.css" rel="stylesheet" type="text/css"/>
+
+ <link href="../box/box.css" rel="stylesheet" type="text/css"/>
+
+ <script type="text/javascript" src="../jquery.js"></script>
+ <script type="text/javascript" src="../box/box.js"></script>
+
+ <script type="text/javascript" src="treeTable.js"></script>
+ </head>
+ <body>
+			<div class="box2" panelWidth="800" panelTitle="基本用法">
+<table class="treeTable">
+	<tr>
+		<th width="250">名称</th>
+		<th width="120">大小</th>
+		<th>备注</th>
+	</tr>
+	<tr id="node-1">
+		<td><span class="folder">根目录1</span></td>
+		<td>--</td>
+		<td>备注说明</td>
+	</tr>
+	<tr id="node-2" class="child-of-node-1">
+		<td><span class="folder">二级目录1</span></td>
+		<td>--</td>
+		<td>备注说明</td>
+	</tr>
+	<tr id="node-8" class="child-of-node-2">
+		<td><span class="file">文件1</span></td>
+		<td>52 KB</td>
+		<td>备注说明</td>
+	</tr>
+	<tr id="node-9" class="child-of-node-2">
+		<td><span class="file">文件2</span></td>
+		<td>4 KB</td>
+		<td>备注说明</td>
+	</tr>
+	<tr id="node-3" class="child-of-node-1">
+		<td><span class="file">文件3</span></td>
+		<td>4 KB</td>
+		<td>备注说明</td>
+	</tr>
+	<tr id="node-4" class="child-of-node-1">
+		<td><span class="folder">二级目录2</span></td>
+		<td>--</td>
+		<td>备注说明</td>
+	</tr>
+	<tr id="node-5" class="child-of-node-4">
+		<td><span class="file">文件4</span></td>
+		<td>56 KB</td>
+		<td>备注说明</td>
+	</tr>
+	<tr id="node-14">
+		<td><span class="file">文件5</span></td>
+		<td>4 KB</td>
+		<td>备注说明</td>
+	</tr>
+	<tr id="node-11">
+		<td><span class="folder">根目录2</span></td>
+		<td>--</td>
+		<td>备注说明</td>
+	</tr>
+	<tr id="node-12" class="child-of-node-11">
+		<td><span class="file">文件6</span></td>
+		<td>4 KB</td>
+		<td>备注说明</td>
+	</tr>
+</table>
+首先引入脚本和CSS
+<textarea class="code">
+<script type="text/javascript" src="../jquery-1.4.js"></script>
+<!--多级树形表格（分离版）start-->
+<link href="skins/style.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="js/treeTable_split.js"></script>
+<!--多级树形表格（分离版）end-->
+</textarea>
+<pre></pre>	
+
+写一个table，class要设为treeTable。然后根据id关联树状结构。代码如下：
+<textarea class="code">
+<table class="treeTable">
+	<tr>
+		<th width="250">名称</th>
+		<th width="120">大小</th>
+		<th>备注</th>
+	</tr>
+	<tr id="node-1">
+		<td><span class="folder">根目录1</span></td>
+		<td>--</td>
+		<td>备注说明</td>
+	</tr>
+	<tr id="node-2" class="child-of-node-1">
+		<td><span class="folder">二级目录1</span></td>
+		<td>--</td>
+		<td>备注说明</td>
+	</tr>
+	<tr id="node-8" class="child-of-node-2">
+		<td><span class="file">文件1</span></td>
+		<td>52 KB</td>
+		<td>备注说明</td>
+	</tr>
+	<tr id="node-9" class="child-of-node-2">
+		<td><span class="file">文件2</span></td>
+		<td>4 KB</td>
+		<td>备注说明</td>
+	</tr>
+	<tr id="node-3" class="child-of-node-1">
+		<td><span class="file">文件3</span></td>
+		<td>4 KB</td>
+		<td>备注说明</td>
+	</tr>
+	<tr id="node-4" class="child-of-node-1">
+		<td><span class="folder">二级目录2</span></td>
+		<td>--</td>
+		<td>备注说明</td>
+	</tr>
+	<tr id="node-5" class="child-of-node-4">
+		<td><span class="file">文件4</span></td>
+		<td>56 KB</td>
+		<td>备注说明</td>
+	</tr>
+	<tr id="node-14">
+		<td><span class="file">文件5</span></td>
+		<td>4 KB</td>
+		<td>备注说明</td>
+	</tr>
+	<tr id="node-11">
+		<td><span class="folder">根目录2</span></td>
+		<td>--</td>
+		<td>备注说明</td>
+	</tr>
+	<tr id="node-12" class="child-of-node-11">
+		<td><span class="file">文件6</span></td>
+		<td>4 KB</td>
+		<td>备注说明</td>
+	</tr>
+</table>
+</textarea>
+<pre></pre>	
+</div>
+
+<div class="box2" panelWidth="800" panelTitle="不使用图标">
+如果不希望有文件夹和文件的图标，去掉td中的span。
+<table class="treeTable">
+	<tr>
+		<th width="250">名称</th>
+		<th width="120">大小</th>
+		<th>备注</th>
+	</tr>
+	<tr id="node-1">
+		<td>根目录1</td>
+		<td>--</td>
+		<td>备注说明</td>
+	</tr>
+	<tr id="node-2" class="child-of-node-1">
+		<td>二级目录1</td>
+		<td>--</td>
+		<td>备注说明</td>
+	</tr>
+	<tr id="node-8" class="child-of-node-2">
+		<td>文件1</td>
+		<td>52 KB</td>
+		<td>备注说明</td>
+	</tr>
+	<tr id="node-9" class="child-of-node-2">
+		<td>文件2</td>
+		<td>4 KB</td>
+		<td>备注说明</td>
+	</tr>
+</table>
+代码如下
+<textarea class="code">
+<table class="treeTable">
+	<tr>
+		<th width="250">名称</th>
+		<th width="120">大小</th>
+		<th>备注</th>
+	</tr>
+	<tr id="node-1">
+		<td>根目录1</td>
+		<td>--</td>
+		<td>备注说明</td>
+	</tr>
+	<tr id="node-2" class="child-of-node-1">
+		<td>二级目录1</td>
+		<td>--</td>
+		<td>备注说明</td>
+	</tr>
+	<tr id="node-8" class="child-of-node-2">
+		<td>文件1</td>
+		<td>52 KB</td>
+		<td>备注说明</td>
+	</tr>
+	<tr id="node-9" class="child-of-node-2">
+		<td>文件2</td>
+		<td>4 KB</td>
+		<td>备注说明</td>
+	</tr>
+</table>
+</textarea>
+<pre></pre>	
+</div>
+
+<div class="box2" panelWidth="800" panelTitle="不可收缩">
+为table添加expandable属性可设置是否可展开/闭合。下面的是一个不可收缩的树形表格
+<table class="treeTable" expandable="false">
+	<tr>
+		<th width="250">名称</th>
+		<th width="120">大小</th>
+		<th>备注</th>
+	</tr>
+	<tr id="node-1">
+		<td><span class="folder">根目录1</span></td>
+		<td>--</td>
+		<td>备注说明</td>
+	</tr>
+	<tr id="node-2" class="child-of-node-1">
+		<td><span class="folder">二级目录1</span></td>
+		<td>--</td>
+		<td>备注说明</td>
+	</tr>
+	<tr id="node-8" class="child-of-node-2">
+		<td><span class="file">文件1</span></td>
+		<td>52 KB</td>
+		<td>备注说明</td>
+	</tr>
+	<tr id="node-9" class="child-of-node-2">
+		<td><span class="file">文件2</span></td>
+		<td>4 KB</td>
+		<td>备注说明</td>
+	</tr>
+</table>
+代码如下
+<textarea class="code">
+<table class="treeTable" expandable="false">
+	<tr>
+		<th width="250">名称</th>
+		<th width="120">大小</th>
+		<th>备注</th>
+	</tr>
+	<tr id="node-1">
+		<td><span class="folder">根目录1</span></td>
+		<td>--</td>
+		<td>备注说明</td>
+	</tr>
+	<tr id="node-2" class="child-of-node-1">
+		<td><span class="folder">二级目录1</span></td>
+		<td>--</td>
+		<td>备注说明</td>
+	</tr>
+	<tr id="node-8" class="child-of-node-2">
+		<td><span class="file">文件1</span></td>
+		<td>52 KB</td>
+		<td>备注说明</td>
+	</tr>
+	<tr id="node-9" class="child-of-node-2">
+		<td><span class="file">文件2</span></td>
+		<td>4 KB</td>
+		<td>备注说明</td>
+	</tr>
+</table>
+</textarea>
+<pre></pre>	
+另外table如果设置initState="collapsed"	则初始时树形表格处于收缩状态。
+</div>
+
+	
+<div class="box2" panelWidth="800" panelTitle="ajax模式">
+	<table class="treeTable" mode="ajax">
+		<tr>
+			<th width="250">名称</th>
+			<th width="120">大小</th>
+			<th>备注</th>
+		</tr>
+		<tr id="ajaxnode-1" url="xmlData/table3.html">
+			<td><span class="folder">根目录1</span></td>
+			<td>--</td>
+			<td>备注说明</td>
+		</tr>
+		<tr id="ajaxnode-14">
+			<td><span class="file">文件5</span></td>
+			<td>4 KB</td>
+			<td>备注说明</td>
+		</tr>
+		<tr id="ajaxnode-11" url="xmlData/table4.html">
+			<td><span class="folder">根目录2</span></td>
+			<td>--</td>
+			<td>备注说明</td>
+		</tr>
+	</table>
+如果要使用ajax加载，首先为table添加 mode="ajax"属性。然后为父节点添加url属性指定数据来源。 代码如下
+<textarea class="code">
+<table class="treeTable" mode="ajax">
+	<tr>
+		<th width="250">名称</th>
+		<th width="120">大小</th>
+		<th>备注</th>
+	</tr>
+	<tr id="ajaxnode-1" url="xmlData/table3.html">
+		<td><span class="folder">根目录1</span></td>
+		<td>--</td>
+		<td>备注说明</td>
+	</tr>
+	<tr id="ajaxnode-14">
+		<td><span class="file">文件5</span></td>
+		<td>4 KB</td>
+		<td>备注说明</td>
+	</tr>
+	<tr id="ajaxnode-11" url="xmlData/table4.html">
+		<td><span class="folder">根目录2</span></td>
+		<td>--</td>
+		<td>备注说明</td>
+	</tr>
+	
+</table>
+</textarea>
+<pre></pre>	
+这样点击根目录的加号图表会加载table3.html和table4.html的内容；table3.html代码如下：
+<textarea class="code">	
+<tr id="ajaxnode-2" class="child-of-ajaxnode-1" url="xmlData/table5.html">
+	<td><span class="folder">二级目录1</span></td>
+	<td>--</td>
+	<td>备注说明</td>
+</tr>
+<tr id="ajaxnode-3" class="child-of-ajaxnode-1">
+	<td><span class="file">文件3</span></td>
+	<td>4 KB</td>
+	<td>备注说明</td>
+</tr>
+<tr id="ajaxnode-4" class="child-of-ajaxnode-1" url="xmlData/table6.html">
+	<td><span class="folder">二级目录2</span></td>
+	<td>--</td>
+	<td>备注说明</td>
+</tr>
+</textarea>
+<pre></pre>	
+注意，一次点击只能为点击的节点加载子元素，即这里不要出现class="child-of-ajaxnode-11"的节点<br/><br/>
+table3.html内容里又指定了table5.html和table6.html，table5.html代码：
+<textarea class="code">	
+<tr id="ajaxnode-8" class="child-of-ajaxnode-2">
+	<td><span class="file">文件1</span></td>
+	<td>52 KB</td>
+	<td>备注说明</td>
+</tr>
+<tr id="ajaxnode-9" class="child-of-ajaxnode-2">
+	<td><span class="file">文件2</span></td>
+	<td>4 KB</td>
+	<td>备注说明</td>
+</tr>
+</textarea>
+<pre></pre>	
+注意：如果一个页面有多个treeTable，相互之间的tr的id不要相同。
+
+</div>		
+	
+</body>
+<!--代码高亮start-->
+<script type="text/javascript" src="../code/highlight.js"></script>
+<script type="text/javascript" src="../code/lang-xml.js"></script>
+<script type="text/javascript" src="../code/lang-html.js"></script>
+<link href="../code/style.css" rel="stylesheet" type="text/css"/>
+<link href="../table/style.css" rel="stylesheet" type="text/css"/>
+<script>
+	$(function(){
+			showCode()
+	})
+	function showCode(){
+		$(".code").each(function(){
+			var code =$(this).val()
+			var hl = new DlHighlight({lang: "html",lineNumbers :false });
+			var formatted = hl.doItNow(code);
+			$(this).next().addClass("DlHighlight").html("<pre>" + formatted + "</pre>")
+		})
+	}
+</script>
+<!--代码高亮end-->
+</html>

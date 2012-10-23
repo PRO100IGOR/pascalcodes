@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="gb2312"?>
+<updates><version>1.01alpha</version><time>2012-07-27 16:23</time><explains><explain>1:修正新建项目时没有创建com/sxsihe的问题</explain><explain>2:修正showaction、deleteaction中缺少引入包的问题</explain><explain>3:修正list.jsp中sortmodel有误的问题</explain></explains><files><file action="u">code.exe</file></files></updates>

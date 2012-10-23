@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title> New Document </title>
+
+ <link href="style.css" rel="stylesheet" type="text/css"/>
+ <link href="../style.css" rel="stylesheet" type="text/css"/>
+ <link href="../box/box.css" rel="stylesheet" type="text/css"/>
+ <script type="text/javascript" src="../jquery.js"></script>
+ <script type="text/javascript" src="../box/box.js"></script>
+	
+ <script type="text/javascript" src="textinput.js"></script>
+
+
+ </head>
+ <!--按钮（分离版）end-->
+<body>
+
+	<div class="box2" panelWidth="700" panelTitle="基本文本域" >
+		与文本框一样，文本域只要写textarea标签就会有默认的样式。<br />
+		<textarea></textarea>
+		<br />代码：
+<pre class="DlHighlight">&lt;textarea&gt;&lt;/textarea&gt;</pre>
+	</div>
+	
+	<div class="box2" panelWidth="700" panelTitle="文本域自定义尺寸" >
+		如果要改变文本域的尺寸，在标签中加入style。<br />
+		<textarea style="width:350px;height:150px;"></textarea>
+		<br />代码：
+<pre class="DlHighlight">&lt;textarea style="width:350px;height:150px;"&gt;&lt;/textarea&gt;</pre>
+	</div>
+	
+	<div class="box2" panelWidth="700" panelTitle="有水印文字的文本域" >
+		与文本框一样，通过设置watermark属性实现文本域水印文字。<br />
+		<textarea watermark="请发表您的看法"></textarea>
+		<br />代码：
+<pre class="DlHighlight">&lt;textarea watermark="请发表您的看法"&gt;&lt;/textarea&gt;</pre>
+	</div>
+	
+	<div class="box2" panelWidth="700" panelTitle="字数限制的文本域" >
+		与文本框一样，通过设置maxNum属性实现限制文本域字数。<br />
+		<textarea maxNum="50"></textarea>
+		<br />代码：
+<pre class="DlHighlight">&lt;textarea maxNum="50"&gt;&lt;/textarea&gt;</pre>
+	</div>
+	
+	<div class="box2" panelWidth="700" panelTitle="可改变尺寸的文本域" >
+		通过设置文本域的resize为true，可以实现一个尺寸可变的文本域<br />
+		<textarea resize="true"></textarea>
+		<br />代码：
+<pre class="DlHighlight">&lt;textarea resize="true"&gt;&lt;/textarea&gt;</pre>
+	</div>
+	
+	<div class="box2" panelWidth="700" panelTitle="高度自适应内容的文本域" >
+		通过设置文本域的autoHeight为true，可以实现一个高度自适应内容的文本域<br />
+		<textarea autoHeight="true"></textarea>
+		<br />代码：
+<pre class="DlHighlight">&lt;textarea autoHeight="true"&gt;&lt;/textarea&gt;</pre>
+	</div>
+	
+	<script>
+		$(function(){
+			$("#testBtn").click(function(){
+				var $ta=$("<textarea class='textarea'></textarea>")
+				$(this).after($ta)
+			})
+		})
+	</script>
+	<div class="box2" panelWidth="700" panelTitle="动态生成文本域">
+		动态创建的文本域不具有扩展的效果。另外需要设置其class='textarea'来实现样式的统一。<br />
+		<input type="button" value="点击生成文本域" id="testBtn"/>
+		<br />代码：
+<textarea class="code">
+<input type="button" value="点击生成文本域" id="testBtn"/>
+</textarea>
+<pre></pre>	
+JS代码
+<textarea class="code">
+$(function(){
+	$("#testBtn").click(function(){
+		var $ta=$("&lt;textarea class='textarea'&gt;&lt;/textarea&gt;")
+		$(this).after($ta)
+	})
+})
+</textarea>
+<pre></pre>	
+	</div>
+	
+	<div class="box2" panelWidth="700" panelTitle="系统默认文本域" >
+		有特殊需求时可对文本框设置单独样式或使用系统默认样式，使用class="xxx"这样会覆盖掉原来的样式。<br />
+		<textarea class="default"></textarea>
+		<br />代码：
+<pre class="DlHighlight">&lt;textarea class="default"&gt;&lt;/textarea&gt;</pre>
+	</div>
+
+			
+</body>
+<!--代码高亮start-->
+<script type="text/javascript" src="../code/highlight.js"></script>
+<script type="text/javascript" src="../code/lang-xml.js"></script>
+<script type="text/javascript" src="../code/lang-html.js"></script>
+<link href="../code/style.css" rel="stylesheet" type="text/css"/>
+<link href="../table/style.css" rel="stylesheet" type="text/css"/>
+
+<script>
+	$(function(){
+			showCode()
+	})
+	function showCode(){
+		$(".code").each(function(){
+			var code =$(this).val()
+			var hl = new DlHighlight({lang: "html",lineNumbers :false });
+			var formatted = hl.doItNow(code);
+			$(this).next().addClass("DlHighlight").html("<pre>" + formatted + "</pre>")
+		})
+	}
+</script>
+<!--代码高亮end-->
+</html>

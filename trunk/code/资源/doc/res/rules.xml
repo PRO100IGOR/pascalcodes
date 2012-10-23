@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="gb2312"?>
+<config>
+	<bean name="must" value="必填">
+
+	</bean>
+	<bean name="types"  value="值类型">
+
+	</bean>
+	<bean name="illegal"  value="非法字符">
+
+	</bean>
+	<bean name="compareLength" value="长度比较">
+
+	</bean>
+	<bean name="compareValue"  value="值比较">
+
+	</bean>
+	<bean name="chooseCompare"  value="选择个数比较">
+
+	</bean>
+	<bean name="suffix" value="需要包含文件类型">
+
+	</bean>
+	<bean name="unsuffix" value="不能包含文件类型">
+
+	</bean>
+	<bean name="regular" value="自定义正则表达式">
+
+	</bean>
+	<bean name="dwr" value="dwr">
+
+	</bean>
+	<bean name="trimCheck" value="空格验证">
+
+	</bean>
+	<bean name="method" value="自定义方法">
+
+	</bean>
+</config>

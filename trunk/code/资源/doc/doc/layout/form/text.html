@@ -1,0 +1,178 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title> New Document </title>
+
+ <link href="style.css" rel="stylesheet" type="text/css"/>
+ <link href="../style.css" rel="stylesheet" type="text/css"/>
+ <link href="../box/box.css" rel="stylesheet" type="text/css"/>
+ <script type="text/javascript" src="../jquery.js"></script>
+ <script type="text/javascript" src="../box/box.js"></script>
+	
+ <script type="text/javascript" src="textinput.js"></script>
+
+
+ </head>
+ <!--按钮（分离版）end-->
+<body>
+
+
+
+
+	<div class="box2" panelWidth="700" panelTitle="脚本引入" >
+		首先引入脚本和CSS
+<textarea class="code">
+<script type="text/javascript" src="../jquery-1.4.js"></script>
+<!--文本框/文本域（分离版）start-->
+<link href="skins/normal/style.css" rel="stylesheet" type="text/css" id="skin"/>
+<script type="text/javascript" src="js/textinput_split.js"></script>
+<!--文本框/文本域（分离版）end-->
+</textarea>
+<pre></pre>	
+	</div>
+	<div class="box2" panelWidth="700" panelTitle="基本文本框" >
+		文本框：<input type="text" /> 密码框：<input type="password"/>
+		<br />代码：
+<textarea class="code">
+文本框：<input type="text" /> 密码框：<input type="password"/>
+</textarea>
+<pre></pre>	
+	</div>
+	
+	<div class="box2" panelWidth="700" panelTitle="文本框的尺寸" >
+		如果要改变文本框的尺寸，在标签中加入style。例如下面效果：<br />
+		<input type="text" style="width:300px;" />
+		<br />代码：
+<textarea class="code">
+<input type="text" style="width:300px;" />
+</textarea>
+<pre></pre>	
+	</div>
+	
+	<div class="box2" panelWidth="700" panelTitle="文本框水印" >
+		设置文本框的watermark属性可实现文本框水印文字。效果如下：<br />
+		<input type="text" watermark="输入查询条件"/> 
+		<br />代码：
+<textarea class="code">
+<input type="text" watermark="输入查询条件"/>
+</textarea>
+<pre></pre>	
+	</div>
+
+	<div class="box2" panelWidth="700" panelTitle="可清除内容的文本框">
+		设置文本框的clearable属性为true,就会在输入时出现一个小叉子，用于清空。效果如下：<br />
+		文本框：<input type="text" selectable="true" onselectable="alert('自定义的触发事件！！')" /><br />
+		密码框：<input type="password" clearable="true"/>
+		<br />代码：
+<textarea class="code">
+<input type="text" clearable="true"/>
+<input type="password" selectable="true"/>
+</textarea>
+<pre></pre>	
+	</div>
+	
+	<div class="box2" panelWidth="700" panelTitle="文本框限制最大输入">
+		对文本框设置maxNum属性可以限制文本框的最大输入字数，并在输入时出现提示。效果如下<br />
+		<table class="tableStyle" transMode="true" footer="normal">
+			<tr><td width="50">文本框：</td><td><input type="text" maxNum="10"/></td></tr>
+			<tr><td>密码框：</td><td><input type="password" maxNum="10"/></td></tr>
+		</table>
+		注意：不要与clearable属性合用。<br />
+代码：
+<textarea class="code">
+<table class="tableStyle" transMode="true" footer="normal">
+	<tr>
+	<td width="50">文本框：</td><td><input type="text" maxNum="10"/></td>
+	</tr>
+	<tr>
+	<td>密码框：</td><td><input type="password" maxNum="10"/></td>
+	</tr>
+</table>
+</textarea>
+<pre></pre>			
+	</div>
+	
+	
+	
+	<div class="box2" panelWidth="700" panelTitle="密码框检测Caps键">
+		密码框会自动检测是否开启了Caps键，如果开启了则会出现提示。开启大写键后在下面密码框输入字母：<br />
+		密码框：<input type="password"/>
+		<br />代码：
+<textarea class="code">
+密码框：<input type="password"/>
+</textarea>
+<pre></pre>	
+	</div>
+	
+	<div class="box2" panelWidth="700" panelTitle="密码强度">
+		对密码框设置checkStrength="true"会检查密码强度。<br />
+		密码框：<input type="password" checkStrength="true"/>
+		<br />代码：
+<textarea class="code">
+密码框：<input type="password" checkStrength="true"/>
+</textarea>
+<pre></pre>	
+	</div>
+	
+	<script>
+		$(function(){
+			$("#testBtn").click(function(){
+				var $input=$("<input type='text' class='textinput'>")
+				$(this).after($input)
+			})
+		})
+	</script>
+	<div class="box2" panelWidth="700" panelTitle="动态生成文本框">
+		动态创建的文本框不具有扩展的效果。如果调用文本框.refresh()就有了效果了<br />
+		<input type="button" value="点击生成文本框" id="testBtn"/>
+		<br />代码：
+<textarea class="code">
+<input type="button" value="点击生成文本框" id="testBtn"/>
+</textarea>
+<pre></pre>	
+JS代码
+<textarea class="code">
+$(function(){
+	$("#testBtn").click(function(){
+		var $input=$("<input type='text' class='textinput'>")
+		$(this).after($input)
+	})
+})
+</textarea>
+<pre></pre>	
+	</div>
+	
+
+	<div class="box2" panelWidth="700" panelTitle="系统默认文本框" >
+		有特殊需求时可对文本框设置单独样式或使用系统默认样式，使用class="xxx"这样会覆盖掉原来的样式，例如：<br />
+		<input type="text" class="default" />
+		<br />代码：
+<textarea class="code">
+<input type="text" class="default" />
+</textarea>
+<pre></pre>	
+</div>
+			
+</body>
+<!--代码高亮start-->
+<script type="text/javascript" src="../code/highlight.js"></script>
+<script type="text/javascript" src="../code/lang-xml.js"></script>
+<script type="text/javascript" src="../code/lang-html.js"></script>
+<link href="../code/style.css" rel="stylesheet" type="text/css"/>
+<link href="../table/style.css" rel="stylesheet" type="text/css"/>
+
+<script>
+	$(function(){
+			showCode()
+	})
+	function showCode(){
+		$(".code").each(function(){
+			var code =$(this).val()
+			var hl = new DlHighlight({lang: "html",lineNumbers :false });
+			var formatted = hl.doItNow(code);
+			$(this).next().addClass("DlHighlight").html("<pre>" + formatted + "</pre>")
+		})
+	}
+</script>
+<!--代码高亮end-->
+</html>

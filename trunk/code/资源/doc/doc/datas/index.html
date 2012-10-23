@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>弹出窗口修改以及oxhide中使用</title>
+	<link href="../index.css" type="text/css" rel="stylesheet"/>
+	<link href="../prettify/prettify.css" type="text/css" rel="stylesheet"/>
+	<script type="text/javascript" src="../prettify/prettify.js"></script>
+</head>
+
+<body>
+    <div class="container">
+		<div class="line">&nbsp;</div>
+		<div class="lhgdg_body">
+		    <h2>数据库移植</h2>
+			<ol>
+			    <li>
+					 <h3>oracle<h3/>
+					 <pre class="prettyprint">
+#mysql配置
+sql=Mysql			#数据库自定义查询语言类名
+hibernate.dialect=org.hibernate.dialect.MySQLDialect #数据库方言
+lobHandler=defaultLobHandler  #大字段处理类
+jdbc.url=jdbc\:mysql\://127.0.0.1\:3309/oxhide?characterEncoding\=gb2312 #连接语句
+jdbc.username=root
+jdbc.password=
+jdbc.driverClassName=com.mysql.jdbc.Driver #驱动
+
+#oracle配置
+sql=Oracle
+hibernate.dialect=org.hibernate.dialect.Oracle9Dialect
+lobHandler=oracleLobHandler
+jdbc.url=jdbc:oracle:thin:@10.10.0.158:1521:orcl
+jdbc.username=oxhide
+jdbc.password=oxhide
+jdbc.driverClassName=oracle.jdbc.OracleDriver
+
+#通用配置
+jdbc.encrypt=cm9vdA\=\=		#密码加密密钥
+sso.webservice.url=http://127.0.0.1:8080/oxhide/services/   #平台webservice地址
+debug=true #错误提示是调试模式还是应用模式
+
+
+					</pre>
+				</li>
+			    
+			</ol>
+			
+		</div>
+		<div class="line">&nbsp;</div>
+	</div>
+	<script type="text/javascript">prettyPrint();</script>
+</body>
+</html>

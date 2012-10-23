@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="gb2312"?>
+<updates><version>0.96</version><time>2012-02-29 10:54</time><explains><explain>1：修正验证规则生成时没有生成events的错误</explain><explain>2：修正list页面中查询条件隐藏域没有字段名的问题</explain><explain>3：去掉生成ruleName。</explain></explains><files><file action="u">code.exe</file></files></updates>

@@ -1,0 +1,146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title> New Document </title>
+
+ <link href="style.css" rel="stylesheet" type="text/css"/>
+ <link href="../style.css" rel="stylesheet" type="text/css"/>
+ <link href="../box/box.css" rel="stylesheet" type="text/css"/>
+ <script type="text/javascript" src="../jquery.js"></script>
+ <script type="text/javascript" src="../box/box.js"></script>
+	
+ <script type="text/javascript" src="button.js"></script>
+
+
+ </head>
+ <!--按钮（分离版）end-->
+<body>
+
+<div class="box2" panelWidth="800" panelTitle="脚本引入" >
+		首先引入脚本和CSS
+<textarea class="code">
+<script type="text/javascript" src="../jquery-1.4.js"></script>
+<!--按钮（分离版）start-->
+<link href="icons/icon.css" rel="stylesheet" type="text/css"/>
+<link href="skins/normal/style.css" rel="stylesheet" type="text/css" id="compStyle"/>
+<script type="text/javascript" src="js/button_split.js"></script>
+<!--按钮（分离版）end-->
+</textarea>
+<pre></pre>	
+	</div>
+	<div class="box2" panelTitle="基本用法" roller="true" panelWidth="800">
+		按钮默认样式：<br />
+		<input type="button" value="button类型"/> 
+		<input type="reset" value="reset类型"/> 
+		<input type="submit" value="submit类型"/>
+		<button>button标签模式</button> 
+		<input type="button" value="不可用" disabled="true"/>
+<br />代码：
+<textarea class="code">
+<input type="button" value="button类型"/> 
+<input type="reset" value="reset类型"/> 
+<input type="submit" value="submit类型"/>
+<button>button标签模式</button> 
+<input type="button" value="不可用" disabled="true"/>
+</textarea>
+<pre></pre>	
+	</div>	
+	<div class="box2" panelTitle="图标按钮" roller="true" panelWidth="800">
+		可以使用button标签与图标库相结合，创建有图标的按钮。效果如下：<br />
+		两个字的按钮：<button><span class="icon_save">保存</span></button>&nbsp;&nbsp;&nbsp;&nbsp;
+		三个字的按钮：<button><span class="icon_back">前一步</span></button>&nbsp;&nbsp;&nbsp;&nbsp;
+		四个字的按钮：<button><span class="icon_find">开始查询</span></button><br />
+		代码如下：
+<textarea class="code">
+<button><span class="icon_save">保存</span></button>
+<button><span class="icon_back">前一步</span></button>
+<button><span class="icon_find">开始查询</span></button>
+</textarea>
+<pre></pre>
+		推荐使用含有图标的按钮。能够增强页面的美观度。例如下面的效果：<br/>
+		<button><span class="icon_page">新建</span></button>
+		<button><span class="icon_edit">编辑</span></button>
+		<button><span class="icon_mark">待发布</span></button>
+		<button><span class="icon_reply">发布</span></button>
+		<button><span class="icon_view">预览</span></button>
+		<button><span class="icon_item">复制</span></button>
+		<button><span class="icon_remove">转移</span></button>
+		<button><span class="icon_bubble">排序</span></button>
+		<button><span class="icon_delete">删除</span></button>
+<textarea class="code">
+<button><span class="icon_page">新建</span></button>
+<button><span class="icon_edit">编辑</span></button>
+<button><span class="icon_mark">待发布</span></button>
+<button><span class="icon_reply">发布</span></button>
+<button><span class="icon_view">预览</span></button>
+<button><span class="icon_item">复制</span></button>
+<button><span class="icon_remove">转移</span></button>
+<button><span class="icon_bubble">排序</span></button>
+<button><span class="icon_delete">删除</span></button>
+</textarea>
+<pre></pre>		
+		图标库的所有class以icon_为前缀的图标都可以这样用。关于图标库请看“使用帮助>>图标库检索及使用”相关内容。<br />		
+		</div>	
+		
+		
+	<script>
+		$(function(){
+			$("#testBtn").click(function(){
+				var $input=$("<input type='button' class='button' value='新按钮'>");
+				$(this).after($input);
+			})
+		})
+	</script>
+	<div class="box2" panelWidth="800" panelTitle="动态生成按钮">
+		动态创建的按钮不具有变色效果。另外需要设置其class='button'来实现样式的统一。<br />
+		<input type="button" value="点击生按钮" id="testBtn"/>
+		<br />代码：
+<textarea class="code">
+<input type="button" value="点击生成按钮" id="testBtn"/>
+</textarea>
+<pre></pre>	
+JS代码
+<textarea class="code">
+$(function(){
+	$("#testBtn").click(function(){
+		var $input=$("<input type='button' class='button' value='新按钮'>");
+		$(this).after($input);
+	})
+})
+</textarea>
+<pre></pre>	
+	</div>	
+		
+	<div class="box2" panelTitle="恢复系统默认" roller="true" panelWidth="800">
+		有特殊需求时可对按钮设置单独样式，使用class="xxx"这样会覆盖掉默认的样式，例如为其添加一个class让其恢复到系统默认风格：
+		<input type="button" class="default" value="系统默认"/>
+<br />代码：
+<textarea class="code">
+<input type="button" class="default" value="系统默认"/>
+</textarea>
+<pre></pre>	
+	</div>	
+			
+</body>
+<!--代码高亮start-->
+<script type="text/javascript" src="../code/highlight.js"></script>
+<script type="text/javascript" src="../code/lang-xml.js"></script>
+<script type="text/javascript" src="../code/lang-html.js"></script>
+<link href="../code/style.css" rel="stylesheet" type="text/css"/>
+<link href="../table/style.css" rel="stylesheet" type="text/css"/>
+
+<script>
+	$(function(){
+			showCode()
+	})
+	function showCode(){
+		$(".code").each(function(){
+			var code =$(this).val()
+			var hl = new DlHighlight({lang: "html",lineNumbers :false });
+			var formatted = hl.doItNow(code);
+			$(this).next().addClass("DlHighlight").html("<pre>" + formatted + "</pre>")
+		})
+	}
+</script>
+<!--代码高亮end-->
+</html>

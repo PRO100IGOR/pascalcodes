@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>lhgdialog - samples</title>
+	<link href="../prettify/prettify.css" type="text/css" rel="stylesheet"/>
+	<link href="../index.css" type="text/css" rel="stylesheet"/>
+	<script type="text/javascript" src="../prettify/prettify.js"></script>
+	<script type="text/javascript" src="../lhgcore.min.js"></script>
+	<script type="text/javascript" src="../lhgdialog.min.js?t=self"></script>
+    <script type="text/javascript">
+J(function(){
+	J('#btn2').dialog({ id:'test2', html:'<h3 style="padding:50px 0;">我是在窗口调用页面弹出的窗口</h3>', rang: true, width:300, height:200 });
+});
+	</script>
+</head>
+
+<body style="padding-bottom:0;height:100%;">
+    <div class="lhgdg_body">
+	    <h2>这是框架页面中的bottomFrame页面</h2>
+		<p>这是在窗口调用页面弹出的窗口，使用了t=self参数</p>
+<pre class="prettyprint">
+// 此页面加载lhgdialog.min.js文件代码为：
+&lt;script type=&quot;text/javascript&quot; src=&quot;lhgdialog.min.js?t=self&quot;&gt;&lt;/script&gt;
+
+J('#btn2').dialog({ id:'test2', html:'我是在窗口调用页面弹出的窗口', rang: true });
+</pre>					
+		<p><button class="runcode" id="btn2">运行»</button></p>
+		<p>注意：不要在框架的不同框架页面同时弹出窗口，因为这样是在不同调用页面弹出的窗口，虽然窗口都创建在同一页面，但因为是不同的调用页面，所以也会出现窗口的层叠次序混乱，所以记住在框架中只能在其中的一个框架页面调用窗口。<strong style="color:red;">本页面只是作为示例用，实际中不要如此使用</strong>。</p>
+	</div>
+<script type="text/javascript">prettyPrint();</script>
+</body>
+</html>

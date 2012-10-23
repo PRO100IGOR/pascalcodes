@@ -1,0 +1,121 @@
+
+192.168.100.16 = 
+  (DESCRIPTION =
+    (ADDRESS_LIST =
+      (ADDRESS = (PROTOCOL = TCP)(HOST = 192.168.100.16)(PORT = 1521))
+    )
+    (CONNECT_DATA =
+      (SID = orcl)
+    )
+  )
+
+
+192.168.100.17 = 
+  (DESCRIPTION =
+    (ADDRESS_LIST =
+      (ADDRESS = (PROTOCOL = TCP)(HOST = 192.168.100.17)(PORT = 1521))
+    )
+    (CONNECT_DATA =
+      (SID = orcl)
+    )
+  )
+
+
+10.232.240.51 = 
+  (DESCRIPTION =
+    (ADDRESS_LIST =
+      (ADDRESS = (PROTOCOL = TCP)(HOST = 10.232.240.51)(PORT = 1521))
+    )
+    (CONNECT_DATA =
+      (SID = orcl)
+    )
+  )
+
+
+192.168.100.27 = 
+  (DESCRIPTION =
+    (ADDRESS_LIST =
+      (ADDRESS = (PROTOCOL = TCP)(HOST = 192.168.100.27)(PORT = 1521))
+    )
+    (CONNECT_DATA =
+      (SID = orcl)
+    )
+  )
+
+
+10.232.240.46 = 
+  (DESCRIPTION =
+    (ADDRESS_LIST =
+      (ADDRESS = (PROTOCOL = TCP)(HOST = 10.232.240.46)(PORT = 1521))
+    )
+    (CONNECT_DATA =
+      (SID = orcl)
+    )
+  )
+
+
+192.168.3.101 = 
+  (DESCRIPTION =
+    (ADDRESS_LIST =
+      (ADDRESS = (PROTOCOL = TCP)(HOST = 192.168.3.101)(PORT = 1521))
+    )
+    (CONNECT_DATA =
+      (SID = orcl)
+    )
+  )
+
+
+10.10.0.158 = 
+  (DESCRIPTION =
+    (ADDRESS_LIST =
+      (ADDRESS = (PROTOCOL = TCP)(HOST = 10.10.0.158)(PORT = 1521))
+    )
+    (CONNECT_DATA =
+      (SID = orcl)
+    )
+  )
+
+
+192.168.1.20 = 
+  (DESCRIPTION =
+    (ADDRESS_LIST =
+      (ADDRESS = (PROTOCOL = TCP)(HOST = 192.168.1.20)(PORT = 1521))
+    )
+    (CONNECT_DATA =
+      (SID = orcl)
+    )
+  )
+
+
+10.10.0.40 = 
+  (DESCRIPTION =
+    (ADDRESS_LIST =
+      (ADDRESS = (PROTOCOL = TCP)(HOST = 10.10.0.40)(PORT = 1521))
+    )
+    (CONNECT_DATA =
+      (SID = orcl)
+    )
+  )
+
+
+202.97.132.166 = 
+  (DESCRIPTION =
+    (ADDRESS_LIST =
+      (ADDRESS = (PROTOCOL = TCP)(HOST = 202.97.132.166)(PORT = 1521))
+    )
+    (CONNECT_DATA =
+      (SID = orcl)
+    )
+  )
+
+
+10.41.8.99 = 
+  (DESCRIPTION =
+    (ADDRESS_LIST =
+      (ADDRESS = (PROTOCOL = TCP)(HOST = 10.41.8.99)(PORT = 1521))
+    )
+    (CONNECT_DATA =
+      (SID = orcl)
+    )
+  )
+

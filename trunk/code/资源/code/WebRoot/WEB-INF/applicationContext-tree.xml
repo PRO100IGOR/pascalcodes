@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans default-autowire="byName">
+	<!-- 人员机构树 -->
+	<bean id="organTreeService" parent="baseTxService">
+		<property name="target">
+			<bean id="organTreeTarget" class="com.sxsihe.oxhide.tree.organ.OrganTreeServiceImpl">
+				<property name="organServer" ref="organClient"></property>
+				<property name="deptServer" ref="deptClient"></property>
+				<property name="postServer" ref="postClient"></property>
+				<property name="employeeServer" ref="employeeClient"></property>
+			</bean>
+		</property>
+	</bean>
+	<!-- 资源树 -->
+	<bean id="resourceTreeService" parent="baseTxService">
+		<property name="target">
+			<bean id="resourceTreeServiceTarget" class="com.sxsihe.oxhide.tree.resource.ResourceTreeServiceImpl" />
+		</property>
+	</bean>
+	<!-- 角色树 -->
+	<bean id="ssorolesTreeService" parent="baseTxService">
+		<property name="target">
+			<bean id="ssorolesTreeServiceTarget" class="com.sxsihe.oxhide.tree.ssoroles.SsoroleTreeServiceImpl"></bean>
+		</property>
+	</bean>
+
+
+
+
+</beans>

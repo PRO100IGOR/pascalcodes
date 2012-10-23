@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2011-01-21 18:15:15.687.pas,D:\My Documents\Borland Studio Projects\Unit2.pas=E:\project\temp\lyash_cs\lyfmh\ly_Main\UpdateMaker.pas</Transaction>
+    <Transaction>2011-01-21 18:15:15.687.dfm,D:\My Documents\Borland Studio Projects\Unit2.dfm=E:\project\temp\lyash_cs\lyfmh\ly_Main\UpdateMaker.dfm</Transaction>
+    <Transaction>2011-01-21 18:15:24.921.bdsproj,D:\My Documents\Borland Studio Projects\Project1.bdsproj=E:\project\temp\lyash_cs\lyfmh\ly_Main\UpdateMakerTool.bdsproj</Transaction>
+    <Transaction>2011-01-24 18:29:56.093.pas,E:\project\temp\lyash_cs\lyfmh\ly_Main\Tool\Common.pas=</Transaction>
+    <Transaction>2011-01-24 18:36:04.234.bdsproj,C:\Documents and Settings\Administrator\桌面\新建文件夹\UpdateMakerTool.bdsproj=C:\Documents and Settings\Administrator\桌面\新建文件夹 (2)\UpdateMakerTool.bdsproj</Transaction>
+    <Transaction>2011-01-24 18:36:24.640.pas,C:\Documents and Settings\Administrator\桌面\新建文件夹\UpdateMaker.pas=C:\Documents and Settings\Administrator\桌面\新建文件夹 (2)\UpdateMaker.pas</Transaction>
+    <Transaction>2011-01-24 18:36:24.640.dfm,C:\Documents and Settings\Administrator\桌面\新建文件夹\UpdateMaker.dfm=C:\Documents and Settings\Administrator\桌面\新建文件夹 (2)\UpdateMaker.dfm</Transaction>
+    <Transaction>2011-01-25 10:30:27.921.pas,E:\project\temp\lyash_cs\lyfmh\更新包制作程序\Unit1.pas=E:\project\temp\lyash_cs\lyfmh\更新包制作程序\UpdateTool.pas</Transaction>
+    <Transaction>2011-01-25 10:33:39.484.pas,E:\project\temp\lyash_cs\lyfmh\更新包制作程序\Unit1.pas=E:\project\temp\lyash_cs\lyfmh\更新包制作程序\Info.pas</Transaction>
+    <Transaction>2011-01-25 10:33:39.484.dfm,E:\project\temp\lyash_cs\lyfmh\更新包制作程序\Unit1.dfm=E:\project\temp\lyash_cs\lyfmh\更新包制作程序\Info.dfm</Transaction>
+    <Transaction>2011-01-25 10:34:37.484.pas,E:\project\temp\lyash_cs\lyfmh\更新包制作程序\Info.pas=</Transaction>
+    <Transaction>2011-01-25 10:34:37.484.dfm,E:\project\temp\lyash_cs\lyfmh\更新包制作程序\Info.dfm=</Transaction>
+    <Transaction>2011-01-25 10:34:39.078.pas,E:\project\temp\lyash_cs\lyfmh\更新包制作程序\UpdateTool.pas=</Transaction>
+  </Transactions>
+</BorlandProject>

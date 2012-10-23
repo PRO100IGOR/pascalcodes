@@ -1,0 +1,230 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>弹出窗口修改以及oxhide中使用</title>
+	<link href="../index.css" type="text/css" rel="stylesheet"/>
+	<link href="../prettify/prettify.css" type="text/css" rel="stylesheet"/>
+	<script type="text/javascript" src="../prettify/prettify.js"></script>
+</head>
+
+<body>
+    <div class="container">
+		<div class="line">&nbsp;</div>
+		<div class="lhgdg_body">
+			 <h2>说明</h2>
+			 <ol>
+			 <li>
+				<pre class="prettyprint">
+1：组件在使用ymPrompt.alert、lhgAlert、tip方式验证时需要有ymPrompt、lhgdialog、tip组件的支持.
+2：使用了dwr方法时，需要有dwr组件支持
+3：在页面中任何地方、任何时候可以用m.rules.username来获取到username对应的规则对象
+，并对其进行修改，这些修改将会影响到最终的验证
+4：在列表页面中可以使用
+m.rules.username = {}的方式来初始化规则部分
+5：此工具生成的代码可以出现在页面任意地方，但是为了提高页面被搜索到
+的几率，建议写在页面底部
+6：m.check()即组件的验证方法，返回boolean值，在没有选择即时验证的情况下
+只有调用此方法才能知道是否验证通过
+				</pre>
+			 </li>
+			 </ol>
+		    <h2>M对象</h2>
+			<ol>
+			    <li>
+				    <h3>概念</h3>
+					<pre class="prettyprint">
+         每一个M对象可以是一个表单，也可以是表单中的一部分需要验证的元素的父体。
+当一个表单中的元素需要分多次验证时，可以将每次需要验证的元素都放在一个M
+对象的rules中。
+					</pre>
+				</li>
+				<li>
+				    <h3>M对象的属性介绍</h3>
+					<pre class="prettyprint">name：通过构造函数var m = new $Form("m");指定，可以通过m.name获取，同时可以通过全
+局变量$M获取，如$M.m，或者$M["m"]。
+
+teachMessage:提示信息，当focus并没有输入任何内容时通过在控件后面追加的方式显示。默
+认为空。
+
+showTeachMessage：是否显示提示信息，在指定了teachMessage之后将此属性定为yes，才会提
+示teachMessage，默认为no。
+
+rightMessage:输入正确时的提示信息，默认为空。
+
+showRightMessage：是否显示正确提示信息，在指定了rightMessage之后将此属性定为yes，才会
+提示rightMessage，默认为no。
+
+hipTop：当需要用hiptop方式提示错误信息时，需要指定hiptop控件id或者name。
+
+
+onCheck：自定义M对象的check方法，此方法必须选择一个check方法，可选值为checkOne或者
+checkall。
+checkOne是指验证全部元素，当遇到第一个错误的元素时即停止验证，checkall验证全部元素，
+并
+全部提示错误。
+
+events：为此M对象中的所有控件绑定事件，可以绑定在任意dom事件中。
+</pre>
+				</li>
+				<li>
+				    <h3>M对象在程序中可以使用的属性和方法</h3>
+					<pre class="prettyprint">check 验证方法，返回验证结果
+
+add(ruleName, rule) 添加一个rule对象，参数是json表示的rule对象
+remove 移除一个rule对象，参数是rule的名称。
+info(ele,message) //用当前配置的提示方式（除了appendafter、changeborder等）为名字叫ele的控件提示message
+
+
+skip：当这个属性为true时，m对象的check方法将永远返回true。
+result：m对象调用check方法后，result将记录check方法的返回值。
+rules：包含了M对象的所有规则对象
+
+</pre>
+				</li>	
+			</ol>
+
+			 <h2>rule对象</h2>
+			 <ol>
+				 <li>
+						<h3>概念</h3>
+						<pre class="prettyprint">每一个rule对象都表示一个需要验证的控件</pre>
+				 </li>
+				 <li>
+						<h3>rule对象的属性介绍</h3>
+						<pre class="prettyprint">realName：控件的默认名称。
+
+teachMessage:提示信息，当focus并没有输入任何内容时通过在控件后面追加的方式显示。默
+认使用M对象的teachMessage。
+
+showTeachMessage：是否显示提示信息，在指定了teachMessage之后将此属性定为yes，才会提
+示teachMessage，默认使用M对象的showTeachMessage。
+
+rightMessage:输入正确时的提示信息，默认使用M对象的rightMessage。
+
+showRightMessage：是否显示正确提示信息，在指定了rightMessage之后将此属性定为yes，才会
+提示rightMessage，默认使用M对象的showRightMessage。
+
+
+onCheck：自定义M对象的check方法，此方法必须选择一个check方法，可选值为checkOne或者
+checkall。
+checkOne是指验证全部元素，当遇到第一个错误的元素时即停止验证，checkall验证全部元素，
+并
+全部提示错误。默认为空，当指定此属性后，可以通过rule.check方法获得效果。
+
+events：为此该rule的控件绑定事件，可以绑定在任意dom事件中。默认以M对象为准。</pre>
+				 </li>
+				 <li>
+						<h3>rule对象在程序中可以使用的属性、方法</h3>
+						<pre class="prettyprint">valid：当这个属性为"no"时，rule对象被检测时将跳过不检测。当为"yes"时将会检验。默认是yes
+
+M：该rule在哪个M对象中
+check 验证方法，返回验证结果
+ele:该rule所对应的控件对象
+add 添加一个needs对象，参数是验证的方法名、参数、消息</pre>
+				 </li>
+			 </ol>
+			 <h2>needs对象</h2>
+			 <ol>
+				 <li>
+						<h3>说明</h3>
+						<pre class="prettyprint">needs对象封装了rule对象需要验证的详细设定。
+有如下几种：
+must：必填
+types：值类型，详细值类型请参考源代码或者此工具
+illegal：非法字符验证
+compareLength：长度比较
+compareValue：值比较
+chooseCompare：选择内容比较
+suffix：需要包含的文件类型
+unsuffix：不能包含的文件类型
+regular：自定义正则表达式
+dwr：dwr等ajax验证
+trimCheck：空格验证
+method：自定义方法验证
+
+每种方法都有自己的参数格式，请参考工具中生成规则时的指引。
+每中方法都有自己的默认错误提示信息。
+每个need对象都有一个
+isWarn属性：表示当错误发生时是警告还是错误,当isWarn为true时，checkAll>后必须有alert或者lhgAlert
+valid属性：表示该need是否有效
+</pre>
+				 </li>
+			</ol>
+			<h2>其他工具方法</h2>
+			 <ol>
+				<li>
+					<h3>索引</h3>
+					<pre class="prettyprint">解析 value 中的<、>、<>、==等字符为相反意义的汉字
+$MT.explainCompare(value)  
+
+获取指定id或者name的元素，如果要获取多个id或者name，可以传入 'name,pass,id'这样的 参数，返回一个数组
+$(name) 
+
+获取eleid元素的值
+$value(eleid)  
+
+获取name元素的选择个数
+$checkNum(eleid)
+
+获取o的类型
+$type(o)
+
+ 是否是IE
+$ie
+
+
+		/**
+		 * 添加事件
+		 *
+		 * @param {Object} ele 目标元素
+		 * @param {Object}  event 事件，不要‘on’
+		 * @param {Object}  fc 函数
+		 * @param {Object} master 宿主
+		 * @param {Object}argus 参数数组 例如
+		 */
+$addEvent(ele, eventName, fc, master, argus) 
+
+是否有样式
+hasClass(control, className)
+
+检查是否有样式并添加样式
+addClass(control, className)
+不检查是否有样式并添加样式
+addClassUnCheck(control, className)
+检查是否有样式并移除样式
+removeClass
+不检查是否有样式并移除样式
+removeClassUnCheck
+获取长度(全角=2字符)
+getLength
+
+在targetControl后追加newControl
+insertAfter(newControl, targetControl)
+
+获取网站根路径
+getBasePath
+
+获取自己的路径
+getPath
+
+导入js'
+imPortJs（src, charset）
+
+导入css
+importCss : function(src)
+
+alert（obj）
+
+防止重复提交
+norepeatsend（formname）
+
+					</pre>
+				</li>
+			 </ol>
+		</div>
+		<div class="line">&nbsp;</div>
+	</div>
+	<script type="text/javascript">prettyPrint();</script>
+</body>
+</html>

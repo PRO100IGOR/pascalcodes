@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2010-08-30 15:40:44.656.pas,D:\My Documents\Borland Studio Projects\Unit6.pas=E:\project\temp\OracleClientPr\MainUnit.pas</Transaction>
+    <Transaction>2010-08-30 15:40:44.656.dfm,D:\My Documents\Borland Studio Projects\Unit6.dfm=E:\project\temp\OracleClientPr\MainUnit.dfm</Transaction>
+    <Transaction>2010-08-30 15:40:50.296.bdsproj,D:\My Documents\Borland Studio Projects\Project1.bdsproj=E:\project\temp\OracleClientPr\OracleClient.bdsproj</Transaction>
+    <Transaction>2010-08-30 16:54:42.921.pas,E:\project\temp\OracleClientPr\TextForOracle.pas=</Transaction>
+    <Transaction>2010-08-30 18:19:26.500.pas,E:\project\temp\OracleClientPr\Unit3.pas=E:\project\temp\OracleClientPr\RegeditUnit.pas</Transaction>
+  </Transactions>
+</BorlandProject>

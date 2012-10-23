@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899-12-30 00:00:00.000.pas,E:\pro\del\webSell\main.pas=C:\Documents and Settings\Administrator\My Documents\RAD Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.pas,E:\pro\del\webSell\tool\TlbImpl.pas=E:\pro\del\webSell\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.pas,E:\pro\del\webSell\tool\TNulWBContainer.pas=</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.pas,E:\pro\del\webSell\main.pas=</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.pas,E:\pro\del\webSell\ExternalContainer.pas=E:\pro\del\webSell\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.pas,E:\pro\del\webSell\loginForm.pas=E:\pro\del\webSell\Unit2.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.dfm,E:\pro\del\webSell\MainForm.dfm=E:\pro\del\webSell\Unit1.dfm</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.dfm,E:\pro\del\webSell\loginForm.dfm=E:\pro\del\webSell\Unit2.dfm</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.pas,E:\pro\del\webSell\tool\DocHostUIHandler.pas=E:\pro\del\webSell\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.pas,E:\pro\del\webSell\MainForm.pas=E:\pro\del\webSell\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.bdsproj,E:\pro\del\webSell\webSell.bdsproj=C:\Documents and Settings\Administrator\My Documents\RAD Studio\Projects\Project1.bdsproj</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.pas,E:\pro\del\webSell\tool\TNulWBContainer.pas=E:\pro\del\webSell\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.dfm,E:\pro\del\webSell\main.dfm=</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.dfm,E:\pro\del\webSell\main.dfm=C:\Documents and Settings\Administrator\My Documents\RAD Studio\Projects\Unit1.dfm</Transaction>
+  </Transactions>
+</BorlandProject>

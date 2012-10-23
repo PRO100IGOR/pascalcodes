@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>webservice</title>
+	<link href="../index.css" type="text/css" rel="stylesheet"/>
+	<link href="../prettify/prettify.css" type="text/css" rel="stylesheet"/>
+	<script type="text/javascript" src="../prettify/prettify.js"></script>
+</head>
+
+<body>
+    <div class="container">
+		<div class="line">&nbsp;</div>
+		<div class="lhgdg_body">
+<h2>接口</h2>
+			<ol>
+<pre class="prettyprint">
+package com.sxsihe.utils.file;
+
+import com.oreilly.servlet.MultipartRequest;
+
+/**
+ * 文件上传处理接口
+ * 
+ * @author 张超超 TODO 2012上午10:52:40
+ */
+public interface FileUploader {
+
+	/**
+	 * 文件上传处理函数，返回处理结束后跳转的地址
+	 * 
+	 * @param multipartRequest
+	 * @return Administrator com.sxsihe.utils.file
+	 *         FileUploader.java 2012上午10:52:48
+	 *         oxhide
+	 */
+	public String excuteFile(MultipartRequest multipartRequest) throws Exception;
+}
+</pre>
+</ol>			 
+
+<h2>实现范例--前台jsp</h2>
+			<ol>
+<pre class="prettyprint">
+	//表单提交地址固定为${basePath}/core/handel/fileUpload.jsp,uploader是实现了FileUploader接口的类在spring中定义的name/id，
+	//提交后先跳转到${basePath}/core/handel/fileUpload.jsp，再调用uploader对象的excuteFile方法
+	form action="${basePath}/core/handel/fileUpload.jsp?uploader=/applicationLoadAction" name="tt" enctype="multipart/form-data" method="post"
+		
+		
+		
+		
+		input type="file" name="imper" 
+
+</pre>
+</ol>
+
+
+<h2>实现范例--后台action</h2>
+			<ol>
+<pre class="prettyprint">
+public class ApplicationShowAction extends BaseShowAction implements FileUploader {
+	/*
+		multipartRequest提供getFile方法，可以根据表单里文件控件的name获取上传的文件。
+		getParameter获取普通参数的值
+	*/
+	public String excuteFile(MultipartRequest multipartRequest) throws Exception {
+		File file = multipartRequest.getFile("imper");
+		InputStream in = new FileInputStream(file);
+		StringBuffer s = new StringBuffer();
+		byte read[] = new byte[1024 * 1024];
+		while ((in.read(read, 0, 1024 * 1024)) != -1) {
+			s.append(new String(read, 0, 1024 * 1024, "GBK"));
+		}
+		String src = CharsetSwitch.deLargeCode(s.toString().trim(), "siheexport");
+		in.close();
+		return null;
+	}
+}
+</pre>
+</ol>
+
+
+		<div class="line">&nbsp;</div>
+	</div>
+	<script type="text/javascript">prettyPrint();</script>
+</body>
+</html>

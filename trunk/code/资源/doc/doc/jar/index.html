@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>tab选项卡</title>
+	<link href="../index.css" type="text/css" rel="stylesheet"/>
+	<link href="../prettify/prettify.css" type="text/css" rel="stylesheet"/>
+	<script type="text/javascript" src="../prettify/prettify.js"></script>
+</head>
+
+<body>
+    <div class="container">
+		<div class="line">&nbsp;</div>
+		<div class="lhgdg_body">
+		    <h2>jar包精简</h2>
+			<ol>
+			    <li>
+					 <h3>jar包共享于tomcat<h3/>
+				</li>
+1:新建的项目中，jar包只有几个必须的，其他的都不在项目中了。采用共享的方式放在tomcat/lib目录中.<br/><br/>
+2:项目在eclipse中时，要引用系统级的library才能保证不报错。<br/><br/>
+3：libaray和tomcat/lib所需的jar是一样的，下载：<a href="jars.zip">jar</a><br/><br/>
+4:新建的项目中只有config.properties、accessories.properties两个配置文件了。<br/><br/>
+5:在部署到tomcat中时，userlibrary中的jar也会复制到项目的lib中，但此时需要将lib中jar全部删掉，再将项目本身的lib中jar复制到tomcat项目的lib中<br/><br/>
+6：当然，也可以完全不管上面所说的东西，只要在打包发布的时候分开就行了。但是在开发中就使用这样的方式，有助于提前发现问题。<br/><br/>
+发布时应用系统中所需要的jar：<a href="lib.zip">lib</a>
+			</ol>
+
+			旧版jar包 <a href="old jar.zip">jar</a>
+			旧版lib包 <a href="old lib.zip">lib</a>
+		</div>
+		<div class="line">&nbsp;</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<!DOCTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN"
+                        "http://java.sun.com/dtd/web-jsptaglibrary_1_2.dtd">
+<taglib>
+	<tlib-version>1.2</tlib-version>
+	<jsp-version>1.1</jsp-version>
+	<short-name>coder</short-name>
+	<uri>/WEB-INF/tld/code.tld</uri>
+	<display-name>sihe</display-name>
+	<description>动态建表标签库</description>
+	<tag>
+		<name>show</name>
+		<tag-class>com.sxsihe.coder.util.CoderShowType</tag-class>
+		<body-content>JSP</body-content>
+		<description>根据显示类型显示控件(动态建表专用)</description>
+		<attribute>
+			<name>type</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>显示类型</description>
+		</attribute>
+		<attribute>
+			<name>value</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>显示内容</description>
+		</attribute>
+		<attribute>
+			<name>id</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>控件ID</description>
+		</attribute>
+		<attribute>
+			<name>timer</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>时间控件格式</description>
+		</attribute>
+		<attribute>
+			<name>data</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>静态取数值</description>
+		</attribute>
+		<attribute>
+			<name>getdata</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>取数类型</description>
+		</attribute>
+		<attribute>
+			<name>needCom</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>是否要转义字符，默认true</description>
+		</attribute>
+		<attribute>
+			<name>iscontrol</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>是否显示为控件,默认true</description>
+		</attribute>
+	</tag>
+
+
+	<tag>
+		<name>tables</name>
+		<tag-class>com.sxsihe.utils.tld.TablesShow</tag-class>
+		<body-content>JSP</body-content>
+		<description><![CDATA[显示系统中已经有的动态建表列表]]></description>
+		<attribute>
+			<name>value</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description><![CDATA[值]]></description>
+		</attribute>
+	</tag>
+	
+
+</taglib>

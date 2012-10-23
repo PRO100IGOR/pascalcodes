@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="gb2312"?>
+<updates><version>0.97</version><time>2012-05-10 16:03</time><explains><explain>1:支持移动开发代码生成(测试)</explain><explain>2:生成完毕时菜单配置读取的是在config.ini中配置的oxhide地址</explain></explains><files><file action="u">code.exe</file><file action="u">config.ini</file></files></updates>

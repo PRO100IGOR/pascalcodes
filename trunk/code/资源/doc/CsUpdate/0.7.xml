@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="gb2312"?>
+<updates><version>0.7</version><time>2011-09-24 08:53</time><explains><explain>1：增加附件生成功能</explain><explain>2：生成list时静态取数的问题</explain></explains><files><file action="u">code.exe</file></files></updates>

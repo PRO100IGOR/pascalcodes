@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="gbk"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<!--全局配置,class目录下config.properties -->
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="classpath:config.properties" />
+	</bean>
+	<!-- 数据源 -->
+	<bean id="dataSource" class="com.sxsihe.oxhide.persistence.OxhideDriverMangerDataSource">
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean>
+	<!-- NativeJdbcExtractor，针对clob字段 <bean id="nativeJdbcExtractor" class="org.springframework.jdbc.support.nativejdbc.SimpleNativeJdbcExtractor" lazy-init="true" /> -->
+	<bean id="nativeJdbcExtractor" class="org.springframework.jdbc.support.nativejdbc.CommonsDbcpNativeJdbcExtractor" lazy-init="true" />
+
+
+	<bean id="oracleLobHandler" class="org.springframework.jdbc.support.lob.OracleLobHandler" lazy-init="true">
+		<property name="nativeJdbcExtractor">
+			<ref local="nativeJdbcExtractor" />
+		</property>
+	</bean>
+	<bean id="defaultLobHandler" class="org.springframework.jdbc.support.lob.DefaultLobHandler" lazy-init="true" />
+
+
+	<!-- hibernate session Factory -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="lobHandler" ref="${lobHandler}" />
+		<property name="dataSource" ref="dataSource" />
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					${hibernate.dialect}
+				</prop>
+				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.connection.pool_size">30</prop>
+				<prop key="connection.useUnicode">true</prop>
+				<prop key="connection.characterEncoding">GB2312</prop>
+				<prop key="hibernate.jdbc.batch_size">25</prop>
+				<prop key="hibernate.generate_statistics">true</prop>
+				<prop key="hibernate.cache.use_structured_entries">
+					true
+				</prop>
+				<prop key="hibernate.cache.use_second_level_cache">
+					true
+				</prop>
+				<prop key="hibernate.cache.provider_class">
+					org.hibernate.cache.EhCacheProvider
+				</prop>
+				<prop key="hibernate.cache.use_query_cache">false</prop>
+			</props>
+		</property>
+		<property name="mappingDirectoryLocations">
+			<list>
+				<value>classpath:hibernatemap/</value>
+			</list>
+		</property>
+		<property name="mappingLocations">
+			<value>/WEB-INF/*.hbm.xml</value>
+		</property>
+	</bean>
+	<!-- Spring的数据访问异常转换器 -->
+	<bean id="jdbcExceptionTranslator" class="org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<!-- hibernateTemplate -->
+	<bean id="template" class="org.springframework.orm.hibernate3.HibernateTemplate">
+		<property name="sessionFactory" ref="sessionFactory" />
+		<property name="jdbcExceptionTranslator" ref="jdbcExceptionTranslator" />
+	</bean>
+	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+		<property name="sessionFactory" ref="sessionFactory" />
+		<!-- 异常处理 -->
+		<property name="jdbcExceptionTranslator">
+			<ref bean="jdbcExceptionTranslator" />
+		</property>
+	</bean>
+
+	<!--Hibernate TransactionManager -->
+	<bean id="hibernateTransactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<!--Base TransactionProxyed Service Bean -->
+	<bean id="baseTxService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean" abstract="true">
+		<property name="transactionManager" ref="hibernateTransactionManager" />
+		<!-- <property name="proxyTargetClass" value="true" /> -->
+		<property name="transactionAttributes">
+			<props>
+				<prop key="*">PROPAGATION_REQUIRED</prop>
+			</props>
+		</property>
+		<property name="postInterceptors">
+			<list>
+				<bean class="org.springframework.orm.hibernate3.HibernateInterceptor">
+					<property name="sessionFactory">
+						<ref bean="sessionFactory" />
+					</property>
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="autoproxy" class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+		<property name="interceptorNames">
+			<list>
+				<value>tracerInterceptor</value>
+			</list>
+		</property>
+		<property name="beanNames">
+			<list>
+				<value>*DAO</value>
+				<!--<value>*Target</value> -->
+			</list>
+		</property>
+	</bean>
+
+	<bean id="tracerInterceptor" class="com.sxsihe.oxhide.persistence.TracerInterceptor" />
+
+	<!-- 资源文件 -->
+	<bean id="messageres" class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>config</value>
+			</list>
+		</property>
+	</bean>
+</beans>

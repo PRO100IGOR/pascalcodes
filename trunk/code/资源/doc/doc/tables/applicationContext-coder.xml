@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+	<bean id="tablesDAO" class="com.sxsihe.coder.tables.dao.hibernateImpl.TablesDAOImpl">
+		<property name="template" ref="template" />
+	</bean>
+	<bean id="tablesService" parent="baseTxService">
+		<property name="target">
+			<bean id="tablesServiceTarget" class="com.sxsihe.coder.tables.service.TablesServiceImpl">
+				<property name="dao" ref="tablesDAO" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="columnsDAO" class="com.sxsihe.coder.columns.dao.hibernateImpl.ColumnsDAOImpl">
+		<property name="template" ref="template" />
+	</bean>
+	<bean id="columnsService" parent="baseTxService">
+		<property name="target">
+			<bean id="columnsServiceTarget" class="com.sxsihe.coder.columns.service.ColumnsServiceImpl">
+				<property name="dao" ref="columnsDAO" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="selsDAO" class="com.sxsihe.coder.sels.dao.hibernateImpl.SelsDAOImpl">
+		<property name="template" ref="template" />
+	</bean>
+	<bean id="selsService" parent="baseTxService">
+		<property name="target">
+			<bean id="selsServiceTarget" class="com.sxsihe.coder.sels.service.SelsServiceImpl">
+				<property name="dao" ref="selsDAO" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="dataidDAO" class="com.sxsihe.coder.dataid.dao.hibernateImpl.DataidDAOImpl">
+		<property name="template" ref="template" />
+	</bean>
+	<bean id="dataidService" parent="baseTxService">
+		<property name="target">
+			<bean id="dataidServiceTarget" class="com.sxsihe.coder.dataid.service.DataidServiceImpl">
+				<property name="dao" ref="dataidDAO" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="datasDAO" class="com.sxsihe.coder.datas.dao.hibernateImpl.DatasDAOImpl">
+		<property name="template" ref="template" />
+	</bean>
+	<bean id="datasService" parent="baseTxService">
+		<property name="target">
+			<bean id="datasServiceTarget" class="com.sxsihe.coder.datas.service.DatasServiceImpl">
+				<property name="dao" ref="datasDAO" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean name="/tablesLoadAction" class="com.sxsihe.coder.tables.action.TablesShowAction">
+		<property name="service" ref="tablesService" />
+		<property name="columnsService" ref="columnsService" />
+		<property name="selsService" ref="selsService" />
+		<property name="dataidService" ref="dataidService" />
+		<property name="datasService" ref="datasService" />
+	</bean>
+	<bean name="/tablesShowAction" class="com.sxsihe.coder.tables.action.TablesShowAction">
+		<property name="service" ref="tablesService" />
+		<property name="resourceServer" ref="resourceClient"></property>
+		<property name="columnsService" ref="columnsService" />
+		<property name="selsService" ref="selsService" />
+		<property name="dataidService" ref="dataidService" />
+		<property name="datasService" ref="datasService" />
+	</bean>
+	<bean name="/tablesSaveAction" class="com.sxsihe.coder.tables.action.TablesSaveAction">
+		<property name="service" ref="tablesService" />
+		<property name="resourceServer" ref="resourceClient"></property>
+		<property name="columnsService" ref="columnsService" />
+		<property name="selsService" ref="selsService" />
+		<property name="dataidService" ref="dataidService" />
+		<property name="datasService" ref="datasService" />
+	</bean>
+	<bean name="/tablesDeleteAction" class="com.sxsihe.coder.tables.action.TablesDeleteAction">
+		<property name="resourceServer" ref="resourceClient"></property>
+		<property name="service" ref="tablesService" />
+	</bean>
+</beans>

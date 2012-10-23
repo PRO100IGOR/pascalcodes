@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=GBK"/>
+	<title>showaction</title>
+	<script src="../js/mustache.js"></script>
+	<script src="../js/jquery-1.6.2.min.js"></script>
+	<script type="text/javascript">
+	<!--
+		function make(){
+			var html, json, template;
+			template = $('#template').val();
+			json = $.parseJSON($('#json').val());
+			html = Mustache.to_html(template, json);
+			$('#html').text(html);
+		}
+		function getOneUpper(v){
+			var temp = [],temp2 = v.split("");
+			for(var i =0;i<temp2.length;i++){
+				if(i==0){
+					temp.push(temp2[i].toUpperCase());
+				}else{
+					temp.push(temp2[i]);
+				}
+			}
+			return temp.join(""); 
+		}
+	//-->
+	</script>
+</head>
+ <body>
+<textarea id="json" rows="10" cols="130"></textarea>
+<textarea id="html" rows="10" cols="130"></textarea>
+
+
+
+
+
+	<textarea id="template" rows="10" cols="130">
+<!DOCTYPE html>
+<%--
+@version: 1.0
+@author: {{author}}
+@company: {{company}}
+@time: {{date}}
+--%>
+<html class="ui-mobile-rendering">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{{modelChname}}</title>
+<!-- 列表模块结束 -->
+<link rel="stylesheet" href="../resource/base/theme/public/css/jquery.mobile.css" />
+<script src="../resource/base/js/jquery/jquery.js"></script>
+<!-- 要在PC浏览器上测试，去掉对phonegap的引用 -->
+<script src="../resource/base/js/cordova/cordova.js"></script>
+</head>
+<body>
+	<!-- 列表模块开始 -->
+	<div data-role="page" class="type-interior" id="list" >
+		<div data-role="header" >
+			<h1 class="apptitle">{{modelChname}}</h1>
+			<a href="../index.html#index" data-icon="arrow-l" data-ajax="false">返回</a> <a href="javascript:;" id="showAddBtn" data-icon="plus">新增</a>
+		</div>
+		<div data-role="content">
+			<div class="content-primary">
+				<ol data-role="listview" data-inset="true"  id="listcontain">
+				</ol>
+			</div>
+		</div>
+		<div data-role="footer" class="footer-docs"  data-id="foot">
+			<h1 id="next20">查看下20条</h1>
+		</div>
+		<script src="../resource/base/js/tool/common.js"></script>
+		<script src="../resource/base/js/tool/data.js"></script>
+		<script src="../resource/base/js/tool/list.js"></script>
+		<script src="../resource/base/js/jquery/jquery.mobile.js"></script>
+		<script src="../resource/base/js/validate/Magican.js"></script>
+		<!-- 本页面专用的js文件开始 -->
+		<script src="../resource/apps/{{modelName}}.js"></script>
+		<!-- 本页面专用的js文件结束 -->
+		<script>
+			$.debug = true,$.title="{{mobileTitle}}",$.id="{{mobileId}}";
+		</script>
+	</div>
+	<!-- 列表模块结束 -->
+
+
+	<!-- view模块开始 -->
+	<div data-role="page" class="type-interior" id="view" >
+		<div data-role="header" >
+			<h1 class="apptitle">{{modelChname}}</h1>
+			<a href="#list" data-icon="arrow-l">返回</a> <a href="javascript:;" id="showUpdateBtn" data-icon="forward">修改</a>
+		</div>
+		<div data-role="content" >
+			<div class="content-primary" >
+				<div id="div_organid" style="display: none;"></div> 
+				<div class="content-primary">
+				{{#viewList}}
+				<ul data-role="listview" data-inset="true" id="ul_{{dataName}}" >
+					<li data-role="list-divider">{{comment}}</li>
+					<li><div id="div_{{dataName}}"></div></li>
+				</ul>
+				{{/viewList}}
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- view模块结束 -->
+
+	<!-- 表单模块开始 -->
+	<div data-role="page" class="type-interior" id="form" >
+		<div data-role="header" >
+			<h1 class="apptitle">{{modelChname}}</h1>
+			<a href="#list" data-icon="arrow-l">返回</a> <a href="javascript:;" id="saveBtn" data-icon="forward">保存</a>
+		</div>
+		<div data-role="content" >
+			<div class="content-primary" >
+			{{#FormTypes}}
+			{{#隐藏域}}
+			<input type="hidden" id="{{dataName}}" c="form"  />
+			{{/隐藏域}}
+			{{#普通文本框}}
+			<div data-role="fieldcontain">
+				<label for="{{dataName}}">{{#must}}<font color="red">*</font>{{/must}}{{comment}}</label>
+				<input type="text" id="{{dataName}}" value="" placeholder="{{comment}}"  c="form" />
+			</div>
+			{{/普通文本框}}
+			{{#树形菜单文本框}}
+			<div data-role="fieldcontain">
+				<label for="{{dataName}}">{{#must}}<font color="red">*</font>{{/must}}{{comment}}</label>
+				<input type="text" id="{{dataName}}" value="" placeholder="{{comment}}"  c="form" />
+			</div>
+			{{/树形菜单文本框}}
+			{{#时间控件文本框}}
+			<div data-role="fieldcontain">
+				<label for="{{dataName}}">{{#must}}<font color="red">*</font>{{/must}}{{comment}}</label>
+				<input type="text" id="{{dataName}}" value="" placeholder="{{comment}}"  c="form" />
+			</div>
+			{{/时间控件文本框}}
+			{{#文本域}}
+			<div data-role="fieldcontain">
+				<label for="{{dataName}}">{{#must}}<font color="red">*</font>{{/must}}{{comment}}</label>
+				<textsarea cols="40" rows="8" id="{{dataName}}" c="form"></textsarea>
+			</div>
+			{{/文本域}}
+			{{#下拉框}}
+			<div data-role="fieldcontain">
+				<label for="{{dataName}}">{{#must}}<font color="red">*</font>{{/must}}{{comment}}</label>
+				<select id="{{dataName}}" data-native-menu="false" c="form">
+					<option>请选择</option>
+					{{#StringArr}}
+					<option value="{{key}}">{{value}}</option>
+					{{/StringArr}}
+				</select>
+			</div>
+			{{/下拉框}}
+			{{#富文本框}}
+			<div data-role="fieldcontain">
+				<label for="{{dataName}}">{{#must}}<font color="red">*</font>{{/must}}{{comment}}</label>
+				<textsarea cols="40" rows="8" id="{{dataName}}" c="form"></textsarea>
+			</div>
+			{{/富文本框}}
+			{{/FormTypes}}
+			</div>
+		</div>
+	</div>
+	<!-- 表单模块结束 -->
+	</textarea>
+ </body>
+</html>

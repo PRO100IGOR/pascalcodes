@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="gb2312"?>
+<updates><version>0.8</version><time>2011-09-24 17:54</time><explains><explain>1：更新项目时可以备份原来的项目了</explain><explain>2：修复新建项目时config.properties内容不全的问题。</explain><explain>3：去除更新、新建项目时struts-config.xml中多余的plugin</explain></explains><files><file action="u">code.exe</file></files></updates>

@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>弹出窗口修改以及oxhide中使用</title>
+	<link href="../index.css" type="text/css" rel="stylesheet"/>
+	<link href="../prettify/prettify.css" type="text/css" rel="stylesheet"/>
+	<script type="text/javascript" src="../prettify/prettify.js"></script>
+</head>
+
+<body>
+    <div class="container">
+		<div class="line">&nbsp;</div>
+		<div class="lhgdg_body">
+		    <h2>版本 1.0</h2>
+			<ol>
+			    <li>
+				    <h3>开始</h3>
+					<pre class="prettyprint"><a href="mysql.sql">mysql建表</a> <a href="oracle.sql">oracle建表</a>
+					</pre>
+				</li>
+				<li>
+				    <h3>引用</h3>
+					<pre class="prettyprint">引入<a href="applicationContext-accessories.xml">applicationContext-accessories.xml</a>、<a href="struts-config-accessories.xml">struts-config-accessories.xml</a>、<a href="Accessories.hbm.xml">Accessories.hbm.xml</a>,并在web.xml中配置struts-config-accessories.xml
+</pre>
+				</li>
+				<li>
+				    <h3>配置</h3>
+					<pre class="prettyprint">src下增加配置文件<a href="accessories.properties">accessories.properties</a>
+</pre>
+				</li>
+				<li>
+				    <h3>调用</h3>
+					<pre class="prettyprint">
+iframe name="accfrm" width="100%" height="100" scrolling="auto" frameborder="0" src="${basePath}/accessories.do?action=show"
+</iframe>
+	参数说明：
+	isManager ：默认是true 是否是管理状态，用true和false标记，如果是true表示可以上传、删除，否则只能下载
+	type：(必填)文件类型，与accessories.properties文件中一定的一致
+
+
+	itemId (必填)业务id，表示这些附件是哪个业务对象的，
+
+	maxCount：最多有多少个附件，0表示不限，默认是0
+
+	showAsImg：在非管理状态时是否以图片展示，0=否，1=是默认是0 
+	appName:当前系统名称，主要是在tomcat下按照此名称建立不同的文件夹，可选，默认为空
+	path: 文件存放的路径，如：/resource/logo/aaa/默认为空，如果为空，将在tomcat\webapp\本系统\upload\appname目录中存放文件，否则以此文件夹为存放文件目录
+	forword: 用来代替现有附件jsp页面的跳转，需要在struts中配置
+	调用页面实现：subform方法，用来提交主表单。
+	调用页面保存前调用upload方法，即可上传附件并调用subform方法,如
+function save() {
+    if (applicationForm.check()) {
+		upload();
+    }
+}
+function subform(){
+	$.msgBar ({
+		type: 'info', 
+		text: "正在保存数据",
+		position: 'bottom-center', 
+		lifetime: 3000
+	});
+	XqTipOpen("正在保存数据,请稍后");
+    document.applicationForm.submit();
+}
+
+</pre>
+				</li>
+				<li>
+				    <h3>扩展</h3>
+附件页面加载时，会调用你页面的initFile方法<br/>
+					<pre class="prettyprint">
+function initFile(fileName,fileCount){
+	fileName是指附件所在的frame的名称，fileCount是指附件的个数
+}</pre>
+当增加一个附件时，会调用你的页面的addFile方法<br/>
+					<pre class="prettyprint">
+function addFile(fileName,fileCount){
+	fileName是指附件所在的frame的名称，fileCount是指附件的个数
+}</pre>
+当删除一个附件时，会调用你的页面的delFile方法<br/>
+<pre class="prettyprint">
+function delFile(fileName,fileCount){<br/>
+	fileName是指附件所在的frame的名称，fileCount是指附件的个数
+}</pre>
+任何时候都可以通过 frameName.accessCount获取附件页面有几个附件。
+				</li>
+			</ol>
+				    <h3>tld</h3>
+sihe.tld中有access功能，用于列出附件的简易下载
+				</li>
+			</ol>		
+		</div>
+		<div class="line">&nbsp;</div>
+	</div>
+	<script type="text/javascript">prettyPrint();</script>
+</body>
+</html>

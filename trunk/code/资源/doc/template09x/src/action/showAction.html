@@ -1,0 +1,292 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=GBK"/>
+	<title>showaction</title>
+	<script src="../../js/mustache.js"></script>
+	<script src="../../js/jquery-1.6.2.min.js"></script>
+	<script type="text/javascript">
+	<!--
+		function make(){
+			var html, json, template;
+			template = $('#template').val();
+			json = $.parseJSON($('#json').val());
+			html = Mustache.to_html(template, json);
+			$('#html').text(html);
+		}
+		function getOneUpper(v){
+			var temp = [],temp2 = v.split("");
+			for(var i =0;i<temp2.length;i++){
+				if(i==0){
+					temp.push(temp2[i].toUpperCase());
+				}else{
+					temp.push(temp2[i]);
+				}
+			}
+			return temp.join(""); 
+		}
+	//-->
+	</script>
+</head>
+ <body>
+<textarea id="json" rows="0" cols="0">
+</textarea>
+<textarea id="html" rows="0" cols="0">
+</textarea>
+
+
+
+
+
+	<textarea id="template" rows="50" cols="500">
+package {{pacname}}.action;
+import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import org.apache.commons.beanutils.BeanUtils;
+import org.apache.struts.action.ActionForm;
+import org.apache.struts.action.ActionMapping;
+import java.io.Serializable;
+{{#mobile}}
+import com.ite.oxhide.common.util.StringUtils;
+import net.sf.json.JsonConfig;
+import net.sf.json.util.PropertyFilter;
+import com.sxsihe.utils.mobile.MobileQuery;
+import net.sf.json.JSONObject;
+{{/mobile}}
+
+import com.ite.oxhide.persistence.ConditionBlock;
+import com.ite.oxhide.persistence.ConditionLeaf;
+import org.apache.commons.beanutils.PropertyUtils;
+import org.extremecomponents.table.limit.Limit;
+import com.ite.oxhide.exception.BaseException;
+import com.ite.oxhide.struts.actionEx.BaseShowAction;
+
+
+
+import {{pacname}}.domain.{{!getOneUpper(modelName)}};
+import {{pacname}}.form.{{!getOneUpper(modelName)}}Form;
+{{#condition}}
+import {{pacname}}.form.{{!getOneUpper(modelName)}}ConditionForm;
+{{/condition}}
+{{#LinkTypes}}
+import {{pacName}};
+{{/LinkTypes}}
+
+/**
+ * 
+ * <p>Title:{{pacname}}.action.{{!getOneUpper(modelName)}}ShowAction</p>
+ * <p>Description:{{modelChname}}显示action</p>
+ * <p>Copyright: Copyright (c) 2012</p>
+ * <p>Company: {{company}}</p>
+ * @author {{author}}
+ * @version 1.0
+ * @date {{date}}
+ * @modify
+ * @date
+ */
+ public class {{!getOneUpper(modelName)}}ShowAction extends BaseShowAction {
+	
+/**
+ * 自定义action实例
+ * @param request
+ */
+//	public ActionForward showTest(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws BaseException {
+//		return null;
+//		return new ActionForward(""); 
+//		return mapping.findForward("test");
+//	}
+
+	{{#mobile}}
+	/**
+	 * 移动列表请求
+	 * @param request
+	 */
+	protected String showMobileList(HttpServletRequest request) throws BaseException {
+		String data = request.getParameter("data");
+		if (StringUtils.isEmpty(data)) {
+			return null;
+		}
+		JsonConfig config = new JsonConfig();
+		config.setJsonPropertyFilter(new PropertyFilter() {
+			public boolean apply(Object source, String name, Object value) {
+				return ",{{mobileId}},{{mobileTitle}},".indexOf("," + name + ",") == -1;
+			}
+		});
+		return MobileQuery.queryByJsonData(data, "{{!getOneUpper(modelName)}}", "{{modelName}}Service", config);
+	}
+	/**
+	 * 移动update显示之后，返回要响应到移动客户端的字符串
+	 * @param request
+	 * @param po
+	 */
+	protected String nextShowMobileUpdate(HttpServletRequest request, Serializable po) throws BaseException {
+		JsonConfig config = new JsonConfig();
+		/*config过滤不转换到jsonobject中的字段，返回true表示过滤*/
+		config.setJsonPropertyFilter(new PropertyFilter() {
+			public boolean apply(Object source, String name, Object value) {
+				return false;
+			}
+		});
+		JSONObject jsonObject = JSONObject.fromObject(po, config);
+		return jsonObject.toString();
+	}
+	/**
+	 * 移动add显示之后，返回要响应到移动客户端的字符串
+	 * @param request
+	 * @param po
+	 */
+	protected String nextShowMobileAdd(HttpServletRequest request, Serializable po) throws BaseException {
+		return null;
+	}
+	/**
+	 * 移动view显示之后，返回要响应到移动客户端的字符串
+	 * @param request
+	 * @param po
+	 */
+	protected String nextShowMobileView(HttpServletRequest request, Serializable po) throws BaseException {
+		JsonConfig config = new JsonConfig();
+		/*config过滤不转换到jsonobject中的字段，返回true表示过滤*/
+		config.setJsonPropertyFilter(new PropertyFilter() {
+			public boolean apply(Object source, String name, Object value) {
+				return false;
+			}
+		});
+		JSONObject jsonObject = JSONObject.fromObject(po, config);
+		return jsonObject.toString();
+	}
+	{{/mobile}}
+	/**
+	 * 显示增加页面后处理
+	 * 
+	 * @param mapping
+	 * @param form
+	 * @param request
+	 * @param response
+	 * @throws BaseException
+	 */
+	protected void nextShowAdd(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws BaseException {
+	}
+	/**
+	 * 显示修改页面后处理
+	 * 
+	 * @param mapping
+	 * @param form
+	 * @param request
+	 * @param response
+	 * @throws BaseException
+	 */
+	protected void nextShowUpdate(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response, Serializable po) throws BaseException {
+	}
+	/**
+	 * 显示列表页面后处理
+	 * 
+	 * @param mapping
+	 * @param form
+	 * @param request
+	 * @param response
+	 * @throws BaseException
+	 */
+	protected void nextShowList(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws BaseException {
+	}
+	/** 
+	 * 转换实体类为form对象
+	 * @param po	
+	 * @param form
+	 * @return
+	 */
+	protected ActionForm getForm(Serializable po, ActionForm form) {
+		try {
+			if (form instanceof {{!getOneUpper(modelName)}}Form) {
+				{{!getOneUpper(modelName)}} pos = ({{!getOneUpper(modelName)}}) po;
+				{{!getOneUpper(modelName)}}Form vForm = ({{!getOneUpper(modelName)}}Form) form;
+				{{#FormTypes}}
+				BeanUtils.setProperty(vForm, "{{name}}", PropertyUtils.getProperty(pos, "{{name}}"));
+				{{/FormTypes}}
+				{{#LinkTypes}}
+				if(pos.get{{!getOneUpper(className)}}() != null){
+					vForm.set{{!getOneUpper(name)}}(pos.get{{!getOneUpper(className)}}().get{{!getOneUpper(name)}}());
+				}
+				{{/LinkTypes}}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return form;
+	}
+	/**
+	 * 显示查看页面后调用
+	 * 
+	 * @param mapping
+	 * @param form
+	 * @param request
+	 * @param response
+	 * @return
+	 * @throws BaseException
+	 */
+	protected void nextShowView(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response, Serializable po) throws BaseException {
+	}
+	/**
+	 * 自定义查询个数接口方法
+	 * 
+	 * @param conditionForm
+	 * @param limit
+	 * @return
+	 */
+	protected int customSelectCount(ActionForm conditionForm, HttpServletRequest request, HttpServletResponse response, Limit limit) {
+		ConditionBlock block = null;
+		if (limit != null)
+			block = getConditionBlock(limit);
+		else
+			block = new ConditionBlock();
+		{{#condition}}
+		{{!getOneUpper(modelName)}}ConditionForm {{modelName}}ConditionForm = ({{!getOneUpper(modelName)}}ConditionForm) conditionForm;
+		if ({{modelName}}ConditionForm != null) {
+			{{#ConditionTypes}}
+			block.and(new ConditionLeaf("{{dataname}}", "{{name}}", ConditionLeaf.{{eq}}, {{modelName}}ConditionForm.get{{!getOneUpper(name)}}(), true));
+			{{/ConditionTypes}}
+		}
+		{{/condition}}
+		return getService().getTotalObjects(block);
+	}
+	/**
+	 * 自定义查询列表接口方法
+	 * 
+	 * @param conditionForm
+	 * @param limit
+	 * @return
+	 */
+	protected List customSelect(ActionForm conditionForm, Limit limit, HttpServletRequest request, HttpServletResponse response, ActionMapping mapping) {
+		ConditionBlock block = null;
+		if (limit != null)
+			block = getConditionBlock(limit);
+		else
+			block = new ConditionBlock();
+		{{#condition}}
+		{{!getOneUpper(modelName)}}ConditionForm {{modelName}}ConditionForm = ({{!getOneUpper(modelName)}}ConditionForm) conditionForm;
+		if ({{modelName}}ConditionForm != null) {
+			{{#ConditionTypes}}
+			block.and(new ConditionLeaf("{{dataname}}", "{{name}}", ConditionLeaf.{{eq}}, {{modelName}}ConditionForm.get{{!getOneUpper(name)}}(), true));
+			{{/ConditionTypes}}
+		}
+		{{/condition}}
+		Map sortMap = null;
+		if (limit != null)
+			sortMap = this.getSortMap(limit);
+		else
+			sortMap = new HashMap();
+		{{#showList}}
+		return limit != null ? getService().findObjectsByCondition(block, sortMap, (limit.getPage() - 1) * limit.getCurrentRowsDisplayed(), limit.getCurrentRowsDisplayed()) : getService().findObjectsByCondition(block, sortMap);
+		{{/showList}}
+		{{#showTree}}
+		return getService().findObjectsByCondition(block, sortMap);
+		{{/showTree}}
+	}
+ }
+	</textarea>
+
+
+ </body>
+</html>

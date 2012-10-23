@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="gbk"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<!-- 登录session服务client -->
+	<bean id="loginServiceClient" class="com.sxsihe.oxhide.client.OxhideClient">
+		<!-- 配置webservice实现的接口 -->
+		<property name="serviceInterface">
+			<value>com.sxsihe.oxhide.server.loginsession.LoginSessionService</value>
+		</property>
+		<!-- 配置webservice的wsdl的url -->
+		<property name="wsdlDocumentUrl">
+			<value>${sso.webservice.url}</value>
+		</property>
+		<!-- 配置webservice的服务名 -->
+		<property name="serviceName">
+			<value>LoginSessionService</value>
+		</property>
+	</bean>
+
+	<!-- 人员服务client -->
+	<bean id="userClient" class="com.sxsihe.oxhide.client.OxhideClient">
+		<!-- 配置webservice实现的接口 -->
+		<property name="serviceInterface">
+			<value>com.sxsihe.oxhide.server.users.UserServer</value>
+		</property>
+		<!-- 配置webservice的wsdl的url -->
+		<property name="wsdlDocumentUrl">
+			<value>${sso.webservice.url}</value>
+		</property>
+		<!-- 配置webservice的服务名 -->
+		<property name="serviceName">
+			<value>UserServer</value>
+		</property>
+	</bean>
+
+	<!-- 日志服务client -->
+	<bean id="systemlogClient" class="com.sxsihe.oxhide.client.OxhideClient">
+		<!-- 配置webservice实现的接口 -->
+		<property name="serviceInterface">
+			<value>com.sxsihe.oxhide.server.systemlog.SystemlogServer</value>
+		</property>
+		<!-- 配置webservice的wsdl的url -->
+		<property name="wsdlDocumentUrl">
+			<value>${sso.webservice.url}</value>
+		</property>
+		<!-- 配置webservice的服务名 -->
+		<property name="serviceName">
+			<value>SystemlogServer</value>
+		</property>
+	</bean>
+
+	<!-- 数据字典服务client -->
+	<bean id="dictionaryClient" class="com.sxsihe.oxhide.client.OxhideClient">
+		<!-- 配置webservice实现的接口 -->
+		<property name="serviceInterface">
+			<value>com.sxsihe.oxhide.server.dictionary.DictionaryServer</value>
+		</property>
+		<!-- 配置webservice的wsdl的url -->
+		<property name="wsdlDocumentUrl">
+			<value>${sso.webservice.url}</value>
+		</property>
+		<!-- 配置webservice的服务名 -->
+		<property name="serviceName">
+			<value>DictionaryServer</value>
+		</property>
+	</bean>
+
+	<!-- 机构服务client -->
+	<bean id="organClient" class="com.sxsihe.oxhide.client.OxhideClient">
+		<!-- 配置webservice实现的接口 -->
+		<property name="serviceInterface">
+			<value>com.sxsihe.oxhide.server.organ.OrganServer</value>
+		</property>
+		<!-- 配置webservice的wsdl的url -->
+		<property name="wsdlDocumentUrl">
+			<value>${sso.webservice.url}</value>
+		</property>
+		<!-- 配置webservice的服务名 -->
+		<property name="serviceName">
+			<value>OrganServer</value>
+		</property>
+	</bean>
+
+	<!-- 部门服务client -->
+	<bean id="deptClient" class="com.sxsihe.oxhide.client.OxhideClient">
+		<!-- 配置webservice实现的接口 -->
+		<property name="serviceInterface">
+			<value>com.sxsihe.oxhide.server.dept.DeptServer</value>
+		</property>
+		<!-- 配置webservice的wsdl的url -->
+		<property name="wsdlDocumentUrl">
+			<value>${sso.webservice.url}</value>
+		</property>
+		<!-- 配置webservice的服务名 -->
+		<property name="serviceName">
+			<value>DeptServer</value>
+		</property>
+	</bean>
+
+	<!-- 岗位服务client -->
+	<bean id="postClient" class="com.sxsihe.oxhide.client.OxhideClient">
+		<!-- 配置webservice实现的接口 -->
+		<property name="serviceInterface">
+			<value>com.sxsihe.oxhide.server.post.PostServer</value>
+		</property>
+		<!-- 配置webservice的wsdl的url -->
+		<property name="wsdlDocumentUrl">
+			<value>${sso.webservice.url}</value>
+		</property>
+		<!-- 配置webservice的服务名 -->
+		<property name="serviceName">
+			<value>PostServer</value>
+		</property>
+	</bean>
+	<!-- 岗位服务client -->
+	<bean id="reviewEmpClient" class="com.sxsihe.oxhide.client.OxhideClient">
+		<!-- 配置webservice实现的接口 -->
+		<property name="serviceInterface">
+			<value>com.sxsihe.oxhide.server.reviewemp.ReviewEmpServer</value>
+		</property>
+		<!-- 配置webservice的wsdl的url -->
+		<property name="wsdlDocumentUrl">
+			<value>${sso.webservice.url}</value>
+		</property>
+		<!-- 配置webservice的服务名 -->
+		<property name="serviceName">
+			<value>ReviewEmpServer</value>
+		</property>
+	</bean>
+	<!-- 员工服务client -->
+	<bean id="employeeClient" class="com.sxsihe.oxhide.client.OxhideClient">
+		<!-- 配置webservice实现的接口 -->
+		<property name="serviceInterface">
+			<value>com.sxsihe.oxhide.server.employee.EmployeeServer</value>
+		</property>
+		<!-- 配置webservice的wsdl的url -->
+		<property name="wsdlDocumentUrl">
+			<value>${sso.webservice.url}</value>
+		</property>
+		<!-- 配置webservice的服务名 -->
+		<property name="serviceName">
+			<value>EmployeeServer</value>
+		</property>
+	</bean>
+
+	<!-- 应用系统服务client -->
+	<bean id="applictionClient" class="com.sxsihe.oxhide.client.OxhideClient">
+		<!-- 配置webservice实现的接口 -->
+		<property name="serviceInterface">
+			<value>com.sxsihe.oxhide.server.application.ApplicationServer</value>
+		</property>
+		<!-- 配置webservice的wsdl的url -->
+		<property name="wsdlDocumentUrl">
+			<value>${sso.webservice.url}</value>
+		</property>
+		<!-- 配置webservice的服务名 -->
+		<property name="serviceName">
+			<value>ApplicationServer</value>
+		</property>
+	</bean>
+
+
+	<!-- 资源服务client -->
+	<bean id="resourceClient" class="com.sxsihe.oxhide.client.OxhideClient">
+		<!-- 配置webservice实现的接口 -->
+		<property name="serviceInterface">
+			<value>com.sxsihe.oxhide.server.resource.ResourceServer</value>
+		</property>
+		<!-- 配置webservice的wsdl的url -->
+		<property name="wsdlDocumentUrl">
+			<value>${sso.webservice.url}</value>
+		</property>
+		<!-- 配置webservice的服务名 -->
+		<property name="serviceName">
+			<value>ResourceServer</value>
+		</property>
+	</bean>
+
+	<!-- 角色服务client -->
+	<bean id="ssorolesClient" class="com.sxsihe.oxhide.client.OxhideClient">
+		<!-- 配置webservice实现的接口 -->
+		<property name="serviceInterface">
+			<value>com.sxsihe.oxhide.server.ssoroles.SsorolesServer</value>
+		</property>
+		<!-- 配置webservice的wsdl的url -->
+		<property name="wsdlDocumentUrl">
+			<value>${sso.webservice.url}</value>
+		</property>
+		<!-- 配置webservice的服务名 -->
+		<property name="serviceName">
+			<value>SsorolesServer</value>
+		</property>
+	</bean>
+	
+	<!-- 工具服务client -->
+	<bean id="siheUtilClient" class="com.sxsihe.oxhide.client.OxhideClient">
+		<!-- 配置webservice实现的接口 -->
+		<property name="serviceInterface">
+			<value>com.sxsihe.oxhide.server.utils.SiheUtil</value>
+		</property>
+		<!-- 配置webservice的wsdl的url -->
+		<property name="wsdlDocumentUrl">
+			<value>${sso.webservice.url}</value>
+		</property>
+		<!-- 配置webservice的服务名 -->
+		<property name="serviceName">
+			<value>SiheUtilServer</value>
+		</property>
+	</bean>
+</beans>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="gbk"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+	<bean id="accessDao"
+		class="com.sxsihe.accessories.AccessoriesDaoImpl">
+		 <property name="hibernateTemplate" ref="template" />
+	</bean>
+
+	<bean id="accessService" parent="baseTxService">
+		<property name="target">
+			<bean
+				class="com.sxsihe.accessories.AccessoriesServiceImpl">
+				<property name="accessDao">
+					<ref local="accessDao" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+
+	<bean name="/accessories"
+		class="com.sxsihe.accessories.AccessoriesAction">
+		<property name="service" ref="accessService" />
+	</bean>
+    
+</beans>

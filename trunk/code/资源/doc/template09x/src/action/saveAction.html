@@ -1,0 +1,205 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=GBK"/>
+	<title>saveaction</title>
+	<script src="../../js/mustache.js"></script>
+	<script src="../../js/jquery-1.6.2.min.js"></script>
+	<script type="text/javascript">
+	<!--
+		function make(){
+			var html, json, template;
+			template = $('#template').val();
+			json = $.parseJSON($('#json').val());
+			html = Mustache.to_html(template, json);
+			$('#html').text(html);
+		}
+		function getOneUpper(v){
+			var temp = [],temp2 = v.split("");
+			for(var i =0;i<temp2.length;i++){
+				if(i==0){
+					temp.push(temp2[i].toUpperCase());
+				}else{
+					temp.push(temp2[i]);
+				}
+			}
+			return temp.join(""); 
+		}
+	//-->
+	</script>
+</head>
+ <body>
+<textarea id="json" rows="0" cols="0">
+</textarea>
+<textarea id="html" rows="0" cols="0">
+</textarea>
+
+
+
+
+
+	<textarea id="template" rows="50" cols="500">
+package {{pacname}}.action;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.Serializable;
+import org.apache.struts.action.ActionForm;
+import net.sf.json.JSONObject;
+{{#mobile}}
+import com.ite.oxhide.common.util.StringUtils;
+import com.sxsihe.utils.common.CharsetSwitch;
+{{/mobile}}
+
+import com.ite.oxhide.struts.actionEx.BaseSaveAction;
+import com.ite.oxhide.exception.BaseException;
+import org.apache.struts.action.ActionMapping;
+
+import {{pacname}}.domain.{{!getOneUpper(modelName)}};
+import {{pacname}}.form.{{!getOneUpper(modelName)}}Form;
+{{#LinkTypes}}
+import {{pacName}};
+{{/LinkTypes}}
+/**
+ * 
+ * <p>Title:{{pacname}}.action.{{!getOneUpper(modelName)}}SaveAction</p>
+ * <p>Description:{{modelChname}}保存action</p>
+ * <p>Copyright: Copyright (c) 2012</p>
+ * <p>Company: {{company}}</p>
+ * @author {{author}}
+ * @version 1.0
+ * @date {{date}}
+ * @modify
+ * @date
+ */
+ public class {{!getOneUpper(modelName)}}SaveAction extends BaseSaveAction {
+	/**
+	 * 从FORM得到持久化PO,如果转换复杂，请子类重写
+	 * 
+	 * @param form
+	 * @param type 添加还是修改
+	 * @return
+	 */
+	protected Serializable getPersisPo(ActionForm form, String type) {
+		{{!getOneUpper(modelName)}}Form vForm = ({{!getOneUpper(modelName)}}Form) form;
+		{{!getOneUpper(modelName)}} po;
+		if (type.equals("add"))
+			po = new {{!getOneUpper(modelName)}}();
+		else {
+			po = ({{!getOneUpper(modelName)}}) service.findObjectBykey(vForm.get{{!getOneUpper(prototype)}}());
+		}
+		{{#FormTypes}}
+		{{#type}}
+		po.set{{!getOneUpper(name)}}({{type}}(vForm.get{{!getOneUpper(name)}}()));
+		{{/type}}
+		{{#nottype}}
+		po.set{{!getOneUpper(name)}}(vForm.get{{!getOneUpper(name)}}());
+		{{/nottype}}
+		{{/FormTypes}}
+
+		{{#LinkTypes}}
+		{{!getOneUpper(className)}} {{className}} = new {{!getOneUpper(className)}}();
+		{{className}}.set{{!getOneUpper(name)}}(vForm.get{{!getOneUpper(name)}}());
+		po.set{{!getOneUpper(className)}}({{className}});
+		{{/LinkTypes}}
+		return po;
+	}
+
+	{{#mobile}}
+	/**
+	 * 移动客户端保存时转换方法
+	 * 
+	 * @param mainPo
+	 * @param request
+	 * @param type
+	 */
+	protected Serializable getMobilePo(HttpServletRequest request, String type) {
+		{{!getOneUpper(modelName)}} po;
+		if (type.equals("add"))
+			po = new {{!getOneUpper(modelName)}}();
+		else {
+			po = ({{!getOneUpper(modelName)}}) service.findObjectBykey(request.getParameter("id"));
+		}
+		String data = request.getParameter("data");
+		if (StringUtils.isEmpty(data)) {
+			return null;
+		}
+		JSONObject object = JSONObject.fromObject(CharsetSwitch.decode(data));
+
+		{{#FormTypes}}
+		{{#type}}
+		po.set{{!getOneUpper(name)}}({{type}}(object.getString("{{name}}")));
+		{{/type}}
+		{{#nottype}}
+		po.set{{!getOneUpper(name)}}(object.getString("{{name}}"));
+		{{/nottype}}
+		{{/FormTypes}}
+
+		{{#LinkTypes}}
+		{{!getOneUpper(className)}} {{className}} = new {{!getOneUpper(className)}}();
+		{{className}}.set{{!getOneUpper(name)}}(object.getString("{{name}}"));
+		po.set{{!getOneUpper(className)}}({{className}});
+		{{/LinkTypes}}
+		return po;
+	}
+	{{/mobile}}
+
+	/**
+	 * 增加前调用的方法
+	 * 
+	 * @param mainPo
+	 * @param request
+	 * @param type
+	 */
+	public void preAdd(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws BaseException{
+	}
+	/**
+	 * 修改前调用的方法
+	 * 
+	 * @param mainPo
+	 * @param request
+	 * @param type
+	 */
+	public void preUpdate(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws BaseException{
+	}
+	/**
+	 * 增加后调用的方法
+	 * 
+	 * @param mainPo
+	 * @param request
+	 * @param type
+	 */
+	public void nextAdd(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response, Serializable po) {
+	}
+	/**
+	 * 修改后调用的方法
+	 * 
+	 * @param mainPo
+	 * @param request
+	 * @param type
+	 */
+	public void nextUpdate(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response, Serializable po) {
+	}
+	/**
+	 * 设置主实体的关联实体
+	 * 
+	 * @param mainPo
+	 * @param request
+	 * @param type
+	 */
+	protected void setPersistAssociatePo(Serializable mainPo, ActionForm form, HttpServletRequest request, String type) {
+	}
+
+	/**
+	 * 验证po完整性
+	 * 返回非空字符串将导致add、update时抛出异常
+	 * @param po
+	 */
+	protected String checkSave(Serializable po) {
+		return null;
+	}
+ }
+	</textarea>
+
+
+ </body>
+</html>

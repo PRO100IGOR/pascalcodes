@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2011-01-21 10:30:10.281.bdsproj,D:\My Documents\Borland Studio Projects\Project1.bdsproj=E:\project\temp\lyash_cs\lyfmh\ly_Main\Update.bdsproj</Transaction>
+    <Transaction>2011-01-21 10:41:46.000.pas,E:\project\temp\lyash_cs\lyfmh\ly_Main\UpdateForm.pas=E:\project\temp\lyash_cs\lyfmh\ly_Main\UpdateLib.pas</Transaction>
+    <Transaction>2011-01-21 10:41:46.000.dfm,E:\project\temp\lyash_cs\lyfmh\ly_Main\UpdateForm.dfm=E:\project\temp\lyash_cs\lyfmh\ly_Main\UpdateLib.dfm</Transaction>
+    <Transaction>2011-01-24 16:08:27.843.pas,E:\project\temp\lyash_cs\lyfmh\ly_Main\Tool\ErrorLogsUnit.pas=</Transaction>
+    <Transaction>2011-01-24 16:08:29.609.pas,E:\project\temp\lyash_cs\lyfmh\ly_Main\Tool\Ini.pas=</Transaction>
+    <Transaction>2011-01-24 16:08:44.828.pas,E:\project\temp\lyash_cs\lyfmh\ly_Main\Tool\SystemUnit.pas=</Transaction>
+    <Transaction>2011-01-24 18:36:52.921.bdsproj,E:\project\temp\lyash_cs\lyfmh\ly_Main\Update.bdsproj=C:\Documents and Settings\Administrator\桌面\新建文件夹 (3)\Update.bdsproj</Transaction>
+    <Transaction>2011-01-24 18:37:02.218.pas,E:\project\temp\lyash_cs\lyfmh\ly_Main\UpdateLib.pas=C:\Documents and Settings\Administrator\桌面\新建文件夹 (3)\UpdateLib.pas</Transaction>
+    <Transaction>2011-01-24 18:37:02.218.dfm,E:\project\temp\lyash_cs\lyfmh\ly_Main\UpdateLib.dfm=C:\Documents and Settings\Administrator\桌面\新建文件夹 (3)\UpdateLib.dfm</Transaction>
+    <Transaction>2011-01-24 18:37:14.109.pas,E:\project\temp\lyash_cs\lyfmh\ly_Main\Tool\UpdateTool.pas=</Transaction>
+  </Transactions>
+</BorlandProject>

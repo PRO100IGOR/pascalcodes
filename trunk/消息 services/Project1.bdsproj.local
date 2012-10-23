@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2011-12-22 09:39:21.437.pas,D:\Backup\我的文档\RAD Studio\Projects\Unit1.pas=E:\pro\del\webservices\Unit1.pas</Transaction>
+    <Transaction>2011-12-22 09:39:21.437.dfm,D:\Backup\我的文档\RAD Studio\Projects\Unit1.dfm=E:\pro\del\webservices\Unit1.dfm</Transaction>
+    <Transaction>2011-12-22 09:39:22.046.pas,D:\Backup\我的文档\RAD Studio\Projects\UserServer.pas=E:\pro\del\webservices\UserServer.pas</Transaction>
+    <Transaction>2011-12-22 09:39:22.656.bdsproj,D:\Backup\我的文档\RAD Studio\Projects\Project1.bdsproj=E:\pro\del\webservices\Project1.bdsproj</Transaction>
+    <Transaction>2012-06-06 11:27:52.156.pas,E:\pro\del\消息 services\UserServer.pas=</Transaction>
+    <Transaction>2012-06-06 11:35:18.750.pas,E:\pro\del\消息 services\Unit1.pas=</Transaction>
+    <Transaction>2012-06-06 11:35:18.750.dfm,E:\pro\del\消息 services\Unit1.dfm=</Transaction>
+  </Transactions>
+</BorlandProject>

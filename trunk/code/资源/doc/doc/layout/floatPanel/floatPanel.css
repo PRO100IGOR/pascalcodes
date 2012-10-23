@@ -1,0 +1,101 @@
+.searchMain {
+	position: fixed;
+}
+.searchPanTop {
+	background-color: #f8fbfe;
+	border-left: solid 1px #9ebaea;
+	border-right: solid 1px #9ebaea;
+	border-bottom: solid 1px #9ebaea;
+	background-image: url(floatPanel/searchPan.jpg);
+	background-position: 0 100%;
+	background-repeat: repeat-x;
+}
+.searchPanLeft {
+	background-color: #f8fbfe;
+	border-top: solid 1px #9ebaea;
+	border-right: solid 1px #9ebaea;
+	border-bottom: solid 1px #9ebaea;
+	background-image: url(floatPanel/searchPan.jpg);
+	background-position: 0 100%;
+	background-repeat: repeat-x;
+}
+.searchPanRight {
+	background-color: #f8fbfe;
+	border-top: solid 1px #9ebaea;
+	border-left: solid 1px #9ebaea;
+	border-bottom: solid 1px #9ebaea;
+	background-image: url(floatPanel/searchPan.jpg);
+	background-position: 0 100%;
+	background-repeat: repeat-x;
+}
+.searchPanBottom {
+	background-color: #f8fbfe;
+	border-top: solid 1px #9ebaea;
+	border-left: solid 1px #9ebaea;
+	border-right: solid 1px #9ebaea;
+	background-image: url(floatPanel/searchPan.jpg);
+	background-position: 0 100%;
+	background-repeat: repeat-x;
+}
+.searchPan_con {
+	padding: 5px;
+	text-align: left;
+}
+.searchBtnTop {
+	background-image: url(floatPanel/searchBtnTop.jpg);
+	width: 156px;
+	height: 27px;
+	color: white;
+	border: 0;
+	cursor: pointer;
+	cursor: hand;
+}
+.searchBtnLeft {
+	background-image: url(floatPanel/searchBtnLeft.jpg);
+	width: 28px;
+	height: 156px;
+	color: white;
+	border: 0;
+	cursor: pointer;
+	cursor: hand;
+	writing-mode: tb-rl;
+	letter-spacing: 2px;
+	line-height: 150%;
+}
+.searchBtnRight {
+	background-image: url(floatPanel/searchBtnRight.jpg);
+	width: 28px;
+	height: 156px;
+	color: white;
+	border: 0;
+	cursor: pointer;
+	cursor: hand;
+	writing-mode: tb-rl;
+	letter-spacing: 2px;
+	line-height: 150%;
+}
+.searchBtnBottom {
+	background-image: url(floatPanel/searchBtnBottom.jpg);
+	width: 156px;
+	height: 27px;
+	color: white;
+	border: 0;
+	cursor: pointer;
+	cursor: hand;
+}
+.searchBtnConTop {
+	width: 100%;
+}
+.searchBtnConLeft {
+	width: 28px;
+}
+.searchBtnConRight {
+	width: 28px;
+}
+.searchBtnConBottom {
+	width: 100%;
+}
+.clearTop {
+	clear: both;
+	line-height: 1px;
+}

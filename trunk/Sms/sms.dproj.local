@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899-12-30 00:00:00.000.dfm,E:\pro\del\Sms\MainFormLib.dfm=E:\pro\del\Sms\MainForm.dfm</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.bdsproj,E:\pro\del\Sms\sms.bdsproj=C:\Documents and Settings\Administrator\My Documents\RAD Studio\Projects\Project2.bdsproj</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.pas,E:\pro\del\Sms\MainFormLib.pas=E:\pro\del\Sms\MainForm.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.dfm,E:\pro\del\Sms\MainForm.dfm=C:\Documents and Settings\Administrator\My Documents\RAD Studio\Projects\Unit4.dfm</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.pas,E:\pro\del\Sms\MainForm.pas=C:\Documents and Settings\Administrator\My Documents\RAD Studio\Projects\Unit4.pas</Transaction>
+  </Transactions>
+</BorlandProject>

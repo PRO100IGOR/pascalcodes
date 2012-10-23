@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=GBK"/>
+	<title>showaction</title>
+	<script src="../js/mustache.js"></script>
+	<script src="../js/jquery-1.6.2.min.js"></script>
+	<script type="text/javascript">
+	<!--
+		function make(){
+			var html, json, template;
+			template = $('#template').val();
+			json = $.parseJSON($('#json').val());
+			html = Mustache.to_html(template, json);
+			$('#html').text(html);
+		}
+		function getOneUpper(v){
+			var temp = [],temp2 = v.split("");
+			for(var i =0;i<temp2.length;i++){
+				if(i==0){
+					temp.push(temp2[i].toUpperCase());
+				}else{
+					temp.push(temp2[i]);
+				}
+			}
+			return temp.join(""); 
+		}
+	//-->
+	</script>
+</head>
+ <body>
+<textarea id="json" rows="0" cols="0">
+</textarea>
+<textarea id="html" rows="0" cols="0">
+</textarea>
+
+
+
+
+
+	<textarea id="template" rows="50" cols="500">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+	<form-beans>
+		<form-bean name="{{modelName}}Form" type="{{pacname}}.form.{{!getOneUpper(modelName)}}Form" />
+		{{#condition}}
+		<form-bean name="{{modelName}}ConditionForm" type="{{pacname}}.form.{{!getOneUpper(modelName)}}ConditionForm" />
+		{{/condition}}
+	</form-beans>
+	<action-mappings>
+		<action path="/{{modelName}}LoadAction" parameter="action" type="org.springframework.web.struts.DelegatingActionProxy" name="{{modelName}}ConditionForm" scope="session"
+			input="/pages/{{modelName}}/{{modelName}}list.jsp">
+			<forward name="showList" path="/pages/{{modelName}}/{{modelName}}list.jsp" />
+		</action>
+		<action path="/{{modelName}}ShowAction" parameter="action" type="org.springframework.web.struts.DelegatingActionProxy" name="{{modelName}}Form" scope="request"
+			input="/pages/{{modelName}}/{{modelName}}form.jsp">
+			<forward name="showAdd" path="/pages/{{modelName}}/{{modelName}}form.jsp?action=add" />
+			<forward name="showView" path="/pages/{{modelName}}/{{modelName}}view.jsp" />
+			<forward name="showUpdate" path="/pages/{{modelName}}/{{modelName}}form.jsp?action=update" />
+		</action>
+		<action path="/{{modelName}}SaveAction" parameter="action" type="org.springframework.web.struts.DelegatingActionProxy" name="{{modelName}}Form" scope="request"
+			input="/pages/{{modelName}}/{{modelName}}form.jsp">
+		</action>
+		<action path="/{{modelName}}DeleteAction" parameter="action" type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="successForDelete" path="/{{modelName}}LoadAction.do?action=showList" />
+		</action>
+	</action-mappings>
+</struts-config>
+	</textarea>
+
+
+ </body>
+</html>

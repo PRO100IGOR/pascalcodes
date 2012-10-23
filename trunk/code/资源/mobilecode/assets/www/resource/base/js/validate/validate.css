@@ -1,0 +1,25 @@
+﻿.magican{color: #333333;font-size: 12px;height: 16px;vertical-align: middle;padding:2px 12px 2px 22px;}
+
+.magican_warn {
+	background: transparent url(images/warn.png) no-repeat scroll 0 0; 
+}
+.magican_teach {
+	background: transparent url(images/teach.png) no-repeat scroll 0 0; 
+}
+
+.magican_error {
+	background: transparent url(images/error.png) no-repeat scroll 0 0;
+}
+
+.magican_right {
+	background: transparent url(images/right.png) no-repeat scroll 0 0;
+}
+
+.magican_redBorder{
+	border-color:red;
+	border-width:1px;
+	border-style:solid;
+}
+.magican_redBackground{
+	background-color: #FFF2E9;
+}

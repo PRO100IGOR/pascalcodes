@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>弹出窗口修改以及oxhide中使用</title>
+	<link href="../index.css" type="text/css" rel="stylesheet"/>
+	<link href="../prettify/prettify.css" type="text/css" rel="stylesheet"/>
+	<script type="text/javascript" src="../prettify/prettify.js"></script>
+</head>
+
+<body>
+    <div class="container">
+		<div class="line">&nbsp;</div>
+		<div class="lhgdg_body">
+		    <h2>版本 1.0</h2>
+			<ol>
+			    <li>
+				    <h3>简介</h3>
+					在b/s界面上维护表结构，支持表表关联。生成的表结构支持生成平台菜单进行维护，也支持与现有表结构进行结合的方式。
+				</li>
+				<li>
+				    <h3>使用前的准备</h3>
+					-1：建表<a href="mysql.sql" target="_blank">Mysql</a>或者<a href="oracle.sql" target="_blank">Oracle</a><br/><br/>
+					0：确保你的项目资源是最新的。<br/><br/>
+					1：在你项目的hibernatemap目录增加<a href="Coder.hbm.xml" target="_blank">Coder.hbm.xml</a><br/><br/>
+					2：在你项目的springconfig目录增加<a href="applicationContext-coder.xml" target="_blank">applicationContext-coder.xml</a><br/><br/>
+					3：在你项目的src根目录增加<a href="sql.properties" target="_blank">sql.properties</a><br/><br/>
+					4：在你项目的WEB-INF/strutsconfig目录增加<a href="struts-config-coder.xml" target="_blank">struts-config-coder.xml</a><br/><br/>
+					5：在dwr.xml配置文件的allow标签中增加以下代码：<br/>
+						<textarea  rows="5" cols="100"><!-- 动态建表插件 -->
+						<create creator="new" javascript="DwrChecker">
+							<param name="class" value="com.sxsihe.coder.util.DwrChecker" />
+							<include method="checkTableName"></include>
+						</create></textarea><br/><br/>
+					6：解压<a href="coder.zip">coder.zip</a>到项目pages文件夹下,解压后文件应该有pages/coder/tables/*.jsp<br/><br/>
+					7：web.xml中增加struts-config-coder.xml的映射：/WEB-INF/strutsconfig/struts-config-coder.xml<br/><br/>
+					8：在平台资源管理中增加菜单：/tablesLoadAction.do?action=showList，通过这里来进入动态建表功能。<br/><br/>
+				</li>
+			    <li>
+				    <h3>名词解释</h3>
+					1：表格名称与表格编码、列名与列编码：<br/><br/>
+					名称都是中文名称，是在维护、查询时的标题。<br/><br/>
+					2：如果显示方式不是时间控件，那么时间控件格式不用写。<br/><br/>
+					3：表格的主要属性：是指当此表格被其他表引用时，显示在页面上的东西。
+				</li>
+
+				<li>
+				    <h3>普通使用方法</h3>
+					普通使用比较简单，只要按上面的步骤进行就行了。
+				</li>
+				<li>
+				    <h3>插件使用方式</h3>
+					1：插件使用指的的是在你原来已经有的模块中将动态建表的内容以插件的方式加入，最终在页面上显示时，使用者完全看不出哪些字段是原来的模块哪些字段是动态建立的。<br/><br/>
+					当插件使用后，原有模块的查看、维护都会有动态建表的字段跟随。<br/><br/>
+					2：原有模块nextShowAdd、nextShowUpdate的修改：需要增加以下代码<br/>
+					<pre class="prettyprint">TablesShowAction tablesShowAction = (TablesShowAction)SpringContextUtil.getBean("/tablesShowAction");tablesShowAction.savePlug(request);</pre>
+					加入此代码前要保证request中有参数：table=对应动态建表的表格id，dataid=对应动态建表的数据，dataid可以为空。这两个参数可以放在request.getParameter中，也可以放在
+					request.getAttribute中。<br/><br/>
+					3：原有模块*Form.jsp的修改：
+					在原有的html:form中，原有的table之下增加一行：<br/>
+					<textarea  rows="5" cols="100"><jsp:include page="/pages/coder/tables/savePlug.jsp"></jsp:include></textarea><br/>
+					即可，例如：
+					<textarea  rows="5" cols="100">			<tr>
+				<td width="30%" class="list-lhead">
+					<font color="red">*</font>是否有效：
+				</td>
+				<td>
+					<html:select property="enabled">
+						<html:option value="1">有效</html:option>
+						<html:option value="0">无效</html:option>
+					</html:select>
+				</td>
+			</tr>
+		</table>
+		<jsp:include page="/pages/coder/tables/savePlug.jsp"></jsp:include>
+	</html:form></textarea><br/>
+					在原有模块的页面的save方法中调用：
+					 saveCode(document.deviceForm)<br/>
+					 document.deviceForm表示原有的表单对象（不是表单名称，是对象）,该方法返回boolean值，表示插件页面中是否满足可以提交的条件，例如：
+					<textarea  rows="5" cols="100">	function save() {
+		if (deviceForm.check()  && saveCode(document.deviceForm)){
+			XqTipOpen("正在保存数据,请稍后");
+			document.deviceForm.submit();
+		}
+	}</textarea><br/><br/>
+					
+					4：原有模块showView的修改：
+
+		<pre class="prettyprint">TablesShowAction tablesShowAction = (TablesShowAction)SpringContextUtil.getBean("/tablesShowAction");
+		request.setAttribute("dataid", po.getDtid());
+		tablesShowAction.viewPlug(request);</pre>
+					request.setAttribute("dataid", po.getDtid());跟上面所说的dataid是一样的，同时也要保证有table这个属性。<br/><br/>
+					5：原有模块*View.jsp的修改：<br/>
+					在原有的页面底部增加<br/>
+					<textarea  rows="5" cols="100"><jsp:include page="/pages/coder/tables/viewPlug.jsp"></jsp:include></textarea><br/>
+					例如：<br/>
+					<textarea  rows="5" cols="100">		<tr>
+			<td width="30%" class="list-lhead">
+				经度：
+			</td>
+			<td>
+				${view.longitude }
+			</td>
+		</tr>
+		<tr>
+			<td width="30%" class="list-lhead">
+				维度：
+			</td>
+			<td>
+				${view.dimension }
+			</td>
+		</tr>
+	</table>
+	<jsp:include page="/pages/coder/tables/viewPlug.jsp"></jsp:include></textarea><br/>
+
+				6：原有模块saveAction的修改：<br/>
+				在原有的add、update方法中增加：
+				<pre class="prettyprint">TablesSaveAction saveAction = (TablesSaveAction)SpringContextUtil.getBean("/tablesSaveAction");
+				saveAction.savePlug(request)</pre>
+				saveAction.savePlug(request)会返回动态建表的内容的主键，也就是上面提到的dataid；
+				在request中也要保证有table参数。<br/><br/>
+
+				7：原有模块deleteaction的修改：<br/>
+				在preDelete方法中增加：
+				<pre class="prettyprint">TablesService tablesService = (TablesService)SpringContextUtil.getBean("tablesService");tablesService.deleteDataById(device.getDtid());</pre>
+				device.getDtid()就是以上所说的dataid；<br/><br/>
+
+				8：总结：<br/>
+				在3个action中调用插件方法时，add必须有table，update、view必须有dataid和table，delete必须有dataid。所以你的模块中要预留字段来保存dataid和table这两个字段，并在调用时放入request中。
+				当用插件形式使用时，动态建表不需要建立自己的菜单，完全依托与现有模块。
+				<br/>
+					插件使用方式时，如果你原有的类可以按类型区分，那么可以将动态建表的table与类型绑定，在维护类型时通过下拉框顺便把动态建表维护进去。
+					如果不能按类型区分，那么可以将对应的动态建表的编码写死，在showadd、update等地方通过tablesService.getTableByCode方法获取到table对象，在部署和维护时不要修改动态建表编码即可,如：
+					<pre class="prettyprint">
+TablesService tablesService = (TablesService)SpringContextUtil.getBean("tablesService");
+Tables tables =  tablesService.getTableByCode("VHIDDEN");
+if(tables != null)
+	request.setAttribute("table", tables);//这里只需要放查到的table对象，而不用放tableid了
+					</pre>
+				</li>
+				
+			</ol>
+			
+		</div>
+		<div class="line">&nbsp;</div>
+	</div>
+	<script type="text/javascript">prettyPrint();</script>
+</body>
+</html>

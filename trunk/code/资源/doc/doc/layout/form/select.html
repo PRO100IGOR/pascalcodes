@@ -1,0 +1,706 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title> New Document </title>
+
+ <link href="style.css" rel="stylesheet" type="text/css"/>
+ <link href="../style.css" rel="stylesheet" type="text/css"/>
+ <link href="../box/box.css" rel="stylesheet" type="text/css"/>
+ <script type="text/javascript" src="../jquery.js"></script>
+ <script type="text/javascript" src="../box/box.js"></script>
+	
+ <script type="text/javascript" src="select.js"></script>
+
+
+
+ </head>
+ <!--按钮（分离版）end-->
+<body>
+
+		<div class="box2" panelTitle="基本用法" roller="true">
+单选下拉框的写法与传统的一样。支持TAB键打开和上下箭头选择option。支持onchange事件，见下面<br />
+<select  onchange='selFunc()' id="sel">
+	<option value="">请选择功能</option>
+    <option value="1">新增图片</option>
+    <option value="2">维护图片</option>
+    <option value="3">新增新闻</option>
+ </select>
+ 选中项：<label id="selText">未选择</label>				
+<script>
+	function selFunc(){
+		$("#selText").text($("#sel").val())
+	}
+</script>
+<br />代码如下：
+<textarea class="code">
+<select  onchange='selFunc()' id="sel">
+    <option value="">请选择功能</option>
+    <option value="1">新增图片</option>
+    <option value="2">维护图片</option>
+    <option value="3">新增新闻</option>
+ </select>
+</textarea>
+<pre></pre>				
+
+selFunc函数代码：
+<textarea class="code">
+function selFunc(){
+	$("#selText").text($("#sel").val())
+}
+</textarea>
+<pre></pre>		
+使用jQuery语法：$("#sel").val()或js语法：document.getElementById("sel").value均可得到所选值<br />
+要想获得选中的option的文本，使用$("#sel").attr("relText")获得relText属性值即可。<br />
+<span class="font_bold">注意onchange函数中不能传递this，例如使用selFunc(this)是无法通过this.value获得值</span>
+<br /><br />
+下拉框不可用时效果：<br />
+<select disabled="true">
+	<option value="">请选择功能</option>
+    <option value="1">新增图片</option>
+    <option value="2">维护图片</option>
+    <option value="3">新增新闻</option>
+ </select>
+<br /> 代码：
+ <textarea class="code">
+<select disabled="true">
+	<option value="">请选择功能</option>
+    <option value="1">新增图片</option>
+    <option value="2">维护图片</option>
+    <option value="3">新增新闻</option>
+</select>
+</textarea>
+<pre></pre>	
+要动态设置下拉框是否可用见下面“动态修改下拉框”。
+	</div>
+	
+	<div class="box2" panelTitle="宽度设置" roller="true">
+下拉框默认会有一个宽度，即使选项里面有很长的文字。如果想要下拉框的宽度适应最长选项的宽度，则设置select标签的autoWidth="true"。效果如下：<br />
+ <select autoWidth="true">
+    <option value="0">请选择功能</option>
+    <option value="新增图片">很长的选项文字很长的选项文字</option>
+    <option value="维护图片">维护图片</option>
+    <option value="新增新闻">新增新闻</option>
+ </select>
+  <select autoWidth="true">
+    <option value="10">10</option>
+    <option value="20">20</option>
+    <option value="50">50</option>
+    <option value="100">100</option>
+ </select>
+ <textarea class="code">
+ <select autoWidth="true">
+    <option value="0">请选择功能</option>
+    <option value="新增图片">很长的选项文字很长的选项文字</option>
+    <option value="维护图片">维护图片</option>
+    <option value="新增新闻">新增新闻</option>
+ </select>
+<select autoWidth="true">
+	<option value="10">10</option>
+	<option value="20">20</option>
+	<option value="50">50</option>
+	<option value="100">100</option>
+ </select>
+</textarea>
+<pre></pre>	
+
+另外还可以通过style强制一个宽度，注意只有当 autoWidth="true"时有效<br />
+ 文本框：<input type="text"  style="width:350px;" /><br />
+ 下拉框：<select autoWidth="true" style="width:350px;" id="d">
+    <option value="0">请选择功能</option>
+    <option value="新增图片">新增图片</option>
+    <option value="维护图片">维护图片</option>
+    <option value="新增新闻">新增新闻</option>
+ </select>
+ <textarea class="code">
+ 文本框：<input type="text"  style="width:350px;"/><br />
+ 下拉框：<select autoWidth="true" style="width:350px;">
+    <option value="0">请选择功能</option>
+    <option value="新增图片">新增图片</option>
+    <option value="维护图片">维护图片</option>
+    <option value="新增新闻">新增新闻</option>
+ </select>
+</textarea>
+<pre></pre>	
+	</div>
+	
+	<div class="box2" panelTitle="下拉框分组" roller="true">
+下拉框支持分组，效果如下：<br />
+	<select>
+		<option>请选择权限</option>
+		<optgroup label="首页信息发布">
+			<option value="新增图片">新增图片</option>
+			<option value="维护图片">维护图片</option>
+			<option value="新增新闻">新增新闻</option>
+		</optgroup>
+		<optgroup label="人员维护">
+			 <option value="新增用户">新增用户</option>
+             <option value="用户列表">用户列表</option>
+		</optgroup>
+	</select>
+代码与普通select分组代码一样
+ <textarea class="code">
+<select>
+	<option>请选择权限</option>
+	<optgroup label="首页信息发布">
+		<option value="新增图片">新增图片</option>
+		<option value="维护图片">维护图片</option>
+		<option value="新增新闻">新增新闻</option>
+	</optgroup>
+	<optgroup label="人员维护">
+		 <option value="新增用户">新增用户</option>
+         <option value="用户列表">用户列表</option>
+	</optgroup>
+</select>
+</textarea>
+<pre></pre>	
+	</div>
+	
+	<div class="box2" panelTitle="下拉框可编辑" roller="true">
+<script>
+	function getSelValue(){
+		var msg="";
+		msg=$("#editSel").attr("editValue")
+		if(msg==""||msg==undefined){
+			msg="无输入"
+		}
+		alert(msg);
+	}
+</script>
+设置下拉框的editable="true"，就把它变成了一个可编辑的下拉框。见下面<br />
+<select editable="true" id="editSel" >
+    <option value="">请输入或选择</option>
+	<option value="1">新增图片</option>
+    <option value="2">维护图片</option>
+    <option value="3">新增新闻</option>
+ </select>
+ <input type="button" value="获取值" onclick="getSelValue()"/>
+ <br /><span class="font_bold">下拉框会自动生成一个editValue属性。通过这个属性来获得输入或选择的值，注意这时得到的值不是option的value而是显示在下拉框中的字符。</span>
+ 
+ <textarea class="code">
+<select editable="true" id="editSel" >
+	<option value="">请输入或选择</option>
+    <option value="1">新增图片</option>
+    <option value="2">维护图片</option>
+    <option value="3">新增新闻</option>
+ </select>
+ <input type="button" value="获取值" onclick="getSelValue()"/>
+ </textarea>
+<pre></pre>	
+
+getSelValue()函数代码：
+ <textarea class="code">
+function getSelValue(){
+	var msg="";
+	msg=$("#editSel").attr("editValue")
+	if(msg==""||msg==undefined){
+		msg="无输入"
+	}
+	alert(msg);
+}
+</textarea>
+<pre></pre>
+	</div>
+	
+	<script>
+		function getOptValue1(){
+			var msg="";
+			msg="value:"+$("#sxzy").val()+","+$("#ssbj").val()+"<br/>"+
+			"文本："+$("#sxzy").attr("relText")+","+$("#ssbj").attr("relText")
+			alert(msg);
+		}
+		function getOptValue2(){
+			var msg="";
+			msg="value:"+$("#xy").val()+","+$("#zy").val()+","+$("#bj").val()+"<br/>"+
+			"文本："+$("#xy").attr("relText")+","+$("#zy").attr("relText")+","+$("#bj").attr("relText")
+			alert(msg);
+		}
+	</script>
+	<div class="box2" panelTitle="下拉框联动" roller="true">
+		下拉框可以实现无限极ajax联动。实现联动步骤：<br />
+		1、对父select设置childId，childId指定为想要联动的下拉框。<br />
+		2、对父select设置childDataPath，childDataPath为读取数据的路径。
+		下拉框会自动以<span class="font_bold">”该路径+选中option的value“</span>拼出url来获取数据。例如
+		childDataPath="http://192.168.31.30:8080/kj/trainplan.do?method="而某个option的value为bj1则当选择该项时会自动读取
+		http://192.168.31.30:8080/kj/trainplan.do?method=bj1来取得xml数据赋给子下拉框。<br />
+		3、如果数据不是以url取得的而是从文件中取得，则需要设置childDataType属性。
+		例如childDataPath="xmlData/"而childDataType="xml"则数据将从"xmlData/bj1.xml"取得。如果是从txt文件取得则childDataType="txt"<br />
+		4、使用jQuery语法：$("#sel").val()或js语法：document.getElementById("sel").value可得到所选值，使用$("#sel").attr("relText")可得到选中option的文本。
+		举例如下：<br />
+		二级联动:<span class="font_bold">IE浏览器想观看效果请将本页面放在服务器目录下通过http地址访问</span><br />
+	所学专业：
+	<select id="sxzy" childId="ssbj" childDataPath="xmlData/" childDataType="xml">
+	    <option value="">请选择专业</option>
+		<option value="bj1">专业1</option>
+	    <option value="bj2">专业2</option>
+	    <option value="bj0">大数据测试</option>
+	 </select>&nbsp;&nbsp;
+	 所属班级：
+	 <select id="ssbj">
+	    <option value="0">请先选择专业</option>
+	 </select>	
+	<input type="button" value="获取选中值" onclick="getOptValue1()"/>
+	<br />代码如下：
+<textarea class="code">
+所学专业：
+<select id="sxzy" childId="ssbj" childDataPath="xmlData/" childDataType="xml">
+    <option value="">请选择专业</option>
+	<option value="bj1">专业1</option>
+    <option value="bj2">专业2</option>
+	<option value="bj0">大数据测试</option>
+ </select>&nbsp;&nbsp;
+ 所属班级：
+ <select id="ssbj">
+    <option value="0">请先选择专业</option>
+ </select>	
+<input type="button" value="获取选中值" onclick="getOptValue1()"/>
+</textarea>
+<pre></pre>
+	
+	如上代码所示，有父与子两个select，设置父select的childId为子的id名，并设置childDataPath和childDataType。<br />
+	因为本例使用的是xml文件，所以childDataType="xml"。实际使用时如果是从action或jsp中读取的，则不用写childDataType或childDataType="url"<br />
+	<span class="font_bold">注意：不需要联动的选项要将option的value设为空，例如本例的”请选择专业“选项。
+	不可以不写value否则系统会默认设置为option的文本值。
+	</span>
+	
+	<br />子下拉框读取的XML数据格式如下：
+<textarea class="code">
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <node value="bj1" text="班级1"/>
+  <node value="bj2" text="班级2"/>
+</root>
+</textarea>
+<pre></pre>	
+	其中头部一定要有，encoding值根据所属工程的编码而定。如果工程是GBK编码，则头部应encoding="GBK"
+
+	取得所选择值的函数getOptValue1代码如下：
+<textarea class="code">
+function getOptValue1(){
+	var msg="";
+	msg="value:"+$("#sxzy").val()+","+$("#ssbj").val()+"<br/>"+
+	"文本："+$("#sxzy").attr("relText")+","+$("#ssbj").attr("relText")
+	alert(msg);
+}
+</textarea>
+<pre></pre>	
+再看一个三级联动例子：<span class="font_bold">IE浏览器想观看效果请将本页面放在服务器目录下通过http地址访问</span><br />
+	学院：
+	<select id="xy" childId="zy" childDataPath="xmlData/" childDataType="xml">
+	    <option value="">请选择学院</option>
+		<option value="zy1">学院1</option>
+	    <option value="zy2">学院2</option>
+	 </select>&nbsp;&nbsp;
+	专业：
+	<select childId="bj" id="zy" childDataPath="xmlData/" childDataType="xml">
+	    <option value="">请先选择学院</option>
+	 </select>&nbsp;&nbsp;
+	 班级：
+	 <select id="bj">
+	    <option value="">请先选择专业</option>
+	 </select>
+	 <input type="button" value="获取选中值" onclick="getOptValue2()"/>
+	
+	<br />代码如下
+
+<textarea class="code">
+学院：
+<select id="xy" childId="zy" childDataPath="xmlData/" childDataType="xml">
+    <option value="">请选择学院</option>
+    <option value="zy1">学院1</option>
+    <option value="zy2">学院2</option>
+</select>&nbsp;&nbsp;
+专业：
+<select id="zy" childId="bj" childDataPath="xmlData/" childDataType="xml">
+    <option value="">请先选择学院</option>
+</select>&nbsp;&nbsp;
+ 班级：
+<select id="bj">
+    <option value="">请先选择专业</option>
+</select>
+<input type="button" value="获取选中值" onclick="getOptValue2()"/>
+</textarea>
+<pre></pre>
+
+每次选择学院时，只要option的value不为空就会通过ajax读取数据赋给选择专业的下拉框。路径分别为"xmlData/zy1.xml"和"xmlData/zy2.xml"。
+zy1.xml的数据如下：
+<textarea class="code">
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <node value="" text="请选择专业"/>
+  <node value="bj1" text="专业1"/>
+  <node value="bj2" text="专业2"/>
+  <node value="bj3" text="专业3"/>
+</root>
+</textarea>
+<pre></pre>
+每次选择专业时，只要option的value不为空就会通过ajax读取数据赋给选择班级的下拉框。路径分别为"xmlData/"下的bj1.xml——bj6.xml。
+bj1.xml的数据如下：
+<textarea class="code">
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <node value="01" text="班级1"/>
+  <node value="02" text="班级2"/>
+</root>
+</textarea>
+<pre></pre>
+
+
+获取所选值函数代码：
+<textarea class="code">
+function getOptValue2(){
+	var msg="";
+	msg="value:"+$("#xy").val()+","+$("#zy").val()+","+$("#bj").val()+"<br/>"+
+	"文本："+$("#xy").attr("relText")+","+$("#zy").attr("relText")+","+$("#bj").attr("relText")
+	alert(msg);
+}
+</textarea>
+<pre></pre>	
+	这里要注意的是，每次取的XML数据最好都加一条“请选择XX”的node节点（最后一个select的数据除外）并将value设为空。如
+<textarea class="code">
+<root>
+  <node value="" text="请选择专业"/>
+  <node value="zy1" text="专业1"/>
+  <node value="zy2" text="专业2"/>
+  <node value="zy3" text="专业3"/>
+</root>
+</textarea>
+<pre></pre>
+	因为如果不加这一项，第二级select默认会联动到“专业1”，而第三级却不会自动联动到“专业1”所对应的班级。<br/>
+	所以第二级加上value=""的选项，这样第三级不自动联动也不会有问题。这时再选择第二级就会触发联动实现第三极加载。<br/>
+	而第三级是最后一级所以不必加value=""的选项，直接关联到第一项“班级1”即可。<br/><br/>
+	
+	更多级联动的下拉框也是上面的思路，请自行尝试。
+	
+	
+	</div>
+	
+	<div class="box2" panelTitle="自定义列数" roller="true">
+		当下拉框项目过多时，可以对select设置colNum来指定列数，并且设置colWidth指定每列宽度。效果如下：<br/>
+	<select colNum="3" colWidth="90">
+	     <option>北京市</option>
+	    <option>天津市</option>
+	    <option>河北省</option>
+	    <option>山西省</option>
+	    <option>内蒙古自治区</option>
+	    <option>辽宁省</option>
+	    <option>吉林省</option>
+	    <option>黑龙江省</option>
+	    <option>上海市</option>
+	    <option>江苏省</option>
+	    <option>浙江省</option>
+	    <option>安徽省</option>
+	    <option>福建省</option>
+	    <option>江西省</option>
+	    <option>山东省</option>
+	    <option>湖南省</option>
+	    <option>湖北省</option>
+	    <option>河南省</option>
+	    <option>广东省</option>
+	    <option>广西壮族自治区</option>
+	    <option>海南省</option>
+	    <option>重庆市</option>
+	    <option>四川省</option>
+	    <option>贵州省</option>
+	    <option>云南省</option>
+	    <option>西藏自治区</option>
+	    <option>陕西省</option>
+	    <option>甘肃省</option>
+	    <option>青海省</option>
+	    <option>宁夏回族自治区</option>
+	    <option>新疆维吾尔自治区</option>
+	    <option>香港特别行政区</option>
+	    <option>澳门特别行政区</option>
+	    <option>台湾省</option>
+	    <option>其他</option>
+ 	</select>
+	代码如下：
+<textarea class="code">
+<select colNum="3" colWidth="90">
+     <option>北京市</option>
+    <option>天津市</option>
+    <option>河北省</option>
+    <option>山西省</option>
+    <option>内蒙古自治区</option>
+    <option>辽宁省</option>
+    <option>吉林省</option>
+    <option>黑龙江省</option>
+    <option>上海市</option>
+    <option>江苏省</option>
+    <option>浙江省</option>
+    <option>安徽省</option>
+    <option>福建省</option>
+    <option>江西省</option>
+    <option>山东省</option>
+    <option>湖南省</option>
+    <option>湖北省</option>
+    <option>河南省</option>
+    <option>广东省</option>
+    <option>广西壮族自治区</option>
+    <option>海南省</option>
+    <option>重庆市</option>
+    <option>四川省</option>
+    <option>贵州省</option>
+    <option>云南省</option>
+    <option>西藏自治区</option>
+    <option>陕西省</option>
+    <option>甘肃省</option>
+    <option>青海省</option>
+    <option>宁夏回族自治区</option>
+    <option>新疆维吾尔自治区</option>
+    <option>香港特别行政区</option>
+    <option>澳门特别行政区</option>
+    <option>台湾省</option>
+    <option>其他</option>
+</select>
+</textarea>
+<pre></pre>	
+	
+	如果不指定列宽，则每列会以最大项目的宽为列宽。效果如下：<br/>
+	<select colNum="3">
+	     <option>北京市</option>
+	    <option>天津市</option>
+	    <option>河北省</option>
+	    <option>山西省</option>
+	    <option>内蒙古自治区</option>
+	    <option>辽宁省</option>
+	    <option>吉林省</option>
+	    <option>黑龙江省</option>
+	    <option>上海市</option>
+	    <option>江苏省</option>
+	    <option>浙江省</option>
+	    <option>安徽省</option>
+	    <option>福建省</option>
+	    <option>江西省</option>
+	    <option>山东省</option>
+	    <option>湖南省</option>
+	    <option>湖北省</option>
+	    <option>河南省</option>
+	    <option>广东省</option>
+	    <option>广西壮族自治区</option>
+	    <option>海南省</option>
+	    <option>重庆市</option>
+	    <option>四川省</option>
+	    <option>贵州省</option>
+	    <option>云南省</option>
+	    <option>西藏自治区</option>
+	    <option>陕西省</option>
+	    <option>甘肃省</option>
+	    <option>青海省</option>
+	    <option>宁夏回族自治区</option>
+	    <option>新疆维吾尔自治区</option>
+	    <option>香港特别行政区</option>
+	    <option>澳门特别行政区</option>
+	    <option>台湾省</option>
+	    <option>其他</option>
+ 	</select>
+		代码如下：
+<textarea class="code">
+<select colNum="3">
+     <option>北京市</option>
+    <option>天津市</option>
+    <option>河北省</option>
+    <option>山西省</option>
+    <option>内蒙古自治区</option>
+    <option>辽宁省</option>
+    <option>吉林省</option>
+    <option>黑龙江省</option>
+    <option>上海市</option>
+    <option>江苏省</option>
+    <option>浙江省</option>
+    <option>安徽省</option>
+    <option>福建省</option>
+    <option>江西省</option>
+    <option>山东省</option>
+    <option>湖南省</option>
+    <option>湖北省</option>
+    <option>河南省</option>
+    <option>广东省</option>
+    <option>广西壮族自治区</option>
+    <option>海南省</option>
+    <option>重庆市</option>
+    <option>四川省</option>
+    <option>贵州省</option>
+    <option>云南省</option>
+    <option>西藏自治区</option>
+    <option>陕西省</option>
+    <option>甘肃省</option>
+    <option>青海省</option>
+    <option>宁夏回族自治区</option>
+    <option>新疆维吾尔自治区</option>
+    <option>香港特别行政区</option>
+    <option>澳门特别行政区</option>
+    <option>台湾省</option>
+    <option>其他</option>
+</select>
+</textarea>
+<pre></pre>	
+	</div>
+	
+	<script>
+		$(function(){
+			$("#testBtn").click(function(){
+				var $selbox=$('<select><option value="0">请选择功能</option><option value="1">新增图片</option><option value="2">维护图片</option></select>')
+				$(this).after($selbox)
+				$selbox.selectbox();
+			})
+		})
+	</script>
+	<div class="box2" panelTitle="动态创建下拉框">
+		与普通动态添加dom节点的方法一样，不同的是要在添加完毕的最后对其调用selectbox()方法来动态渲染。<br />
+		<input type="button" value="点击生成下拉框" id="testBtn"/>
+		<br />代码：
+<textarea class="code">
+<input type="button" value="点击生成下拉框" id="testBtn"/>
+</textarea>
+<pre></pre>	
+	JS代码
+<textarea class="code">
+$(function(){
+	$("#testBtn").click(function(){
+		var $selbox=$('<select><option value="0">请选择功能</option><option value="1">新增图片</option><option value="2">维护图片</option></select>')
+		$(this).after($selbox)//将下拉框加到按钮的后面
+		$selbox.selectbox();//渲染下拉框
+	})
+})
+</textarea>
+<pre></pre>	
+	能够调用selectbox()方法的必须是一个jQuery节点对象。如果是普通的dom对象，需要用$(xxx)来转成jQuery节点对象。
+	</div>
+	
+	
+	<div class="box2" panelTitle="动态修改下拉框" roller="true">
+<script>
+	function changeItem(){
+		$("#sel2").val(2);
+		selRefresh("sel2");
+	}
+	var idx=3
+	function addItem(){
+		idx++
+		var sel=$("#sel2")[0];
+		sel.options[sel.options.length] = new Option("新增项", idx);
+		$("#sel2").val(idx);
+		selRefresh("sel2");
+	}
+	function removeItem(){
+		var sel=$("#sel2")[0];
+		sel.options.length--;
+		idx--
+		$("#sel2").val(idx);
+		selRefresh("sel2");
+	}
+	function disableSelect(){
+		$("#sel2").attr("disabled",true);
+		selRefresh("sel2");
+	}
+	function enableSelect(){
+		$("#sel2").attr("disabled",false);
+		selRefresh("sel2");
+	}
+</script>
+和修改普通下拉框的做法一样，不同的是需要在最后调用selRefresh(下拉框ID)来更新显示。<br />
+<select  id="sel2">
+	<option value="0">请选择功能</option>
+    <option value="1">新增图片</option>
+    <option value="2">维护图片</option>
+    <option value="3">新增新闻</option>
+ </select>
+ <input type="button" value="选中第2项" onclick="changeItem()"/>
+ <input type="button" value="新增1项" onclick="addItem()"/>
+ <input type="button" value="删除1项" onclick="removeItem()"/>
+ <input type="button" value="设为不可用" onclick="disableSelect()"/>
+ <input type="button" value="设为可用" onclick="enableSelect()"/>
+
+<br />代码如下：
+<textarea class="code">
+<select  id="sel2">
+	<option value="0">请选择功能</option>
+    <option value="1">新增图片</option>
+    <option value="2">维护图片</option>
+    <option value="3">新增新闻</option>
+</select>
+<input type="button" value="选中第2项" onclick="changeItem()"/>
+<input type="button" value="新增1项" onclick="addItem()"/>
+<input type="button" value="删除1项" onclick="removeItem()"/>
+<input type="button" value="设为不可用" onclick="disableSelect()"/>
+<input type="button" value="设为可用" onclick="enableSelect()"/>
+</textarea>
+<pre></pre>
+
+函数如下：
+<textarea class="code">
+function changeItem(){
+	$("#sel2").val(2);
+	selRefresh("sel2");
+}
+var idx=3
+function addItem(){
+	idx++
+	var sel=$("#sel2")[0];
+	sel.options[sel.options.length] = new Option("新增项", idx);
+	$("#sel2").val(idx);
+	selRefresh("sel2");
+}
+function removeItem(){
+	var sel=$("#sel2")[0];
+	sel.options.length--;
+	idx--
+	$("#sel2").val(idx);
+	selRefresh("sel2");
+}
+function disableSelect(){
+	$("#sel2").attr("disabled",true);
+	selRefresh("sel2");
+}
+function enableSelect(){
+	$("#sel2").attr("disabled",false);
+	selRefresh("sel2");
+}
+</textarea>
+<pre></pre>
+另外selRefresh()中的参数也可以是下拉框的jQuery节点对象。
+
+	</div>
+	
+	
+	<div class="box2" panelTitle="恢复系统默认" roller="true">
+ 如果希望使用系统默认的下拉框，则使用class
+<select class="default">
+    <option value="1">新增图片</option>
+    <option value="2">维护图片</option>
+    <option value="3">新增新闻</option>
+ </select>
+  <textarea class="code">
+<select class="default">
+    <option value="1">新增图片</option>
+    <option value="2">维护图片</option>
+    <option value="3">新增新闻</option>
+ </select>
+</textarea>
+<pre></pre>
+	</div>
+
+			
+</body>
+<!--代码高亮start-->
+<script type="text/javascript" src="../code/highlight.js"></script>
+<script type="text/javascript" src="../code/lang-xml.js"></script>
+<script type="text/javascript" src="../code/lang-html.js"></script>
+<link href="../code/style.css" rel="stylesheet" type="text/css"/>
+<link href="../table/style.css" rel="stylesheet" type="text/css"/>
+
+<script>
+	$(function(){
+			showCode()
+	})
+	function showCode(){
+		$(".code").each(function(){
+			var code =$(this).val()
+			var hl = new DlHighlight({lang: "html",lineNumbers :false });
+			var formatted = hl.doItNow(code);
+			$(this).next().addClass("DlHighlight").html("<pre>" + formatted + "</pre>")
+		})
+	}
+</script>
+<!--代码高亮end-->
+</html>

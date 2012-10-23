@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>webservice</title>
+	<link href="../index.css" type="text/css" rel="stylesheet"/>
+	<link href="../prettify/prettify.css" type="text/css" rel="stylesheet"/>
+	<script type="text/javascript" src="../prettify/prettify.js"></script>
+</head>
+
+<body>
+    <div class="container">
+		<div class="line">&nbsp;</div>
+		<div class="lhgdg_body">
+<h2>page</h2>
+分页页码显示,使用范例（新版本的动态建表的list.jsp页面）,该标签生成和新版table组件的分页页码一样的代码。
+			<ol>
+<pre class="prettyprint">
+sihe:page now="${pageNow }" count="${totalRows }" pageSize="${pageSize }" max="${pageCount }" pagesChange="jumpPage" pageSizeChange="changePage" showCounts="true" showPageSize="true" />
+</pre>
+</ol>			 
+
+<h2>dicoption</h2>
+按照指定的数据字典类型组成select标签的option属性，并选中match编码的内容
+			<ol>
+<pre class="prettyprint">
+//范例在pages/admin/employee/employeeform.jsp中，
+//BLOOD是数据字典类型“血型”的编码。
+	sihe:dicoption match="${employeeForm.blood}" dic="BLOOD" />
+</pre>
+</ol>
+
+
+<h2>dicvalue</h2>
+按照指定的数据字典类型取得数据字典内容并以普通文本方式显示
+			<ol>
+<pre class="prettyprint">
+//PTPZXX数据字典类型“平台配置信息”编码，photowidth是数据字典内容“照片宽度”的编码
+sihe:dicvalue dicType="PTPZXX" defaultValue="100" dicCode="photowidth"
+</pre>
+</ol>
+
+
+<h2>resource</h2>
+查询登录人是否有权限访问某个资源
+如果有权限则标签内的内容可见，否则不可见。
+标签内可以是html代码，也可以是js代码,ui\controlPanel.jsp的实例:
+			<ol>
+<pre class="prettyprint">
+sihe:resource userid="${USERSESSION.userid}" resCode="ZXRYCZ" appCode="XTGL">
+	div class="group">
+		h4>
+			img src='${basePath }/resource/base/theme/${faceStyle }/ui/images/kzmb/person_info.png' width="20" height="20" />系统设置
+		/h4>
+		ul>
+			li>a href="javascript:link('${basePath }/sysconfigAction.do?action=show','0');" style="margin-left: 15px;">基本设置</a>
+		/ul>
+	/div>
+/sihe:resource>
+</pre>
+</ol>
+
+
+<h2>access</h2>
+将itemid对应的附件以最简单的方式显示出来
+
+
+<h2>tree</h2>
+请看<a href="../tree/index.html">树的说明</a>
+
+
+<h2>table、row、column</h2>
+请看<a href="../tables/index.html">表格说明</a>
+
+<h2>frame</h2>
+左右、上下分栏frame，自带切换效果
+			<ol>
+平台里所有左右分割显示的frame都用了此标签。如资源管理、员工管理
+<pre class="prettyprint">
+sihe:frame leftUrl="/applicationLoadAction.do?action=showmsgApp" rightUrl="/pages/admin/application/msgCenter.jsp" />
+</pre>
+</ol>
+
+</div>
+		<div class="line">&nbsp;</div>
+	</div>
+	<script type="text/javascript">prettyPrint();</script>
+</body>
+</html>

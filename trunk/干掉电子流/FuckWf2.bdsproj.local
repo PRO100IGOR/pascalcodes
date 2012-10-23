@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2012-01-09 11:35:36.796.pas,D:\Backup\我的文档\RAD Studio\Projects\Unit1.pas=E:\pro\del\干掉电子流\main.pas</Transaction>
+    <Transaction>2012-01-09 11:35:36.796.dfm,D:\Backup\我的文档\RAD Studio\Projects\Unit1.dfm=E:\pro\del\干掉电子流\main.dfm</Transaction>
+    <Transaction>2012-01-09 11:37:17.843.bdsproj,D:\Backup\我的文档\RAD Studio\Projects\Project1.bdsproj=E:\pro\del\干掉电子流\FuckWf2.bdsproj</Transaction>
+    <Transaction>2012-01-09 11:39:51.625.pas,E:\pro\del\干掉电子流\Unit2.pas=E:\pro\del\干掉电子流\WebLib.pas</Transaction>
+    <Transaction>2012-01-09 11:39:51.625.dfm,E:\pro\del\干掉电子流\Unit2.dfm=E:\pro\del\干掉电子流\WebLib.dfm</Transaction>
+    <Transaction>2012-01-10 16:06:45.421.pas,E:\pro\del\干掉电子流\Common.pas=</Transaction>
+  </Transactions>
+</BorlandProject>

@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=GBK"/>
+	<title>showaction</title>
+	<script src="../js/mustache.js"></script>
+	<script src="../js/jquery-1.6.2.min.js"></script>
+	<script type="text/javascript">
+	<!--
+		function make(){
+			var html, json, template;
+			template = $('#template').val();
+			json = $.parseJSON($('#json').val());
+			html = Mustache.to_html(template, json);
+			$('#html').text(html);
+		}
+		function getOneUpper(v){
+			var temp = [],temp2 = v.split("");
+			for(var i =0;i<temp2.length;i++){
+				if(i==0){
+					temp.push(temp2[i].toUpperCase());
+				}else{
+					temp.push(temp2[i]);
+				}
+			}
+			return temp.join(""); 
+		}
+	//-->
+	</script>
+</head>
+ <body>
+<textarea id="json" rows="10" cols="130"></textarea>
+<textarea id="html" rows="10" cols="130"></textarea>
+
+
+
+
+
+	<textarea id="template" rows="10" cols="130">
+/*
+ 	以下方法可以不实现，一旦声明，必将调用
+ 	function beforeShowList();列表查询前调用，返回需要传递的参数json键值对
+ 	function onShowList(data);列表查询完后调用,该方法返回true时，表示用onShowList中的显示内容的方法而不是用默认的.如果要使用默认的showview方法，需要将a标签的class写成listid;同时要有src属性，表示ID
+	function beforeShowView(id);查看前调用，返回需要传递的参数json键值对
+ 	function onShowView(data);在获取到view请求数据后调用的方法
+ 	function beforeShowUpdate(id);显示修改前调用，返回需要传递的参数json键值对
+	function onShowUpdate(data);在获取到update请求数据时调用的方法 	
+ 	function beforeShowAdd();显示增加页面前调用
+ 	function onShowAdd(data);显示增加页面后调用，返回需要传递的参数json键值对
+ 	
+ 	function beforeAdd(); 增加保存前调用,返回需要传递的参数json键值对
+ 	function onAdd();保存完成后调用
+ 	
+ 	function beforeUpdate(); 修改保存前调用,返回需要传递的参数json键值对
+ 	function onUpdate();保存完成后调用
+ 	
+ 	funtion check(); //保存验证方法
+ 	
+ */
+
+var {{modelName}}Form = new $Form("{{modelName}}");
+{{modelName}}Form.onCheck="checkOne>jqMsg,select,focus";
+{{modelName}}Form.rules = {
+	{{#formRules}}
+	{{ruleName}}:{
+		needs:{
+			{{#needs}}
+			{{need}}{{adh}}
+			{{/needs}}
+		}
+	}{{dh}}
+	{{/formRules}}
+};
+
+
+
+
+
+/*
+	在获取到view请求数据后调用的方法
+*/
+function onShowView(data){
+	for(var i in data){
+		$("#div_"+i).html(data[i]);
+	}
+}
+/*
+	查看前调用，返回需要传递的参数json键值对				
+*/
+function beforeShowView(id){
+	
+}
+/*
+	在获取到update请求数据时调用的方法
+*/
+function onShowUpdate(data){
+	for(var i in data){
+		$("#"+i).val(data[i]);
+	}
+}
+/*
+	显示修改前调用，返回需要传递的参数json键值对				
+*/
+function beforeShowUpdate(id){
+	
+}
+/*
+	列表查询完后调用
+*/
+function onShowList(data){
+}
+/*
+	列表查询前调用，返回需要传递的参数json键值对
+*/
+function beforeShowList(){
+}
+/*
+	显示增加页面后调用，返回需要传递的参数json键值对
+*/
+function onShowAdd(data){
+
+}
+/*
+	显示增加页面前调用
+*/
+function beforeShowAdd(){
+	
+}	
+/*
+ * 验证方法
+ */
+function check(){
+	return {{modelName}}.check();
+}
+
+/*
+ * 增加保存前调用,返回需要传递的参数json键值对
+ */
+function beforeAdd(){
+}
+/*
+ * 保存完成后调用
+ */
+function onAdd(){
+	
+}
+/*
+ *  修改保存前调用,返回需要传递的参数json键值对
+ */
+function beforeUpdate(){
+	
+}
+/*
+ * 保存完成后调用
+ */
+function onUpdate(){
+	
+}
+</textarea>
+
+
+ </body>
+</html>

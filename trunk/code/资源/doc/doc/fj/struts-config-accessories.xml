@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+	<action-mappings>
+		<action input="/core/tool/access/accessories.jsp" path="/accessories" parameter="action" type="org.springframework.web.struts.DelegatingActionProxy" >
+			<!-- 附件管理页面 -->
+			<forward name="accPage" path="/core/tool/access/accessories.jsp" />
+			<!-- 自定义的跳转开始 -->
+			
+			<!-- 自定义的跳转结束 -->
+		</action>
+	</action-mappings>
+</struts-config>

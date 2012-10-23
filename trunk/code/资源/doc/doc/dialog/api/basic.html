@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>基本使用指南 - LHGDIALOG</title>
+    <meta name="keywords" content="lhgdialog,dialog,弹出窗口,js窗口,js弹出窗口,js库,对话框,alert,提示,警告,确认,提问,ajax,tip,confirm,open,prompt,lhgcore,javascript,jquery,window,clientside,control,open source,LGPL,dhtml,html,xhtml,plugins"/>
+    <meta name="description" content="lhgdialog是一功能强大的简单迷你并且高效的弹出窗口插件,基于网络访问并且兼容IE 6.0+,Firefox 3.0+,Opera 9.6+,Chrome 1.0+,Safari 3.22+."/>
+    <meta name="copyright" content="lhgcore.com"/>
+	<link rel="icon" href="../favicon.ico" type="image/x-icon"/>
+	<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon"/>
+	<link href="../index.css" type="text/css" rel="stylesheet"/>
+	<link href="../prettify/prettify.css" type="text/css" rel="stylesheet"/>
+	<script type="text/javascript" src="../prettify/prettify.js"></script>
+</head>
+
+<body>
+    <div class="container">
+	    <div class="header">
+		    <div class="header_logo"><a href="../index.html"><img border="0" src="../images/lhgdg_logo.gif" alt="lhgdialog"/></a></div>
+			<div class="header_nav">
+			    <a href="../index.html">首页</a> | 基本使用指南 | <a href="api.html">API参数控制接口</a> | <a href="../demo/demo.html">在线演示</a> | <a href="../valueDemo/demo.html">传值演示</a> | <a href="../frameDemo/demo.html">跨框架演示</a> | <a href="../ui/ui.html">皮肤下载页</a> | <a href="../donate/donate.html">捐赠</a>
+			</div>
+		</div>
+		<div class="line">&nbsp;</div>
+		<div class="lhgdg_body">
+			<h2>lhgdialog运行环境</h2>
+			<p>lhgdialog是基于浏览器的HTML、CSS和Javascript环境开发的，因此原则上市场上绝大部分浏览器我们都能完美的运行，目前已测试的浏览器兼容列表如下：IE 6.0+,Firefox 3.0+,Opera 9.6+,Chrome 1.0+,Safari 3.22+ (+号代表往后所有新版本)。lhgdialog是完全基于浏览器环境的，因此不存在操作系统选择性，是完全跨平台的。lhgdialog同时也可以应用在任何的服务端语言环境下，例如：PHP、ASP、ASP.NET、JAVA等，能够非常灵活简单的和您的系统实现完美的无缝衔接。</p>
+			<h2>lhgdialog基本使用指南</h2>
+			<p>您只需按照以下简单步骤即可学会使用lhgdialog：</p>
+			<ol>
+			    <li>下载最新版本lhgdialog：<a href="http://lhgcore.com/lhgdialog.zip">http://lhgcore.com/lhgdialog.zip</a></li>
+				<li>将下载的压缩文件解压缩，上传其中的lhgcore.min.js以及lhgdialog.min.js和skins文件夹到网站相应文件夹中</li>
+				<li>在需要调用lhgdialog编辑器的网页head标签结束之前添加以下代码：
+				    <pre class="prettyprint">&lt;script type=&quot;text/javascript&quot; src=&quot;lhgcore.min.js&quot;&gt;&lt;/script&gt;<br/>&lt;script type=&quot;text/javascript&quot; src=&quot;lhgdialog.min.js&quot;&gt;&lt;/script&gt;</pre>
+					注：如果将窗口组件做为jQ的组件来使用就不需要加载lhgcore.min.js库文件，而要加载jQ库文件。
+				    <pre class="prettyprint">&lt;script type=&quot;text/javascript&quot; src=&quot;jquery-1.6.min.js&quot;&gt;&lt;/script&gt;<br/>&lt;script type=&quot;text/javascript&quot; src=&quot;lhgdialog.min.js&quot;&gt;&lt;/script&gt;</pre>
+				    <em style="text-decoration:line-through">注：作为jQ组件来使用一定要注意把lhgdialog.min.js文件中代码最后小括号里的<strong style="color:red">lhgcore改成jQuery</strong>，为里要区分大小写</em><br/><strong style="color:red">3.4.3以后的版本不再需要改这里了，加载jQuery的库后直接就可以使用。</strong>
+				</li>
+				<li>
+				    lhgdialog提供两种方式弹出窗口：
+<pre class="prettyprint">&lt;head&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;<br />//第一种jQ调用方式
+J(function(){
+    J('#dg').dialog({ id:'test1', html:'lhgdialog' });
+});
+
+//如果作为jQ组件来用的话J就得换成$
+$(function(){
+    $('#dg').dialog({ id:'test1', html:'lhgdialog' });
+});
+
+//第二种普通函数式调用
+function opdg( id )
+{
+    var dg = new J.dialog({ id:id, html:'lhgdialog' });
+    //如果作为jQ组件来用的话J就得换成$
+    var dg = new $.dialog({ id:id, html:'lhgdialog' });
+    dg.ShowDialog();
+}
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;input type=&quot;button&quot; id=&quot;dg&quot; value=&quot;opendg1&quot;/&gt;
+    &lt;input type=&quot;button&quot; value=&quot;opendg2&quot; onclick=&quot;opdg('test2');&quot;/&gt;
+&lt;/body&gt;</pre>
+                    注：第一种方式适合于简单的调用弹出窗口的方式，但必须放到J(function(){ ... });里<br/>第二种方式适合于传参数或调用功能较复杂的弹出窗口，注意一定要定义变量后再调用ShowDialog()方法，不要写在一行。
+                </li>
+			</ol>
+			<p>经过以上步骤，你就已经成功的将lhgdialog弹出窗口插件安装在你的网页中。若需要学习更多的使用技术，请参阅：<a href="api.html">API参数控制接口</a>。</p>			
+		</div>
+		<div class="line">&nbsp;</div>
+	    <div class="footer">
+	        <div class="copyright">Copyright &copy <a href="http://lhgcore.com" target="_blank">lhgcore.com</a>. All rights reserved. | 豫ICP备06002782号 | <script src="http://s15.cnzz.com/stat.php?id=2990550&web_id=2990550" language="JavaScript"></script></div>
+			<a href="../footer/contact.html">联系我们</a> | <a href="../footer/link.html">友情链接</a> | <a href="../footer/ad.html">广告服务</a> | <a href="../footer/partners.html">合作伙伴</a>
+	    </div>
+	</div>
+	<script type="text/javascript">prettyPrint();</script>
+</body>
+</html>

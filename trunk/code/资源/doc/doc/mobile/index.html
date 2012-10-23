@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>tab选项卡</title>
+	<link href="../index.css" type="text/css" rel="stylesheet"/>
+	<link href="../prettify/prettify.css" type="text/css" rel="stylesheet"/>
+	<script type="text/javascript" src="../prettify/prettify.js"></script>
+</head>
+
+<body>
+    <div class="container">
+		<div class="line">&nbsp;</div>
+		<div class="lhgdg_body">
+			<ol>
+			    <li>
+					每个向服务器发起的http请求都要追加mobile=true，方便session过滤器根据这个参数做出正确的响应。
+				</li>
+
+				<li>
+					oxhide的菜单增加属性：移动客户端对应页面、移动图标。默认情况下，菜单点击后访问的http服务为：
+					原有菜单bs的访问地址+mobile=1,baseshowaction中根据mobile=1调用不同的方法，如showview时调用nextShowMobileView或者nextShowView。
+				</li>
+
+				<li>
+					list请求自动包含being（起始记录）、count（查询条数）。查询条件必须是名为condition的数组，数组中元素有name、c（关系）、value三个属性,所有发送到服务端的请求参数名默认都是data
+				</li>
+
+
+
+				<li>
+					所有的http请求返回{message:""}表示错误信息，此时会弹出错误信息而不会执行http请求回调方法
+				</li>
+			</ol>
+		</div>
+		<div class="line">&nbsp;</div>
+	</div>
+	<script type="text/javascript">prettyPrint();</script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title> New Document </title>
+ <link href="box.css" rel="stylesheet" type="text/css"/>
+  <link href="../style.css" rel="stylesheet" type="text/css"/>
+ <script type="text/javascript" src="../jquery.js"></script>
+ <script type="text/javascript" src="box.js"></script>
+ </head>
+ <body>
+
+<div id="scrollContent">
+	这里演示第二种盒子：box2。先看代码：
+<textarea class="code">
+<div class="box2" panelWidth="300" panelHeight="200"  panelTitle="控制面板">
+	内容区域<br />内容区域<br />内容区域<br />内容区域<br />
+</div>
+</textarea>
+<pre></pre>
+	效果如下：默认是一个有标题、并可以收缩的面板。
+	<div class="box2" panelWidth="300" panelHeight="200"  panelTitle="控制面板">内容区域<br />内容区域<br />内容区域<br />内容区域<br /></div>
+	还可通过参数实现不同的配置。参数如下：<br />
+	<table class="tableStyle">
+	<tr>
+		<th>参数名</th><th>参数说明</th>
+	</tr>
+	<tr>
+		<td>panelWidth</td><td> 盒子宽度，可以是数值或百分比。默认100%</td>
+	</tr>
+	<tr>
+		<td>panelHeight</td><td>  盒子高度，只能是数值。默认自适应内容</td>
+	</tr>
+	<tr>
+		<td>panelTitle</td><td> 盒子标题 默认为空</td>
+	</tr>
+	<tr>
+		<td>overflow</td><td> 设置是否出现滚动条。当设置高度时该参数生效。默认为hidden即不出现滚动条。当为auto时出现滚动条</td>
+	</tr>
+	<tr>
+		<td>roller</td><td> 只对某些皮肤有效。是否出现底部卷边效果，默认为true</td>
+	</tr>	
+	<tr>
+		<td>showStatus</td><td> 是否显示右上方的文字标识，默认显示为”收缩“，这样默认可以收缩。如果为false则不显示标识，即不能收缩</td>
+	</tr>
+	<tr>
+		<td>statusText</td><td>自定义右上角标识。例如可以设置为“更多>>”</td>
+	</tr>	
+	<tr>
+		<td>panelUrl</td><td>当自定义右上角标识后有效。用来设置点击右上角标识的链接地址。默认为"#"。此处也可调用JS的方法。</td>
+	</tr>
+	<tr>
+		<td>panelTarget</td><td>当自定义右上角标识后有效。用来设置点击右上角标识后新页面打开方式。默认值"_self"在本页打开。当设为"_blank"则在新页面打开</td>
+	</tr>
+	
+</table>
+	下面的是一个不可收缩、宽度100%、高度自适应的盒子：	
+	<div class="box2" panelTitle="功能面板" showStatus="false">
+		内容区域<br />内容区域<br />内容区域<br />
+		内容区域<br />内容区域<br />内容区域<br />
+	</div>
+	代码如下：
+<textarea class="code">
+<div class="box2" panelTitle="功能面板" showStatus="false">
+	内容区域<br />内容区域<br />内容区域<br />
+	内容区域<br />内容区域<br />内容区域<br />
+</div>
+</textarea>
+<pre></pre>
+<br /><br />
+	当statusText设置为“展开”时，初始化盒子是收缩状态。
+	<div class="box2" panelWidth="400" panelTitle="控制面板" statusText="展开">
+		内容区域<br />内容区域<br />内容区域<br />
+		内容区域<br />内容区域<br />内容区域<br />
+	</div>	
+	代码如下
+<textarea class="code">
+<div class="box2" panelWidth="400" panelTitle="控制面板" statusText="展开">
+	内容区域<br />内容区域<br />内容区域<br />
+	内容区域<br />内容区域<br />内容区域<br />
+</div>	
+</textarea>
+<pre></pre>	
+
+	<script>
+		function openWin(){
+			top.Dialog.open({URL:"lesson/chapter2-4-content1.html",Title:"文章列表"});
+		}
+	</script>
+	<br /><br />panelUrl中可以通过写一下JS语句实现点击后调用脚本方法。注意，此时不要设置panelTarget。例如下面的是自定义右上角标识，并且点击后弹出窗口。
+	<div class="box2" panelWidth="400" panelTitle="控制面板" statusText="更多>>" panelUrl="javascript:openWin()">
+		内容区域<br />内容区域<br />内容区域<br />
+		内容区域<br />内容区域<br />内容区域<br />
+	</div>
+	代码如下：
+<textarea class="code">
+<div class="box3" panelWidth="400" panelTitle="控制面板" statusText="更多>>" panelUrl="javascript:openWin()">
+	内容区域<br />内容区域<br />内容区域<br />
+	内容区域<br />内容区域<br />内容区域<br />
+</div>
+</textarea>
+<pre></pre>
+	在panelUrl调用JS方法弹出窗口
+<textarea class="code">
+function openWin(){
+	top.Dialog.open({URL:"lesson/chapter2-4-content1.html",Title:"文章列表"});
+}
+</textarea>
+<pre></pre>
+关于弹出窗口做法请参考”提示与弹窗>>弹出窗口“相关内容。
+
+	
+	
+</div>				
+					
+</body>
+<!--代码高亮start-->
+<script type="text/javascript" src="../code/highlight.js"></script>
+<script type="text/javascript" src="../code/lang-xml.js"></script>
+<script type="text/javascript" src="../code/lang-html.js"></script>
+<link href="../code/style.css" rel="stylesheet" type="text/css"/>
+<link href="../table/style.css" rel="stylesheet" type="text/css"/>
+<script>
+	$(function(){
+			showCode()
+	})
+	function showCode(){
+		$(".code").each(function(){
+			var code =$(this).val()
+			var hl = new DlHighlight({lang: "html",lineNumbers :false });
+			var formatted = hl.doItNow(code);
+			$(this).next().addClass("DlHighlight").html("<pre>" + formatted + "</pre>")
+		})
+	}
+</script>
+<!--代码高亮end-->
+</html>

@@ -1,0 +1,247 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=GBK"/>
+	<title>showaction</title>
+	<script src="../js/mustache.js"></script>
+	<script src="../js/jquery-1.6.2.min.js"></script>
+	<script type="text/javascript">
+	<!--
+		function make(){
+			var html, json, template;
+			template = $('#template').val();
+			json = $.parseJSON($('#json').val());
+			html = Mustache.to_html(template, json);
+			$('#html').text(html);
+		}
+		function getOneUpper(v){
+			var temp = [],temp2 = v.split("");
+			for(var i =0;i<temp2.length;i++){
+				if(i==0){
+					temp.push(temp2[i].toUpperCase());
+				}else{
+					temp.push(temp2[i]);
+				}
+			}
+			return temp.join(""); 
+		}
+	//-->
+	</script>
+</head>
+ <body>
+<textarea id="json" rows="10" cols="130"></textarea>
+<textarea id="html" rows="10" cols="130"></textarea>
+
+
+
+
+
+	<textarea id="template" rows="10" cols="130">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@ page language="java" contentType="text/html; charset=GBK" pageEncoding="GBK"%>
+<%--
+@version: 1.0
+@author: {{author}}
+@company: {{company}}
+@time: {{date}}
+--%>
+<%
+	request.setCharacterEncoding("GBK");
+%>
+<%@ taglib uri="/WEB-INF/tld/c.tld" prefix="c"%>
+<%@ taglib uri="/WEB-INF/tld/struts-html.tld" prefix="html"%>
+{{#dic}}
+<%@ taglib uri="/WEB-INF/tld/sihe.tld" prefix="sihe"%>
+{{/dic}}
+{{#fck}}
+<%@ taglib uri="http://java.fckeditor.net" prefix="FCK" %>
+{{/fck}}
+<html:html>
+<c:set var="request" scope="page" value="${pageContext.request}" />
+<c:set var="base" scope="page" value="${request.scheme}://${request.serverName}:${request.serverPort}" />
+<c:set var="contextPath" scope="page" value="${request.contextPath}" />
+<c:set var="basePath" scope="page" value="${base}${contextPath}/" />
+<head>
+	<title>{{modelChname}}表单页面</title>
+	<link rel="stylesheet" type="text/css" href="${basePath }/resource/base/theme/public/css/public.css" />
+	<link rel="stylesheet" type="text/css" href="${basePath }/resource/base/theme/${faceStyle }/css/web.css" />
+	<link rel="stylesheet" href="${basePath }/resource/base/js/msg/msgBar/css/msgBar.css" type="text/css"/>
+	<script language="JavaScript" src="${basePath}/dwr/engine.js"></script>
+	<script language="JavaScript" src="${basePath}/dwr/util.js"></script>
+	<script type="text/javascript" src="${basePath}/resource/base/js/frame/jquery/jquery.js"></script>
+	<script language="JavaScript" type="text/javascript" src="${basePath}/dwr/interface/DWRBaseClass.js"></script>
+	<script language="JavaScript" src="${basePath}resource/base/js/tool/XQzyDIV.js"></script>
+	<script language="JavaScript" src="${basePath}/resource/base/js/validate/Magican.js"></script>
+	<script type="text/javascript" src="${basePath }/resource/base/js/msg/msgBar/js/msgBar.js"></script>
+	{{#datepack}}
+	<script language="JavaScript" defer="defer" src="${basePath}/resource/base/theme/${faceStyle }/My97DatePicker/WdatePicker.js"></script>
+	{{/datepack}}
+	{{#tip}}
+	<script type="text/javascript" src="${basePath}/resource/base/js/tip/jquery.poshytip.min.js"></script>
+	{{/tip}}
+	{{#lhg}}
+	<script type="text/javascript" src="${basePath}/resource/base/js/dialog/lhgdialog.js?t=self&s=${faceStyle}"></script>
+	{{/lhg}}
+	<script>
+	var {{modelName}}Form = new $Form("{{modelName}}Form");
+	{{#rules}}
+	{{modelName}}Form.{{key}} = "{{value}}";
+	{{/rules}}
+	{{#hasEvent}}
+	{{modelName}}Form.events = "{{events}}";
+	{{/hasEvent}}
+	{{#warn}}
+	{{modelName}}Form.submit = save;
+	{{/warn}}
+	{{modelName}}Form.rules = {
+		{{#formRules}}
+		{{ruleName}}:{
+			{{#rules}}
+			{{key}} : "{{value}}",
+			{{/rules}}
+			{{#hasEvent}}
+			events : "{{events}}",
+			{{/hasEvent}}
+			needs:{
+				{{#needs}}
+				{{need}}{{adh}}
+				{{/needs}}
+			}
+		}{{dh}}
+		{{/formRules}}
+	};
+
+	function save(){
+		if({{modelName}}Form.check()){
+			{{#nothasfj}}
+			XqTipOpen( "正在保存数据,请稍后");
+			document.{{modelName}}Form.submit();
+			{{/nothasfj}}
+			{{#hasfj}}
+			upload();
+			{{/hasfj}}
+		}
+	}
+{{#hasfj}}
+	function subform(){
+		$.msgBar ({
+			type: 'info', 
+			text: "正在保存数据",
+			position: 'bottom-center', 
+			lifetime: 3000
+		});
+		XqTipOpen("正在保存数据,请稍后");
+		document.{{modelName}}Form.submit();
+	}
+{{/hasfj}}
+	</script>
+</head>
+<body>
+	<html:form action="/{{modelName}}SaveAction.do?action=${param.action}">
+		<input type="hidden" name="isSaveAndAdd" id="isSaveAndAdd" value="${isSaveAndAdd }" />
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="list-tables">
+			{{#FormTypes}}
+			{{#隐藏域}}
+			<html:hidden property="{{dataName}}" />
+			{{/隐藏域}}
+			{{#普通文本框}}
+			<tr>
+				<td width="30%" class="list-lhead">
+					{{#must}}<font color="red">*</font>{{/must}}{{comment}}：
+				</td>
+				<td>
+					<html:text property="{{dataName}}" size="32" maxlength="32" styleId="{{dataName}}" />
+				</td>
+			</tr>
+			{{/普通文本框}}
+			{{#树形菜单文本框}}
+			<tr>
+				<td width="30%" class="list-lhead">
+					{{#must}}<font color="red">*</font>{{/must}}{{comment}}：
+				</td>
+				<td>
+					<html:text readonly="true" property="{{dataName}}" size="32" maxlength="32" styleId="{{dataName}}"/>
+				</td>
+			</tr>
+			{{/树形菜单文本框}}
+			{{#时间控件文本框}}
+			<tr>
+				<td width="30%" class="list-lhead">
+					{{#must}}<font color="red">*</font>{{/must}}{{comment}}：
+				</td>
+				<td>
+					<html:text readonly="true" property="{{dataName}}" size="32" maxlength="32" onclick="WdatePicker({dateFmt:'{{timerCoder}}'})" styleId="{{dataName}}"/>
+				</td>
+			</tr>
+			{{/时间控件文本框}}
+			{{#文本域}}
+			<tr>
+				<td width="30%" class="list-lhead">
+					{{#must}}<font color="red">*</font>{{/must}}{{comment}}：
+				</td>
+				<td>
+					<html:textarea property="{{dataName}}" style="width:100%" rows="4" styleId="{{dataName}}"/>
+				</td>
+			</tr>
+			{{/文本域}}
+			{{#下拉框}}
+			<tr>
+				<td width="30%" class="list-lhead">
+					{{#must}}<font color="red">*</font>{{/must}}{{comment}}：
+				</td>
+				<td>
+					<html:select property="{{dataName}}" styleId="{{dataName}}">
+						<html:option value="">请选择</html:option>
+						{{#diccode}}
+						<sihe:dicoption match="${ {{modelName}}Form.{{dataName}} }" dic="{{diccode}}"></sihe:dicoption>
+						{{/diccode}}
+						{{#StringArr}}
+						<html:option value="{{key}}">{{value}}</html:option>
+						{{/StringArr}}
+					</html:select>
+				</td>
+			</tr>
+			{{/下拉框}}
+			{{#富文本框}}
+			<tr>
+				<td width="30%" class="list-lhead">
+					{{#must}}<font color="red">*</font>{{/must}}{{comment}}：
+				</td>
+				<td>
+					<FCK:editor instanceName="{{dataName}}" height="300" >
+						<jsp:attribute name="value">
+							${ {{modelName}}Form.{{dataName}} }
+						</jsp:attribute>
+					</FCK:editor>
+				</td>
+			</tr>
+			{{/富文本框}}
+			{{/FormTypes}}
+			{{#fjs}}
+				<tr>
+					<td class="list-lhead">
+						{{comment}}:
+					</td>
+					<td>
+						{{#path}}
+						<iframe name="{{name}}" width="100%" height="{{height}}" scrolling="auto" frameborder="0"
+							src="${basePath}/accessories.do?action=show&type={{type}}&isManager=true&itemId={{qz}}${ {{modelName}}Form.{{prototype}} }{{hz}}&appName=${contextPath }&maxCount={{maxCount}}&showAsImg={{showAsImg}}&path={{path}}/">
+						</iframe>
+						{{/path}}
+						{{#notpath}}
+						<iframe name="{{name}}" width="100%" height="{{height}}" scrolling="auto" frameborder="0"
+							src="${basePath}/accessories.do?action=show&type={{type}}&isManager=true&itemId={{qz}}${ {{modelName}}Form.{{prototype}} }{{hz}}&appName=${contextPath }&maxCount={{maxCount}}&showAsImg={{showAsImg}}">
+						</iframe>
+						{{/notpath}}
+					</td>
+				</tr>
+			{{/fjs}}
+		</table>
+	</html:form>
+</body>
+</html:html>
+	</textarea>
+
+
+ </body>
+</html>

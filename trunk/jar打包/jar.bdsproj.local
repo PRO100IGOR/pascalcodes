@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2011-11-14 19:44:47.453.pas,D:\Backup\我的文档\RAD Studio\Projects\Unit1.pas=E:\pro\del\jar打包\main.pas</Transaction>
+    <Transaction>2011-11-14 19:44:47.453.dfm,D:\Backup\我的文档\RAD Studio\Projects\Unit1.dfm=E:\pro\del\jar打包\main.dfm</Transaction>
+    <Transaction>2011-11-14 19:44:51.781.bdsproj,D:\Backup\我的文档\RAD Studio\Projects\Project1.bdsproj=E:\pro\del\jar打包\jar.bdsproj</Transaction>
+  </Transactions>
+</BorlandProject>

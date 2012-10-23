@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="gb2312"?>
+<updates><version>0.94</version><time>2011-11-30 18:49</time><explains><explain>1:修正当主键数据类型是int型时报错的问题</explain></explains><files><file action="u">code.exe</file></files></updates>
