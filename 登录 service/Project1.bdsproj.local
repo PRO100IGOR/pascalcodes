@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2012-04-01 15:18:19.984.pas,C:\Documents and Settings\Administrator\My Documents\RAD Studio\Projects\Unit1.pas=E:\pro\del\登录 service\Unit1.pas</Transaction>
+    <Transaction>2012-04-01 15:18:19.984.dfm,C:\Documents and Settings\Administrator\My Documents\RAD Studio\Projects\Unit1.dfm=E:\pro\del\登录 service\Unit1.dfm</Transaction>
+    <Transaction>2012-04-01 15:18:20.546.pas,C:\Documents and Settings\Administrator\My Documents\RAD Studio\Projects\UserServer.pas=E:\pro\del\登录 service\UserServer.pas</Transaction>
+    <Transaction>2012-04-01 15:18:21.343.bdsproj,C:\Documents and Settings\Administrator\My Documents\RAD Studio\Projects\Project1.bdsproj=E:\pro\del\登录 service\Project1.bdsproj</Transaction>
+  </Transactions>
+</BorlandProject>

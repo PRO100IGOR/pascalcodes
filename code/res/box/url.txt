@@ -1,0 +1,1 @@
+jdbc\:mysql\://127.0.0.1\:3309/oxhide?characterEncoding\=gb2312

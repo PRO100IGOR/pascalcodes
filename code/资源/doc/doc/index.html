@@ -1,0 +1,490 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>弹出窗口API</title>
+	<link href="index.css" type="text/css" rel="stylesheet"/>
+	<link href="prettify/prettify.css" type="text/css" rel="stylesheet"/>
+	<script type="text/javascript" src="prettify/prettify.js"></script>
+</head>
+
+<body>
+    <div class="container">
+		<div class="lhgdg_body">
+		    <h2>使用手册</h2>
+			<ol>
+				<li>
+				    <h3><a href="dialogoxhide/614563b2-0c30-4a79-a9a1-d8434d747a75_0.htm">弹出窗口api(oxhide)</a></h3>
+				</li>
+			    <li>
+				    <h3><a href="dialog/index.html">弹出窗口api</a></h3>
+				</li>
+			    <li>
+				    <h3><a href="fj/index.html">附件api</a></h3>
+				</li>
+			    <li>
+				    <h3><a href="yz/index.html">验证api</a></h3>
+				</li>
+			    <li>
+				    <h3><a href="tables/index.html">动态建表</a></h3>
+				</li>
+			    <li>
+				    <h3><a href="datas/index.html">数据库移植</a></h3>
+				</li>
+			    <li>
+				    <h3><a href="oracle/index.html">oracle客户端</a></h3>
+				</li>
+			    <li>
+				    <h3><a href="face/index.html">webservice</a></h3>
+				</li>		
+				<li>
+				    <h3><a href="tab/index.html">tab选项卡</a></h3>
+				</li>
+				<li>
+				    <h3><a href="yz/Magican.zip">老版js代码生成器</a></h3>
+				</li>
+				<li>
+				    <h3><a href="jar/index.html">jar包共享</a></h3>
+				</li>
+				<li>
+				    <h3><a href="tree/index.html">树的说明</a></h3>
+				</li>
+				<li>
+				    <h3><a href="autotable/index.html">table.js api</a></h3>
+				</li>
+				<li>
+				    <h3><a href="mobile/index.html">移动开发api</a></h3>
+				</li>
+				<li>
+				    <h3><a href="oxhide/oxhide.zip">最新oxhide部署包(tomcat/lib需要jar包,jar包在<a href="jar/index.html">jar包共享</a>)</a></h3>
+				</li>
+				<li>
+				    <h3><a href="oxhide/old-oxhide.zip">老版oxhide部署包(tomcat/lib需要jar包,jar包在<a href="jar/index.html">旧jar包共享</a>)</a></h3>
+				</li>
+				<li>
+				    <h3><a href="oxhide/oxhide old.zip">老版oxhide源码(需要jar包,jar包在<a href="jar/index.html">旧jar包共享</a>)</a></h3>
+				</li>
+				<li>
+				    <h3><a href="oxhide/datas.html">平台数据库修改记录</a></h3>
+				</li>
+				<li>
+				    <h3><a href="oxhide/datas.zip">平台数据库</a></h3>
+				</li>
+				<li>
+				    <h3><a href="update/index.html">旧的升级</a></h3>
+				</li>
+				<li>
+				    <h3><a href="oxhide/easy/log4j.properties">简单的log4j配置文件，只打印错误</a></h3>
+				</li>
+				<li>
+				    <h3><a href="oxhide/all/log4j.properties">log4j配置文件，打印全部信息</a></h3>
+				</li>
+				<li>
+				    <h3><a href="tld/index.html">标签库</a></h3>
+				</li>
+				<li>
+				    <h3><a href="fileUpload/index.html">文件上传</a></h3>
+				</li>
+				<li>
+				    <h3><a href="layout/index.html">页面渲染</a></h3>
+				</li>
+				<li>
+				    <h3><a href="advance/index.html">高级功能</a></h3>
+				</li>
+				<li>
+				    <h3><a href="tree/index.html">新的树</a></h3>
+				</li>
+				<li>
+				    <h3><a href="sihetable/index.html">新的表格</a></h3>
+				</li>
+			</ol>
+		</div>
+		<div class="lhgdg_body">
+
+
+
+		<div class="line">&nbsp;</div>
+		    <h2>版本号：1.07 alpha</h2>
+			<ol  style="border:2px solid red">
+			    <h3>版本说明：</h3>
+				<li>
+					sihe:frame支持上下分栏
+				</li>
+				<li>
+					会话过期时弹出登录框
+				</li>
+				<li>
+					RandomGUID.getGUID();增加重写方法，原先用"-"连接4个随即符，现在可以传参数了。
+				</li>
+				<li>
+					重写了重复提交的验证、提示。
+				</li>
+				<li>
+					单IP登录发生冲突时，可以手动踢出占用用户的会话。
+				</li>
+			</ol>
+		    <h2>版本号：1.06 alpha</h2>
+			<ol  >
+			    <h3>版本说明：</h3>
+				<li>
+					调整消息中心位置，增加发送消息、更新公告功能，调整插件里菜单顺序
+				</li>
+				<li>
+					增加sihe:frame标签,用于实现象员工管理、资源管理那样的左右分割显示的frame。见: <a href="tld/index.html">标签库</a>
+				</li>
+				<li>
+					增加文件上传接口，底层用cos.jar实现。见: <a href="fileUpload/index.html">文件上传</a>
+				</li>
+			</ol>
+
+		    <h2>版本号：1.05 alpha</h2>
+			<ol  >
+			    <h3>版本说明：</h3>
+				<li>
+					增加应用系统导入、导出功能
+				</li>
+				<li>
+					附件上传改用cos.jar实现。
+				</li>
+				<li>
+					提供<a href="oxhide/doc.zip">sihe.jar</a>的javadoc，可以与sihe.jar绑定在编码时获得提示。
+
+				</li>
+			</ol>
+
+		    <h2>版本号：1.04 alpha</h2>
+			<ol>
+			    <h3>版本说明：</h3>
+				<li>
+					验证组件增加msgAlert、msgBar提示方式，使用前引入相应的js
+				</li>
+				<li>
+					增加bug反馈、维护功能，平台中任意系统发生异常时，如果不是BaseException，会把异常信息发送到oxhide，并提醒给有权限访问“插件-->问题反馈”菜单的人员，处理完成后会提醒遇到异常的人错误已经解决。config.properties中定义debug=true后页面会显示错误真实内容，如果不写或者为false，页面只提示发生错误，但不显示错误内容。
+				</li>
+			</ol>
+
+		    <h2>版本号：1.03 alpha</h2>
+			<ol>
+			    <h3>版本说明：</h3>
+				<li>
+					html:button的buttontype属性不为空且styleid为空时，按钮默认的id是buttontype属性
+				</li>
+				<li>
+					下拉框、多选、单选支持原生的onchange、onclick事件了，而且可以用this，但是下拉框要在事件中判断this.value，如果是0，表示是无效事件调用，一定要注意！
+				</li>
+				<li>
+					ztree修正了查询条件不为空时无法查询的bug。
+				</li>
+				<li>
+					短信猫修改为delphi方式调用
+				</li>
+				<li>
+					CharsetSwitch中增加异或加密 enLargeCode(String text,String key)和异或解密deLargeCode(String text,String key),下一步在各终端增加加密、解密机制保护数据安全
+				</li>
+				<li>
+				    resource/base/js/layout/switch/jquery.switch.js
+					增加了下拉框的switch效果，在html:select中输入switchAble="true"或者select标签中增加属性switch="true"即可。select要满足：只有两个option，0表示否，1表示是。效果可见应用系统管理表单页面。
+				</li>
+				<li>
+					resource/base/js/layout/switch/jquery.switch.js
+					增加了checkbox的switch效果，在html:checkbox中输入switchAble="true"或者checkbox标签中增加属性switch="true"即可。效果可见控制面板。
+				</li>
+				<li>
+					验证组件的method验证方式可以传递方法对象参数了。
+				</li>
+				<li>
+					表格组件中，行的颜色变为蓝色表示checkbox多选，黄色表示单选，即修改、查看操作的是黄色的记录，删除操作的是蓝色的记录
+				</li>
+				<li>
+					平台增加启动项管理功能
+				</li>
+			</ol>
+		    <h2>版本号：1.02 alpha</h2>
+			<ol >
+			    <li>
+				    <h3>版本说明：</h3>
+					<p>
+						1:提供旧版oxhide源码、部署、jar以及项目所需lib下载。
+					</p>
+					<p>
+						2:代码生成器修复一些bug<br/>
+					</p>
+				</li>
+			</ol>
+		    <h2>版本号：1.00 alpha</h2>
+			<ol >
+			    <li>
+				    <h3>版本说明：</h3>
+					<p>
+						1:平台版本升级为1.0 alpha，详细修改请看:<br/>
+						<a href="layout/index.html">页面渲染</a><br/>
+						<a href="advance/index.html">高级功能</a><br/>
+						<a href="tree/index.html">新的树</a><br/>
+						<a href="sihetable/index.html">新的表格</a><br/>
+					</p>
+					<p>
+						2:代码生成器升级支持新版本平台,并保留老版本模版选择<br/>
+					</p>
+				</li>
+			</ol>
+
+
+		    <h2>版本号：0.97</h2>
+			<ol>
+			    <li>
+				    <h3>版本说明：</h3>
+					<p>
+						1:支持移动开发代码生成(测试)，移动开发请看<a href="mobile/index.html">移动开发api</a>
+						2:生成完毕时菜单配置读取的是在config.ini中配置的oxhide地址
+					</p>
+				</li>
+				<li>
+				    <h3>baseweb版本说明：</h3>
+					<p>
+						1：验证组件增加jqMsg/msgGrowl/scrollTo提示方式，其中jqMsg是移动开发专用，msgGrowl需要引用msgGrowl.css和msgGrowl.js,scrollTo表示滚动到<br/>
+						2：验证组件增加info方法,用当前配置的提示方式（除了appendafter、changeborder等）为名字叫ele的控件提示message 
+，详细请看<a href="yz/index.html">验证api</a><br/>
+						3：jsonlib包更新，在取属性时可以指定取属性失败后的默认值，请在<a href="jar/index.html">jar包共享</a>中下载<br/>
+						4：增加了js/tool/table.js,提供一些通用的表格操作方法，请看<a href="autotable/index.html">table.js api</a>
+						5：修正了机构树多选时ids无效的问题
+						6：登录后每个菜单访问时原地址后会加上resource参数，表示菜单的id,可以request.getParameter("resource")获取到。
+						7：showaction中，去掉了showview方法，改为nextshowview方法。
+					</p>
+				</li>
+			</ol>
+
+
+		    <h2>版本号：0.96</h2>
+			<ol >
+			    <li>
+				    <h3>版本说明：</h3>
+					<p>
+						1：修正验证规则生成时没有生成events的错误<br/>
+						2：修正list页面中查询条件隐藏域没有字段名的问题<br/>
+						3：去掉生成ruleName。<br/>
+						4：修正saveaction中缺少引用的问题<br/>
+					</p>
+				</li>
+				<li>
+				    <h3>baseweb版本说明：</h3>
+					<p>
+						1:为了避免内存溢出，jar包共享，请看<a href="jar/index.html">jars</a><br/>
+						2:新建项目中只有几个jar，但都引用了名为siheLib的userlibrary，需要手动创建这个lib一次。具体看<a href="jar/index.html">jar包共享</a><br/>
+						3:新建项目中去掉了icon图标系列，节约空间。<br/>
+						4:新建项目中webxml做出调整，以适应jar包共享。<br/>
+						5:修正新建项目的项目名无法修改的问题。<br/>
+						6:新增机构树内嵌式调用，请看<a href="tree/index.html">树的说明</a><br/>
+					</p>
+				</li>
+			</ol>
+
+
+		    <h2>版本号：0.93</h2>
+			<ol>
+			    <li>
+				    <h3>baseweb版本说明：</h3>
+					<p>
+						1：消息中心webservice更新，请看<a href="face/index.html">webservice</a><br/>
+						2：新增选项卡组建，请看<a href="tab/index.html">tab选项卡</a><br/>
+						3：附件修改，请看<a href="fj/index.html">附件</a><br/>
+						4：人员树修改，可以传参数organid、deptid、postid，表示只查询指定机构、部门、岗位的人员情况；还有参数dir，表示向上递归还是向下递归，默认向下。当有这些参数时，自动调整为非动态下载树。
+					</p>
+				</li>
+			</ol>
+
+		    <h2>版本号：0.93</h2>
+			<ol>
+			    <li>
+				    <h3>版本说明：</h3>
+					<p>
+						1：增加数据库方言、clob处理类配置支持<br/>
+						2：hibernate一对多、多对一关系不再必填
+					</p>
+				</li>
+			</ol>
+			<h2>版本号：0.92</h2>
+			<ol>
+			    <li>
+				    <h3>代码生成器版本说明：</h3>
+					<p>
+						1：修正高级查询条件不会在showaction里出现的bug<br/>
+						2：优化验证组件生成时的无用代码<br/>
+						3：修正验证条件超过3条时报错的bug<br/>
+						4：验证条件中“显示正确消息”、“显示提示消息”默认不显示<br/>
+						5：当代码生成完毕后，模块的访问地址自动复制到剪贴板<br/>
+						6：将菜单通过webservice保存到平台的功能可以使用了，也支持了中文菜单名。<br/>
+					</p>
+				    <h3>baseWeb版本说明：</h3>
+					<p>
+						1：application-hibernate.xml文件更新，数据库方言、数据库clob处理类都通过config.properties读取，更新项目资源后，<br/>请在你项目的config.properties里添加对应的配置信息。配置信息方式请参考<a href="datas/index.html">数据库移植</a><br/>
+						2：jar包更新，添加了sqlserver的jdbc最新驱动，删除了一些重复的jar包。<br/>
+						3：封装了最新的平台webservice支持功能。
+						4：验证组件优化了错误提示，现在警告和错误不同的提示会有不同的颜色表示了。<br/>
+						5：附件修正了原来存在的一些小问题，同时增加了一些方法以供调用，比如可以在表单页面获取到有多少个附件了。请参考：<a href="fj/index.html">附件api</a><br/>
+						6：附件的指定路径现在可以使用了，同时在后台删除附件时的方法：AccessoriesService.deleteAccessory不再需要传参数request了。<br/>
+						7：平台现在支持苹果推送服务，首先在系统管理中给需要此服务的系统上传安全证书以及证书密码，就可以调用webservice发送推送指令了，请参考<a href="face/index.html">webservice</a><br/>
+						8：sihe.tld修正了原来按钮资源存在的问题，参数只要传按钮资源编码和系统编码、用户id就行了。<br/>
+						9：sihe.tld增加了一个数据字典操作方法:<br/>
+<textarea  rows="3" cols="100"><sihe:dicvalue dicType="数据字典类型" dicCode="数据字典编码" defaultValue="默认值，可以不写" /></textarea>
+					    该功能可以按照指定的数据字典类型、数据字典编码取得数据字典内容并以普通文本方式显示<br/>
+						10：web.xml添加了由于dwr3.x本身原因导致异常的配置：新建的项目不需要理会，但是旧的项目需要将这段配置放在原先web.xml中名为dwr-invoker的servlet的配置中：<br/>
+<textarea  rows="4" cols="100"><init-param>
+	<param-name>debug</param-name>
+	<param-value>true</param-value>
+</init-param></textarea></br>
+						11：新建的项目的web.xml中增加了一个取web项目的绝对物理路径的全局参数，同时jar包中多了一个监听服务器启动和停止的监听器：
+<textarea  rows="8" cols="100"><!-- all param begin -->
+	<context-param>
+		<param-name>webAppRootKey</param-name>
+		<!-- webroot path -->
+		<param-value>cc.root</param-value>
+	</context-param>
+	<listener>
+		<listener-class>com.sxsihe.utils.param.ApplicationParam</listener-class>
+	</listener>
+	<!-- all param end -->
+</textarea></br>
+在后台代码中可以通过System.getProperty("cc.root")获取到web项目的绝对物理路径。如果旧项目要使用这个，请将上述配置文件放到web.xml中。
+					</p>
+
+				</li>
+			</ol>
+
+			<h2>版本号：0.91</h2>
+			<ol>
+			    <li>
+				    <h3>baseWeb版本说明：</h3>
+					<p>
+						1：为动态建表模块增加了一些改动，但不会影响原先的功能<br/>
+						2：验证组件增加方法：magican(obj)为obj控件增加平台样式效果；magicanForJquery(obj)为jquery对象obj增加平台样式效果<br/>
+						3：对话框js组件修正bug<br/>
+						4：新增动态建表，说明在这里<a href="tables/index.html">动态建表</a><br/>
+						5：新增数据库移植说明，说明在这里<a href="datas/index.html">数据库移植</a><br/>
+						6：新增oracle绿色客户端，说明在这里<a href="oracle/index.html">oracle</a><br/>
+						7：新增平台接口，说明在这里<a href="face/index.html">webservice</a><br/>
+					</p>
+				</li>
+			</ol>
+		    <h2>版本号：0.9</h2>
+			<ol>
+			    <li>
+				    <h3>版本说明：</h3>
+					<p>
+						1：列表页面增加选项“导出excel”<br/>
+						2：修正高级查询存在的问题<br/>
+						3：减少不必要的导入包<br/>
+						4：目前新建模块后自动添加到数据库的功能还是不能用
+					</p>
+				</li>
+			    <li>
+				    <h3>baseWeb更新说明：</h3>
+					<p>
+						1：修正附件上传时可能出现的错误<br/>
+						2：附件模块在新建项目时已经包含，如果不使用可以删掉<br/>
+						3：修正导出excel时因jar包更新导致无法导出的问题，目前使用poi2.5.1
+					</p>
+				</li>
+			</ol>
+		    <h2>版本号：0.8</h2>
+			<ol>
+			    <li>
+				    <h3>版本说明：</h3>
+					<p>
+						1：更新项目时可以备份原来的项目了<br/>
+						2：修复新建项目时config.properties内容不全的问题<br/>
+						3：去除更新、新建项目时struts-config.xml中多余的plugin
+					</p>
+				</li>
+			    <li>
+				    <h3>baseWeb更新说明：</h3>
+					<p>
+						1：附件增加参数：minCount，最少选择个数，默认为0，当少于这个数字时，将提示错误<br/>
+					</p>
+				</li>
+			</ol>
+		    <h2>版本号：0.6-0.7</h2>
+			<ol>
+			    <li>
+				    <h3>版本说明：</h3>
+					<p>
+						1：增加附件生成功能<br/>
+						2：生成list时静态取数的问题
+					</p>
+				</li>
+			    <li>
+				    <h3>baseWeb更新说明：</h3>
+					<p>
+						1：附件无法删除的问题<br/>
+						2：附件上传页面修正<br/>
+						3: 会话过期提醒页面修正<br/>
+						4: 列表页面的”最后一页“图片看不见的问题
+					</p>
+				</li>
+			</ol>
+			<h2>版本号：0.5</h2>
+			<ol>
+			    <li>
+				    <h3>版本说明：</h3>
+					<p>
+						1：当验证规则中有isWarn=true时，M对象onCheck必须有lhgAlert等提示方式<br/>
+						2：当引用lhgdialog时引入必须的js
+					</p>
+				</li>
+			</ol>
+		    <h2>版本号：0.4</h2>
+			<ol>
+			    <li>
+				    <h3>版本说明：</h3>
+					<p>
+						生成模块后可以添加到数据库中，分配资源即可访问
+					</p>
+				</li>
+			</ol>
+		    <h2>版本号：0.2-0.3</h2>
+			<ol>
+			    <li>
+				    <h3>版本说明：</h3>
+					<p>
+						1:修正bug若干</br>
+						2:生成完毕后显示访问地址</br>
+					</p>
+				</li>
+			    <li>
+				    <h3>baseWeb：</h3>
+					<p>
+						1:修正classPath</br>
+						2:默认使用jdk1.6.25，其他版本请自行修改</br>
+					</p>
+				</li>
+			</ol>
+		    <h2>版本号：0.1</h2>
+			<ol>
+			    <li>
+				    <h3>版本说明：</h3>
+					<p>
+						1:修改模块、数据库连接没有实现</br>
+						2:showaction的customSelect方法没有添加默认排序，请自行添加</br>
+						3:取数时暂时不支持动态取数方式</br>
+						4:暂时没有实现多选框、单选框的显示方式</br>
+						4:高级查询功能暂时没有实现</br>
+					</p>
+				</li>
+				<li>
+				    <h3>基本使用指南</h3>
+					<p>
+						1:只需要在config.ini中配置服务器路径就能使用，比如</br>
+						  path=http://127.0.0.1:8080
+					</p>
+				</li>
+			</ol>
+
+
+
+		</div>
+		<div class="line">&nbsp;</div>
+
+
+	</div>
+		<script type="text/javascript">prettyPrint();</script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+.msgBar-container {
+	width:450px;
+	position:fixed
+}
+.top-right {
+	top:10px;
+	right:15px
+}
+.bottom-right {
+	bottom:10px;
+	right:15px
+}
+.top-left {
+	top:10px;
+	left:15px
+}
+.bottom-left {
+	bottom:10px;
+	left:15px
+}
+.top-center {
+	top:10px;
+	left:50%;
+	margin-left:-150px
+}
+.bottom-center {
+	bottom:10px;
+	left:50%;
+	margin-left:-150px
+}
+.center-center{
+	left:50%;
+	margin-left:-150px;
+	top:50%;
+}
+.msgBar {
+	background:#BBB url(../images/msgBar_header.png) repeat-x 0 0;
+	border:1px solid #999;
+	font-size:12px;
+	font-family:"Î¢ÈíÑÅºÚ";
+	color:#FFF;
+	display:block;
+	padding:10px 30px 10px 15px;
+	margin-bottom:1.5em;
+	position:relative;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	z-index: 9999;
+}
+.msgBar .icon {
+	background-repeat:no-repeat;
+	background-position:0 0;
+	width:24px;
+	height:24px;
+	position:absolute;
+	left:11px;
+	top:10px;
+	font-weight:bold;
+	font-size:10px;
+	padding:5px
+}
+.msgBar.success .icon {
+	background-image:url(../images/msgBar_success.png)
+}
+.msgBar.info .icon {
+	background-image:url(../images/msgBar_info.png)
+}
+.msgBar.warning .icon {
+	background-image:url(../images/msgBar_warning.png)
+}
+.msgBar.error .icon {
+	background-image:url(../images/msgBar_error.png)
+}
+.msgBar .close {
+	font-size:11px;
+	font-weight:bold;
+	position:absolute;
+	right:15px;
+	top:9px;
+	cursor:pointer
+}
+.msgBar.warning {
+	background-color:#E6BA01;
+	border-color:#AC9207;
+	padding-left:45px
+}
+.msgBar.error {
+	background-color:#AF4434;
+	border-color:#782E25;
+	padding-left:45px
+}
+.msgBar.info {
+	background-color:#437ECC;
+	border-color:#224F91;
+	padding-left:45px
+}
+.msgBar.success {
+	background-color:#7B9534;
+	border-color:#627036;
+	padding-left: 45px
+}

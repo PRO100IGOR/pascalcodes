@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>tab选项卡</title>
+	<link href="../index.css" type="text/css" rel="stylesheet"/>
+	<link href="../prettify/prettify.css" type="text/css" rel="stylesheet"/>
+	<script type="text/javascript" src="../prettify/prettify.js"></script>
+</head>
+
+<body>
+    <div class="container">
+		<div class="line">&nbsp;</div>
+		<div class="lhgdg_body">
+		    <h2>tab选项卡</h2>
+			<ol>
+			    <li>
+					 <h3>引入resource/base/js/layout/tab/tab.js<h3/>
+					 这是一个jquery插件，首先要保证页面页面上有一个tab容器，如<br/><br/> div id="getData" div>
+				</li>
+				<pre class="prettyprint">
+/**
+* 参数的最小单位：{title:"页面1",html:"页面1的内容"}或者{title:"页面1",url:"页面1的地址"}
+* 当参数是上面两种json对象中的一个时，表示给这个div添加一个选项卡， 返回选项卡本身
+* 当参数是以上对象的数组时，表示给这个div添加多个选项卡 返回选项卡本身
+* 当参数是空时，表示初始化选项卡 返回选项卡本身
+* 当参数是 数字时，表示显示已有选项卡中下标为参数的选项卡 返回选项卡本身
+* 当参数是now时，返回当前显示的选项卡对象，对象的属性是title、html、url、index，即之前传入的对象，不过加了个index的属性，这个对象有个方法getWindow,获取到其frame中的window对象。
+* 当参数是window时，返回当前显示的选项卡的frame的window对象
+* 当参数是next时，表示选项卡向下移一位 返回选项卡本身
+* 当参数是prev时，表示选项卡向上移一位 返回选项卡本身
+* 当参数是start时，表示自动跳转，默认2秒一次，如果需要其他时间，请 tab("start",5000) 返回选项卡本身
+* 当参数是stop时，表示停止自动跳转 返回选项卡本身
+**/
+
+例1：
+$("#getData").
+	tab([
+		{title:"bs消息缓存",url:"www.baidu.com"},
+		{title:"不订阅短信",url:"www.qq.com"}
+	]).tab(
+		{title:"安卓令牌",url:"www.17173.com"}
+	).tab("start").tab("stop").tab("now");
+$("#getData").tab("window");
+$("#getData").tab("next").tab("prev").tab(0).tab(1);
+
+例2：
+$("#main").tab([ {
+	title : "基本设置",
+	html : $("#base")
+}, {
+	title : "短信猫设置",
+	html : $("#sms")
+}, {
+	title : "安卓推送设置",
+	html : $("#android")
+} ]).tab();
+
+				</pre>
+			</ol>
+		</div>
+		<div class="line">&nbsp;</div>
+	</div>
+	<script type="text/javascript">prettyPrint();</script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2009-12-23 14:00:12.140.pas,E:\qch\iteqch_Code\toledo8142proplusdll\Unit1.pas=E:\qch\iteqch_Code\toledo8142proplusdll\ipserialLoad.pas</Transaction>
+    <Transaction>2009-12-23 15:41:07.531.pas,E:\qch\iteqch_Code\toledo8142proplusdll\ipserialLoad.pas=</Transaction>
+    <Transaction>2010-01-06 16:35:20.765.bdsproj,E:\qch\iteqch_Code\ICS465C_meter_dll\toledo8142proplus.bdsproj=E:\qch\iteqch_Code\ICS465C_meter_dll\ics465c_meter.bdsproj</Transaction>
+    <Transaction>2010-01-06 16:35:43.843.pas,E:\qch\iteqch_Code\ICS465C_meter_dll\toledo8142proplusThread.pas=E:\qch\iteqch_Code\ICS465C_meter_dll\ics465cThread.pas</Transaction>
+  </Transactions>
+</BorlandProject>

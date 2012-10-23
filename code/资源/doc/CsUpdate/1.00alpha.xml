@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="gb2312"?>
+<updates><version>1.0 alpha</version><time>2012-07-26 16:50</time><explains><explain>1:平台版本升级为1.0 alpha</explain><explain>2:代码生成器升级支持新版本平台,并保留老版本模版选择</explain></explains><files><file action="u">code.exe</file></files></updates>

@@ -1,0 +1,943 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title> New Document </title>
+ <link href="table.css" rel="stylesheet" type="text/css"/>
+  <link href="../style.css" rel="stylesheet" type="text/css"/>
+
+ <link href="../box/box.css" rel="stylesheet" type="text/css"/>
+
+ <script type="text/javascript" src="../jquery.js"></script>
+ <script type="text/javascript" src="../box/box.js"></script>
+
+ <script type="text/javascript" src="table.js"></script>
+<script type="text/javascript">
+<!--
+$(window).load(function(){
+	
+});
+//-->
+</script>
+
+
+ </head>
+ <body>
+	<div class="box2" panelTitle="基本用法" roller="true">
+首先引入脚本和CSS
+<textarea class="code">
+<script type="text/javascript" src="../jquery-1.4.js"></script>	
+<!--基本表格（分离版）start-->
+<link href="skins/style.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="js/table_split.js"></script>
+<!--基本表格（分离版）end-->
+</textarea>
+<pre></pre>				
+	然后将table的class设为tableStyle就会产生一个基本表格，该表格默认自适应容器宽度、每行交替变色、鼠标移入某行变色、单行选中变色。点击表头会取消选中的行。
+	<table class="tableStyle" id="cc" formMode="true" footer="normal" >
+		<tr>
+			<td>张小三</td><td>男</td><td>25</td>
+		</tr>
+		<tr>
+			<td>张小三</td><td>男</td><td>25</td>
+		</tr>
+		<tr>
+			<td>张小三</td><td>男</td><td>25</td>
+		</tr>
+		<tr>
+			<td>张小三</td><td>男</td><td>25</td>
+		</tr>
+	</table>
+	代码如下：（注意表头使用的是th标签）
+<textarea class="code">
+<table class="tableStyle">
+	<tr>
+		<th>姓名</th><th>性别</th><th>年龄</th>
+	</tr>
+	<tr>
+		<td>张小三</td><td>男</td><td>25</td>
+	</tr>
+	<tr>
+		<td>张小三</td><td>男</td><td>25</td>
+	</tr>
+	<tr>
+		<td>张小三</td><td>男</td><td>25</td>
+	</tr>
+	<tr>
+		<td>张小三</td><td>男</td><td>25</td>
+	</tr>
+</table>
+</textarea>
+<pre></pre>
+		</div>
+		
+		<div class="box2" panelTitle="属性说明" roller="true">
+	基本表格有一些属性用来自定义外观：<br />		
+	<table class="tableStyle" >
+		<tr>
+			<th>属性名</th><th>默认值</th><th>属性说明</th>
+		</tr>
+		<tr>
+			<td>useColor</td><td>true</td><td>为false表示每行不会交替变色</td>
+		</tr>
+		<tr>
+			<td>useHover</td><td>true</td><td>为false表示不会产生鼠标移入行变色效果</td>
+		</tr>
+		<tr>
+			<td>useClick</td><td>true</td><td>为false表示不会产生点击单行变色效果</td>
+		</tr>
+		<tr>
+			<td>useRadio</td><td>false</td><td>为true表示采用radio单行点击变色模式。当表格第一列中有radio时默认为true</td>
+		</tr>
+		<tr>
+			<td>useMultColor</td><td>false</td><td>为true表示可以多行点击变色</td>
+		</tr>
+		<tr>
+			<td>useCheckBox</td><td>false</td><td>为true表示采用checkbox多行点击变色模式。当表格第一列中有checkbox时默认为true</td>
+		</tr>
+		<tr>
+			<td>sortMode</td><td>false</td><td>为true表示表格采用排序模式（表头外观会有一些变化）</td>
+		</tr>
+		<tr>
+			<td>formMode</td><td>false</td><td>为true表示表格采用表单布局模式（间距和对齐会有些变化，并取消变色）</td>
+		</tr>
+		<tr>
+			<td>transMode</td><td>false</td><td>也是一种表单布局模式，间距和对齐与formMode相同，不同的是表格无边框和背景色</td>
+		</tr>
+	</table>			
+	</div>
+
+	<div class="box2" panelTitle="取消变色效果" roller="true">
+下面的表格是将所有变色效果都设为false的效果：<br />
+	<table class="tableStyle" useColor="false" useHover="false" useClick="false">
+		<tr>
+			<th>姓名</th><th>性别</th><th>年龄</th>
+		</tr>
+		<tr>
+			<td>张小三</td><td>男</td><td>25</td>
+		</tr>
+		<tr>
+			<td>张小三</td><td>男</td><td>25</td>
+		</tr>
+		<tr>
+			<td>张小三</td><td>男</td><td>25</td>
+		</tr>
+		<tr>
+			<td>张小三</td><td>男</td><td>25</td>
+		</tr>
+	</table>
+	代码如下：
+<textarea class="code">
+<table class="tableStyle" useColor="false" useHover="false" useClick="false">
+	<tr>
+		<th>姓名</th><th>性别</th><th>年龄</th>
+	</tr>
+	<tr>
+		<td>张小三</td><td>男</td><td>25</td>
+	</tr>
+	<tr>
+		<td>张小三</td><td>男</td><td>25</td>
+	</tr>
+	<tr>
+		<td>张小三</td><td>男</td><td>25</td>
+	</tr>
+	<tr>
+		<td>张小三</td><td>男</td><td>25</td>
+	</tr>
+</table>
+</textarea>
+<pre></pre>
+	</div>
+
+	<div class="box2" panelTitle="点击多行变色" roller="true">
+下面的表格实现了点击多行变色（点击某行选中，再点击同一行取消选中）：
+	<table class="tableStyle" useMultColor="true">
+		<tr>
+			<th>姓名</th><th>性别</th><th>年龄</th>
+		</tr>
+		<tr>
+			<td>张小三</td><td>男</td><td>25</td>
+		</tr>
+		<tr>
+			<td>张小三</td><td>男</td><td>25</td>
+		</tr>
+		<tr>
+			<td>张小三</td><td>男</td><td>25</td>
+		</tr>
+		<tr>
+			<td>张小三</td><td>男</td><td>25</td>
+		</tr>
+	</table>
+	代码如下：
+<textarea class="code">
+<table class="tableStyle" useMultColor="true">
+	<tr>
+		<th>姓名</th><th>性别</th><th>年龄</th>
+	</tr>
+	<tr>
+		<td>张小三</td><td>男</td><td>25</td>
+	</tr>
+	<tr>
+		<td>张小三</td><td>男</td><td>25</td>
+	</tr>
+	<tr>
+		<td>张小三</td><td>男</td><td>25</td>
+	</tr>
+	<tr>
+		<td>张小三</td><td>男</td><td>25</td>
+	</tr>
+</table>
+</textarea>
+<pre></pre>
+	</div>
+	
+	<div class="box2" panelTitle="radio单行变色模式" roller="true">
+下面的表格第一列含radio，默认采用了radio单选模式，使用radio会有两个额外的功能。<br />
+1、初始化时如果某个radio默认是选中的，则该行默认就变色了；<br />
+2、点击某一行（鼠标不一定在radio上）在该行变色的同时radio也被选中 <br />
+注意：如果不想使用radio单选模式请设置useRadio="false"<br />
+	<script>
+		function getRadioLine(){
+			var msg="";
+			msg=$("#radioTable input[type=radio]").filter("[checked=true]").val();
+			alert(msg);
+		}
+		function getCheckBoxLine(){
+			var msg="";
+			$("#checkboxTable input[type=checkbox]").each(function(){
+				if($(this).attr("checked")){
+					msg=msg+","+$(this).val()
+				}
+			})
+			if(msg==""){
+				msg="无选择"
+			}
+			alert(msg);
+		}
+	</script>
+	<table class="tableStyle" id="radioTable">
+		<tr>
+			<th width="30"></th><th>姓名</th><th>性别</th><th>年龄</th>
+		</tr>
+		<tr>
+			<td><input type="radio" name="ra" value="1"/></td><td>张小三</td><td>男</td><td>25</td>
+		</tr>
+		<tr>
+			<td><input type="radio" name="ra" checked="checked" value="2"/></td><td>张小三</td><td>男</td><td>25</td>
+		</tr>
+		<tr>
+			<td><input type="radio" name="ra" value="3"/></td><td>张小三</td><td>男</td><td>25</td>
+		</tr>
+		<tr>
+			<td><input type="radio" name="ra" value="4"/></td><td>张小三</td><td>男</td><td>25</td>
+		</tr>
+	</table>
+	<input type="button" value="获得选中项" onclick="getRadioLine()"/>
+	<br/>代码如下：
+<textarea class="code">
+<table class="tableStyle" id="radioTable">
+	<tr>
+		<th width="30"></th><th>姓名</th><th>性别</th><th>年龄</th>
+	</tr>
+	<tr>
+		<td><input type="radio" name="ra" value="1"/></td><td>张小三</td><td>男</td><td>25</td>
+	</tr>
+	<tr>
+		<td><input type="radio" name="ra" checked="checked" value="2"/></td><td>张小三</td><td>男</td><td>25</td>
+	</tr>
+	<tr>
+		<td><input type="radio" name="ra" value="3"/></td><td>张小三</td><td>男</td><td>25</td>
+	</tr>
+	<tr>
+		<td><input type="radio" name="ra" value="4"/></td><td>张小三</td><td>男</td><td>25</td>
+	</tr>
+</table>
+<input type="button" value="获得选中项" onclick="getRadioLine()"/>
+</textarea>
+<pre></pre>
+获取值函数
+<textarea class="code">
+function getRadioLine(){
+	var msg;
+	msg=$("#radioTable input[type=radio]").filter("[checked=true]").val();
+	alert(msg);
+}
+</textarea>
+<pre></pre>
+
+	</div>
+	
+	<div class="box2" panelTitle="checkbox多行变色模式" roller="true">
+下面的表格第一列含checkbox，所以默认采用了checkbox多选模式，使用checkbox会有3个额外的功能。<br />
+1、初始化时如果某些checkbox默认是选中的，则相应的行默认就变色了；<br />
+2、点击某一行的checkbox上该行变色<br />
+3、可全选checkbox，则所有表格的行都变色<br />
+	<table class="tableStyle" id="checkboxTable">
+		<tr>
+			<th width="30"></th><th>姓名</th><th>性别</th><th>年龄</th>
+		</tr>
+		<tr>
+			<td><input type="checkbox" checked="checked" value="1"/></td><td>张小三</td><td>男</td><td>25</td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" checked="checked" value="2"/></td><td>张小三</td><td>男</td><td>25</td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" value="3"/></td><td>张小三</td><td>男</td><td>25</td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" value="4"/></td><td>张小三</td><td>男</td><td>25</td>
+		</tr>
+	</table>
+	<input type="button" value="获得选中项" onclick="getCheckBoxLine()"/>
+	<br/>注意：当表格第一列中有checkbox时表格会自动变为checkbox多行变色模式。并且在表头第一列插入一个用于全选的图标。原来表头第一列的内容将被清空。
+	所以采用这种模式时最好不要在表头第一列插入元素或js代码等。<br/>
+	如果不想使用checkbox多选模式，请设置useCheckBox="false"
+	<br/>代码如下：
+<textarea class="code">
+<table class="tableStyle" id="checkboxTable">
+	<tr>
+		<th width="30"></th><th>姓名</th><th>性别</th><th>年龄</th>
+	</tr>
+	<tr>
+		<td><input type="checkbox" checked="checked" value="1"/></td><td>张小三</td><td>男</td><td>25</td>
+	</tr>
+	<tr>
+		<td><input type="checkbox" checked="checked" value="2"/></td><td>张小三</td><td>男</td><td>25</td>
+	</tr>
+	<tr>
+		<td><input type="checkbox" value="3"/></td><td>张小三</td><td>男</td><td>25</td>
+	</tr>
+	<tr>
+		<td><input type="checkbox" value="4"/></td><td>张小三</td><td>男</td><td>25</td>
+	</tr>
+</table>
+<input type="button" value="获得选中项" onclick="getCheckBoxLine()"/>
+</textarea>
+<pre></pre>
+获取值函数
+<textarea class="code">
+function getCheckBoxLine(){
+	var msg="";
+	$("#checkboxTable input[type=checkbox]").each(function(){
+		if($(this).attr("checked")){
+			msg=msg+","+$(this).val()
+		}
+	})
+	if(msg==""){
+		msg="无选择"
+	}
+	alert(msg);
+}
+</textarea>
+<pre></pre>
+	</div>
+	
+	<script>
+		function sortTest(){
+			$("#sort1").removeClass("sort_off")
+			$("#sort1").removeClass("sort_up")
+			$("#sort1").addClass("sort_down")
+		}
+		function sortTest2(){
+			$("#sort1").removeClass("sort_off")
+			$("#sort1").removeClass("sort_down")
+			$("#sort1").addClass("sort_up")
+		}
+		function sortTest3(){
+			$("#sort1").removeClass("sort_down")
+			$("#sort1").removeClass("sort_up")
+			$("#sort1").addClass("sort_off")
+		}
+	</script>
+	<div class="box2" panelTitle="排序模式" roller="true">
+	排序的功能要在服务器端完成。通过点击某列的表头向服务器传送排序字段，然后重定向本页。这里展示排序时表格该有的效果。<br />
+	<table class="tableStyle" sortMode="true">
+		<tr>
+			<th><span id="sort1">姓名</span></th><th><span id="sort2">性别</span></th><th><span id="sort3">年龄</span></th>
+		</tr>
+		<tr>
+			<td>张小三</td><td>男</td><td>25</td>
+		</tr>
+		<tr>
+			<td>张小三</td><td>男</td><td>25</td>
+		</tr>
+		<tr>
+			<td>张小三</td><td>男</td><td>25</td>
+		</tr>
+		<tr>
+			<td>张小三</td><td>男</td><td>25</td>
+		</tr>
+	</table>
+	<br />
+	<input type="button" value="排序模拟(降序)" onclick="sortTest()"/>
+	<input type="button" value="排序模拟(升序)" onclick="sortTest2()"/>
+	<input type="button" value="取消排序模拟" onclick="sortTest3()"/>
+	<br />对table设置了sortMode="true"并将th中加入span标签，那么就会在表头出现排序箭头，箭头样式为灰色双向表示还未排序。并且鼠标移入表头会有变化，表示可以点击。表格代码如下：
+<textarea class="code">
+<table class="tableStyle" sortMode="true">
+	<tr>
+		<th><span id="sort1">姓名</span></th>
+		<th><span id="sort2">性别</span></th>
+		<th><span id="sort3">年龄</span></th>
+	</tr>
+	<tr>
+		<td>张小三</td><td>男</td><td>25</td>
+	</tr>
+	<tr>
+		<td>张小三</td><td>男</td><td>25</td>
+	</tr>
+	<tr>
+		<td>张小三</td><td>男</td><td>25</td>
+	</tr>
+	<tr>
+		<td>张小三</td><td>男</td><td>25</td>
+	</tr>
+</table>
+</textarea>
+<pre></pre>	
+
+	当第一次点击某一列时（例如点击第一列），向服务器传送排序字段和点击的span标签的id（如sort1），并告知以降序的方式排序。服务器把排序后的结果返回，该页进行刷新。
+	这时应在初始化函数中设置箭头为下箭头样式。实际代码如下：
+<textarea class="code">
+$("document").ready(function(){
+	$("#sort1").removeClass("sort_off")
+	$("#sort1").addClass("sort_down")
+})
+</textarea>
+<pre></pre>	
+
+即删除sort1的sort_off样式，添加sort_down样式。点击模拟排序的按钮的处理函数稍稍有些不同（因为是模拟，实际使用以上面的代码为准）<br />
+
+
+	当第二次点击该列时，告知以升序的方式排序，初始化函数中设置箭头为上箭头样式。实际代码如下：
+<textarea class="code">
+$("document").ready(function(){
+	$("#sort1").removeClass("sort_off")
+	$("#sort1").addClass("sort_up")
+})
+</textarea>
+<pre></pre>	
+	
+即删除sort1的sort_off样式，添加sort_up样式。无需考虑上一次添加的sort_down样式，因为页面一旦刷新，sort_down样式自动会清除。<br />
+点击模拟排序的按钮的处理函数稍稍有些不同（因为是模拟，实际使用以上面的代码为准）<br />
+
+	当第三次点击该列时，取消排序。服务器把结果返回即可。无需设置样式。
+
+	
+	</div>
+	
+	<div class="box2" panelTitle="表单布局模式" panelWidth="800">
+	<table class="tableStyle" formMode="true">
+		<tr>
+			<th colspan="4">表单填写</th>
+		</tr>
+		<tr>
+			<td width="15%">姓名：</td><td width="35%"><input type="text"/></td>
+			<td width="15%">曾用名：</td><td><input type="text"/></td>
+		</tr>
+		<tr>
+			<td>上传附件：</td><td><input type="file"/></td>
+			<td>上传文档：</td><td><input type="file"/></td>
+		</tr>
+		<tr>
+			<td colspan="4">
+				<input type="submit" value=" 提 交 "/>
+				<input type="reset" value=" 重 置 "/>
+			</td>
+		</tr>
+	</table>
+	formMode模式的表格禁用了变色功能，表头居中，奇数列右对齐、偶数列左对齐，行高度变大。
+	代码如下：
+<textarea class="code">
+<table class="tableStyle" formMode="true">
+	<tr>
+		<th colspan="4">表单填写</th>
+	</tr>
+	<tr>
+		<td width="15%">姓名：</td><td width="35%"><input type="text"/></td>
+		<td width="15%">曾用名：</td><td><input type="text"/></td>
+	</tr>
+	<tr>
+		<td>上传附件：</td><td><input type="file"/></td>
+		<td>上传文档：</td><td><input type="file"/></td>
+	</tr>
+	<tr>
+		<td colspan="4">
+			<input type="submit" value=" 提 交 "/>
+			<input type="reset" value=" 重 置 "/>
+		</td>
+	</tr>
+</table>
+</textarea>
+<pre></pre>
+	表尾默认会居中，还可以通过footer来控制位置。可选参数为：left right center normal<br />
+	例如如果表格里的表单没有提交按钮，就会出现下面的效果：
+<table class="tableStyle" formMode="true">
+	<tr>
+		<th colspan="4">表单填写</th>
+	</tr>
+	<tr>
+		<td width="15%">姓名：</td><td width="35%"><input type="text"/></td>
+		<td width="15%">曾用名：</td><td><input type="text"/></td>
+	</tr>
+	<tr>
+		<td width="15%">姓名：</td><td width="35%"><input type="text"/></td>
+		<td width="15%">曾用名：</td><td><input type="text"/></td>
+	</tr>
+	<tr>
+		<td>上传附件：</td><td><input type="file"/></td>
+		<td>上传文档：</td><td><input type="file"/></td>
+	</tr>
+</table>	
+	这是因为formMode模式表尾自动会居中。这是需要设置footer="normal"来实现与其他行一样的奇数列右对齐、偶数列左对齐。代码如下：
+<textarea class="code">
+<table class="tableStyle" formMode="true" footer="normal">
+	<tr>
+		<th colspan="4">表单填写</th>
+	</tr>
+	<tr>
+		<td width="15%">姓名：</td><td width="35%"><input type="text"/></td>
+		<td width="15%">曾用名：</td><td><input type="text"/></td>
+	</tr>
+	<tr>
+		<td width="15%">姓名：</td><td width="35%"><input type="text"/></td>
+		<td width="15%">曾用名：</td><td><input type="text"/></td>
+	</tr>
+	<tr>
+		<td>上传附件：</td><td><input type="file"/></td>
+		<td>上传文档：</td><td><input type="file"/></td>
+	</tr>
+</table>
+</textarea>
+<pre></pre>	
+	效果：
+<table class="tableStyle" formMode="true" footer="normal">
+	<tr>
+		<th colspan="4">表单填写</th>
+	</tr>
+	<tr>
+		<td width="15%">姓名：</td><td width="35%"><input type="text"/></td>
+		<td width="15%">曾用名：</td><td><input type="text"/></td>
+	</tr>
+	<tr>
+		<td width="15%">姓名：</td><td width="35%"><input type="text"/></td>
+		<td width="15%">曾用名：</td><td><input type="text"/></td>
+	</tr>
+	<tr>
+		<td>上传附件：</td><td><input type="file"/></td>
+		<td>上传文档：</td><td><input type="file"/></td>
+	</tr>
+</table>	
+	<br /><br />
+	
+	</div>
+	
+	
+	<script>
+function addNewRow(){
+	var $tr=$("<tr><td><input type='checkbox' checked='checked'/></td><td>张小四</td><td>女</td><td>24</td></tr>");
+	$("#checkboxTable2").append($tr); 
+	tableRefresh("checkboxTable2")
+}
+function addNewTable(){
+	var $table=$("<table class='tableStyle'><tr><th width='30'></th><th>姓名</th><th>性别</th><th>年龄</th></tr><tr><td><input type='checkbox'/></td><td>张小四</td><td>女</td><td>24</td></tr><tr><td><input type='checkbox'/></td><td>张小四</td><td>女</td><td>24</td></tr></table>");
+	$("#tableCon").append($table); 
+	tableRefresh($table)
+}
+	</script>
+	<div class="box2" panelTitle="动态新增表格" roller="true">
+		<table class="tableStyle" id="checkboxTable2">
+		<tr>
+			<th width="30"></th><th>姓名</th><th>性别</th><th>年龄</th>
+		</tr>
+		<tr>
+			<td><input type="checkbox" checked="checked" value="1"/></td><td>张小三</td><td>男</td><td>25</td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" checked="checked" value="2"/></td><td>张小三</td><td>男</td><td>25</td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" value="3"/></td><td>张小三</td><td>男</td><td>25</td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" value="4"/></td><td>张小三</td><td>男</td><td>25</td>
+		</tr>
+		</table>
+		<br /><input type="button" value="新增表格行" onclick="addNewRow()"/>
+		若要动态新增行或者动态创建表格，需要在最后调用tableRefresh(表格id或表格的jquery对象)进行重新渲染。<br />
+		上例新增行JS代码：
+<textarea class="code">
+function addNewRow(){
+	var $tr=$("<tr><td><input type='checkbox'/></td><td>张小四</td><td>女</td><td>24</td></tr>");
+	$("#checkboxTable2").append($tr); 
+	tableRefresh("checkboxTable2")
+}
+</textarea>
+<pre></pre>	
+如果是动态创建一个新表格，示例如下：<br />
+<input type="button" value="创建新表格" onclick="addNewTable()"/>		
+<div id="tableCon"></div>
+JS代码：
+<textarea class="code">
+function addNewTable(){
+	var $table=$("<table class='tableStyle'><tr><th width='30'></th><th>姓名</th><th>性别</th><th>年龄</th></tr><tr><td><input type='checkbox'/></td><td>张小四</td><td>女</td><td>24</td></tr><tr><td><input type='checkbox'/></td><td>张小四</td><td>女</td><td>24</td></tr></table>");
+	$("#tableCon").append($table); 
+	tableRefresh($table)
+}
+</textarea>
+<pre></pre>		
+	
+	
+	</div>
+	
+	<div class="box2" panelTitle="多表头表格">
+		双表头：<br/>
+		<table class="tableStyle" useCheckBox="true" useMultColor="true">
+		<tr>
+			<th rowspan="2" class="th_m2" ></th>
+			<th colspan="2" class="th_m" >第一组</th>
+			<th colspan="3" class="th_m" >第二组</th>
+			<th colspan="2" class="th_m" >第三组</th>
+		</tr>
+		<tr>
+			
+			<th width="10%" class="th_m">性别</th>
+			<th width="5%" class="th_m">年龄</th>
+			<th width="20%" class="th_m">工作</th>
+			<th width="15%" class="th_m">联系方式</th>
+			<th width="20%" class="th_m">住址</th>
+			<th width="10%" class="th_m">婚姻状况</th>
+			<th width="10%" class="th_m">操作</th>
+		</tr>
+		<tr>
+			<td width="5%"><input type="checkbox" checked="checked" value="1"/></td>
+			<td>男</td>
+			<td>25</td>
+			<td>
+				<span class="float_left">软件设计师</span>
+				<span class="img_light" title="这里展示的提示信息，放置用于解释说明的文字。这里展示的提示信息，放置用于解释说明的文字。这里展示的提示信息，放置用于解释说明的文字。"></span>
+			</td>
+			<td>15012546548</td>
+			<td>
+				<span class="text_slice" style="width:200px;" title="这是一段很长的文字，当容器放不下则会出现省略号。这是一段很长的文字，当容器放不下则会出现省略号。这是一段很长的文字，当容器放不下则会出现省略号。">这是一段很长的文字。</span>
+			</td>
+			<td>已婚</td>
+			<td><span class="img_view hand" title="查看"></span><span class="img_edit hand" title="修改"></span><span class="img_delete hand" title="删除"></span></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" value="2"/></td>
+			<td>男</td>
+			<td>25</td>
+			<td>
+				<span class="float_left">软件设计师</span>
+				<span class="img_light" title="这里展示的提示信息，放置用于解释说明的文字。这里展示的提示信息，放置用于解释说明的文字。这里展示的提示信息，放置用于解释说明的文字。"></span>
+			</td>
+			<td>15012546548</td>
+			<td>天津市和平区</td>
+			<td>已婚</td>
+			<td><span class="img_view hand" title="查看"></span><span class="img_edit hand" title="修改"></span><span class="img_delete hand" title="删除"></span></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" value="3"/></td>
+			<td>男</td>
+			<td>25</td>
+			<td>
+				<span class="float_left">软件设计师</span>
+				<span class="img_light" title="这里展示的提示信息，放置用于解释说明的文字。这里展示的提示信息，放置用于解释说明的文字。这里展示的提示信息，放置用于解释说明的文字。"></span>
+			</td>
+			<td>15012546548</td>
+			<td>天津市和平区</td>
+			<td>已婚</td>
+			<td><span class="img_view hand" title="查看"></span><span class="img_edit hand" title="修改"></span><span class="img_delete hand" title="删除"></span></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" value="4"/></td>
+			<td>男</td>
+			<td>25</td>
+			<td>软件设计师</td>
+			<td>15012546548</td>
+			<td>天津市和平区</td>
+			<td>已婚</td>
+			<td><span class="img_view hand" title="查看"></span><span class="img_edit hand" title="修改"></span><span class="img_delete hand" title="删除"></span></td>
+		</tr>
+	</table>
+<textarea class="code">
+<table class="tableStyle" useCheckBox="true" useMultColor="true">
+	<tr>
+		<th rowspan="2" class="th_m2" ></th>
+		<th colspan="2" class="th_m" >第一组</th>
+		<th colspan="3" class="th_m" >第二组</th>
+		<th colspan="2" class="th_m" >第三组</th>
+	</tr>
+	<tr>
+		
+		<th width="10%" class="th_m">性别</th>
+		<th width="5%" class="th_m">年龄</th>
+		<th width="20%" class="th_m">工作</th>
+		<th width="15%" class="th_m">联系方式</th>
+		<th width="20%" class="th_m">住址</th>
+		<th width="10%" class="th_m">婚姻状况</th>
+		<th width="10%" class="th_m">操作</th>
+	</tr>
+	<tr>
+		<td width="5%"><input type="checkbox" checked="checked" value="1"/></td>
+		<td>男</td>
+		<td>25</td>
+		<td>
+			<span class="float_left">软件设计师</span>
+			<span class="img_light" title="这里展示的提示信息，放置用于解释说明的文字。这里展示的提示信息，放置用于解释说明的文字。这里展示的提示信息，放置用于解释说明的文字。"></span>
+		</td>
+		<td>15012546548</td>
+		<td>
+			<span class="text_slice" style="width:200px;" title="这是一段很长的文字，当容器放不下则会出现省略号。这是一段很长的文字，当容器放不下则会出现省略号。这是一段很长的文字，当容器放不下则会出现省略号。">这是一段很长的文字当容器放不下则会出现省略号。</span>
+		</td>
+		<td>已婚</td>
+		<td><span class="img_view hand" title="查看"></span><span class="img_edit hand" title="修改"></span><span class="img_delete hand" title="删除"></span></td>
+	</tr>
+	<tr>
+		<td><input type="checkbox" value="2"/></td>
+		<td>男</td>
+		<td>25</td>
+		<td>
+			<span class="float_left">软件设计师</span>
+			<span class="img_light" title="这里展示的提示信息，放置用于解释说明的文字。这里展示的提示信息，放置用于解释说明的文字。这里展示的提示信息，放置用于解释说明的文字。"></span>
+		</td>
+		<td>15012546548</td>
+		<td>天津市和平区</td>
+		<td>已婚</td>
+		<td><span class="img_view hand" title="查看"></span><span class="img_edit hand" title="修改"></span><span class="img_delete hand" title="删除"></span></td>
+	</tr>
+	<tr>
+		<td><input type="checkbox" value="3"/></td>
+		<td>男</td>
+		<td>25</td>
+		<td>
+			<span class="float_left">软件设计师</span>
+			<span class="img_light" title="这里展示的提示信息，放置用于解释说明的文字。这里展示的提示信息，放置用于解释说明的文字。这里展示的提示信息，放置用于解释说明的文字。"></span>
+		</td>
+		<td>15012546548</td>
+		<td>天津市和平区</td>
+		<td>已婚</td>
+		<td><span class="img_view hand" title="查看"></span><span class="img_edit hand" title="修改"></span><span class="img_delete hand" title="删除"></span></td>
+	</tr>
+	<tr>
+		<td><input type="checkbox" value="4"/></td>
+		<td>男</td>
+		<td>25</td>
+		<td>软件设计师</td>
+		<td>15012546548</td>
+		<td>天津市和平区</td>
+		<td>已婚</td>
+		<td><span class="img_view hand" title="查看"></span><span class="img_edit hand" title="修改"></span><span class="img_delete hand" title="删除"></span></td>
+	</tr>
+</table>
+</textarea>
+<pre></pre>		
+	<br/><br/>
+	三表头：<br/>
+	<table  class="tableStyle" useCheckBox="true" useMultColor="true">
+  <tr> 
+    <th rowspan="3" class="th_m3"></td>
+    <th colspan="4" class="th_m">星期一</th>
+    <th colspan="4" class="th_m">星期二</th>
+    <th colspan="4" class="th_m">星期三</th>
+  </tr>
+  <tr> 
+    <th colspan="2" class="th_m">上午</th>
+    <th colspan="2" class="th_m">下午</th>
+    <th colspan="2" class="th_m">上午</th>
+    <th colspan="2" class="th_m">下午</th>
+    <th colspan="2" class="th_m">上午</th>
+    <th colspan="2" class="th_m">下午</th>
+  </tr>
+  <tr> 
+    <th class="th_m">第1节</th>
+    <th class="th_m">第2节</th>
+    <th class="th_m">第3节</th>
+    <th class="th_m">第4节</th>
+    <th class="th_m">第1节</th>
+    <th class="th_m">第2节</th>
+    <th class="th_m">第3节</th>
+    <th class="th_m">第4节</th>
+    <th class="th_m">第1节</th>
+    <th class="th_m">第2节</th>
+    <th class="th_m">第3节</th>
+    <th class="th_m">第4节</th>
+  </tr>
+  <tr> 
+    <td><input type="checkbox" value="3"/></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr> 
+    <td><input type="checkbox" value="3"/></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr> 
+    <td><input type="checkbox" value="3"/></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr> 
+    <td><input type="checkbox" value="3"/></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<textarea class="code">
+<table  class="tableStyle" useCheckBox="true" useMultColor="true">
+  <tr> 
+    <th rowspan="3" class="th_m3"></td>
+    <th colspan="4" class="th_m">星期一</th>
+    <th colspan="4" class="th_m">星期二</th>
+    <th colspan="4" class="th_m">星期三</th>
+  </tr>
+  <tr> 
+    <th colspan="2" class="th_m">上午</th>
+    <th colspan="2" class="th_m">下午</th>
+    <th colspan="2" class="th_m">上午</th>
+    <th colspan="2" class="th_m">下午</th>
+    <th colspan="2" class="th_m">上午</th>
+    <th colspan="2" class="th_m">下午</th>
+  </tr>
+  <tr> 
+    <th class="th_m">第1节</th>
+    <th class="th_m">第2节</th>
+    <th class="th_m">第3节</th>
+    <th class="th_m">第4节</th>
+    <th class="th_m">第1节</th>
+    <th class="th_m">第2节</th>
+    <th class="th_m">第3节</th>
+    <th class="th_m">第4节</th>
+    <th class="th_m">第1节</th>
+    <th class="th_m">第2节</th>
+    <th class="th_m">第3节</th>
+    <th class="th_m">第4节</th>
+  </tr>
+  <tr> 
+    <td><input type="checkbox" value="3"/></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr> 
+    <td><input type="checkbox" value="3"/></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr> 
+    <td><input type="checkbox" value="3"/></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr> 
+    <td><input type="checkbox" value="3"/></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+</textarea>
+<pre></pre>	
+
+	</div></body>
+<!--代码高亮start-->
+<script type="text/javascript" src="../code/highlight.js"></script>
+<script type="text/javascript" src="../code/lang-xml.js"></script>
+<script type="text/javascript" src="../code/lang-html.js"></script>
+<link href="../code/style.css" rel="stylesheet" type="text/css"/>
+<link href="../table/style.css" rel="stylesheet" type="text/css"/>
+<script>
+	$(function(){
+			showCode()
+	})
+	function showCode(){
+		$(".code").each(function(){
+			var code =$(this).val()
+			var hl = new DlHighlight({lang: "html",lineNumbers :false });
+			var formatted = hl.doItNow(code);
+			$(this).next().addClass("DlHighlight").html("<pre>" + formatted + "</pre>")
+		})
+	}
+</script>
+<!--代码高亮end-->
+</html>

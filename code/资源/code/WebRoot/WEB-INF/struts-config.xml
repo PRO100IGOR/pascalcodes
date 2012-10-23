@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+
+<struts-config>
+
+	<!-- Data Sources -->
+	<data-sources></data-sources>
+
+	<!-- Form Beans -->
+	<form-beans></form-beans>
+
+	<!-- Global Exceptions -->
+	<global-exceptions>
+	</global-exceptions>
+
+	<!-- Global Forwards -->
+	<global-forwards></global-forwards>
+	<action-mappings>
+	</action-mappings>
+
+	<!-- Message Resources -->
+	<message-resources parameter="applicationResources" />
+	<!-- spring config -->
+	<plug-in className="org.springframework.web.struts.ContextLoaderPlugIn">
+		<set-property property="contextConfigLocation"
+			value="/WEB-INF/applicationContext-hibernate.xml,
+			classpath:springconfig/*.xml,
+			classpath:org/codehaus/xfire/spring/xfire.xml,
+			/WEB-INF/applicationContext-wsc.xml,
+			/WEB-INF/applicationContext-tree.xml
+			" />
+	</plug-in>
+
+	<plug-in className="com.sxsihe.oxhide.spring.InitSpringWebContext"></plug-in>
+
+	<!-- validator config -->
+	<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+		<set-property property="pathnames"
+			value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml" />
+	</plug-in>
+</struts-config>
+
+

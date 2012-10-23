@@ -1,0 +1,326 @@
+.float_left{
+	float:left;
+}
+.float_right{
+	float:right;
+}
+.clear{
+	clear:both;
+}
+.padding5{
+	padding:5px;
+}
+.padding_top4{
+	padding-top:4px;
+}
+/*分页样式*/
+.paging{}
+.paging span{
+	display:block;
+	float:left;
+	margin:0 0 0 5px;
+	font-family: Arial;
+	padding:0!important;
+}
+.paging a{
+	padding:0 6px 0 6px!important;
+	border:solid 1px #cccccc;
+	background-color:#edf7f9;
+	height:19px;
+	line-height:19px;
+}
+.paging a:hover{
+	color:white;
+	text-decoration:none;
+	background-color:#3366cc;/*鼠标悬停背景色*/
+	border:solid 1px #193d84;/*鼠标悬停边框色*/
+}
+.paging_disabled a{
+	color:#cccccc!important;
+	cursor:default!important;
+}
+.paging_disabled a:hover{
+	color:#cccccc!important;
+	background-color:#edf7f9!important;
+	border:solid 1px #cccccc!important;
+}
+.paging_current a{
+	color:white!important;
+	cursor:default!important;
+	background-color:#3366cc!important;/*鼠标悬停背景色*/
+	border:solid 1px #193d84!important;/*鼠标悬停边框色*/
+}
+ /*分页样式*/
+/*基本表格样式*/
+.tableStyle{
+ 	border-collapse: collapse;
+	border: 1px solid #cccccc;
+	width: 100%;
+	background-color: White;
+}
+.noBottomLine{
+	border-bottom:0!important;
+}
+.th{
+	border-left: 1.0pt solid windowtext;
+	border-right: 1.0pt solid windowtext;
+	word-wrap: normal;
+	word-break: keep-all;
+	overflow:hidden;
+	border-color: #cccccc;
+	height:28px; 
+	padding: 0 2px 0 4px;
+	color:#000000;
+	background-image: url(tables/th_bg.jpg);
+	background-repeat: repeat-x;
+	font-weight: normal;
+	line-height:28px; 
+}
+.th_m{
+	border-left: 1.0pt solid windowtext;
+	border-right: 1.0pt solid windowtext;
+	border-bottom: 1.0pt solid windowtext;
+	word-wrap: normal;
+	word-break: keep-all;
+	overflow:hidden;
+	border-color: #cccccc;
+	height:24px; 
+	padding: 0 2px 0 4px;
+	color:#000000;
+	background-image: url(tables/th_bg_m.jpg);
+	background-repeat: repeat-x;
+	font-weight: normal;
+	line-height:24px; 
+}
+.th_m2{
+	border-left: 1.0pt solid windowtext;
+	border-right: 1.0pt solid windowtext;
+	border-bottom: 1.0pt solid windowtext;
+	word-wrap: normal;
+	word-break: keep-all;
+	overflow:hidden;
+	border-color: #cccccc;
+	padding: 0 2px 0 4px;
+	color:#000000;
+	background-image: url(tables/th_bg_m2.jpg);
+	background-repeat: repeat-x;
+	font-weight: normal;
+	line-height:48px; 
+	height:48px; 
+}
+.th_m3{
+	border-left: 1.0pt solid windowtext;
+	border-right: 1.0pt solid windowtext;
+	border-bottom: 1.0pt solid windowtext;
+	word-wrap: normal;
+	word-break: keep-all;
+	overflow:hidden;
+	border-color: #cccccc;
+	padding: 0 2px 0 4px;
+	color:#000000;
+	background-image: url(tables/th_bg_m3.jpg);
+	background-repeat: repeat-x;
+	font-weight: normal;
+	line-height:72px; 
+	height:72px; 
+}
+.th_over{
+	border-left: 1.0pt solid windowtext;
+	border-right: 1.0pt solid windowtext;
+	word-wrap: normal;
+	word-break: keep-all;
+	overflow:hidden;
+	border-color: #cccccc;
+	height:28px; 
+	padding: 0 2px 0 4px;
+	color:#000000;
+	background-image: url(tables/th_bg_over.jpg);
+	background-repeat: repeat-x;
+	font-weight: normal;
+	line-height:28px; 
+}
+.tableStyle td{
+	border-left: 1.0pt solid windowtext;
+	border-right: 1.0pt solid windowtext;
+	border-bottom: 1.0pt solid windowtext;
+	word-wrap: normal;
+	word-break: keep-all;
+	border-color: #cccccc;
+	height:24px; 
+	padding: 1px 2px 1px 4px;
+}
+.tableStyle tr{
+	color:#333333;
+}
+/*基本表格样式*/
+
+
+/*表格隔行颜色、鼠标移入某行颜色、选中某行颜色*/
+tr.odd{ 
+	background:#f7f7f7;
+}
+tr.highlight{ 
+	background:#eaf6fc;/*鼠标移入高亮色*/
+}
+tr.selected{ 
+	background:#d9ebf5;/*点击后背景色*/
+	background-image: url(tables/trhl_bg.jpg);
+	background-repeat:repeat-x;
+}
+/*表格隔行颜色、鼠标移入某行颜色、选中某行颜色*/
+
+/*表格排序*/
+.sort_off{
+	background-image: url(tables/arrow_off.gif);
+	background-repeat: no-repeat;
+	background-position: 95% 50%;
+	cursor:pointer;
+	cursor:hand;
+	display:block;
+	width:100%;
+}
+.sort_up{
+	background-image: url(tables/arrow_up.gif);
+	background-repeat: no-repeat;
+	background-position: 95% 50%;
+	cursor:pointer;
+	cursor:hand;
+	display:block;
+	width:100%;
+}
+.sort_down{
+	background-image: url(tables/arrow_down.gif);
+	background-repeat: no-repeat;
+	background-position: 95% 50%;
+	cursor:pointer;
+	cursor:hand;
+	display:block;
+	width:100%;
+}
+ /*表格排序*/
+
+ /*全选*/
+  .img_checkAllOff{
+	background-image: url(tables/checkAllOff.gif);
+	background-repeat: no-repeat;
+	width: 13px;
+	height: 13px;
+	display: block;
+	padding:0 0 0 4px;
+	background-position:100% 0%;
+	cursor:pointer;
+	cursor:hand;
+}
+.img_checkAllOn{
+	background-image: url(tables/checkAllON.gif);
+	background-repeat: no-repeat;
+	width: 13px;
+	height: 13px;
+	display: block;
+	padding:0 0 0 4px;
+	background-position:100% 0%;
+	cursor:pointer;
+	cursor:hand;
+}
+ /*全选*/
+
+/*自定义的树形表格*/
+.img_add2{
+	background-image: url(tabless/butCollapse.gif);
+	background-repeat: no-repeat;
+	background-position:100% 100%;
+	width: 20px;
+	height: 16px;
+	display: block;
+	float: left;
+}
+.img_remove2{
+	background-image: url(tabless/butExpand.gif);
+	background-repeat: no-repeat;
+	background-position:100% 100%;
+	width: 20px;
+	height: 16px;
+	display: block;
+	float: left;
+}
+.img_loading{
+	background-image: url(tabless/loading.gif);
+	background-repeat: no-repeat;
+	background-position:100% 100%;
+	width: 20px;
+	height: 16px;
+	display: block;
+	float: left;
+}
+.hand{
+	cursor:pointer;
+	cursor:hand;
+}
+/*自定义的树形表格*/
+/*树形表格*/
+.acts_as_tree_table tr td .expander {
+	background-image: url(tabless/bullet_toggle_minus.png);
+	background-position: left center;
+	background-repeat: no-repeat;
+	cursor: pointer;
+	padding: 0;
+	zoom: 1; 
+}
+
+.acts_as_tree_table tr.collapsed td .expander {
+	background-image: url(tabless/bullet_toggle_plus.gif);
+}
+
+.acts_as_tree_table tr.expanded td .expander {
+	background-image: url(tabless/bullet_toggle_minus.gif);
+}
+
+.acts_as_tree_table tr.loading td .expander {
+	background-image: url(tabless/ajax-loader.gif);
+}
+.treeTable {
+	border: 1px solid #ccc;
+	border-collapse: collapse;
+	background-color: White;
+	width: 100%;
+}
+.treeTable th{
+	border-left: 1.0pt solid windowtext;
+	border-right: 1.0pt solid windowtext;
+	word-wrap: normal;
+	word-break: keep-all;
+	overflow:hidden;
+	border-color: #cccccc;
+	height:28px; 
+	padding: 0 2px 0 4px;
+	color:#000000;
+	background-image: url(tabless/th_bg.jpg);
+	background-repeat: repeat-x;
+	font-weight: normal;
+	line-height:28px; 
+}
+.treeTable td{
+	border-left: 1.0pt solid windowtext;
+	border-right: 1.0pt solid windowtext;
+	border-bottom: 1.0pt solid windowtext;
+	word-wrap: normal;
+	word-break: keep-all;
+	border-color: #cccccc;
+	height:24px; 
+	padding: 1px 2px 1px 4px;
+	color:#333333;
+}
+.treeTable span {
+	background-position: center left;
+	background-repeat: no-repeat;
+	padding: .2em 0 .2em 1.5em;
+}
+
+.treeTable span.file {
+	background-image: url(tabless/page.gif);
+}
+
+.treeTable span.folder {
+	background-image: url(tabless/folder.gif);
+}
+ /*树形表格*/

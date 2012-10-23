@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title> New Document </title>
+
+ <link href="style.css" rel="stylesheet" type="text/css"/>
+ <link href="../style.css" rel="stylesheet" type="text/css"/>
+ <link href="../box/box.css" rel="stylesheet" type="text/css"/>
+ <script type="text/javascript" src="../jquery.js"></script>
+ <script type="text/javascript" src="../box/box.js"></script>
+	
+ <script type="text/javascript" src="upload.js"></script>
+ <script type="text/javascript" src="tooltip.js"></script>
+
+
+ </head>
+ <!--按钮（分离版）end-->
+<body>
+
+	
+	<div class="box2" panelWidth="800" panelTitle="基本使用">
+		首先引入脚本和CSS
+<textarea class="code">
+<script type="text/javascript" src="../jquery-1.4.js"></script>
+<!--上传控件（分离版）start-->
+<link href="skins/style.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="js/upload_split.js"></script>
+<!--上传控件（分离版）end-->
+
+<!--信息提示（分离版）start-->
+<script type="text/javascript" src="js/tooltip_split.js"></script>
+<!--信息提示（分离版）end-->
+</textarea>
+<pre></pre>	
+一个基本的上传控件效果：
+
+<input type="file" /><br />
+	当载入文件后，鼠标移入控件上默认会有信息提示显示文件路径。
+	代码如下：
+<textarea class="code">
+<input type="file"/>
+</textarea>
+<pre></pre>	
+	</div>
+	
+	<div class="box2" panelWidth="800" panelTitle="宽度设置">
+	IE下上传框的宽度默认是与文本框对齐的（FireFox下会有些偏差）。如下：<br />
+	文本框：<input type="text"/><br />
+	上传框：<input type="file" /><br />
+	可以通过设置style来自定义宽度，但不建议这样做，否则在FireFox中可能会产生些问题。
+	</div>
+	
+	<div class="box2" panelWidth="800" panelTitle="信息提示">
+		如果不需显示信息提示，设置其showInfo属性为false。效果<br />
+		<input type="file" showInfo="false"/><br />
+		代码如下：
+<textarea class="code">
+<input type="file" showInfo="false"/>
+</textarea>
+<pre></pre>	
+	</div>
+	
+	<div class="box2" panelWidth="800" panelTitle="恢复系统默认">
+		想要恢复成系统默认的file，加class<br />
+		<input type="file" class="default"/><br />
+		代码如下：
+<textarea class="code">
+<input type="file" class="default"/>
+</textarea>
+<pre></pre>	
+	</div>	
+
+			
+</body>
+<!--代码高亮start-->
+<script type="text/javascript" src="../code/highlight.js"></script>
+<script type="text/javascript" src="../code/lang-xml.js"></script>
+<script type="text/javascript" src="../code/lang-html.js"></script>
+<link href="../code/style.css" rel="stylesheet" type="text/css"/>
+<link href="../table/style.css" rel="stylesheet" type="text/css"/>
+
+<script>
+	$(function(){
+			showCode()
+	})
+	function showCode(){
+		$(".code").each(function(){
+			var code =$(this).val()
+			var hl = new DlHighlight({lang: "html",lineNumbers :false });
+			var formatted = hl.doItNow(code);
+			$(this).next().addClass("DlHighlight").html("<pre>" + formatted + "</pre>")
+		})
+	}
+</script>
+<!--代码高亮end-->
+</html>

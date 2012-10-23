@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="gb2312"?>
+<config>
+	<bean name="emali" value="emali">
+		<message>请输入正确的邮箱</message>
+	</bean>
+	<bean name="bigCase"  value="大写字母">
+		<message>只能输入大写字母</message>
+	</bean>
+	<bean name="smallCase"  value="小写字母">
+		<message>只能输入小写字母</message>
+	</bean>
+	<bean name="letter" value="英文">
+		<message>只能输入英文</message>
+	</bean>
+	<bean name="chinaese" value="中文">
+		<message>只能输入中文</message>
+	</bean>
+	<bean name="url" value="url地址">
+		<message>请输入正确的url地址</message>
+	</bean>
+	<bean name="ip" value="ip地址">
+		<message>请输入正确的ip地址</message>
+	</bean>
+	<bean name="code" value="区号">
+		<message>请输入正确的区号</message>
+	</bean>
+	<bean name="qq" value="qq">
+		<message>请输入正确的QQ号码</message>
+	</bean>
+	<bean name="alpha" value="数字或字母或下划线">
+		<message>只能由数字或字母或下划线组成</message>
+	</bean>
+	<bean name="phone" value="电话">
+		<message>请输入正确的电话</message>
+	</bean>
+	<bean name="num" value="数字">
+		<message>请输入数字</message>
+	</bean>
+	<bean name="wholeNum" value="整数">
+		<message>请输入整数</message>
+	</bean>
+	<bean name="noloseNum" value="非负整数">
+		<message>请输入非负整数</message>
+	</bean>
+	<bean name="nojustNum" value="非正整数">
+		<message>请输入非正整数</message>
+	</bean>
+	<bean name="justFloat" value="正浮点数">
+		<message>请输入正浮点数</message>
+	</bean>
+	<bean name="postCode" value="邮编">
+		<message>请输入正确的邮编</message>
+	</bean>
+</config>

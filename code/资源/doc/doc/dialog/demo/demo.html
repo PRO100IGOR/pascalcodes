@@ -1,0 +1,534 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>在线演示 - LHGDIALOG</title>
+    <meta name="keywords" content="lhgdialog,dialog,弹出窗口,js窗口,js弹出窗口,js库,对话框,alert,提示,警告,确认,提问,ajax,tip,confirm,open,prompt,lhgcore,javascript,jquery,window,clientside,control,open source,LGPL,dhtml,html,xhtml,plugins"/>
+    <meta name="description" content="lhgdialog是一功能强大的简单迷你并且高效的弹出窗口插件,基于网络访问并且兼容IE 6.0+,Firefox 3.0+,Opera 9.6+,Chrome 1.0+,Safari 3.22+."/>
+    <meta name="copyright" content="lhgcore.com"/>
+	<link rel="icon" href="../favicon.ico" type="image/x-icon"/>
+	<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon"/>
+	<link href="../index.css" type="text/css" rel="stylesheet"/>
+	<link href="../prettify/prettify.css" type="text/css" rel="stylesheet"/>
+	<script type="text/javascript" src="../prettify/prettify.js"></script>
+	<script type="text/javascript" src="../lhgcore.min.js"></script>
+	<script type="text/javascript" src="../lhgdialog.min.js?s=default,chrome"></script>
+	<script type="text/javascript">
+var testDG3, testDG5;
+	
+J(function(){
+    J('#btn1').dialog({ id:'test1', html:'<h3>我是jQuery方式调用的窗口</h3>' });
+	
+	J('#btn3').dialog({ id:'test3', title:'我更改了标题', html:'<h3>我的id是test3，我是标题是"我更改了标题"</h3>' });
+	J('#btn4').dialog({ id:'test4', width:300, height:200, html:'<h3 style="padding:50px 0;">窗口的大小改为300X200</h3>' });
+	J('#btn5').dialog({ id:'test5', iconTitle:false, html:'<h3>我不显示窗口左边的小图标</h3>' });
+	J('#btn6').dialog({ id:'test6', xButton:false, html:'<h3>我不显示窗口右边的X关闭按钮</h3>' });
+	J('#btn7').dialog({ id:'test7', btnBar:false, html:'<h3>我不显示按钮栏</h3>' });
+	J('#btn8').dialog({ id:'test8', cancelBtn:false, html:'<h3>我不显示取消按钮</h3>' });
+	J('#btn9').dialog({ id:'test9', page:'content.html' });
+	J('#btn10').dialog({ id:'test10', page:'http://www.qq.com', link:true, width:800, height:600, title:'QQ首页' });
+	J('#btn11').dialog({ id:'test11', html:J('#obj')[0] });
+	J('#btn12').dialog({ id:'test12', html:'<h3>我可以随屏滚动</h3>', fixed:true, left:100, top:100 });
+	J('#btn13').dialog({ id:'test13', html:'<h3>我可以做为右下角的消息窗口</h3>', fixed:true, left:'right', top:'bottom' });
+	J('#btn14').dialog({ id:'test14', cover:true, html:'<h3>我不能对页面进行操作了</h3>', lockScroll:true });
+	J('#btn15').dialog({ id:'test15', drag:false, resize:false, html:'<h3>我不能拖动和改变大小了</h3>' });
+	J('#btn16').dialog({ id:'test16', rang:true, html:'<h3>我不能拖出浏览器了</h3>' });
+	J('#btn17').dialog({ id:'test17', loadingText:'我是窗口加载时的提示文本，哈哈...', html:'' });
+	J('#btn18').dialog({ id:'test18', width:300, height:200, page:'content1.html', autoSize:true });
+	J('#btn22').dialog({ id:'test22', onXclick:function(){alert('我改变了关闭按钮的事件，我不能关闭窗口了');}, html:'<h3>X关闭按钮的事件被改变了</h3>' });
+	J('#btn23').dialog({ id:'test23', onCancel:function(){alert('我是在窗口关闭前执行的函数');}, html:'<h3>关闭窗口前执行onCancel函数</h3>' });
+	testDG3 = J('#btn24').dialog({ id:'test24', html:'<h3>我只能被调用页面上的按钮关闭</h3>', xButton:false, btnBar:false });
+	J('#btn25').dialog({ id:'test25', page:'content4.html' });
+	
+	// 这是 其它演示示例 里的第4个示例的代码
+    var reSize = function()
+    {
+        testDG4.reDialogSize( 600, 500 ); testDG4.SetPosition( 'center', 'center' );
+    };
+    var testDG4 = J('#btn26').dialog({ id:'test26', html:'<h3>我的大小被改为600X500了</h3>', dgOnLoad: reSize });
+	
+	J('#btn27').dialog({ id:'test27', page:'content5.html' });
+	J('#btn28').dialog({ id:'test28', maxBtn:false, title:'不显示最大化按钮', html:'<h3>我不显示最大化的按钮了</h3>' });
+	J('#btn29').dialog({ id:'test29', minBtn:true, title:'显示最小化按钮', html:'<h3>我显示最小化的按钮了</h3>' });
+	J('#btn30').dialog({ id:'test30', timer:2, title:'2秒钟后自动关闭窗口', html:'<h3>我2秒钟后自动关闭了</h3>' });
+	J('#btn31').dialog({ id:'test31', page:'content6.html' });
+	J('#btn32').dialog({ id:'test32', page:'content7.html' });
+	J('#btn33').dialog({ id:'test33', page:'content8.html' });
+	J('#btn34').dialog({ id:'test34', cover:true, bgcolor:'#000', opacity:0.4, html:'<h3>遮罩层的颜色被我设成黑的了</h3>' });
+	J('#btn35').dialog({ id:'test35', html:'<h3>我可以通过双击标题栏最大化和还原窗口了</h3>' });
+	testDG5 = J('#btn36').dialog({ id:'test36', html:'<h3>我是通过按钮来实现的最大化和还原</h3>' });
+	J('#btn37').dialog({ id:'test37', cancelBtnTxt:'确定', onCancel:function(){alert('我成了确定按钮了');}, html:'<h3>我改变了取消按钮</h3>' });
+	J('#btn38').dialog({ id:'test38', autoPos:{left:'center',top:'center'}, html:'<h3>我的位置随着浏览器的大小的改变而改变</h3>' });
+	J('#btn39').dialog({ id:'test39', page:'content9.html' });
+	J('#btn40').dialog({ id:'test40', page:'content10.html' });
+	J('#btn41').dialog({ id:'test41', skin:'chrome', html:'<h3>我是使用了chrome皮肤的窗口</h3>' });
+});
+
+function opdg( id )
+{
+    var dg = new J.dialog({ id:id, html:'<h3>我是普通函数方式调用的窗口</h3>' });
+	dg.ShowDialog();
+}
+
+function opdg1(){
+    var testDG = new J.dialog({ id:'test19', page:'content2.html', cover:true, lockScroll:true });
+    testDG.ShowDialog();
+}
+
+function opdg2()
+{
+    var testDG1 = new J.dialog({
+        id:'test20',
+        html:'<h3 id="txt">hgdialog</h3>',
+        dgOnLoad:function(){
+            J('#txt').html( '我使用dgOnLoad参数改变了文本' );
+        }
+    });
+	testDG1.ShowDialog();
+}
+
+function opdg3()
+{
+    var testDG2 = new J.dialog({
+        id:'test21',
+        page:'content3.html',
+        dgOnLoad:function(){
+            J('#txt',testDG2.dgDoc).html( '我原来的文本是lhgdialog' );
+        }
+    });
+	testDG2.ShowDialog();
+}
+
+function maxDG()
+{
+    if( testDG5.iDG('test36') )
+	    testDG5.maxSize();
+	else
+	    alert('请先打开窗口');
+}
+	</script>
+</head>
+
+<body>
+	<div class="container">
+	    <div class="header">
+		    <div class="header_logo"><a href="../index.html"><img border="0" src="../images/lhgdg_logo.gif" alt="lhgdialog"/></a></div>
+			<div class="header_nav">
+			    <a href="../index.html">首页</a> | <a href="../api/basic.html">基本使用指南</a> | <a href="../api/api.html">API参数控制接口</a> | 在线演示 | <a href="../valueDemo/demo.html">传值演示</a> | <a href="../frameDemo/demo.html">跨框架演示</a> | <a href="../ui/ui.html">皮肤下载页</a> | <a href="../donate/donate.html">捐赠</a>
+			</div>
+		</div>
+		<div class="line">&nbsp;</div>
+		<div class="lhgdg_body">
+			<p style="padding-top:0">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-1019453600276922";
+/* 演示页横幅广告 */
+google_ad_slot = "7198593807";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+			</p>
+			<h2>窗口的各种在线演示示例</h2>
+			<p>jQuery方式和普通函数式</p>
+			<ol>
+			    <li>
+			        <h3>jQuery方式调用</h3>
+<pre class="prettyprint">
+J(function(){
+    J('#btn1').dialog({ id:'test1', html:'&lt;h3&gt;我是jQuery方式调用的窗口&lt;/h3&gt;' });
+});
+</pre>
+					<p><button class="runcode" id="btn1">运行»</button></p>
+				</li>
+				<li>
+				    <h3>普通函数方式调用</h3>
+<pre class="prettyprint">
+function opdg( id ){
+    var dg = new J.dialog({ id:id, html:'&lt;h3&gt;我是普通函数方式调用的窗口&lt;/h3&gt;' });
+    dg.ShowDialog();
+}</pre>
+					<p><button class="runcode" id="btn2" onclick="opdg('test2');">运行»</button></p>
+				</li>
+			</ol>
+			<p>常规配置参数使用演示</p>
+			<ol>
+			    <li>
+				    <h3>开启遮罩层，锁定屏幕，并消除浏览器右边滚动条(3.5.2新增)</h3>
+<pre class="prettyprint">
+J('#btn14').dialog({ id:'test14', cover:true, html:'我不能对页面进行操作了', lockScroll:true });
+</pre>					
+				    <p><button class="runcode" id="btn14">运行»</button></p>
+				</li>
+				<li>
+				    <h3>使用chrome皮肤的窗口(3.5.0新增)</h3>
+<pre class="prettyprint">
+J('#btn41').dialog({ id:'test41', skin:'chrome', html:'我是使用了chrome皮肤的窗口' });
+</pre>					
+				    <p><button class="runcode" id="btn41">运行»</button></p>
+				</li>
+				<li>
+				    <h3>重新设定取消按钮的文本，并改变取消按钮关闭窗口的默认动作(3.4.2新增)</h3>
+<pre class="prettyprint">
+J('#btn37').dialog({ id:'test37', skin:'aero', cancelBtnTxt:'确定', onCancel:function(){alert('我成了确定按钮了');}, html:'我改变了取消按钮' });
+</pre>					
+				    <p><button class="runcode" id="btn37">运行»</button></p>
+				</li>
+			    <li>
+				    <h3>浏览器大小改变后窗口位置也改变(3.4.2新增)</h3>
+<pre class="prettyprint">
+J('#btn38').dialog({ id:'test38', autoPos:{left:'center',top:'center'}, html:'我的位置随着浏览器的大小的改变而改变' });
+</pre>					
+				    <p><button class="runcode" id="btn38">运行»</button></p>
+				</li>
+			    <li>
+				    <h3>设置遮罩层颜色为黑色，透明度为0.4(3.4.1新增)</h3>
+<pre class="prettyprint">
+J('#btn34').dialog({ id:'test34', cover:true, bgcolor:'#000', opacity:0.2, html:'遮罩层的颜色被我设成黑的了' });
+</pre>					
+				    <p><button class="runcode" id="btn34">运行»</button></p>
+				</li>
+			    <li>
+				    <h3>双击标题栏可最大化还原窗口(3.4.1新增)</h3>
+<pre class="prettyprint">
+J('#btn35').dialog({ id:'test35', html:'我可以通过双击标题栏最大化和还原窗口了' });
+</pre>					
+				    <p><button class="runcode" id="btn35">运行»</button></p>
+				</li>
+			    <li>
+				    <h3>通过按钮实现窗口最大化还原(3.4.1新增)</h3>
+<pre class="prettyprint">
+J('#btn36').dialog({ id:'test36', html:'我是通过按钮来实现的最大化和还原' });
+</pre>					
+				    <p><button class="runcode" id="btn36">运行»</button>&nbsp;<button class="runcode" id="maxbtn" onclick="maxDG()">最大化»</button></p>
+				</li>
+			    <li>
+				    <h3>不显示最大化按钮示例(3.4.0新增)</h3>
+<pre class="prettyprint">
+J('#btn28').dialog({ id:'test28', maxBtn:false, title:'不显示最大化按钮', html:'我不显示最大化的按钮了' });
+</pre>					
+				    <p><button class="runcode" id="btn28">运行»</button></p>
+				</li>
+			    <li>
+				    <h3>显示最小化按钮示例(3.4.0新增)</h3>
+<pre class="prettyprint">
+J('#btn29').dialog({ id:'test29', minBtn:true, title:'显示最小化按钮', html:'我显示最小化的按钮了' });
+</pre>					
+				    <p><button class="runcode" id="btn29">运行»</button></p>
+				</li>
+			    <li>
+				    <h3>2秒钟后自动关闭窗口示例(3.4.0新增)</h3>
+<pre class="prettyprint">
+J('#btn30').dialog({ id:'test30', timer:2, title:'2秒钟后自动关闭窗口', html:'我2秒钟后自动关闭了' });
+</pre>					
+				    <p><button class="runcode" id="btn30">运行»</button></p>
+				</li>
+			    <li>
+				    <h3>id为"test3"的窗口标题为"我更改了标题"示例</h3>
+<pre class="prettyprint">
+J('#btn3').dialog({ id:'test3', title:'我更改了标题', html:'我的id是test3，我是标题是"我更改了标题"' });
+</pre>					
+				    <p><button class="runcode" id="btn3">运行»</button></p>
+				</li>
+			    <li>
+				    <h3>设置窗口的大小</h3>
+<pre class="prettyprint">
+J('#btn4').dialog({ id:'test4', width:300, height:200, html:'窗口的大小改为300X200' });
+</pre>					
+				    <p><button class="runcode" id="btn4">运行»</button></p>
+				</li>
+			    <li>
+				    <h3>是否显示标题栏</h3>
+<pre class="prettyprint">
+此示例请参照<a href="../ui/ui.html">皮肤制作</a>里的示例，因为注意如果不显示一定要选择相应的皮肤，无标题栏的皮肤，而且设为不显示后iconTitle,xButton参数都无效了。
+</pre>					
+				    <p><button class="runcode" id="disbtn" disabled="true">运行»</button></p>
+				</li>
+			    <li>
+				    <h3>不显示窗口左边小图标</h3>
+<pre class="prettyprint">
+J('#btn5').dialog({ id:'test5', iconTitle:false, html:'我不显示窗口左边的小图标' });
+</pre>					
+				    <p><button class="runcode" id="btn5">运行»</button></p>
+				</li>
+			    <li>
+				    <h3>不显示窗口右边的X关闭按钮</h3>
+<pre class="prettyprint">
+J('#btn6').dialog({ id:'test6', xButton:false, html:'我不显示窗口右边的X关闭按钮' });
+</pre>					
+				    <p><button class="runcode" id="btn6">运行»</button></p>
+				</li>
+			    <li>
+				    <h3>不显示窗口下方的按钮栏</h3>
+<pre class="prettyprint">
+J('#btn7').dialog({ id:'test7', btnBar:false, html:'我不显示按钮栏' });
+</pre>					
+				    <p><button class="runcode" id="btn7">运行»</button></p>
+				</li>
+			    <li>
+				    <h3>不显示窗口按钮栏上的取消按钮</h3>
+<pre class="prettyprint">
+J('#btn8').dialog({ id:'test8', cancelBtn:false, html:'我不显示取消按钮' });
+</pre>					
+				    <p><button class="runcode" id="btn8">运行»</button></p>
+				</li>
+			    <li>
+				    <h3>内容页参数为page且为content.html文件</h3>
+<pre class="prettyprint">
+J('#btn9').dialog({ id:'test9', page:'content.html' });
+</pre>					
+				    <p><button class="runcode" id="btn9">运行»</button></p>
+				</li>
+			    <li>
+				    <h3>内容页参数为page且内容为外部链接qq.com，此时注意link参数一定要设为true</h3>
+<pre class="prettyprint">
+J('#btn10').dialog({ id:'test10', page:'http://www.qq.com', link:true, width:800, height:600, title:'QQ首页' });
+</pre>					
+				    <p><button class="runcode" id="btn10">运行»</button></p>
+				</li>
+			    <li>
+				    <h3>内容页参数为html且html值为DOM对象</h3>
+<pre class="prettyprint">
+J('#btn11').dialog({ id:'test11', html:J('#obj')[0] });
+</pre>					
+				    <p><button class="runcode" id="btn11">运行»</button></p>
+				</li>
+			    <li>
+				    <h3>开启静止定位，并自定义窗口弹出的位置</h3>
+<pre class="prettyprint">
+J('#btn12').dialog({ id:'test12', html:'我可以随屏滚动', fixed:true, left:100, top:100 });
+</pre>					
+				    <p><button class="runcode" id="btn12">运行»</button></p>
+				</li>
+			    <li>
+				    <h3>开启静止定位，并将窗口定位在右下角</h3>
+<pre class="prettyprint">
+J('#btn13').dialog({ id:'test13', html:'我可以做为右下角的消息窗口', fixed:true, left:'right', top:'bottom' });
+</pre>					
+				    <p><button class="runcode" id="btn13">运行»</button></p>
+				</li>
+			    <li>
+				    <h3>不允许拖动和改变大小</h3>
+<pre class="prettyprint">
+J('#btn15').dialog({ id:'test15', drag:false, resize:false, html:'我不能拖动和改变大小了' });
+</pre>					
+				    <p><button class="runcode" id="btn15">运行»</button></p>
+				</li>
+			    <li>
+				    <h3>不请允许拖出浏览器可视域</h3>
+<pre class="prettyprint">
+J('#btn16').dialog({ id:'test16', rang:true, html:'我不能拖出浏览器了' });
+</pre>					
+				    <p><button class="runcode" id="btn16">运行»</button></p>
+				</li>
+			    <li>
+				    <h3>改变加载窗口时的提示文本</h3>
+<pre class="prettyprint">
+J('#btn17').dialog({ id:'test17', loadingText:'我是窗口加载时的提示文本，哈哈...', html:'' });
+</pre>					
+				    <p><button class="runcode" id="btn17">运行»</button></p>
+				</li>
+			    <li>
+				    <h3>自适窗口内容的大小</h3>
+<pre class="prettyprint">
+J('#btn18').dialog({ id:'test18', width:300, height:200, autoSize:true, page:'content1.html' });
+</pre>					
+				    <p><button class="runcode" id="btn18">运行»</button></p>
+				</li>
+			    <li>
+				    <h3>parent参数示例并且父子窗口都加了遮罩层</h3>
+<pre class="prettyprint">
+//这里调用窗口都用的普通函数方式
+function opdg1(){
+    var testDG = new J.dialog({ id:'test19', page:'content2.html', cover:true });
+    testDG.ShowDialog();
+}
+//内容页content2.html里的代码为：
+var DG = frameElement.lhgDG;
+function opChild()
+{
+    var testDG2 = new DG.curWin.J.dialog({ id:'child', cover: true, html:'我是子窗口', width:300, height:200, parent:DG });
+    testDG2.ShowDialog();
+}
+//你可以打开content2.html页面查看里面的代码，这里要注意如果想在窗口中弹出子窗口不要在子窗口的页面中再加载lhgdialog.min.js来调用弹出窗口的函数，一定要用curWin.J.dialog，因为不这样父子窗口间的zIndex值会是2个，它们层叠的次序就乱了。
+</pre>					
+				    <p><button class="runcode" id="btn19" onclick="opdg1();">运行»</button></p>
+				</li>
+			    <li>
+				    <h3>dgOnLoad参数示例</h3>
+<pre class="prettyprint">
+// 这是使用html参数时dgOnLoad代码 前面的运行按钮
+function opdg2()
+{
+    var testDG1 = new J.dialog({
+        id:'test20',
+        html:'&lt;h3 id=&quot;txt&quot;&gt;lhgdialog&lt;/h3&gt;',
+        dgOnLoad:function(){
+            J('#txt').html( '我使用dgOnLoad参数改变了文本' );
+        }
+    });
+}
+// 这里使用的page参数时dgOnLoad代码 后面的运行按钮
+function opdg3()
+{
+    var testDG2 = new J.dialog({
+        id:'test21',
+        page:'content3.html',
+        dgOnLoad:function(){
+            J('#txt',testDG2.dgDoc).html( '我原来的文本是lhgdialog' );
+        }
+    });
+}
+</pre>					
+				    <p><button class="runcode" id="btn20" onclick="opdg2();">运行»</button>&nbsp;&nbsp;<button class="runcode" id="btn21" onclick="opdg3();">运行»</button></p>
+				</li>
+			    <li>
+				    <h3>onXclick参数示例</h3>
+<pre class="prettyprint">
+J('#btn22').dialog({ id:'test22', onXclick:function(){alert('我改变了关闭按钮的事件，我不能关闭窗口了');}, html:'X关闭按钮的事件被改变了' });
+</pre>					
+				    <p><button class="runcode" id="btn22">运行»</button></p>
+				</li>
+			    <li>
+				    <h3>onCancel参数示例</h3>
+<pre class="prettyprint">
+J('#btn23').dialog({ id:'test23', onCancel:function(){alert('我是在窗口关闭前执行的函数');}, html:'关闭窗口前执行onCancel函数' });
+</pre>					
+				    <p><button class="runcode" id="btn23">运行»</button></p>
+				</li>
+			</ol>
+			<p>其它演示示例</p>
+			<ol>
+			    <li>
+				    <h3>使用closeTime的第2个和第3个参数在标题栏动态显示关闭的秒数(3.4.2新增，3.5.2修改)</h3>
+<pre class="prettyprint">
+J('#btn40').dialog({ id:'test40', page:'content10.html' });
+
+//content10.html页面里的代码为：
+var DG = frameElement.lhgDG;
+dg.closeTime( 10, function(){ dg.SetTitle('窗口将在10秒钟后自动关闭'); var n = 9; setInterval(function(){ dg.SetTitle('窗口将在'+n+'秒钟后自动关闭'); n--; }, 1000); }, function(){ alert('我是窗口关闭后执行的函数'); });
+</pre>					
+				    <p><button class="runcode" id="btn40">运行»</button></p>
+				</li>
+			    <li>
+				    <h3>使用SetCancelBtn方法改变取消按钮(3.4.2新增)</h3>
+<pre class="prettyprint">
+J('#btn39').dialog({ id:'test39', page:'content9.html' });
+
+//content9.html页面里的代码为：
+var DG = frameElement.lhgDG;
+dg.SetCancelBtn( '确定', function(){ alert('我变成确定按钮了，我执行完这句再关闭窗口'); dg.cancel(); });
+</pre>					
+				    <p><button class="runcode" id="btn39">运行»</button></p>
+				</li>
+			    <li>
+				    <h3>在内容页中重新指定窗口标题(3.4.0新增)</h3>
+<pre class="prettyprint">
+J('#btn31').dialog({ id:'test31', page:'content6.html' });
+
+//content6.html页面里的代码为：
+var DG = frameElement.lhgDG;
+function ok()
+{
+    DG.SetTitle( '我是被按钮改变了的标题' );
+}
+</pre>					
+				    <p><button class="runcode" id="btn31">运行»</button></p>
+				</li>
+			    <li>
+				    <h3>在内容页中重新指定X按钮绑定的函数(3.4.0新增)</h3>
+<pre class="prettyprint">
+J('#btn32').dialog({ id:'test32', page:'content7.html' });
+
+//content7.html页面里的代码为：
+var DG = frameElement.lhgDG;
+DG.SetXbtn( ok );
+function ok()
+{
+    alert( '我又不能关闭窗口了' );
+}
+</pre>					
+				    <p><button class="runcode" id="btn32">运行»</button></p>
+				</li>
+			    <li>
+				    <h3>在内容页中使用closeTime函数来定时关闭窗口(3.4.0新增)</h3>
+<pre class="prettyprint">
+J('#btn33').dialog({ id:'test33', page:'content8.html' });
+
+//content8.html页面里的代码为：
+var DG = frameElement.lhgDG;
+DG.closeTime( 2 );
+</pre>					
+				    <p><button class="runcode" id="btn33">运行»</button></p>
+				</li>
+			    <li>
+				    <h3>在调用页面关闭窗口</h3>
+<pre class="prettyprint">
+// 这里请注意DG得定义成全局变量
+testDG3 = J('#btn24').dialog({ id:'test24', html:'我只能被调用页面上的按钮关闭', xButton:false, btnBar:false });
+//关闭窗口按钮的单击事件
+onclick="testDG3.cancel();"
+</pre>					
+				    <p><button class="runcode" id="btn24">运行»</button>&nbsp;&nbsp;<button class="runcode" id="closeBtn" onclick="testDG3.cancel();">关闭窗口»</button></p>
+				</li>
+			    <li>
+				    <h3>关闭窗口刷新父页面</h3>
+<pre class="prettyprint">
+J('#btn25').dialog({ id:'test25', page:'content4.html' });
+//content4.html页面里的代码为：
+var DG = frameElement.lhgDG;
+DG.addBtn( 'ok', '确定', ok );
+function ok()
+{
+    // 这里写你要操作的代码，最后写刷新代码
+    DG.curWin.location.reload();
+}
+//当调用窗口的页面被刷新，窗口就会自动关闭，所以不用调用程序的cancel关闭函数
+</pre>					
+				    <p><button class="runcode" id="btn25">运行»</button></p>
+				</li>
+			    <li>
+				    <h3>父窗口中打开子窗口</h3>
+<pre class="prettyprint">
+请参阅 常规配置参数使用演示 里的 parent参数示例并且父子窗口都加了遮罩层 示例
+</pre>					
+				    <p><button class="runcode" disabled="true">运行»</button></p>
+				</li>
+			    <li>
+				    <h3>重新指定窗口的大小并将窗口定位在屏幕的中间(3.4.0新增)</h3>
+<pre class="prettyprint">
+var reSize = function()
+{
+    testDG4.reDialogSize( 600, 500 ); testDG4.SetPosition( 'center', 'center' );
+};
+
+var testDG4 = J('#btn26').dialog({ id:'test26', html:'我的大小被改为600X500了', dgOnLoad: reSize });
+</pre>					
+				    <p><button class="runcode" id="btn26">运行»</button></p>
+				</li>
+			    <li>
+				    <h3>增加新的按钮和移除按钮</h3>
+<pre class="prettyprint">
+J('#btn27').dialog({ id:'test27', page:'content5.html' });
+</pre>					
+				    <p><button class="runcode" id="btn27">运行»</button></p>
+				</li>
+			</ol>
+			<p>其它更多的特列的演示示例请看 <a href="../valueDemo/demo.html">传值演示</a> | <a href="../frameDemo/demo.html">跨框架演示</a></p>
+		</div>
+		<div class="line">&nbsp;</div>
+	    <div class="footer">
+	        <div class="copyright">Copyright &copy <a href="http://lhgcore.com" target="_blank">lhgcore.com</a>. All rights reserved. | 豫ICP备06002782号 | <script src="http://s15.cnzz.com/stat.php?id=2990550&web_id=2990550" language="JavaScript"></script></div>
+			<a href="../footer/contact.html">联系我们</a> | <a href="../footer/link.html">友情链接</a> | <a href="../footer/ad.html">广告服务</a> | <a href="../footer/partners.html">合作伙伴</a>
+	    </div>
+	</div>
+	<div id="obj" style="display:none">
+	    <h3 style="font-size:14px;text-align:center;padding:90px 0;">我是隐藏在页面中的一个div</h3>
+	</div>
+	<script type="text/javascript">prettyPrint();</script>
+<!-- JiaThis Button BEGIN -->
+<script type="text/javascript" src="http://v1.jiathis.com/code/jiathis_r.js?move=0" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+</body>
+</html>

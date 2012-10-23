@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+	<form-beans>
+		<form-bean name="tablesConditionForm" type="com.sxsihe.coder.tables.form.TablesConditionForm" />
+	</form-beans>
+	<action-mappings>
+		<action path="/tablesLoadAction" parameter="action" type="org.springframework.web.struts.DelegatingActionProxy" name="tablesConditionForm" scope="session" input="/pages/code/tables/tableslist.jsp">
+			<forward name="showList" path="/pages/coder/tables/tableslist.jsp" />
+			<forward name="showCodeList" path="/pages/coder/tables/list.jsp" />
+		</action>
+		<action path="/tablesShowAction" parameter="action" type="org.springframework.web.struts.DelegatingActionProxy" scope="request" input="/pages/coder/tables/tablesform.jsp">
+			<forward name="showSave" path="/pages/coder/tables/tablesform.jsp" />
+			<forward name="showView" path="/pages/coder/tables/tablesview.jsp" />
+			<forward name="showCode" path="/pages/coder/tables/save.jsp" />
+			<forward name="showCodeView" path="/pages/coder/tables/view.jsp" />
+		</action>
+		<action path="/tablesSaveAction" parameter="action" type="org.springframework.web.struts.DelegatingActionProxy" scope="request" input="/pages/coder/tables/tablesform.jsp">
+		</action>
+		<action path="/tablesDeleteAction" parameter="action" type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="successForDelete" path="/tablesLoadAction.do?action=showList" />
+		</action>
+	</action-mappings>
+</struts-config>

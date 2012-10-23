@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="gb2312"?>
+<updates><version>111112</version><time>2012-09-07 15:53</time><explains><explain>1:调整某些不容易区分的窗体大小、颜色</explain><explain>2:修复模块生成后调用webservice失败的bug</explain></explains><files><file action="u">code.exe</file></files></updates>

@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>webservice</title>
+	<link href="../index.css" type="text/css" rel="stylesheet"/>
+	<link href="../prettify/prettify.css" type="text/css" rel="stylesheet"/>
+	<script type="text/javascript" src="../prettify/prettify.js"></script>
+</head>
+
+<body>
+    <div class="container">
+		<div class="line">&nbsp;</div>
+		<div class="lhgdg_body">
+<h2>改进</h2>
+			<ol>
+<pre class="prettyprint">
+1:页面上需要再引用css了，全部由js动态引入，例如：
+${basePath}/resource/base/js/layout/base.js?s=${faceStyle}// 引入对应的ui样式
+${basePath}/resource/base/js/msg/msgBar/js/msgBar.js等功能性js会自动引入对应的css
+2:原先action中的备用方法：preXXaction、nextXXaction，都改为返回actionfword对象，如果返回值不为空将回引起跳转。nextXXaction方法中都增加了业务对象参数。原先为了兼容而保留的无参数方法去掉了。
+3:struts验证功能可以使用了!
+4:原先的itebaseflag.jar合并到了sihe.jar中，同时对包名做了调整。
+5:现在没有高级查询了，查询条件用table布局，可以隐藏
+</pre>
+</ol>			 
+
+<h2>收藏功能</h2>
+			<ol>
+<pre class="prettyprint">
+//在页面上声明了如下变量，页面就会出现收藏浮动框，收藏夹地址打开方式暂时为win。推荐查看页面才用收藏功能。
+window.boxMenu = true,
+window.oxhideUrl = "${oxhideUrl}",
+window.sessionId = "${USERSESSION.id}";
+//注意：收藏夹访问可能引起的空指针等异常必须由应用自己处理，比如收藏了查看某一条记录，但记录被删除，查看时要判断记录是否为空。。
+//收藏夹访问地址时，会在原来地址后跟上box=true参数
+</pre>
+</ol>
+
+
+<h2>兼容浏览器的声音播放</h2>
+			<ol>
+<pre class="prettyprint">
+引用：resource/base/js/sound/jquery.sound.js
+jsPlay.flashPlay("http://10.10.0.158:8083/oxhide/resource/base/sound/message.mp3");
+</pre>
+</ol>
+
+
+<h2>异常抛出机制</h2>
+			<ol>
+<pre class="prettyprint">
+//在继承了com.sxsihe.oxhide.struts.action.AbstractAction的action中
+throw new BaseException("您登录的时间太久，为了您的帐号安全，请重新登录！");
+将跳转到core/exception/baseException.jsp,如果在config.properties设置debug=true，那么baseException.jsp中将显示异常的原始文本，如果debug=false，那么
+baseException.jsp将显示一个比较友好的提示。
+</pre>
+</ol>
+
+
+<h2>首页的自定义页面功能</h2>
+			<ol>
+<pre class="prettyprint">
+//当某个菜单配置了显示到桌面上时，该菜单不会在左边的菜单栏中出现了，这不同于以前的处理方式
+//后台的BaseShowAction中封装了处理在桌面上请求时的过程：,桌面请求时会在地址后跟上desk=true,:
+if (StringUtils.isNotEmpty(request.getParameter("desk"))) {
+	///
+}
+//你只要实现以下方法即可,
+
+	/**
+	 * 
+	 * @param pageNO 第几页
+	 * @param count 每页几条
+	 * @return
+	 * @throws BaseException
+	 * Administrator
+	 * com.sxsihe.oxhide.struts.action
+	 * BaseShowAction.java
+	 * 2012上午11:18:32
+	 * oxhide
+	 */
+	protected List<DeskWork> showDesk(int pageNO, int count) throws BaseException {
+		return null;
+	}
+	
+	/**
+	 * 总共有多少条记录
+	 * @param request
+	 * @return
+	 * @throws BaseException
+	 * Administrator
+	 * com.sxsihe.oxhide.struts.action
+	 * BaseShowAction.java
+	 * 2012上午11:18:45
+	 * oxhide
+	 */
+	protected int showDeskCount(HttpServletRequest request) throws BaseException {
+		return 0;
+	}
+
+//DeskWork是首页记录对象，属性为
+    private String id;//id
+    private String ltext;//左边文字,必须有
+    private String rtext;//右边内容,可以为空
+    private String link;//链接
+
+	//当点击“更多”时，调用原来的地址，同时地址后没有desk=true参数了
+</pre>
+</ol>
+
+
+
+
+</div>
+		<div class="line">&nbsp;</div>
+	</div>
+	<script type="text/javascript">prettyPrint();</script>
+</body>
+</html>

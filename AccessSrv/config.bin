@@ -1,0 +1,7 @@
+[server]
+path=C:\Documents and Settings\Administrator\桌面\wddSite\wddSite.mdb
+oracle=10.10.0.158:1521:oracle
+username=coalfinally
+password=coalfinally
+#单位分钟
+timer=30

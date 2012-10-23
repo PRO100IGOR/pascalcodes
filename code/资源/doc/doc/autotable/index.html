@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>tab选项卡</title>
+	<link href="../index.css" type="text/css" rel="stylesheet"/>
+	<link href="../prettify/prettify.css" type="text/css" rel="stylesheet"/>
+	<script type="text/javascript" src="../prettify/prettify.js"></script>
+</head>
+
+<body>
+    <div class="container">
+		<div class="line">&nbsp;</div>
+		<div class="lhgdg_body">
+		    <h2>tab选项卡</h2>
+			<ol>
+			    <li>
+					 <h3>引入resource/base/js/tool/tables.js<h3/>
+					 这是一个jquery插件
+				</li>
+假如页面上有一个table：
+				<textarea cols="150" rows=20>
+<input type="button" id="add_eptable" value="增加" />
+<input type="button" id="del_eptable" value="删除" /> 
+<input type="button" id="up_eptable" value="上移" /> 
+<input type="button" id="down_eptable" value="下移" />
+<table cellspacing="0" cellpadding="0" class="tableRegion" width="100%">
+	<thead>
+		<tr>
+			<td class="tableHeader" width="5%">序号</td>
+			<td class="tableHeader" width="50%">职能部门</td>
+			<td class="tableHeader" width="45%">责任人</td>
+		</tr>
+	</thead>
+	<tbody id="eptable">
+
+	</tbody>
+</table>
+				</textarea>
+调用如下方法
+				<pre class="prettyprint">
+$("#eptable").table({
+		tid: //行的模版
+		onAdd:function(tr){ //增加时,tr是增加的jquery对象
+			
+		},
+		onDel:function(tr){  //删除时
+			
+		},
+		noClick:true|false //用来屏蔽按钮的事件，如果为true，那么add_eptable等按钮无效
+});
+之后可以用$.tables["eptable"]获取到这个table对象.
+如果页面上有id为add_eptable的按钮，那么点击这个按钮会调用table的增加一行方法。
+如果页面上有id为del_eptable的按钮，那么点击这个按钮会调用table的删除一行方法。
+如果页面上有id为up_eptable的按钮，那么点击这个按钮会调用table的上移一行方法。
+....
+				</pre>
+			</ol>
+		</div>
+		<div class="line">&nbsp;</div>
+	</div>
+	<script type="text/javascript">prettyPrint();</script>
+</body>
+</html>

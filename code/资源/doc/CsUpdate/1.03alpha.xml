@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="gb2312"?>
+<updates><version>1.0 alpha00</version><time>2012-08-16 09:14</time><explains><explain>1：修复webservice错误</explain><explain>2：修复页面生成时bug，精简无用信息。</explain></explains><files><file action="u">code.exe</file></files></updates>

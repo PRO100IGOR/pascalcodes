@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2010-12-23 15:18:37.125.pas,C:\Documents and Settings\Administrator\My Documents\RAD Studio\Projects\Unit1.pas=C:\Documents and Settings\Administrator\My Documents\RAD Studio\Projects\GetInternetTime.pas</Transaction>
+    <Transaction>2010-12-23 15:18:37.125.dfm,C:\Documents and Settings\Administrator\My Documents\RAD Studio\Projects\Unit1.dfm=C:\Documents and Settings\Administrator\My Documents\RAD Studio\Projects\GetInternetTime.dfm</Transaction>
+    <Transaction>2010-12-23 15:22:52.453.dproj,C:\Documents and Settings\Administrator\My Documents\RAD Studio\Projects\Project1.dproj=C:\Documents and Settings\Administrator\My Documents\RAD Studio\Projects\Internet时间\Project1.dproj</Transaction>
+    <Transaction>2010-12-23 15:29:56.734.dproj,C:\Documents and Settings\Administrator\My Documents\RAD Studio\Projects\Internet时间\Project1.dproj=C:\Documents and Settings\Administrator\My Documents\RAD Studio\Projects\Internet时间\Project1.dproj</Transaction>
+    <Transaction>2010-12-23 15:30:05.562.pas,C:\Documents and Settings\Administrator\My Documents\RAD Studio\Projects\GetInternetTime.pas=C:\Documents and Settings\Administrator\My Documents\RAD Studio\Projects\Internet时间\GetInternetTime.pas</Transaction>
+    <Transaction>2010-12-23 15:30:05.562.dfm,C:\Documents and Settings\Administrator\My Documents\RAD Studio\Projects\GetInternetTime.dfm=C:\Documents and Settings\Administrator\My Documents\RAD Studio\Projects\Internet时间\GetInternetTime.dfm</Transaction>
+    <Transaction>2010-12-23 15:31:18.296.dproj,C:\Documents and Settings\Administrator\My Documents\RAD Studio\Projects\Internet时间\Project1.dproj=C:\Documents and Settings\Administrator\My Documents\RAD Studio\Projects\Internet时间\InternetTime.dproj</Transaction>
+  </Transactions>
+</BorlandProject>

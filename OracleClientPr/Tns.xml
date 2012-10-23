@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="gb2312"?>
+<!-- tns查询列表 -->
+<beans>
+
+<bean name="TID" Visible="false" />
+
+
+<bean name="TNAME" Caption="服务名" Width="120" />
+
+
+<bean name="TCP" Caption="协议" Width="100" />
+
+
+<bean name="HOST" Caption="地址" Width="100" />
+
+
+<bean name="PORT" Caption="端口" Width="100" />
+
+
+<bean name="SID" Caption="SID" Width="100" />
+
+
+
+
+</beans>

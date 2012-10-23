@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="gb2312"?>
+<updates><version>0.9</version><time>2011-10-08 12:01</time><explains><explain>1：列表页面增加选项“导出excel”</explain><explain>2：修正高级查询存在的问题</explain><explain>3：减少不必要的导入包</explain></explains><files><file action="u">code.exe</file></files></updates>

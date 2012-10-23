@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2011-11-29 11:45:46.546.pas,E:\pro\del\code\webservice\ApplicationServer.pas=</Transaction>
+    <Transaction>2011-11-29 11:45:46.593.pas,E:\pro\del\code\webservice\ResourceServer.pas=</Transaction>
+    <Transaction>2011-11-29 11:46:07.000.pas,E:\pro\del\code\ResourceServer.pas=E:\pro\del\code\webservice\ResourceServer.pas</Transaction>
+    <Transaction>2011-11-29 11:46:25.125.pas,E:\pro\del\code\ApplicationServer.pas=E:\pro\del\code\webservice\ApplicationServer.pas</Transaction>
+    <Transaction>2012-04-19 11:32:41.226.pas,E:\pro\del\code\Unit1.pas=E:\pro\del\code\frames\newMobile.pas</Transaction>
+    <Transaction>2012-04-19 11:32:41.226.dfm,E:\pro\del\code\Unit1.dfm=E:\pro\del\code\frames\newMobile.dfm</Transaction>
+    <Transaction>2012-08-08 09:25:26.875.pas,E:\pro\del\code\webservice\ApplicationServer.pas=</Transaction>
+    <Transaction>2012-08-08 09:25:36.765.pas,E:\pro\del\code\ApplicationServer.pas=E:\pro\del\code\webservice\ApplicationServer.pas</Transaction>
+    <Transaction>2012-08-08 09:25:41.250.pas,E:\pro\del\code\webservice\ResourceServer.pas=</Transaction>
+    <Transaction>2012-08-08 09:26:05.703.pas,E:\pro\del\code\ResourceServer.pas=E:\pro\del\code\webservice\ResourceServer.pas</Transaction>
+    <Transaction>2012-08-15 09:34:31.968.pas,E:\pro\del\code\webservice\ApplicationServer.pas=</Transaction>
+    <Transaction>2012-08-15 09:34:31.984.pas,E:\pro\del\code\webservice\ResourceServer.pas=</Transaction>
+    <Transaction>2012-08-15 09:34:55.421.pas,E:\pro\del\code\ResourceServer.pas=E:\pro\del\code\webservice\ResourceServer.pas</Transaction>
+    <Transaction>2012-08-15 09:35:17.421.pas,E:\pro\del\code\ApplicationServer.pas=E:\pro\del\code\webservice\ApplicationServer.pas</Transaction>
+    <Transaction>2012-08-15 11:59:04.593.pas,E:\pro\del\code\webservice\ResourceServer.pas=</Transaction>
+    <Transaction>2012-08-15 11:59:19.750.pas,E:\pro\del\code\ResourceServer.pas=E:\pro\del\code\webservice\ResourceServer.pas</Transaction>
+    <Transaction>2012-08-16 15:25:18.500.pas,E:\pro\del\code\webservice\ResourceServer.pas=</Transaction>
+    <Transaction>2012-08-16 15:25:32.671.pas,E:\pro\del\code\ResourceServer.pas=E:\pro\del\code\webservice\ResourceServer.pas</Transaction>
+  </Transactions>
+</BorlandProject>

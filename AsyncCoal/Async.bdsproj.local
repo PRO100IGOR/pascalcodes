@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2012-09-18 11:42:00.890.pas,C:\Documents and Settings\Administrator\My Documents\RAD Studio\Projects\Unit1.pas=E:\pro\del\AsyncCoal\MainLib.pas</Transaction>
+    <Transaction>2012-09-18 11:42:00.890.dfm,C:\Documents and Settings\Administrator\My Documents\RAD Studio\Projects\Unit1.dfm=E:\pro\del\AsyncCoal\MainLib.dfm</Transaction>
+    <Transaction>2012-09-18 11:42:06.296.bdsproj,C:\Documents and Settings\Administrator\My Documents\RAD Studio\Projects\Project2.bdsproj=E:\pro\del\AsyncCoal\Async.bdsproj</Transaction>
+  </Transactions>
+</BorlandProject>

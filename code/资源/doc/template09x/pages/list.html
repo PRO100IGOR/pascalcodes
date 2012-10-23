@@ -1,0 +1,291 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=GBK"/>
+	<title>showaction</title>
+	<script src="../js/mustache.js"></script>
+	<script src="../js/jquery-1.6.2.min.js"></script>
+	<script type="text/javascript">
+	<!--
+		function make(){
+			var html, json, template;
+			template = $('#template').val();
+			json = $.parseJSON($('#json').val());
+			html = Mustache.to_html(template, json);
+			$('#html').text(html);
+		}
+		function getOneUpper(v){
+			var temp = [],temp2 = v.split("");
+			for(var i =0;i<temp2.length;i++){
+				if(i==0){
+					temp.push(temp2[i].toUpperCase());
+				}else{
+					temp.push(temp2[i]);
+				}
+			}
+			return temp.join(""); 
+		}
+	//-->
+	</script>
+</head>
+ <body>
+<textarea id="json" rows="10" cols="130"></textarea>
+<textarea id="html" rows="10" cols="130"></textarea>
+
+
+
+
+
+	<textarea id="template" rows="10" cols="130">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@ page language="java" contentType="text/html; charset=GBK" pageEncoding="GBK"%>
+<%--
+@version: 1.0
+@author: {{author}}
+@company: {{company}}
+@time: {{date}}
+--%>
+<%
+	request.setCharacterEncoding("GBK");
+%>
+<%@ taglib uri="/WEB-INF/tld/c.tld" prefix="c"%>
+<%@ taglib uri="/WEB-INF/tld/struts-html.tld" prefix="html"%>
+<%@ taglib uri="/WEB-INF/tld/extremecomponents.tld" prefix="ec"%>
+{{#dic}}
+<%@ taglib uri="/WEB-INF/tld/sihe.tld" prefix="sihe"%>
+{{/dic}}
+<html:html>
+<c:set var="request" scope="page" value="${pageContext.request}" />
+<c:set var="base" scope="page" value="${request.scheme}://${request.serverName}:${request.serverPort}" />
+<c:set var="contextPath" scope="page" value="${request.contextPath}" />
+<c:set var="basePath" scope="page" value="${base}${contextPath}/" />
+<head>
+	<title>{{modelChname}}列表页面</title>
+	<link rel="stylesheet" type="text/css" href="${basePath }/resource/base/theme/public/css/public.css" />
+	<link rel="stylesheet" type="text/css" href="${basePath }/resource/base/theme/${faceStyle }/css/web.css" />
+    <link rel="stylesheet" href="${basePath }/resource/base/js/msg/msgBar/css/msgBar.css" type="text/css"/>
+	<script language="JavaScript" src="${basePath}/dwr/engine.js"></script>
+	<script language="JavaScript" src="${basePath}/dwr/util.js"></script>
+	<script type="text/javascript" src="${basePath}/resource/base/js/frame/jquery/jquery.js"></script>
+	<script language="JavaScript" type="text/javascript" src="${basePath}/dwr/interface/DWRBaseClass.js"></script>
+	<script type="text/javascript" src="${basePath}/resource/base/js/dialog/lhgdialog.js?s=${faceStyle}&t=${dialog }"></script>
+	<script language="JavaScript" src="${basePath}resource/base/js/tool/XQzyDIV.js"></script>
+	<script language="JavaScript" src="${basePath}/resource/base/js/validate/Magican.js"></script>
+	<script type="text/javascript" src="${basePath }/resource/base/js/msg/msgBar/js/msgBar.js"></script>
+	<script type="text/javascript" src="${basePath }/resource/base/js/tool/list.js"></script>
+	<script language="JavaScript" src="${basePath}/resource/base/js/ectable/eccn.js"></script>
+    <script language="JavaScript" src="${basePath}/resource/base/js/ectable/extremetable.js"></script>
+	{{#datepack}}
+	<script language="JavaScript" defer="defer" src="${basePath}/resource/base/theme/${faceStyle }/My97DatePicker/WdatePicker.js"></script>
+	{{/datepack}}
+	<script>
+	var showAdd = "${basePath}/{{modelName}}ShowAction.do?action=showAdd",					//增加页面
+	    showUpdate = "${basePath}/{{modelName}}ShowAction.do?action=showUpdate",			//修改页面
+		showView = "${basePath}/{{modelName}}ShowAction.do?action=showView",				//查看页面
+		showDelete = "${basePath}/{{modelName}}DeleteAction.do?action=delete",				//删除页面
+		showBatchDelete = "${basePath}/{{modelName}}DeleteAction.do?action=batchDelete",	//批量删除页面
+		service = "{{modelName}}Service",													//服务接口
+		formName = "{{modelName}}ConditionForm",											//表单名称
+		formWidth = {{width}},																//表单宽度
+		formHeight = {{formHeight}},														//表单高度
+		viewHeight = {{formHeight}},														//查看高度
+		viewWidth = {{width}},																//查看宽度
+		{{#advance}}
+		advWidth = {{advWidth}},															//高级查询宽度
+		advHeight = {{advHeight}},															//高级查询宽度
+		{{/advance}}
+		listOpen = true,																	//是否调用list.js中的方法
+		pageTitle = "{{modelChname}}";														//页面模块名称
+	</script>
+</head>
+<body>
+	{{#ConditionTypesLength}}
+	<!-- 查询区开始 -->
+	<div class="cx-bg">
+		<html:form action="/{{modelName}}LoadAction.do?action=showList">
+			<div>
+				{{#ConditionTypes}}
+				{{#隐藏域}}
+				<html:hidden property="{{dataName}}" styleId="{{dataName}}"/>
+				{{/隐藏域}}
+				{{#普通文本框}}
+				<span>{{comment}}：</span>
+				<span>
+						<html:text property="{{dataName}}" size="32" maxlength="32" styleId="{{dataName}}"/>
+				</span>
+				{{/普通文本框}}
+				{{#树形菜单文本框}}
+				<span>{{comment}}：</span>
+				<span>
+						<html:text readonly="true" property="{{dataName}}" size="32" maxlength="32" styleId="{{dataName}}"/>
+				</span>
+				{{/树形菜单文本框}}
+				{{#时间控件文本框}}
+				<span>{{comment}}：</span>
+				<span>
+						<html:text readonly="true" onclick="WdatePicker({dateFmt:'{{timerCoder}}'})" property="{{dataName}}" size="32" maxlength="32" styleId="{{dataName}}"/>
+				</span>
+				{{/时间控件文本框}}
+				{{#下拉框}}
+				<span>{{comment}}：</span>
+				<span>
+					<html:select property="{{dataName}}" styleId="{{dataName}}">
+						<html:option value="">请选择</html:option>
+						{{#diccode}}
+						<sihe:dicoption match="${ {{modelName}}Form.{{dataName}} }" dic="{{diccode}}"></sihe:dicoption>
+						{{/diccode}}
+						{{#StringArr}}
+						<html:option value="{{key}}">{{value}}</html:option>
+						{{/StringArr}}
+					</html:select>
+				</span>
+				{{/下拉框}}
+				{{/ConditionTypes}}
+			</div>
+			<div class="cx-r">
+				<input type="button"  id="cxbutton" value="查询" />
+				{{#advance}}
+				<input type="button"  id="advcxbutton"  class="button orange" value="高级查询" />
+				{{/advance}}
+				<input type="button"  id="clearcxbutton" class="button blue" value="清空查询条件" />
+			</div>
+			{{#advance}}
+			<div id="advence" style="display: none; width: 400px;">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0" class="list-tables">
+					{{#advanceTypes}}
+						{{#隐藏域}}
+						<html:hidden property="{{name}}" />
+						{{/隐藏域}}
+						{{#普通文本框}}
+						<tr>
+							<td width="30%" class="list-lhead">
+								{{comment}}：
+							</td>
+							<td>
+								<html:text  property="{{dataName}}" size="32" maxlength="32" />
+							</td>
+						</tr>
+						{{/普通文本框}}
+						{{#树形菜单文本框}}
+						<tr>
+							<td width="30%" class="list-lhead">
+								{{comment}}：
+							</td>
+							<td>
+								<html:text readonly="true" property="{{dataName}}" size="32" maxlength="32" />
+							</td>
+						</tr>
+						{{/树形菜单文本框}}
+						{{#时间控件文本框}}
+						<tr>
+							<td width="30%" class="list-lhead">
+								{{comment}}：
+							</td>
+							<td>
+								<html:text readonly="true" onclick="WdatePicker({dateFmt:'{{timerCoder}}'})" property="{{dataName}}" size="32" maxlength="32" />
+							</td>
+						</tr>
+						{{/时间控件文本框}}
+						{{#下拉框}}
+						<tr>
+							<td width="30%" class="list-lhead">
+								{{comment}}：
+							</td>
+							<td>
+								<html:select property="{{dataName}}">
+									<html:option value="">请选择</html:option>
+									{{#diccode}}
+									<sihe:dicoption match="${ {{modelName}}Form.{{dataName}} }" dic="{{diccode}}"></sihe:dicoption>
+									{{/diccode}}
+									{{#StringArr}}
+									<html:option value="{{key}}">{{value}}</html:option>
+									{{/StringArr}}
+								</html:select>
+							</td>
+						</tr>
+						{{/下拉框}}
+					{{/advanceTypes}}
+				</table>
+			</div>
+			{{/advance}}
+		</html:form>
+	</div>
+	<!-- 查询区结束 -->
+	{{/ConditionTypesLength}}
+
+
+	<!-- 按钮区开始 -->
+	<div class="gn-bg">
+		<div class="gn-link">
+			<a id="viewBtn" href="javascript:;"><span><img src="${basePath }/resource/base/theme/${faceStyle }/img/ico_4.gif" />查看</span> </a>
+		</div>
+		<div class="gn-link">
+			<a id="addBtn" href="javascript:;"><span><img src="${basePath }/resource/base/theme/${faceStyle }/img/ico_2.gif" />增加</span> </a>
+		</div>
+		<div class="gn-link">
+			<a id="updateBtn" href="javascript:;"><span><img src="${basePath }/resource/base/theme/${faceStyle }/img/ico_4.gif" />修改</span> </a>
+		</div>
+		<div class="gn-link">
+			<a id="deleteBtn" href="javascript:;"><span><img src="${basePath }/resource/base/theme/${faceStyle }/img/ico_3.gif" />删除</span> </a>
+		</div>
+		<div class="gn-link">
+			<a id="batchDeleteBtn" href="javascript:;"><span><img src="${basePath }/resource/base/theme/${faceStyle }/img/ico_3.gif" />批量删除</span> </a>
+		</div>
+	</div>
+	<!-- 按钮区结束 -->
+
+	<!-- 数据区开始 -->
+	{{#showAsList}}
+	<ec:table  items="list" var="item" action="${basePath}/{{modelName}}LoadAction.do?action=showList" title="" width="100%" 
+			   rowsDisplayed="15" paginationLocation="bottom" showRowsDisplayed="true" showGotoPage="true" showPagination="true" 
+			   autoIncludeParameters="false" imagePath="${basePath}/resource/base/theme/public/img/table/*.gif"  retrieveRowsCallback="limit"
+			   sortable="{{sort}}" showExports="{{showExport}}" >
+   {{/showAsList}}
+   {{#showAsTree}}
+	<ec:tree identifier="{{id}}" parentAttribute="{{treeNode}}" items="list" var="item"		imagePath="${basePath}/resource/base/theme/public/img/table/*.gif"
+	        action="${basePath}/deptLoadAction.do?action=showList" retrieveRowsCallback="limit" showRowsDisplayed="false" style="table-layout: fixed;" 
+	        autoIncludeParameters="false" showPagination="false" filterable="false" showExports="{{showExport}}"
+			sortable="{{sort}}">
+    {{/showAsTree}}
+		{{#showExport}}
+		<ec:exportXls fileName="{{modelChname}}.xls" text="{{modelChname}}" tooltip="导出{{modelChname}}" ></ec:exportXls>
+		{{/showExport}}
+		<ec:row id="${item.{{id}}  }"  onclick="ExtremeTable.getTableByIndex(0).selectRow(this,event);">
+		{{#checkbox}}
+		<ec:column headerCell="checkbox" alias="itemlist" property="{{id}}" cell="checkbox" width="10%" align="center" sortable="false" />
+		{{/checkbox}}
+		{{#showAsList}}
+		{{#num}}
+		<ec:column alias="count"  sortable="false" title="序号" cell="rowCount" width="5%" style="text-align: center"  />
+		{{/num}}
+		{{/showAsList}}
+		{{#showAsTree}}
+		<ec:column alias="count" property="{{id}}" sortable="false"  title="序号" filterable="false" cell="org.tdeccn.table.callback.RowCountTreeCell" width="3%" align="center"/>
+		{{/showAsTree}}
+		{{#ListTypes}}
+		<ec:column property="{{dataName}}" width="{{DataLength}}" align="center" title="{{comment}}" {{#sort}}sortable="{{order}}"{{/sort}} {{#nodetext}}cell="org.tdeccn.table.callback.TreeCell"{{/nodetext}}   {{#notgetData}}/>{{/notgetData}}{{#getData}}>{{/getData}}
+				{{#StringArr}}
+					<c:if test="${item.{{dataName}}=='{{key}}'}">
+						{{value}}
+					</c:if>
+				{{/StringArr}}	
+		{{#getData}}
+		</ec:column>
+		{{/getData}}
+		{{/ListTypes}}
+		</ec:row>
+{{#showAsList}}
+	</ec:table>
+{{/showAsList}}
+{{#showAsTree}}
+	</ec:tree>
+{{/showAsTree}}
+	<!-- 数据区结束-->
+
+</body>
+</html:html>
+	</textarea>
+
+
+ </body>
+</html>

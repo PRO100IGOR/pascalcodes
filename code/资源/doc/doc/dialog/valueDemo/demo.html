@@ -1,0 +1,392 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>传值演示 - LHGDIALOG</title>
+    <meta name="keywords" content="lhgdialog,dialog,弹出窗口,js窗口,js弹出窗口,js库,对话框,alert,提示,警告,确认,提问,ajax,tip,confirm,open,prompt,lhgcore,javascript,jquery,window,clientside,control,open source,LGPL,dhtml,html,xhtml,plugins"/>
+    <meta name="description" content="lhgdialog是一功能强大的简单迷你并且高效的弹出窗口插件,基于网络访问并且兼容IE 6.0+,Firefox 3.0+,Opera 9.6+,Chrome 1.0+,Safari 3.22+."/>
+    <meta name="copyright" content="lhgcore.com"/>
+	<link rel="icon" href="../favicon.ico" type="image/x-icon"/>
+	<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon"/>
+	<link href="../index.css" type="text/css" rel="stylesheet"/>
+	<link href="../prettify/prettify.css" type="text/css" rel="stylesheet"/>
+	<script type="text/javascript" src="../prettify/prettify.js"></script>
+	<script type="text/javascript" src="../lhgcore.min.js"></script>
+	<script type="text/javascript" src="../lhgdialog.min.js"></script>
+    <script type="text/javascript">
+J(function(){
+    J('#btn1').dialog({ id:'test1', page:'content.html' });
+	J('#btn3').dialog({ id:'test3', page:'content2.html' });
+	
+	var DG = J('#btn4').dialog({ id:'test4', page:'content3.html', title:'B窗口' });
+	J('#btn5').bind( 'click', function(){
+	    if( DG.dg )
+		    alert( J('#inp',DG.dgDoc).val() );
+		else
+		    alert( '请先打开B窗口' );
+	});
+	J('#btn6').bind( 'click', function(){
+	    if( DG.dg )
+		    DG.dgWin.BB();
+	    else
+		    alert( '请先打开B窗口' );
+	});
+	
+	J('#btn7').dialog({ id:'test7', page:'content4.html', title:'B窗口' });
+	
+	var DG1 = J('#btn8').dialog({ id:'test8', page:'content5.html', title:'B窗口' });
+	J('#btn9').bind( 'click', function(){
+	    if( DG1.dg && DG1.dgWin.testDG )
+		    alert( J('#inp',DG1.dgWin.testDG.dgDoc).val() );
+		else
+		    alert( '请先打开C窗口' );
+	});
+	J('#btn10').bind( 'click', function(){
+	    if( DG1.dg && DG1.dgWin.testDG )
+		    DG1.dgWin.testDG.dgWin.CC();
+		else
+		    alert( '请先打开C窗口' );
+	});
+	
+	J('#btn11').dialog({ id:'test11', page:'content7.html', title:'B窗口' });
+	
+	J('#btn12').dialog({ id:'test12', page:'content9.html', title:'A窗口' });
+	J('#btn13').dialog({ id:'test13', page:'content10.html', title:'B窗口' });
+	J('#btn14').dialog({ id:'test14', page:'content11.html', title:'父窗口', cover:true });
+});
+
+function opdg1()
+{
+    var DG = new J('#btn2').dialog({
+	    id:'test2',
+		page:'content1.html',
+		dgOnLoad: function(){
+		    J('#val',DG.dgDoc).html( J('#txt1').val() );
+		}
+	});
+	DG.ShowDialog();
+}
+
+function AA()
+{
+    alert( '我是调用页面的一个函数' );
+}
+	</script>
+</head>
+
+<body>
+    <div class="container">
+	    <div class="header">
+		    <div class="header_logo"><a href="../index.html"><img border="0" src="../images/lhgdg_logo.gif" alt="lhgdialog"/></a></div>
+			<div class="header_nav">
+			    <a href="../index.html">首页</a> | <a href="../api/basic.html">基本使用指南</a> | <a href="../api/api.html">API参数控制接口</a> | <a href="../demo/demo.html">在线演示</a> | 传值演示 | <a href="../frameDemo/demo.html">跨框架演示</a> | <a href="../ui/ui.html">皮肤制作</a> | <a href="../donate/donate.html">捐赠</a>
+			</div>
+		</div>
+		<div class="line">&nbsp;</div>
+		<div class="lhgdg_body">
+		    <h2>窗口的各种传值在线演示示例(示例都使用的page参数，内容页中的代码最好打开相应的内容页查看)</h2>
+			<p>基本的传值示例</p>
+			<ol>
+			    <li>
+				    <h3>将调用页面的值传到窗口中</h3>
+<pre class="prettyprint">
+// 这是运行1按钮使用的方法
+J('#btn1').dialog({ id:'test1', page:'content.html' });
+
+// content.html里的代码为：(这里注意content.html也加载了lhgcore.min.js文件)
+var DG = frameElement.lhgDG;
+J(function(){
+    J('#val').html( J('#txt1',DG.curDoc).val() ); 
+});
+
+// 这是运行2按钮使用的方法
+function opdg1()
+{
+    var DG = new J('#btn2').dialog({
+        id:'test2',
+        page:'content1.html',
+        dgOnLoad: function(){
+            J('#val',DG.dgDoc).html( J('#txt1').val() );
+        }
+    });
+    DG.ShowDialog();
+}
+//使用第2种方法content1.html里不用写任何代码
+</pre>
+				    <p><input type="text" size="20" id="txt1" value="lhgdialog弹出窗口"/>&nbsp;&nbsp;<button class="runcode" id="btn1">运行1»</button>&nbsp;&nbsp;<button class="runcode" id="btn2" onclick="opdg1();">运行2»</button></p>
+				</li>
+				<li>
+				    <h3>将窗口中的值传回到调用页面中</h3>
+<pre class="prettyprint">
+J('#btn3').dialog({ id:'test3', page:'content2.html' });
+
+// content2.html里的代码为：(这里注意content2.html也加载了lhgcore.min.js文件)
+var DG = frameElement.lhgDG;
+DG.addBtn( 'ok', '确定', ok );
+function ok()
+{
+    J('#txt2',DG.curDoc).val( J('#val').html() );
+    DG.cancel();
+}
+</pre>
+				    <p><input type="text" size="20" id="txt2" value="lhgdialog弹出窗口"/>&nbsp;&nbsp;<button class="runcode" id="btn3">运行»</button></p>
+				</li>
+			</ol>
+			<p>特殊的传值示例</p>
+			<ol>
+			    <li>
+				    <h3>在调用页面调用窗口B中的值或函数</h3>
+<pre class="prettyprint">
+var DG = J('#btn4').dialog({ id:'test4', page:'content3.html', title:'B窗口' });
+
+// 调用B窗口中文本框的值的按钮的代码
+J('#btn5').bind( 'click', function(){
+    if( DG.dg )
+        alert( J('#inp',DG.dgDoc).val() );
+    else
+        alert( '请先打开B窗口' );
+});
+
+// 调用B窗口的函数的按钮的代码
+J('#btn6').bind( 'click', function(){
+    if( DG.dg )
+        DG.dgWin.BB();
+    else
+        alert( '请先打开B窗口' );
+});
+</pre>
+				    <p><button class="runcode" id="btn4">运行»</button>&nbsp;&nbsp;<button class="runcode" id="btn5">调用B窗口中文本框的值»</button>&nbsp;&nbsp;<button class="runcode" id="btn6">调用B窗口的函数»</button></p>
+				</li>
+				<li>
+				    <h3>在B窗口中调用调用页面的值或函数</h3>
+<pre class="prettyprint">
+J('#btn7').dialog({ id:'test7', page:'content4.html', title:'B窗口' });
+
+// 内容页content4.html的代码为：(这里注意content4.html也加载了lhgcore.min.js文件)
+var DG = frameElement.lhgDG;
+J(function(){
+    J('#btn1').bind( 'click', function(){
+        alert( J('#txt3',DG.curDoc).val() );
+    });
+	
+    J('#btn2').bind( 'click', function(){
+        DG.curWin.AA();
+    });
+});
+</pre>
+				    <p><input type="text" size="20" id="txt3" value="调用页面的文本框"/>&nbsp;&nbsp;<button class="runcode" id="btn7">运行»</button></p>
+				</li>
+				<li>
+				    <h3>在调用页面调用C窗口(也就是B窗口的子窗口)的值或函数</h3>
+<pre class="prettyprint">
+var DG1 = J('#btn8').dialog({ id:'test8', page:'content5.html', title:'B窗口' });
+
+// 调用C窗口中文本框的值的按钮的代码
+J('#btn9').bind( 'click', function(){
+    if( DG1.dg && DG1.dgWin.testDG )
+        alert( J('#inp',DG1.dgWin.testDG.dgDoc).val() );
+    else
+        alert( '请先打开C窗口' );
+});
+
+// 调用C窗口的函数的按钮的代码
+J('#btn10').bind( 'click', function(){
+    if( DG1.dg && DG1.dgWin.testDG )
+        DG1.dgWin.testDG.dgWin.CC();
+    else
+        alert( '请先打开C窗口' );
+});
+
+// 内容页content5.html中的代码：
+var DG = frameElement.lhgDG, testDG;
+
+function opchild()
+{
+    testDG = new DG.curWin.J.dialog({
+        id: 'child1',
+        page: 'content6.html'
+    });
+    testDG.ShowDialog();
+}
+</pre>
+				    <p><button class="runcode" id="btn8">运行»</button>&nbsp;&nbsp;<button class="runcode" id="btn9">调用C窗口中文本框的值»</button>&nbsp;&nbsp;<button class="runcode" id="btn10">调用C窗口的函数»</button></p>
+				</li>
+				<li>
+				    <h3>在C窗口中调用调用页面中的值或函数</h3>
+<pre class="prettyprint">
+J('#btn11').dialog({ id:'test11', page:'content7.html', title:'B窗口' });
+
+// 内容页content7.html中的代码：
+var DG = frameElement.lhgDG, testDG;
+
+function opchild()
+{
+    testDG = new DG.curWin.J.dialog({
+        id: 'child1',
+        page: 'content8.html'
+    });
+    testDG.ShowDialog();
+}
+
+// 内容页content8.html中的代码：
+var DG = frameElement.lhgDG;
+
+J(function(){
+    J('#btn1').bind( 'click', function(){
+        alert( J('#txt4',DG.curDoc).val() );
+    });
+	
+    J('#btn2').bind( 'click', function(){
+        DG.curWin.AA();
+    });
+});
+</pre>					
+					<p><input type="text" size="20" id="txt4" value="调用页面的文本框"/>&nbsp;&nbsp;<button class="runcode" id="btn11">运行»</button></p>
+				</li>
+				<li>
+				    <h3>在2个窗口中相互调用函数和传值(3.4.1版本新增)</h3>
+<pre class="prettyprint">
+// A窗口的代码
+J('#btn12').dialog({ id:'test12', page:'content9.html', title:'A窗口' });
+
+// A窗口中内容页content9.html中的代码
+var DG = frameElement.lhgDG;
+J(function(){
+    J('#btn1').bind( 'click', function(){
+        // test13是B窗口的id
+		if( DG.iDG('test13') )
+            alert( DG.iDoc('test13').getElementById('inpB').value );
+            // 也可以使用jQ方式来写
+            // alert( J('#inpB',DG.iDoc('test13')).val() );
+        else
+            alert( '请先打开B窗口' );
+    });
+    J('#btn2').bind( 'click', function(){
+        if( DG.iDG('test13') )
+            DG.iWin('test13').fnB();
+        else
+            alert( '请先打开B窗口' );
+    });
+    J('#btn3').bind( 'click', function(){
+        if( DG.iDG('test13') )
+            DG.iWin('test13').DG.cancel();
+        else
+            alert( '请先打开B窗口' );
+    });
+});
+function fnA()
+{
+    alert( '我是A窗口的函数' );
+}
+
+// B窗口的代码
+J('#btn13').dialog({ id:'test13', page:'content10.html', title:'B窗口' });
+
+// B窗口中内容页content10.html中的代码
+var DG = frameElement.lhgDG;
+J(function(){
+    J('#btn1').bind( 'click', function(){
+        // test12是A窗口的id        
+		if( DG.iDG('test12') )
+            alert( DG.iDoc('test12').getElementById('inpA').value );
+            // 也可以使用jQ方式来写
+            // alert( J('#inpA',DG.iDoc('test12')).val() );
+        else
+            alert( '请先打开A窗口' );
+    });
+    J('#btn2').bind( 'click', function(){
+        if( DG.iDG('test12') )
+            DG.iWin('test12').fnA();
+        else
+            alert( '请先打开A窗口' );
+    });
+    J('#btn3').bind( 'click', function(){
+        if( DG.iDG('test12') )
+            DG.iWin('test12').DG.cancel();
+        else
+            alert( '请先打开A窗口' );
+    });
+});
+function fnB()
+{
+    alert( '我是B窗口的函数' );
+}
+</pre>
+					<p><button class="runcode" id="btn12">窗口A»</button>&nbsp;&nbsp;<button class="runcode" id="btn13">窗口B»</button></p>
+				</li>
+				<li>
+				    <h3>在父窗口和子窗口之间相互调用函数和传值(3.4.1版本新增)</h3>
+<pre class="prettyprint">
+// 父窗口的代码
+J('#btn14').dialog({ id:'test14', page:'content11.html', title:'父窗口', cover:true });
+
+// 父窗口中内容页content11.html中的代码
+var DG = frameElement.lhgDG;
+J(function(){
+    J('#btn1').bind( 'click', function(){
+        // child是子窗口的id 
+        if( DG.iDG('child') )
+            alert( DG.iDoc('child').getElementById('inpB').value );
+            // 也可以使用jQ方式来写
+            // alert( J('#inpB',DG.iDoc('child')).val() );
+        else
+            alert( '请先打开子窗口' );
+    });
+	
+    J('#btn2').bind( 'click', function(){
+        if( DG.iDG('child') )
+            DG.iWin('child').fnB();
+        else
+            alert( '请先打开子窗口' );
+    });
+});
+function fnA()
+{
+    alert( '我是父窗口的函数' );
+}
+// 打开子窗口的代码
+function opchild()
+{
+    var childDG = new DG.curWin.J.dialog({ id:'child', title:'子窗口', page:'content12.html', parent:DG });
+    childDG.ShowDialog();
+}
+
+// 子窗口中内容页content12.html中的代码
+var DG = frameElement.lhgDG;
+J(function(){
+    J('#btn1').bind( 'click', function(){
+        // test14是父窗口的id 
+        if( DG.iDG('test14') )
+            alert( DG.iDoc('test14').getElementById('inpA').value );
+            // 也可以使用jQ方式来写
+            // alert( J('#inpA',DG.iDoc('test14')).val() );
+        else
+            alert( '请先打开父窗口' );
+	});
+	
+    J('#btn2').bind( 'click', function(){
+        if( DG.iDG('test14') )
+            DG.iWin('test14').fnA();
+        else
+            alert( '请先打开父窗口' );
+    });
+});
+function fnB()
+{
+    alert( '我是子窗口的函数' );
+}
+</pre>					
+					<p><button class="runcode" id="btn14">运行»</button></p>
+				</li>
+			</ol>
+			<p>其它更多的特列的演示示例请看 <a href="../demo/demo.html">在线演示</a> | <a href="../frameDemo/demo.html">跨框架演示</a> </p>
+		</div>
+		<div class="line">&nbsp;</div>
+	    <div class="footer">
+	        <div class="copyright">Copyright &copy <a href="http://lhgcore.com" target="_blank">lhgcore.com</a>. All rights reserved. | 豫ICP备06002782号 | <script src="http://s15.cnzz.com/stat.php?id=2990550&web_id=2990550" language="JavaScript"></script></div>
+			<a href="../footer/contact.html">联系我们</a> | <a href="../footer/link.html">友情链接</a> | <a href="../footer/ad.html">广告服务</a> | <a href="../footer/partners.html">合作伙伴</a>
+	    </div>
+	</div>
+	<script type="text/javascript">prettyPrint();</script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899-12-30 00:00:00.000.bdsproj,E:\pro\del\webservices\Project1.bdsproj=D:\Backup\我的文档\RAD Studio\Projects\Project1.bdsproj</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.dfm,E:\pro\del\webservices\Unit1.dfm=D:\Backup\我的文档\RAD Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.pas,E:\pro\del\webservices\Unit1.pas=D:\Backup\我的文档\RAD Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.pas,E:\pro\del\webservices\UserServer.pas=D:\Backup\我的文档\RAD Studio\Projects\UserServer.pas</Transaction>
+  </Transactions>
+</BorlandProject>

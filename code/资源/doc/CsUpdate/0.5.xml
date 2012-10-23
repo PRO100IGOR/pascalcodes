@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="gb2312"?>
+<updates><version>0.5</version><time>2011-09-22 15:53</time><explains><explain>1：当验证规则中有isWarn=true时，M对象onCheck必须有lhgAlert等提示方式</explain><explain>2：当引用lhgdialog时引入必须的js</explain></explains><files><file action="u">code.exe</file></files></updates>

@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="gb2312"?>
+<updates><version>0.92</version><time>2011-11-29 18:08</time><explains><explain>1：修正高级查询条件不会在showaction里出现的bug</explain><explain>2：优化验证组件生成时的无用代码</explain><explain>3：修正验证条件超过3条时报错的bug</explain><explain>4：验证条件中“显示正确消息”、“显示提示消息”默认不显示</explain><explain>5：当代码生成完毕后，模块的访问地址自动复制到剪贴板</explain><explain>6：将菜单通过webservice保存到平台的功能可以使用了，也支持了中文菜单名</explain></explains><files><file action="u">code.exe</file></files></updates>

@@ -1,0 +1,15 @@
+alert
+changeBorder
+changeParentBorder
+changeBackGround
+changeBackGroundParent
+appendAfter
+hipTop
+ympAlert
+lhgAlert
+tip
+jqMsg
+msgGrowl
+scrollTo
+msgAlert
+msgBar

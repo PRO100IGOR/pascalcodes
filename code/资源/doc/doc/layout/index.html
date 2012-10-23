@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>webservice</title>
+	<link href="../index.css" type="text/css" rel="stylesheet"/>
+	<link href="../prettify/prettify.css" type="text/css" rel="stylesheet"/>
+	<script type="text/javascript" src="../prettify/prettify.js"></script>
+</head>
+
+<body>
+    <div class="container">
+		<div class="line">&nbsp;</div>
+		<div class="lhgdg_body">
+			 
+
+<h2>所有的表单组件使用QUI渲染。</h2>
+			<ol>
+			 <h3>官方API</h3>
+1:<a href="box/box1.html">盒子模型1</a><br/>
+2:<a href="box/box2.html">盒子模型2</a><br/>
+3:<a href="floatPanel/floatPanel.html">浮动层</a><br/>
+4:<a href="form/text.html">文本框</a><br/>
+5:<a href="form/textarea.html">文本域</a><br/>
+5:<a href="form/button.html">按钮</a><br/>
+6:<a href="form/checkbox.html">多选框</a><br/>
+7:<a href="form/radio.html">单选框</a><br/>
+8:<a href="form/select.html">下拉框</a><br/>
+9:<a href="form/upload.html">上传</a><br/>
+10:<a href="table/table_Base.html">表格</a><br/>
+
+			 <h3>平台封装</h3>
+1:以上文件中可能有的效果出不来，但是在平台中是好的，因此只需要看他们的属性即可。。<br/>
+2:基本上所有的表单元素都扩展了一个refresh方法，比如官方的文本框中，动态创建的不支持效果，但是在平台中调用按钮的refresh方法就支持了。<br/>
+另外，官方中所有刷新的方法，如单选、多选、下拉等选中效果变化时都调用refresh方法可以实现刷新。<br/>
+3:官方api中特殊的属性，如文本框的水印属性，平台对struts的html:text进行了扩展，html:text已经支持水印效果了。<br/>
+4:平台对html:button进行了扩展，原来必填的prototype属性不必填了，增加非必填属性buttontype,就是按钮api中的按钮的样式:icon_add中的add,如果 不写styleid，那么id就是add<br/>
+例如
+buttontype=add,则会出现
+ button id="add" span class="icon_add" 保存 的按钮
+5:下拉框、多选、单选支持原生的onchange、onclick事件了，而且可以用this，但是下拉框要在事件中判断this.value，如果是0，表示是无效事件调用，一定要注意！
+
+
+</ol>
+
+
+		</div>
+		<div class="line">&nbsp;</div>
+	</div>
+	<script type="text/javascript">prettyPrint();</script>
+</body>
+</html>

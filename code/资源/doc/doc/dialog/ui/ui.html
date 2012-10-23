@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>皮肤制作 - LHGDIALOG</title>
+    <meta name="keywords" content="lhgdialog,dialog,弹出窗口,js窗口,js弹出窗口,js库,对话框,alert,提示,警告,确认,提问,ajax,tip,confirm,open,prompt,lhgcore,javascript,jquery,window,clientside,control,open source,LGPL,dhtml,html,xhtml,plugins"/>
+    <meta name="description" content="lhgdialog是一功能强大的简单迷你并且高效的弹出窗口插件,基于网络访问并且兼容IE 6.0+,Firefox 3.0+,Opera 9.6+,Chrome 1.0+,Safari 3.22+."/>
+    <meta name="copyright" content="lhgcore.com"/>
+	<link href="../index.css" type="text/css" rel="stylesheet"/>
+	<script type="text/javascript" src="../lhgcore.min.js"></script>
+	<script type="text/javascript" src="../lhgdialog.min.js?s=default,chrome,aero,facebook"></script>
+	<script type="text/javascript">
+J(function(){
+    J('#default').dialog({ id:'test1', html:'<h3 style="font-size:14px;text-align:center;padding:90px 0 0 0;">欢迎使用 lhgdialog 弹出窗口组件</h3>' });
+	J('#chrome').dialog({ id:'test2', html:'<h3 style="font-size:14px;text-align:center;padding:90px 0 0 0;">欢迎使用 lhgdialog 弹出窗口组件</h3>', skin:'chrome' });
+	J('#aero').dialog({ id:'test3', html:'<h3 style="font-size:14px;text-align:center;padding:90px 0 0 0;">欢迎使用 lhgdialog 弹出窗口组件</h3>', skin:'aero' });
+	J('#facebook').dialog({ id:'test4', html:'<h3 style="font-size:14px;text-align:center;padding:40px 0 0 0;">欢迎使用 lhgdialog 弹出窗口组件</h3>', skin:'facebook', btnBar:false, iconTitle:false, maxBtn:false, width:300, height:150, cover:true, lockScroll:true, bgcolor:'#000', opacity:0.7 });
+});
+	</script>
+</head>
+
+<body>
+    <div class="container">
+	    <div class="header">
+		    <div class="header_logo"><a href="../index.html"><img border="0" src="../images/lhgdg_logo.gif" alt="lhgdialog"/></a></div>
+			<div class="header_nav">
+			    <a href="../index.html">首页</a> | <a href="../api/basic.html">基本使用指南</a> | <a href="../api/api.html">API参数控制接口</a> | <a href="../demo/demo.html">在线演示</a> | <a href="../valueDemo/demo.html">传值演示</a> | <a href="../frameDemo/demo.html">跨框架演示</a> | 皮肤下载页 | <a href="../donate/donate.html">捐赠</a>
+			</div>
+		</div>
+		<div class="line">&nbsp;</div>
+		<div class="lhgdg_body">
+		    <h2>窗口采用标准的九宫格结构，下图是结构中各部分相对应的css中的class名称</h2>
+			<div><img src="dialog.gif" alt="lhgdialog弹出窗口html结构图"/></div>
+			<p>窗口的皮肤的制可参照skins文件夹中的皮肤文件，首先给皮肤起个名称，然后创建一个相关的CSS文件，并建立一个和CSS文件名相同的文件夹放图片即可。lhgdialog皮肤结构相对非常简单，有一定的HTML和CSS设计基础即可完成设计工作。</p>
+			<h2>皮肤下载</h2>
+			<p>皮肤包的使用方法：你只要把下载的皮肤包解压后复制到组件的skins文件夹中即可，调用方法请参阅前面的示例。</p>
+			<div style="height:140px;background:url(lhgdg_default.gif) no-repeat;padding-left:320px;">
+			    <div style="line-height:150%;font-weight:bold;padding-top:15px;">皮肤名称：default<br/>发布时间：2011-07-01<br/>皮肤作者：lhgcore<br/>简单说明：此皮肤组件下载包里也提供<br/><br/><a href="###" id="default">演示»</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="default.zip" target="_blank">下载皮肤包»</a></div>
+			</div>
+			<div style="height:140px;background:url(lhgdg_chrome.gif) no-repeat;padding-left:320px;">
+			    <div style="line-height:150%;font-weight:bold;padding-top:15px;">皮肤名称：chrome<br/>发布时间：2011-07-01<br/>皮肤作者：lhgcore<br/>简单说明：此皮肤组件下载包里也提供<br/><br/><a href="###" id="chrome">演示»</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="chrome.zip" target="_blank">下载皮肤包»</a></div>
+			</div>
+			<div style="height:140px;background:url(lhgdg_aero.gif) no-repeat;padding-left:320px;">
+			    <div style="line-height:150%;font-weight:bold;padding-top:15px;">皮肤名称：aero<br/>发布时间：2011-07-01<br/>皮肤作者：lhgcore<br/>简单说明：此皮肤图片资源来自到网络<br/><br/><a href="###" id="aero">演示»</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="aero.zip" target="_blank">下载皮肤包»</a></div>
+			</div>
+			<div style="height:140px;background:url(lhgdg_facebook.gif) no-repeat;padding-left:320px;">
+			    <div style="line-height:150%;font-weight:bold;padding-top:15px;">皮肤名称：facebook<br/>发布时间：2011-07-01<br/>皮肤作者：lhgcore<br/>简单说明：此皮肤无最大化按钮图标<br/><br/><a href="###" id="facebook">演示»</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="facebook.zip" target="_blank">下载皮肤包»</a></div>
+			</div>
+			<p>若希望lhgdialog开发团队为您定制特殊的功能、皮肤和插件，请参阅我们提供的<a href="../donate/donate.html">捐赠</a>页面。</p>
+		</div>
+		<div class="line">&nbsp;</div>
+		<div class="footer">
+		    <div class="copyright">Copyright &copy <a href="http://www.lhgcore.com/" target="_blank">lhgcore.com</a>. All rights reserved. | 豫ICP备06002782号 | <script src="http://s15.cnzz.com/stat.php?id=2990550&web_id=2990550" language="JavaScript"></script></div>
+			<a href="../footer/contact.html">联系我们</a> | <a href="../footer/link.html">友情链接</a> | <a href="../footer/ad.html">广告服务</a> | <a href="../footer/partners.html">合作伙伴</a>
+		</div>
+	</div>
+</body>
+</html>

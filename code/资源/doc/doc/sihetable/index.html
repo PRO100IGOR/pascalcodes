@@ -1,0 +1,135 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>webservice</title>
+	<link href="../index.css" type="text/css" rel="stylesheet"/>
+	<link href="../prettify/prettify.css" type="text/css" rel="stylesheet"/>
+	<script type="text/javascript" src="../prettify/prettify.js"></script>
+</head>
+
+<body>
+    <div class="container">
+		<div class="line">&nbsp;</div>
+		<div class="lhgdg_body">
+		    <h2>表格操作</h2>
+
+			<ol>
+			 <h3>基本调用</h3>
+					<pre class="prettyprint">
+调用范例 
+页面引用&lt;%@ taglib uri="/WEB-INF/tld/sihe.tld" prefix="sihe"%&gt;
+&lt;sihe:table items="list" var="item" action="${basePath}/employeeLoadAction.do?action=showList" checkId="employeeid" &gt;
+	&lt;sihe:row id="${item.employeeid}">
+		&lt;sihe:column property="employeename" width="10%"  title="员工姓名"  /&gt;
+		&lt;sihe:column property="sex" width="10%"  title="性别"  &gt;
+		&lt;c:if test="${item.sex=='1'}"&gt;男&lt;/c:if&gt;
+		&lt;c:if test="${item.sex=='0'}"&gt;女&lt;/c:if&gt;
+		&lt;c:if test="${item.sex=='-2'}"&gt;&nbsp;&lt;/c:if&gt;
+	&lt;/sihe:column>
+	&lt;sihe:column property="birthday" width="20%"  title="生日"  /&gt;
+	&lt;sihe:column property="posts.postname" width="15%" title="岗位"/&gt;
+	&lt;sihe:column property="posts.deptment.deptname" width="15%" title="部门"/&gt;
+	&lt;sihe:column property="posts.deptment.organ.organname" width="15%" title="机构"/&gt;
+	&lt;/sihe:row&gt;
+&lt;/sihe:table&gt;
+
+//参数说明，带*的为必填项
+&lt;sihe:table&gt;输出表标签 包含在一个form中&lt;/sihe:table&gt;
+action:*分页跳转提交的action
+checkId:多选框绑定的主键ID，不设置则表格不显示多选框
+items:*列表集合
+var:设置列表中对象在标签中的名称，在行标签和列标签应用
+tableId:表格id,默认siheTable
+isTree:是否树结构默认否（如果是树结构，则identifier（树键）、parentAttribute（父键）为必填项）
+identifier:树结构启用时绑定主键
+parentAttribute:树结构启用时绑定父对象的主键ID
+hasOrder:是否启用序号列，默认是
+rowsDisplayed:单页记录数,默认15
+width:表格行宽，默认100%
+paginationLocation：分页位置（top/bottom/其它内容不显示）默认bottom
+showRowsDisplayed：是否显示分页行数，默认是
+showGotoPage:是否显示跳转,默认否
+showPagination:是否显示分页,默认是
+useMultColor:是否启用多行选中变色,默认否，
+
+
+&lt;sihe:row&gt;输出行标签&lt;/sihe:row&gt;
+className:行样式
+onclick：单击事件
+ondblclick：双击事件
+id：绑定主键ID
+style：行内样式 
+
+
+&lt;/sihe:column&gt;	&lt;/sihe:column&gt;
+property:在单元格内输出列表对象对应的属性
+sortMode:是否排序,默认否
+align:单元格对齐方式
+width:单元格宽度
+className:单元格样式
+
+在页面任意地方写：
+&lt;sihe:table items="list" var="item" action="${basePath}/employeeLoadAction.do?action=showList" checkId="employeeid" &gt;
+	&lt;sihe:row id="${item.employeeid}">
+		&lt;sihe:column property="employeename" width="10%"  title="员工姓名"  /&gt;
+		&lt;sihe:column property="sex" width="10%"  title="性别"  &gt;
+			&lt;c:if test="${item.sex=='1'}"&gt;男&lt;/c:if&gt;
+			&lt;c:if test="${item.sex=='0'}"&gt;女&lt;/c:if&gt;
+			&lt;c:if test="${item.sex=='-2'}"&gt;&nbsp;&lt;/c:if&gt;
+		&lt;/sihe:column>
+		&lt;sihe:column property="birthday" width="20%"  title="生日"  /&gt;
+		&lt;sihe:column property="posts.postname" width="15%" title="岗位"/&gt;
+		&lt;sihe:column property="posts.deptment.deptname" width="15%" title="部门"/&gt;
+		&lt;sihe:column property="posts.deptment.organ.organname" width="15%" title="机构"/&gt;
+	&lt;/sihe:row&gt;
+&lt;/sihe:table&gt;
+可在&lt;sihe:column >&lt;/sihe:column>标签体中直接写要在单元格中输出的内容
+
+
+js方法：
+/**
+ * 获取到列表所有被选中的行的id 
+ * @param {Object} onlyOne 是否只返回被选中的第一行的id,如果true则按照行的选中状态，否则按照checkbox的勾选状态进行判断
+ */
+$("#表格id").getId(onlyOne);
+/**
+ * 提交 对应的表单
+ */
+$("#表格id").tableSubmit();
+/**
+ *上移选定行,
+ *@param {Object} steps 指定行数  ，默认1
+ */
+$("#表格id").moveUp(steps);
+/**
+ *下移选定行,
+ *@param {Object} steps 指定行数  ，默认1
+ */
+$("#表格id").moveDown(steps);
+/**
+ *上移 选定行顶部,
+ */
+$("#表格id").moveTop();
+/**
+ *下移 选定行底部,
+ */
+$("#表格id").moveBottom();
+/**
+ *删除选定的行
+ */
+$("#表格id").del();
+/**
+ *设置对应的表单的action
+ */
+$("#表格id").setAction();
+
+</pre>
+
+
+		</div>
+		<div class="line">&nbsp;</div>
+	</div>
+	<script type="text/javascript">prettyPrint();</script>
+</body>
+</html>

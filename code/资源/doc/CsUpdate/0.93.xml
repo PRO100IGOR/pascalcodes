@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="gb2312"?>
+<updates><version>0.93</version><time>2011-11-30 09:20</time><explains><explain>1：增加数据库方言、clob处理类配置支持</explain><explain>2：hibernate一对多、多对一关系不再必填 </explain></explains><files><file action="u">code.exe</file></files></updates>

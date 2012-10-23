@@ -1,0 +1,378 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>webservice</title>
+	<link href="../index.css" type="text/css" rel="stylesheet"/>
+	<link href="../prettify/prettify.css" type="text/css" rel="stylesheet"/>
+	<script type="text/javascript" src="../prettify/prettify.js"></script>
+</head>
+
+<body>
+    <div class="container">
+		<div class="line">&nbsp;</div>
+		<div class="lhgdg_body">
+		    <h2>http://10.10.0.159:8080/oxhide/services/UserServer?wsdl</h2>
+
+			<ol>
+			 <h3>资源验证</h3>
+					<pre class="prettyprint">
+/**
+ *  检查用户是否有访问系统编码为appcode、资源编码为resourceCode的资源
+* @Title: UserServer.java
+* @Package com.sxsihe.oxhide.server.users
+ */
+public boolean hasRescource(String userid, String appcode, String resCode);
+					</pre>
+			</ol>
+
+
+			<ol>
+			  <h3>简单登录</h3>
+					<pre class="prettyprint">
+/**
+ * 验证用户登录,方法返回用户是否登录成功的boolea值
+ * @Title: SsouserServiceImpl.java
+ * @Package com.sxsihe.oxhide.ssouser.service
+ */
+public boolean loginCheck(String data);
+
+data是一个json格式的数据，格式如下：
+	{
+	  "username":"",
+	  "password":""
+	}
+或者
+	{
+	  "apple":""
+	}
+或者
+	{
+	  "android":""
+	}
+</pre>				
+			</ol>
+		   
+
+			<ol>
+			 <h3>高级登录</h3>
+					<pre class="prettyprint">
+/**
+ * 高级登录
+ *
+ * @Title: SsouserServiceImpl.java
+ * @Package com.sxsihe.oxhide.ssouser.service
+ */
+public String login(String data);
+
+data是一个json格式的数据，基本格式如下：
+	{
+	  "username":"",
+	  "password":""
+	}
+或者
+	{
+	  "apple":""
+	}
+或者
+	{
+	  "android":""
+	}
+其他可选参数：
+	{
+	  "appcode":"需要返回某个编码为appcode的系统的资源",
+	  "modelcode":"需要返回某个编码为modelcode的模块的资源,当有参数modelcode时必须有appcode参数",
+	  "restype":"需要返回哪种资源类型，默认全部,可选值 0=模块 1=菜单组 2=菜单 3=按钮 ",
+	  "type":"返回的资源值的排列方式,type=tree表示以多层嵌套的json格式返回，并且此时modelcode参数无效了;tree=array表示以数组且不嵌套的json格式返回,此时modelcode参数有效.默认为array,如果是array格式可以不写"
+	}
+返回内容说明：
+    1:登录成功后必定返回的数据：
+	{
+		"birthday": "2011-08-19",    //生日
+		"createTime": 0,	//参数
+		"deptid": "8a8a801f33a679220133b4236a8e05f5", //部门id
+		"deptname": "五阳煤矿监控",	//部门名称
+		"dialog": "",	//参数
+		"employeeid": "08A80918C9AAA23992A1F3A3C89DC178",  //用户对应员工id
+		"employeename": "zlb",		//员工名称
+		"facestyle": "schema5",	//参数
+		"id": "",	//参数
+		"ip": "",	//参数
+		"issingel": false,//参数
+		"loginTime": "",	//参数
+		"organid": "8a8a801f33882abd01338c43686b040d", //机构id
+		"organname": "潞安集团五阳煤矿",//机构名称
+		"password": "888888",	//密码
+		"postid": "8a8a801f33a679220133b5be0f4f073e",   //岗位id
+		"postname": "保安1",	//岗位
+		"sex": "1",		//性别
+		"userid": "8a8a80cf3247ea1c0132483340680043",		//用户id
+		"username": "zhang"		//用户名 
+	},
+	2:当传递了appcode之后返回的资源多层嵌套json格式：
+"resource": {
+    "8a8a80f22f8a91a8012f8a9c0791004f": {
+        "resourcecode": "ZZJG",
+        "resourcename": "组织机构",
+        "resource": {
+            "8a8a80f22f8f7b78012f8f7cc7d40011": {
+                "resourcecode": "JGGL",
+                "resourcename": "机构管理",
+                "resource": {}
+            },
+            "8a8a80f22f8f7b78012f8f7d425d001e": {
+                "resourcecode": "BMGL",
+                "resourcename": "部门管理",
+                "resource": {}
+            },
+            "8a8a80f22f8f7b78012f8f7dab2a002c": {
+                "resourcecode": "GWGL",
+                "resourcename": "岗位管理",
+                "resource": {}
+            },
+            "8a8a80f22f8f7b78012f8f7e09d3003a": {
+                "resourcecode": "YGGL",
+                "resourcename": "员工管理",
+                "resource": {}
+            }
+        }
+    },
+    "8a8a80f22f8f7b78012f8f80477b0076": {
+        "resourcecode": "JBXX",
+        "resourcename": "基本信息",
+        "resource": {
+            "8a8a80f22f8f7b78012f8f8134010082": {
+                "resourcecode": "SJZDLXGL",
+                "resourcename": "数据字典类型管理",
+                "resource": {}
+            },
+            "8a8a80f22f8f7b78012f8f81ada7008f": {
+                "resourcecode": "SJZDNRGL",
+                "resourcename": "数据字典内容管理",
+                "resource": {}
+            },
+            "8a8a80662fb9081f012fb9093d0a0011": {
+                "resourcecode": "YSGL",
+                "resourcename": "样式管理",
+                "resource": {}
+            },
+            "8a8a801f32e0f60e0132ecdc49790808": {
+                "resourcecode": "ZTGL",
+                "resourcename": "状态管理",
+                "resource": {}
+            }
+        }
+    },
+    "402883622fec5ee5012fec91c5cb0195": {
+        "resourcecode": "GRGL",
+        "resourcename": "个人信息",
+        "resource": {
+            "402883622fec5ee5012fec92a007019e": {
+                "resourcecode": "GRXXGL",
+                "resourcename": "个人信息",
+                "resource": {}
+            },
+            "8a8a80c630bf18960130bfc4fa3c0393": {
+                "resourcecode": "JMGL",
+                "resourcename": "界面管理",
+                "resource": {}
+            }
+        }
+    },
+    "8a8a80f22f8f7b78012f8f7e500e0044": {
+        "resourcecode": "QXGL",
+        "resourcename": "权限管理",
+        "resource": {
+            "8a8a80f22f8f7b78012f8f7ebb3a0051": {
+                "resourcecode": "ZYGL",
+                "resourcename": "资源管理",
+                "resource": {}
+            },
+            "8a8a80f22f8f7b78012f8f7f318d005e": {
+                "resourcecode": "JSGL",
+                "resourcename": "角色管理",
+                "resource": {}
+            },
+            "8a8a80f22f948d11012f94924ae10020": {
+                "resourcecode": "XTGL",
+                "resourcename": "应用系统管理",
+                "resource": {}
+            },
+            "8a8a80f22f8f7b78012f8f7f88e9006b": {
+                "resourcecode": "YHGL",
+                "resourcename": "用户管理",
+                "resource": {}
+            },
+            "8a8a80c63155d8e7013155de4c370009": {
+                "resourcecode": "XTRZ",
+                "resourcename": "系统日志",
+                "resource": {}
+            }
+        }
+    },
+    "8a8a80cf31e0f5070131e11b6076001a": {
+        "resourcecode": "PTYZZY",
+        "resourcename": "平台隐藏资源",
+        "resource": {
+            "8a8a80cf31e0f5070131e11bd578001d": {
+                "resourcecode": "ZXRYCZ",
+                "resourcename": "在线人员操作",
+                "resource": {}
+            }
+        }
+    }
+}
+	3:返回的普通资源格式：
+"resource": [{
+    "resourcecode": "GRXXGL",
+    "resourcename": "个人信息"
+},
+{
+    "resourcecode": "JMGL",
+    "resourcename": "界面管理"
+},
+{
+    "resourcecode": "ZXRYCZ",
+    "resourcename": "在线人员操作"
+},
+{
+    "resourcecode": "YGGL",
+    "resourcename": "员工管理"
+},
+{
+    "resourcecode": "GWGL",
+    "resourcename": "岗位管理"
+},
+{
+    "resourcecode": "BMGL",
+    "resourcename": "部门管理"
+},
+{
+    "resourcecode": "JGGL",
+    "resourcename": "机构管理"
+},
+{
+    "resourcecode": "ZYGL",
+    "resourcename": "资源管理"
+},
+{
+    "resourcecode": "YHGL",
+    "resourcename": "用户管理"
+},
+{
+    "resourcecode": "XTGL",
+    "resourcename": "应用系统管理"
+},
+{
+    "resourcecode": "JSGL",
+    "resourcename": "角色管理"
+},
+{
+    "resourcecode": "XTRZ",
+    "resourcename": "系统日志"
+},
+{
+    "resourcecode": "ZTGL",
+    "resourcename": "状态管理"
+},
+{
+    "resourcecode": "SJZDNRGL",
+    "resourcename": "数据字典内容管理"
+},
+{
+    "resourcecode": "SJZDLXGL",
+    "resourcename": "数据字典类型管理"
+},
+{
+    "resourcecode": "YSGL",
+    "resourcename": "样式管理"
+}]</pre>
+			</ol>
+			<ol>
+			 <h3>消息推送中心 --- 保存令牌(apple、android)</h3>
+					<pre class="prettyprint">
+/**
+ * 保存令牌
+ * @Title: SsouserServiceImpl.java
+ * @Package com.sxsihe.oxhide.ssouser.service
+ */
+public boolean saveToken(String data);
+
+data是一个json格式的数据，需要确定哪个用户、哪个系统、哪个token，基本格式如下：
+{
+	"username":"",
+	"password":""
+}
+或者{
+	"apple":""
+}
+或者{
+	"android":""
+},或者{
+	"userid":""
+}
+<br/>
+以上确定了是哪个用户，确定哪个系统需要加 "appcode":""<br/>
+除了使用apple或者android确定哪个用户以外，还需要确定是安卓还是苹果token，加 "type":"apple"/"android"<br/>
+比如：<br/><br/>{"apple":"设备id","appcode":"系统编码","token":"苹果令牌"}<br/>
+{"android":"设备id","appcode":"系统编码","token":"安卓令牌"}<br/>
+{"userid":"用户id","appcode":"系统编码","token":"安卓或苹果令牌","type:"apple或android"}<br/>
+{"username":"用户名","password":"密码","appcode":"系统编码","token":"安卓或苹果令牌","type:"apple或android"}<br/><br/>
+此方法返回boolean值，表示是否注册成功，同一个用户不能注册同样的token、同样的系统两次，首次注册成功后，可以将注册结果放在本地，以后就不需要再次注册了
+</pre>
+			</ol>
+			<ol>
+			 <h3>消息推送中心 --- 推送消息</h3>
+					<pre class="prettyprint">
+/**
+ * 推送数据！
+* @Title: UserServerImpl.java
+* @Package com.sxsihe.oxhide.server.users
+ */
+public String sendTokenData(String data);
+
+data是一个json格式的数据
+{
+	"appcode":"系统编码",[必填]
+	"rescode":"资源编码"[选填]
+	"info":"发送的消息,要加码",[必填]
+	"type":"apple或android或dwr或mobile，多个用,分割",[必填]
+	"map":{   //当用apple方式时用苹果默认api传递map参数；用dwr的新窗体打开时，map参数用href传递。安卓方式传递json对象，map作为属性传递
+		附加参数键值对，[选填]
+	},
+	"msgtype":"消息类型，发送的消息在页面中将以此属性分类显示，默认是系统消息"[选填],
+	"organid":"机构id",[选填]
+	"organcode":"机构编码",[选填]
+	"deptid":"部门id",[选填]
+	"deptcode":"部门编码",[选填]
+	"postcode":"部门id",[选填]
+	"postid":"岗位id",[选填]
+	"postcode":"岗位编码",[选填]
+	"employeeid":"员工id",[选填]
+	"userid":"用户id",[选填],
+	"resid":"资源id",[选填],
+	"target"://默认空，表示用新窗体打开，此时必须传href属性，即窗体要跳转的地址，这个地址不需要写系统前缀，只需要写/xxxaction.do?action=cc之类的就行。当target是1时表示框架内打开，必须要传rescode或者resid;
+	"href":"dwr方式中打开的地址，请写绝对地址，即在资源模块中配置的地址"[选填],
+	"isnote":"是否是公告，只对dwr方式有效，默认不是，isnote=public表示是公告"[选填],
+	"btn":"可选true|false，表示dwr方式时打开的窗体是否有按钮栏，默认有"[选填],
+	"state":"发送接收者状态<只正对dwr方式,只有dwr才区分是否在线> on 只发给在线的人，off只发给离线的人 all发给所有人，默认是all所有人"[选填]
+}
+					</pre>
+			</ol>
+			<ol>
+			 <h3>消息推送中心 --- 消息反馈</h3>
+					<pre class="prettyprint">
+/**
+ * 反推送数据
+ * @param id
+ */
+public void unSendData(String id, String type);
+id是接收到的推送消息的id，type是推送消息的类型。
+</pre>
+			</ol>
+		</div>
+		<div class="line">&nbsp;</div>
+	</div>
+	<script type="text/javascript">prettyPrint();</script>
+</body>
+</html>

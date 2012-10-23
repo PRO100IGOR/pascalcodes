@@ -1,0 +1,50 @@
+
+1)tcp server   Node
+  tcp client  Node
+  udp  Node
+
+  顶级node (靠文字区别)
+
+2) 1个tcp server <-> 1个二级node  
+
+   其data指向一个 CMySocket 对象。
+
+   CMySock包含了SocketType: Tcp Server,Tcp Client, TcpServerClient
+                            udp,udp group等。
+
+   然后是：指向对象的指针 SocketPtr
+          <下面有connections->twinsock  子node>
+
+   还包含一个TTreeNode指针。
+
+   一个linkstatus状态，主要用于表示tcp的连接，断开状态
+
+   本地信息：本地IP,本地端口号
+   对方信息：远端IP地址，远端端口号。
+
+   以及一系列socket事件：连接/断开/数据等的初始化。每种类别个不一样。
+
+  
+3) 创建一个tcp server,则创建一个CMySocket对象。
+   <tcp server 本身没有专用form>
+
+   设置CMySocket对象类型，指针，状态，本地信息，socket事件。
+   然后把它加入到全局的MySocketList中。
+   同时，创建1个二级node位于Tcp Server顶级目录下。该node的Data指针指向新建的CMySocket对象。
+
+   当一个clientsocket连接过来时，新的serverclient产生了。
+   这时需要创建一个CMySocket对象，
+   设置CMySocket对象类型，指针，状态，本地/远端信息，socket事件。
+   然后把它加入到全局的MySocketList中。
+   同时，创建1个三级node位于产生事件的SocketServer(从sender提取)对应Node之下。该node的Data指针指向新建的CMySocket对象。
+
+4) 创建一个tcp client,则创建一个CMySocket对象。
+   设置CMySocket对象类型，指针，状态，本地信息，远端信息，socket事件。
+   然后把它加入到全局的MySocketList中。
+   同时，创建1个二级node位于Tcp Client顶级目录下。该node的Data指针指向新建的CMySocket对象。
+
+5) 当产生socket断开事件时，如果是tcp server里面产生的(从事件来区别)，则把socket的data对应的CMySocket里面包含的node删除掉。 然后在MySocketList里面删除CMySocket。
+   如果是tcp client(从事件来区别)话，则把socket的data对应的CMySocket里面包含的node删除掉。 然后在MySocketList里面删除CMySocket。
+
+
+6) 每个CMySocket对应一个嵌入式Form

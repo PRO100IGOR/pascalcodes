@@ -1,0 +1,51 @@
+/*!
+ * lhgcore Dialog Plugin StyleSheet
+ * Copyright (c) 2009 - 2011 By Li Hui Gang
+ */
+html{_background-image:url(about:blank);_background-attachment:fixed;}
+.lhgdialog_sheet1{position:absolute;padding:0;margin:0;font:12px Tahoma,Arial,sans-serif;}
+
+.lhgdg_leftTop_sheet1 ,.lhgdg_rightTop_sheet1 ,.lhgdg_leftBottom_sheet1 ,.lhgdg_rightBottom_sheet1 ,.lhgdg_left_sheet1 ,.lhgdg_right_sheet1 ,.lhgdg_icon_sheet1 ,a.lhgdg_xbtn_sheet1 ,a.lhgdg_maxbtn_sheet1 ,a.lhgdg_rebtn_sheet1 ,a.lhgdg_minbtn_sheet1 ,a.lhgdg_button_sheet1 ,a.lhgdg_button_sheet1  em{background-image:url(sheet1/lhgdg_bg.png);background-repeat:no-repeat;}
+
+.lhgdg_leftTop_sheet1 {background-position:-115px -3px;width:13px;height:33px;_ie6png:sheet1/ie6/leftTop.png;}
+.lhgdg_rightTop_sheet1 {background-position:-137px -3px;width:13px;_ie6png:sheet1/ie6/rightTop.png;}
+.lhgdg_leftBottom_sheet1 {background-position:-155px -23px;width:13px;height:13px;_ie6png:sheet1/ie6/leftBottom.png;}
+.lhgdg_rightBottom_sheet1 {background-position:-175px -23px;cursor:nw-resize;width:13px;_ie6png:sheet1/ie6/rightBottom.png;}
+
+.lhgdg_left_sheet1 ,.lhgdg_right_sheet1 {background-repeat:repeat-y;}
+.lhgdg_left_sheet1 {background-position:0 0;_ie6png:sheet1/ie6/left.png;}
+.lhgdg_right_sheet1 {background-position:-15px 0;_ie6png:sheet1/ie6/right.png;}
+
+.lhgdg_top_sheet1 ,.lhgdg_bottom_sheet1 {background:url(sheet1/lhgdg_x.png) repeat-x;font-size:0;}
+.lhgdg_top_sheet1 {background-position:0 0;cursor:move;_ie6png:sheet1/ie6/top.png;}
+.lhgdg_bottom_sheet1 {background-position:0 -33px;_ie6png:sheet1/ie6/bottom.png;}
+
+.lhgdg_title_icon_sheet1 {height:33px;}
+.lhgdg_icon_sheet1 {float:left;background-position:-193px -20px;width:16px;height:16px;margin-top:12px;}
+.lhgdg_title_sheet1 {float:left;color:#fff;font-weight:bold;font-size:12px;height:16px;margin-top:13px;margin-top:15px\0;padding-left:5px;}
+
+a.lhgdg_xbtn_sheet1 ,a.lhgdg_maxbtn_sheet1 ,a.lhgdg_rebtn_sheet1 ,a.lhgdg_minbtn_sheet1 {position:absolute;display:block;cursor:sheet1;width:19px;height:18px;top:11px;_background-image:url(sheet1/ie6/titBtn.gif);}
+a.lhgdg_xbtn_sheet1 {background-position:-71px 0;right:13px;_background-position:-40px 0;}
+a.lhgdg_xbtn_sheet1 :hover{background-position:-71px -19px;_background-position:-40px -19px;}
+a.lhgdg_maxbtn_sheet1 {background-position:-51px 0;right:34px;_background-position:-20px 0;}
+a.lhgdg_maxbtn_sheet1 :hover{background-position:-51px -19px;_background-position:-20px -19px;}
+a.lhgdg_rebtn_sheet1 {background-position:-91px 0;right:34px;_background-position:-60px 0;}
+a.lhgdg_rebtn_sheet1 :hover{background-position:-91px -19px;_background-position:-60px -19px;}
+a.lhgdg_minbtn_sheet1 {background-position:-31px 0;right:55px;_background-position:0 0;}
+a.lhgdg_minbtn_sheet1 :hover{background-position:-31px -19px;_background-position:0 -19px;}
+ 
+.lhgdg_inbox_sheet1 ,.lhgdg_load_sheet1 {width:100%;height:100%;background-color:#fff;overflow:auto;}
+.lhgdg_load_sheet1 {text-align:center;font-weight:bold;}
+.lhgdg_load_sheet1  span{padding-left:20px;height:16px;background:url(sheet1/wait.gif) no-repeat center left;font-size:12px;}
+
+.lhgdg_btnBar_sheet1 {height:29px;background-color:#f6f6f6;border-top:1px solid #dadee5;}
+.lhgdg_btn_div_sheet1{float:right;}
+a.lhgdg_button_sheet1,a.lhgdg_button_sheet1 em{display:inline-block;height:21px;}
+a.lhgdg_button_sheet1{text-decoration:none;background-position:-32px -41px;padding-left:15px;color:#000;cursor:defaule;margin-right:5px;}
+a.lhgdg_button_sheet1:hover{background-position:-32px -83px;}
+a.lhgdg_button_sheet1 em{font-style:normal;background-position:right -62px;padding-right:15px;line-height:21px;line-height:24px\0;font-size:12px;}
+a.lhgdg_button_sheet1:hover em{background-position:right -104px;}
+
+
+.lhgdg_lockScroll{*overflow:hidden;}
+.lhgdg_lockScroll body{overflow:hidden;padding-right:17px;}

@@ -1,0 +1,204 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=GBK"/>
+	<title>showaction</title>
+	<script src="../js/mustache.js"></script>
+	<script src="../js/jquery-1.6.2.min.js"></script>
+	<script type="text/javascript">
+	<!--
+		function make(){
+			var html, json, template;
+			template = $('#template').val();
+			json = $.parseJSON($('#json').val());
+			html = Mustache.to_html(template, json);
+			$('#html').text(html);
+		}
+		function getOneUpper(v){
+			var temp = [],temp2 = v.split("");
+			for(var i =0;i<temp2.length;i++){
+				if(i==0){
+					temp.push(temp2[i].toUpperCase());
+				}else{
+					temp.push(temp2[i]);
+				}
+			}
+			return temp.join(""); 
+		}
+	//-->
+	</script>
+</head>
+ <body>
+<textarea id="json" rows="10" cols="130"></textarea>
+<textarea id="html" rows="10" cols="130"></textarea>
+
+
+
+
+
+	<textarea id="template" rows="10" cols="130">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@ page language="java" contentType="text/html; charset=GBK" pageEncoding="GBK"%>
+<%--
+@version: 1.0
+@author: {{author}}
+@company: {{company}}
+@time: {{date}}
+--%>
+<%
+	request.setCharacterEncoding("GBK");
+%>
+<%@ taglib uri="/WEB-INF/tld/c.tld" prefix="c"%>
+<%@ taglib uri="/WEB-INF/tld/struts-html.tld" prefix="html"%>
+<%@ taglib uri="/WEB-INF/tld/sihe.tld" prefix="sihe"%>
+<html:html>
+<c:set var="request" scope="page" value="${pageContext.request}" />
+<c:set var="base" scope="page" value="${request.scheme}://${request.serverName}:${request.serverPort}" />
+<c:set var="contextPath" scope="page" value="${request.contextPath}" />
+<c:set var="basePath" scope="page" value="${base}${contextPath}/" />
+<head>
+	<title>{{modelChname}}列表页面</title>
+	<script type="text/javascript" src="${basePath}/resource/base/js/frame/jquery/jquery.js"></script>
+	<script type="text/javascript" src="${basePath}/resource/base/js/layout/base.js?s=${faceStyle}"></script>
+	<script type="text/javascript" src="${basePath}/resource/base/js/tool/XQzyDIV.js"></script>
+	<script type="text/javascript" src="${basePath}/resource/base/js/validate/Magican.js"></script>
+	<script type="text/javascript" src="${basePath}/resource/base/js/msg/msgBar/js/msgBar.js"></script>
+	<script type="text/javascript" src="${basePath}/dwr/engine.js"></script>
+	<script type="text/javascript" src="${basePath}/dwr/interface/DWRBaseClass.js"></script>
+	<script type="text/javascript" src="${basePath}/resource/base/js/dialog/lhgdialog.js?t=${dialog }&s=${faceStyle}"></script>
+	{{#datepack}}
+	<script type="text/javascript" defer="defer" src="${basePath}/resource/base/theme/${faceStyle }/My97DatePicker/WdatePicker.js"></script>
+	{{/datepack}}
+	<script>
+	var showAdd = "${basePath}/{{modelName}}ShowAction.do?action=showAdd",					//增加页面
+	    showUpdate = "${basePath}/{{modelName}}ShowAction.do?action=showUpdate",			//修改页面
+		showView = "${basePath}/{{modelName}}ShowAction.do?action=showView",				//查看页面
+		showDelete = "${basePath}/{{modelName}}DeleteAction.do?action=delete",				//删除页面
+		showBatchDelete = "${basePath}/{{modelName}}DeleteAction.do?action=batchDelete",	//批量删除页面
+		service = "{{modelName}}Service",													//服务接口
+		formName = "{{modelName}}ConditionForm",											//表单名称
+		formWidth = {{width}},																//表单宽度
+		formHeight = {{formHeight}},														//表单高度
+		viewHeight = {{formHeight}},														//查看高度
+		viewWidth = {{width}},																//查看宽度
+		listOpen = true,																	//是否调用list.js中的方法
+		pageTitle = "{{modelChname}}",														//页面模块名称
+		tableId = "siheTable";																//默认的表格id
+	</script>
+</head>
+<body>
+	
+	<!-- 查询操作区开始，请自行排版 -->
+	{{#ConditionTypesLength}}
+	<html:form action="/{{modelName}}LoadAction.do?action=showList" styleId="{{modelName}}ConditionForm">
+	{{/ConditionTypesLength}}
+		<div class="box2" panelWidth="99%"  panelTitle="功能">
+			<table class="tableStyle" formMode="true" footer="left">
+			{{#ConditionTypesLength}}
+			{{#ConditionTypes}}
+			{{#隐藏域}}
+			<html:hidden property="{{dataName}}" styleId="{{dataName}}"/>
+			{{/隐藏域}}
+			{{#普通文本框}}
+				<tr>
+					<td>
+						{{comment}}：
+					</td>
+					<td>
+					<html:text property="{{dataName}}" size="32" maxlength="32" styleId="{{dataName}}"/>
+					</td>
+				</tr>
+			{{/普通文本框}}
+			{{#树形菜单文本框}}
+				<tr>
+					<td>
+						{{comment}}：
+					</td>
+					<td>
+					<html:text readonly="true" property="{{dataName}}" size="32" maxlength="32" styleId="{{dataName}}"/>
+					</td>
+				</tr>
+			{{/树形菜单文本框}}
+			{{#时间控件文本框}}
+				<tr>
+					<td>
+						{{comment}}：
+					</td>
+					<td>
+					<html:text readonly="true" onclick="WdatePicker({dateFmt:'{{timerCoder}}'})" property="{{dataName}}" size="32" maxlength="32" styleId="{{dataName}}"/>
+					</td>
+				</tr>
+			{{/时间控件文本框}}
+			{{#下拉框}}
+				<tr>
+					<td>
+						{{comment}}：
+					</td>
+					<td>
+				<html:select property="{{dataName}}" styleId="{{dataName}}">
+					<html:option value="">请选择</html:option>
+					{{#diccode}}
+					<sihe:dicoption match="${ {{modelName}}Form.{{dataName}} }" dic="{{diccode}}"></sihe:dicoption>
+					{{/diccode}}
+					{{#StringArr}}
+					<html:option value="{{key}}">{{value}}</html:option>
+					{{/StringArr}}
+				</html:select>
+					</td>
+				</tr>
+			{{/下拉框}}
+			{{/ConditionTypes}}
+			<tr>
+				<td align="left" colspan="2">
+						<html:button buttonType="find" value="查询" />
+						<html:button buttonType="bubble" value="清空查询条件" />
+				</td>
+			</tr>
+			{{/ConditionTypesLength}}
+			<tr>
+				<td colspan="2">
+					<html:button buttonType="view" value="查看" />
+					<html:button buttonType="add" value="增加" />
+					<html:button buttonType="edit" value="修改" />
+					<html:button buttonType="delete" value="删除" />
+				</td>
+			</tr>
+			</table>
+	</div>
+	{{#ConditionTypesLength}}
+	</html:form>
+	{{/ConditionTypesLength}}
+	<!-- 查询操作区结束 -->
+	
+
+
+	<!-- 数据区开始 -->
+	{{#showAsList}}
+	<sihe:table items="list" var="item" action="${basePath}/{{modelName}}LoadAction.do?action=showList"   {{#checkbox}}checkId="{{id}}"{{/checkbox}} {{#nonum}}hasOrder="false"{{/nonum}}>
+	{{/showAsList}}	
+	{{#showAsTree}}
+	<sihe:table items="list" isTree="true" var="item" action="${basePath}/{{modelName}}LoadAction.do?action=showList" identifier="{{id}}" parentAttribute="{{treeNode}}">
+	{{/showAsTree}}	
+	<sihe:row id="${item.{{id}} }">
+		{{#ListTypes}}
+			<sihe:column property="{{dataName}}" width="{{DataLength}}" title="{{comment}}" {{#orderTrue}}sortMode="true"{{/orderTrue}} {{#notgetData}}/>{{/notgetData}}{{#getData}}>{{/getData}}
+				{{#StringArr}}
+						<c:if test="${item.{{dataName}}=='{{key}}'}">
+							{{value}}
+						</c:if>
+				{{/StringArr}}
+			{{#getData}}
+			</sihe:column>
+			{{/getData}}
+		{{/ListTypes}}
+	</sihe:row>
+	</sihe:table>
+	<!-- 数据区结束-->
+
+</body>
+</html:html>
+	</textarea>
+
+
+ </body>
+</html>

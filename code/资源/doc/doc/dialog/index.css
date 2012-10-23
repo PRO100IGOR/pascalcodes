@@ -1,0 +1,72 @@
+﻿/*!
+ * lhgcore.com common StyleSheet
+ * Copyright (c) 2009 - 2011 By Li Hui Gang
+ */
+*{margin:0;padding:0;}
+
+body{background-color:#eee;color:#000;font:12px Tahoma,arial,sans-serif;padding:10px 0;}
+pre{font-family:"Courier New",Courier,monospace;}
+
+.container{width:900px;background:#fff;margin:auto;border:1px solid #d3d3d3;}
+.line{height:2px;background:#3B62A7;font-size:0;margin:5px 10px;}
+
+.header{height:50px;padding:0 20px;}
+.header_logo{float:left;padding-top:20px;}
+.header_nav{float:right;padding-top:25px;line-height:18px;}
+.header_nav a:visited{color:#00f;}
+
+.footer{padding:10px 20px 30px 20px;}
+.copyright{float:right;}
+.footer a:visited{color:#00f;}
+
+.content{padding:0 15px;}
+.left{margin-right:260px;}
+.right{float:right;}
+
+.banner{background:url(images/lhgdialog.gif) no-repeat;border:1px solid #ccc;width:605px;height:157px;}
+.description{float:right;height:137px;background:url("images/bannerbg.png") repeat #e2eef6;border-left:1px solid #ccc;width:163px;padding:10px;}
+.description h3{font-size:14px;padding:10px 0;text-align:center;}
+
+.features{width:595px;padding-left:10px;}
+.features h2{font-size:14px;color:#1E9300;height:55px;padding-left:55px;line-height:26px;margin-top:10px;}
+.features p{margin-top:-24px;line-height:1.6;background:url("images/dotline.gif") repeat-x center bottom;padding-bottom:10px;}
+
+.aliad{padding:10px 0 5px 0;width:600px;}
+.links{height:30px;line-height:30px;}
+.links a:visited{color:#00f;}
+
+.box{border:2px solid #E1E1E1;width:250px;}
+.box h2{background:url(images/boxtitle.gif) no-repeat left center;font-size:14px;padding: 0 10px;margin-left:15px;line-height:30px;}
+.down_btn{padding-bottom:5px;text-align:center;}
+.down_btn a{background:url("images/downloadbtn.gif") no-repeat center center;color:#930;display:inline-block;height:38px;line-height:18px;text-decoration:none;width:200px;padding:8px 0;}
+.down_relate{text-align:center;padding-bottom:10px;}
+.down_demo{background:url("images/icons.gif") no-repeat 0 0;padding:0 0 1px 18px;}
+.down_donate{background:url("images/icons.gif") no-repeat 0 -48px;padding:0 0 1px 18px;}
+
+#pluging{margin-top:5px;border-color:#f00;}
+#pluging p{padding:5px 5px 5px 25px;font-size:12px;font-weight:bold;}
+.library{background:url(images/library.gif) no-repeat;}
+.calendar{background:url(images/calendar.gif) no-repeat;}
+.select{background:url(images/select.gif) no-repeat;padding-bottom:10px;}
+#pluging a:visited{color:#00f;}
+
+#Adbox{height:250px;margin-top:5px;}
+
+#about{margin-top:5px;}
+#about p{padding-left:10px;line-height:1.6;margin-bottom:5px;}
+
+#update{margin-top:5px;height:90px;}
+#update a:visited{color:#00f;}
+#update a{font-weight:normal;font-size:12px;}
+#update ul{font-size:12px;line-height:1.5em;padding:0 0 0 30px;}
+
+.lhgdg_body{padding:5px 10px;}
+.lhgdg_body h2{font-size:15px;color:#FF4314;padding:5px;background:#f2f2f2;}
+.lhgdg_body p{font-size:14px;padding:10px 0;line-height:1.5;}
+.lhgdg_body ol{font-size:14px;padding:0 40px;}
+.lhgdg_body ol h3{font-size:12px;}
+.lhgdg_body ul{font-size:12px;line-height:1.5em;padding:5px 40px;}
+.lhgdg_body ul span{color:#f00;font-size:15px;}
+
+.runcode{border:1px solid #ddd;background:#f3f3f3;cursor:pointer;padding:2px 8px;_padding:0 5px;font-size:12px;margin:0;}
+.lhgdg_inbox_default h3,.lhgdg_inbox_chrome h3{font-size:14px;text-align:center;padding:90px 0;}

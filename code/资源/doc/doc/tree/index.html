@@ -1,0 +1,374 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>webservice</title>
+	<link href="../index.css" type="text/css" rel="stylesheet"/>
+	<link href="../prettify/prettify.css" type="text/css" rel="stylesheet"/>
+	<script type="text/javascript" src="../prettify/prettify.js"></script>
+</head>
+
+<body>
+    <div class="container">
+		<div class="line">&nbsp;</div>
+		<div class="lhgdg_body">
+			 
+
+<h2>新版本树使用ztree,官方api请看：<a href="JQuery zTree v3.3.zip">ztree</a></h2>
+			<ol>
+			 <h3>平台封装</h3>
+1:平台将ztree_v3.3封装成了自定义标签，只要引用
+<pre class="prettyprint">
+<%@ taglib uri="/WEB-INF/tld/sihe.tld" prefix="sihe"%>
+</pre>
+使用sihe:tree即可调用。
+sihe:tree属性中，带*是必填项目。
+属性说明：
+<pre class="prettyprint">
+String id; // *树的id,也是树的容器的id
+String type; // *树的类型,用来区分节点,比如机构树中节点展开到岗位,type=post
+boolean async = false; // 是否启用异步模式,默认否
+String ajaxDataFilter; // 异步数据处理函数,默认为空
+String methods; // 树事件回调函数,格式:beforeAsync:zTreeBeforeAsync,beforeClick:zTreeBeforeClick...,默认为空
+boolean check = false; // 是否启用复选模式,默认否
+boolean autoCheckTrigger = false; // 设置自动关联勾选时是否触发beforeCheck/onCheck事件回调函数,默认否
+boolean checkWithParent = true; // checkbox选中后是否影响到父节点,默认是
+boolean checkWithChild = true; // checkbox选中后是否影响到子节点,默认是
+boolean unCheckWithParent = true; // checkbox不选中后是否影响到父节点,默认是
+boolean unCheckWithChild = false; // checkbox不选中后是否影响到子节点,默认否
+boolean simpleData = true; // 是否使用简单的array格式的数据,默认是
+boolean edit = false; // 是否启用编辑模式,默认否
+boolean canCopy = true; // 编辑模式下是否可以复制节点,默认是
+boolean canMove = true; // 编辑模式下是否可以移动节点,默认是
+boolean prev = true; // 编辑模式下拖拽到目标节点时，设置是否允许移动到目标节点前面的操作,默认是
+boolean next = true; // 编辑模式下拖拽到目标节点时，设置是否允许移动到目标节点后面的操作,默认是
+boolean inner = true; // 编辑模式下拖拽到目标节点时，设置是否允许成为目标节点的子节点,默认是
+int borderMax = 10; // 编辑模式下拖拽节点成为根节点时的Tree内边界范围,默认10
+int borderMin = -5; // 编辑模式下拖拽节点成为根节点时的Tree外边界范围,默认-5
+int minMoveSize = 5;// 编辑模式下判定是否拖拽操作的最小位移值,默认5
+int maxShowNodeNum = 5;// 编辑模式下拖拽多个兄弟节点时，浮动图层中显示的最大节点数,默认5
+int autoOpenTime = 500;// 编辑模式下拖拽时父节点自动展开的延时间隔,默认500
+boolean showRemoveBtn = false; // 编辑模式下是否显示删除按钮,默认否
+boolean showRenameBtn = false; // 编辑模式下是否显示编辑按钮,默认否
+String addDiyDom; // 调用某个方法,在节点后增加一个自定义控件并始终显示,方法的参数:addDiyDom(treeId,treeNode)treeNode是节点对象,默认为空
+String addHoverDom; // 调用某个方法,在节点后增加一个自定义控件并鼠标移过显示(不会隐藏),方法的参数:addHoverDom(treeId,treeNode)treeNode是节点对象,默认为空
+boolean autoCancelSelected = true; // 点击节点时,按下Ctrl键是否允许取消选择操作,默认是
+boolean dblClickExpand = true; // 双击节点时,是否自动展开父节点的标识,默认是
+boolean nameIsHTML = false; // 设置name属性是否支持HTML脚本,默认否
+String removeHoverDom; // 调用某个方法,用于当鼠标移出节点时,隐藏用户自定义控件,方法的参数:removeHoverDom(treeId,treeNode)treeNode是节点对象,默认为空
+boolean selectedMulti = false; // 是否允许按下Ctrl键可以选中多个节点,默认否
+boolean showIcon = true; // 是否显示图标,默认是
+boolean showLine = true; // 是否显示连接线,默认是
+boolean showTitle = true; // 是否显示节点的title提示信息(即节点DOM 的title属性),默认是
+String service; // 对应的请求服务在spring中定义的名称,当没有指定items时,必须填写.该服务必须实现接口com.sxsihe.utils.tld.tree.TreeService
+Collection items; // TReeNode对象集合,当指定了items属性时,树组件不会去请求service对应的服务的方法了
+boolean showIconDes = false; // 是否显示图标说明,默认否,如果要显示,必须定义实现了接口com.sxsihe.utils.tld.tree.TreeService的service
+boolean onlyExpandOne = true; //同级节点只能同时打开一个,默认true
+boolean filter = false;      //是否开启过滤功能,默认否,如果开启的话,将会有一个form,所以请不要将开启filter的树放在已有form中.[需要引用codeutil.js转码]点击查询按钮后,将会请求原地址,并在源地址后将会加一个参数filterValue=xxx(可以在paramIn中获取),如果通过request获取该参数,需要解码.service方式直接使用即可
+</pre>
+使用说明：<br/>
+1:节点数据支持从实现了com.sxsihe.utils.tld.tree.TreeService的类中读取，也支持传Collection items;属性。<br/>
+com.sxsihe.utils.tld.tree.TreeService的方法说明：
+<pre class="prettyprint">
+	 /**
+	  * 一次性加载所有节点
+	  * @param type  树的类型参数
+	  * @param paramIn  请求中传递的其他参数
+	  * @param paramOut 要存放到request中的参数
+	  * @return
+	  * Administrator
+	  * com.sxsihe.utils.tld.tree
+	  * TreeService.java
+	  * 2012上午9:13:48
+	  * oxhide
+	  */
+	  public abstract Map<String,TreeNode> treeOnce(String type,JSONObject paramIn,Map paramOut);
+	  /**
+	   * 分级下载节点
+	   * @param parentType 当前展开节点类型
+	   * @param parentId   当前展开节点id
+	   * @param treeType   树的类型参数
+	   * @param paramIn	   请求中传递的其他参数	
+	   * @param paramOut   要存放到request中的参数 
+	   * @return
+	   * Administrator
+	   * com.sxsihe.utils.tld.tree
+	   * TreeService.java
+	   * 2012上午9:14:28
+	   * oxhide
+	   */
+	  public abstract Map<String,TreeNode> treeAsync(String parentType,String parentId,String treeType,JSONObject paramIn,Map paramOut);
+	  
+	  /**
+	   * 显示节点图标说明
+	   * @param type 当前树的类型
+	   * @return
+	   * Administrator
+	   * com.sxsihe.utils.tld.tree
+	   * TreeService.java
+	   * 2012上午9:35:47
+	   * oxhide
+	   */
+	  public abstract List<TreeDes> getTreeIconDes(String type);
+</pre>
+实现范例：
+<pre class="prettyprint">
+	public Map<String, TreeNode> treeOnce(String type, JSONObject paramIn, Map paramOut) {
+		Map<String, TreeNode> map = new HashMap<String, TreeNode>();
+		String ida = paramIn.getString("ida", "");
+		String idr = paramIn.getString("idr", "");
+		String appid = paramIn.getString("appid", "");
+		String[] types = type.split("_");
+		type = types[0];
+		ApplicationServer applicationServer = (ApplicationServer) SpringContextUtil.getBean("applictionClient");
+		ResourceServer resourceServer = (ResourceServer) SpringContextUtil.getBean("resourceClient");
+		List appList = null;
+		if (StringUtils.isEmpty(appid))
+			appList = applicationServer.getAll();
+		else {
+			appList = new ArrayList();
+			appList.add(applicationServer.findObjectBykey(appid));
+		}
+		addNode(map, appList, ida, "app");
+		ConditionBlock block = null;
+		if (!type.equals("0")) {
+			for (int i = 0; i < appList.size(); i++) {
+				block = new ConditionBlock();
+				Application application = (Application) appList.get(i);
+				block.and(new ConditionLeaf("displayAppId", "cappid", ConditionLeaf.EQ, application.getAppid(), false));
+				addNode(map, resourceServer.findObjectsByCondition(block, null), idr, "resource");
+			}
+		}
+		return map;
+	}
+
+	private void addNode(Map<String, TreeNode> map, Collection list, String ids, String types) {
+		for (Object o : list) {
+			TreeNode node = new TreeNode();
+			boolean exits = false;
+			if (types.equals("app")) {
+				Application application = (Application) o;
+				node.setId("app_" + application.getAppid());
+				node.setName(application.getAppname());
+				node.setIcon(PublicVariable.APPICON);
+				node.setNodeType("0");
+				exits = ids.indexOf("," + application.getAppid()) != -1;
+			} else {
+				Resources resources = (Resources) o;
+				node.setIcon(PublicVariable.MENUICON);
+				if (resources.getDisplay() == 1) {
+					node.setName(resources.getResourcename());
+				} else {
+					node.setName(resources.getResourcename() + "(" + displays[resources.getDisplay()] + ")");
+				}
+
+				if (resources.getResourcesp() != null)
+					node.setPid("res_" + resources.getDisplayPId());
+				else
+					node.setPid("app_" + resources.getDisplayAppId());
+				node.setNodeType("1");
+				node.setId("res_" + resources.getResourceid());
+				exits = ids.indexOf("," + resources.getResourceid() + ",") != -1;
+			}
+			node.setChecked(exits);
+			map.put(node.getId(), node);
+		}
+	}
+</pre>
+
+
+</ol>
+
+以下是平台内置的三种树的调用说明：
+
+		    <h2>人员组织机构树</h2>
+
+			<ol>
+			 <h3>基本调用</h3>
+
+					<pre class="prettyprint">
+调用方式 ${basePath}/core/common/userTree.jsp?checked=true|false&type=p1_p2&organid=organid
+
+//参数说明：
+checked:是否用复选框模式
+organid:要查询哪个机构
+deptid:要查询那个部门
+postid:要查询哪个岗位
+filter : 是否启用过滤模式，启动后为非分级下载，并只能搜索树的最低级对象
+dir: up|down 向上递归或向下递归 默认down
+ids:已经选择的项目id
+isgrade:是否分级下载(该选项受到其他选项影响，如传递了organid、deptid、postid中的任何一个或者checked为true时，无论是否指定分级下载为true，都按false处理)
+p1:organ/dept/post/employee  树展开到机构/部门/岗位/员工
+p2:form/list                 p2=form时,结点点击后返回一个对象obj;p2=list时,结点点击后调用list页面的function nodeClickFun(obj);
+obj的属性有:organName
+		   organid
+		   deptName
+		   deptId
+		   employeeName
+		   employeeId
+
+
+					</pre>
+			</ol>
+
+
+			<ol>
+			  <h3>插件调用</h3>
+当业务中需要其他的树并且需要与机构树结合时，可以使用这种方法。<br/>
+
+					<pre class="prettyprint">
+1:实现接口com.sxsihe.oxhide.tree.organ.OrganExtandService；
+2:spring中初始化这个接口实现类,最好放在WEB-INF/applicationContext-tree.xml中，再重新初始化一个com.sxsihe.oxhide.tree.organ.OrganTreeServiceImpl（机构树）
+再对新的机构树的属性extandService复制为刚才定义的接口实现类，注意对象的名字不能一样！
+2.5:调用该service时只需要在自己的tree页面中按照原有机构树的格式将servername改为刚才定义的新的机构树service名字即可。
+3:方法说明
+/**
+ * 返回图标示意，首先调用原有机构树的图标生成方法，再调用此方法
+ * @param type
+ * @return
+ * Administrator
+ * com.sxsihe.oxhide.tree.organ
+ * List<MenuDes>
+ */
+public List<TreeDes> getMenuDes(String type);
+
+调用实例：
+@Override
+	public List<TreeDes> getMenuDes(String type) {
+		List<TreeDes> list = new ArrayList<TreeDes>();
+		TreeDes menuDes = new TreeDes();
+		menuDes.setImg(PublicVariable.USERICON);
+		menuDes.setName("用户");
+		list.add(menuDes);
+		return list;
+	}
+
+
+/**
+ * 一次性加载树时，先调用原有机构树的方法，再调用此方法
+ * @param type
+ * @param pageContext
+ * @return
+ * Administrator
+ * com.sxsihe.oxhide.tree.organ
+ * List<MenuNode>
+ */
+public Map<String, TreeNode> treeOnce(String type, JSONObject paramIn, Map paramOut); 
+
+
+调用实例
+@Override
+	public Map<String, TreeNode> treeOnce(String type, JSONObject paramIn, Map paramOut) {
+		List users = ssouserService.getAll();
+		String hql = "from Usersroles t where t.ssoroles.roleid = '" + paramIn.getString("roleid", null) + "'";
+		List userRoles = usersrolesService.queryHql(hql, null);
+		Map<String, TreeNode> nodes = new HashMap<String, TreeNode>();
+		for (Object o : users) {
+			Ssousers ssousers = (Ssousers) o;
+			TreeNode node = new TreeNode();
+			node.setNodeType("user");
+			node.setId("user_" + ssousers.getUserid());
+			node.setName(ssousers.getUsername());
+			node.setIcon(PublicVariable.USERICON);
+			node.setPid("emp_" + ssousers.getEmployee().getEmployeeid());
+			node.setIsParent(false);
+			if (containUserId(ssousers.getUserid(), userRoles)) {
+				node.setChecked(true);
+			}
+			nodes.put(node.getId(), node);
+		}
+		return nodes;
+	}
+
+
+/**
+ * 分机加载树时，先调用原有机构树的方法，再调用此方法
+ * @param parentId
+ * @param parentType
+ * @param type
+ * @param pageContext
+ * @return
+ * Administrator
+ * com.sxsihe.oxhide.tree.organ
+ * List<MenuNode>
+ */
+public Map<String, TreeNode> treeOnce(String type, JSONObject paramIn, Map paramOut);
+调用实例
+@Override
+	public Map<String, TreeNode> treeAsync(String parentType, String parentId, String treeType, JSONObject paramIn, Map paramOut) {
+		if (!"employee".equals(parentType))
+			return null;
+		String hql = "from Ssousers s where s.employee.employeeid = '" + parentId.split("_")[1] + "'";
+		List users = ssouserService.queryHql(hql, null);
+		hql = "from Usersroles t where t.ssoroles.roleid = '" + paramIn.getString("roleid", null) + "'";
+		List userRoles = usersrolesService.queryHql(hql, null);
+		Map<String, TreeNode> nodes = new HashMap<String, TreeNode>();
+		for (Object o : users) {
+			Ssousers ssousers = (Ssousers) o;
+			TreeNode node = new TreeNode();
+			node.setNodeType("user");
+			node.setId("user_" + ssousers.getUserid());
+			node.setName(ssousers.getUsername());
+			node.setIcon(PublicVariable.USERICON);
+			node.setPid("emp_" + ssousers.getEmployee().getEmployeeid());
+			node.setIsParent(false);
+			if (containUserId(ssousers.getUserid(), userRoles)) {
+				node.setChecked(true);
+			}
+			nodes.put(node.getId(), node);
+		}
+		return nodes;
+	}
+					</pre>				
+			</ol>
+
+<h2>资源树</h2>
+			<ol>
+			 <h3>基本调用</h3>
+					<pre class="prettyprint">
+调用方式 ${basePath}/core/common/resourceTree.jsp?checked=true|false&ids=*&type=p1_p2
+checked:是否用复选框模式
+ids:当使用复选框模式时,哪些被选中
+type:p1:资源树展开级别:-1 应用系统 0 模块 1菜单组 2菜单/按钮
+	 p2:form|list,资源树被什么类型页面调用 如果是form 则点击后关闭,否则调用function nodeClickFun(obj);
+obj的属性有: appname
+		   appid
+		   modelid
+		   modelname
+		   menusid
+		   menusname
+		   menuid
+		   menuname
+		   buttonid
+		   buttonname
+		   type -1|0|1|2|3 系统|模块|菜单组|菜单|按钮
+
+在页面任意地方写：
+menu:menudes service="resourceTreeService" type="${param.type}"
+表示打印树的图标示意
+					</pre>
+			</ol>
+
+
+
+
+<h2>角色树</h2>
+			<ol>
+			 <h3>基本调用</h3>
+					<pre class="prettyprint">
+调用方式 ${basePath}/core/common/roleTree.jsp?checked=true|false&ids=*&type=p1_p2
+checked:是否用复选框模式
+ids:当使用复选框模式时,哪些被选中
+type:p1:资源树展开级别:role 角色
+	 p2:form|list,资源树被什么类型页面调用 如果是form 则点击后关闭,否则调用function nodeClickFun(obj);
+obj的属性有: roleid
+		   rolename	 
+					</pre>
+			</ol>
+
+		</div>
+		<div class="line">&nbsp;</div>
+	</div>
+	<script type="text/javascript">prettyPrint();</script>
+</body>
+</html>

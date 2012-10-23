@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=GBK"/>
+	<title>showaction</title>
+	<script src="../../js/mustache.js"></script>
+	<script src="../../js/jquery-1.6.2.min.js"></script>
+	<script type="text/javascript">
+	<!--
+		function make(){
+			var html, json, template;
+			template = $('#template').val();
+			json = $.parseJSON($('#json').val());
+			html = Mustache.to_html(template, json);
+			$('#html').text(html);
+		}
+		function getOneUpper(v){
+			var temp = [],temp2 = v.split("");
+			for(var i =0;i<temp2.length;i++){
+				if(i==0){
+					temp.push(temp2[i].toUpperCase());
+				}else{
+					temp.push(temp2[i]);
+				}
+			}
+			return temp.join(""); 
+		}
+	//-->
+	</script>
+</head>
+ <body>
+<textarea id="json" rows="0" cols="0">
+</textarea>
+<textarea id="html" rows="0" cols="0">
+</textarea>
+
+
+
+
+
+	<textarea id="template" rows="50" cols="500">
+package {{pacname}}.dao.hibernateImpl;
+
+import com.sxsihe.oxhide.persistence.BaseDAOImpl;
+import {{pacname}}.domain.{{!getOneUpper(modelName)}};
+import {{pacname}}.dao.{{!getOneUpper(modelName)}}DAO;
+
+/**
+ * 
+ * <p>Title:{{pacname}}.dao.hibernateImpl.{{!getOneUpper(modelName)}}DAOImpl</p>
+ * <p>Description:{{modelChname}}数据层实现</p>
+ * <p>Copyright: Copyright (c) 2012</p>
+ * <p>Company: {{company}}</p>
+ * @author {{author}}
+ * @version 1.0
+ * @date {{date}}
+ * @modify
+ * @date
+ */
+public class {{!getOneUpper(modelName)}}DAOImpl extends BaseDAOImpl implements {{!getOneUpper(modelName)}}DAO {
+	/**
+	 * 反射必须，指定dao对应实体类
+	 */
+	public Class getEntityClass() {
+		return {{!getOneUpper(modelName)}}.class;
+	}
+}
+	</textarea>
+
+
+ </body>
+</html>

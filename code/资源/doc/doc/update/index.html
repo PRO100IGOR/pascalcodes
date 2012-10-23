@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>webservice</title>
+	<link href="../index.css" type="text/css" rel="stylesheet"/>
+	<link href="../prettify/prettify.css" type="text/css" rel="stylesheet"/>
+	<script type="text/javascript" src="../prettify/prettify.js"></script>
+</head>
+
+<body>
+    <div class="container">
+		<div class="line">&nbsp;</div>
+		<div class="lhgdg_body">
+			 
+
+
+			<ol>
+			 <h3>代码升级</h3>
+			<ol>
+					<pre class="prettyprint">
+1:所有的com.ite.要替换为com.sxsihe.
+2:actionEx替换为action
+3:nextShowUpdate(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response, Serializable po)
+方法多了参数po,项目中的方法也可能已经有这个参数了，有就不用管了
+4:所有的nextShowUpdate、nextShowAdd、nextShowView、preAdd、preUpdate、nextAdd、nextUpdate、preDelete、afterDelete方法返回值从void改成了ActionForward，默认返回null，如果返回ActionForward将引起方法跳转，现在要跳到非默认页面只要修改这些方法就行了。
+5:org.extremecomponents.table.limit.Limit已经不存在，变成了com.sxsihe.utils.tld.table.PagerForm
+6：customSelectCount实例
+protected int customSelectCount(ActionForm conditionForm, HttpServletRequest request, HttpServletResponse response, PagerForm pagerForm) {
+		ConditionBlock block = new ConditionBlock();
+		EmployeeConditionForm vcForm = (EmployeeConditionForm) conditionForm;
+		if (vcForm != null) {
+
+		}
+		return getService().getTotalObjects(block);
+	}
+7:	customSelect实例
+protected List customSelect(ActionForm conditionForm, PagerForm pagerForm, HttpServletRequest request, HttpServletResponse response, ActionMapping mapping) {
+		ConditionBlock block = new ConditionBlock();
+		EmployeeConditionForm vcForm = (EmployeeConditionForm) conditionForm;
+		if (vcForm != null) {
+
+		}
+		Map sortMap = pagerForm.getSortMap();
+		return getService().findObjectsByCondition(block, sortMap, (pagerForm.getPage() - 1) * pagerForm.getCurrentRowsDisplayed(), pagerForm.getCurrentRowsDisplayed());
+	}
+8:list页面、form页面、view页面在oxhide发布包中查看。.
+
+9:旧数据库除了要把数据库变动中的字段更新外，还要执行：
+update ssousers  set facestyle = 'sheet1',ISVALIDATION = 1;
+update employee set ISVALIDATION = 1;
+					</pre>
+			</ol>
+
+		</div>
+		<div class="line">&nbsp;</div>
+	</div>
+	<script type="text/javascript">prettyPrint();</script>
+</body>
+</html>

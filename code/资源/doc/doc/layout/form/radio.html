@@ -1,0 +1,169 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title> New Document </title>
+
+ <link href="style.css" rel="stylesheet" type="text/css"/>
+ <link href="../style.css" rel="stylesheet" type="text/css"/>
+ <link href="../box/box.css" rel="stylesheet" type="text/css"/>
+ <script type="text/javascript" src="../jquery.js"></script>
+ <script type="text/javascript" src="../box/box.js"></script>
+	
+ <script type="text/javascript" src="checkbox.js"></script>
+
+<!--获取所选值方法start-->
+<script>
+	function checkValue(){
+		var msg="";
+		msg=$("#radioDemo input[type=radio]").filter("[checked=true]").val()
+		if(msg==""){
+			msg="无选择"
+		}
+		alert(msg);
+	}	
+</script>
+<!--获取所选值方法end-->
+ </head>
+ <!--按钮（分离版）end-->
+<body>
+	<div class="box2" panelWidth="950">
+	<form id="radioDemo" class="render">
+		<label for="radio-1">选项1</label><input type="radio" id="radio-1" name="ra" value="radio-1"/>
+		<label for="radio-2">选项2</label>
+		<input type="radio" id="radio-2" name="ra" value="radio-2" checked="checked"/>
+		<label for="radio-3">选项3</label><input type="radio" id="radio-3" name="ra" value="radio-3" />
+		<div class="clear"></div>
+		<input type="button" value="查看选中项" onclick="checkValue()"/>
+	</form>
+<br />
+首先引入脚本和CSS
+<textarea class="code">
+<script type="text/javascript" src="../jquery-1.4.js"></script>
+<!--单选多选按钮(分离版)start-->
+<link href="skins/style.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="js/checkbox_split.js"></script>
+<!--单选多选按钮(分离版)end-->
+</textarea>
+<pre></pre>
+要使用渲染的radio需要将radio所在容器的class设置为render。<br />
+使用radio时推荐使用label标签，将label得for属性指向radio的id，这样点击label时也会选中相应的radio，提高用户体验。<br />
+注意只适合与文字在前面的情况，即label要放在前面。不适合文字在radio后面的情况。代码如下：
+<textarea class="code">
+<form id="radioDemo" class="render">
+	<label for="radio-1">选项1</label><input type="radio" id="radio-1" name="ra" value="radio-1" />
+	<label for="radio-2">选项2</label>
+	<input type="radio" id="radio-2" name="ra" value="radio-2" checked="checked"/>
+	<label for="radio-3">选项3</label><input type="radio" id="radio-3" name="ra" value="radio-3" />
+	<div class="clear"></div>
+	<input type="button" value="查看选中项" onclick="checkValue()"/>
+</form>
+</textarea>
+<pre></pre>	
+
+查看选中项处理函数checkValue代码如下
+<textarea class="code">
+function checkValue(){
+	var msg="";
+	msg=$("#radioDemo input[type=radio]").filter("[checked=true]").val()
+	if(msg==""){
+		msg="无选择"
+	}
+	alert(msg);
+}
+</textarea>
+<pre></pre>	
+另外渲染过的radio与普通的radio一样有可以响应onclick事件，但注意不能传递this。
+	</div>
+	
+	<div class="box2" panelWidth="950" >
+	如果不使用label也可以。如下<br />
+	<div class="render">
+	选项1<input type="radio" value="选项1" name="ra2"/> 
+	选项2<input type="radio" value="选项2" name="ra2"/> 
+	选项3<input type="radio" value="选项3" name="ra2"/> 
+	</div>
+<textarea class="code">
+<div class="render">	
+	选项1<input type="radio" value="选项1" name="ra2"/> 
+	选项2<input type="radio" value="选项2" name="ra2"/> 
+	选项3<input type="radio" value="选项3" name="ra2"/> 
+</div>
+</textarea>
+<pre></pre>	
+	</div>
+	
+	<script>
+		function changeItem(){
+			$("#raidoGroup input:radio[name=ra3]").eq(2).attr("checked",true);
+			radioRefresh("raidoGroup")
+		}
+	</script>
+	<div class="box2" panelWidth="950" >
+		如果要动态更改选择项或增加、删除选项，和修改普通radio的做法一样，不同的是需要在最后调用radioRefresh(radio的容器ID)来更新显示。例如：
+<br />
+		<div id="raidoGroup"  class="render">
+			选项1<input type="radio" value="选项1" name="ra3"/> 
+			选项2<input type="radio" value="选项2" name="ra3"/> 
+			选项3<input type="radio" value="选项3" name="ra3"/>
+			<div class="clear"></div>
+		</div>
+	 	<input type="button" value="点击选中第3项" onclick="changeItem()"/>
+<textarea class="code">
+<div id="raidoGroup"  class="render">
+	选项1<input type="radio" value="选项1" name="ra3"/> 
+	选项2<input type="radio" value="选项2" name="ra3"/> 
+	选项3<input type="radio" value="选项3" name="ra3"/>
+	<div class="clear"></div>
+</div>
+<input type="button" value="点击选中第3项" onclick="changeItem()"/>
+</textarea>
+<pre></pre>	
+changeItem()函数：
+<textarea class="code">
+function changeItem(){
+	$("#raidoGroup input:radio[name=ra3]").eq(2).attr("checked",true);
+	radioRefresh("raidoGroup")
+}
+</textarea>
+<pre></pre>	
+	</div>
+	
+	<div class="box2" panelWidth="950">
+	禁用radio效果如下<br />
+<div class="render">		
+	<label for="radio-4" >选项4</label><input type="radio" id="radio-4" value="选项1" disabled="true"/>
+	<label for="radio-5">选项5</label><input type="radio" id="radio-5" value="选项2" checked="checked"  disabled="true"/>
+</div>
+<textarea class="code">
+<div class="render">		
+	<label for="radio-4" >选项4</label>
+	<input type="radio" id="radio-4" value="选项1" disabled="true"/>
+	<label for="radio-5">选项5</label>
+	<input type="radio" id="radio-5" value="选项2" checked="checked"  disabled="true"/>
+</div>
+</textarea>
+<pre></pre>	
+	</div>
+</body>
+<!--代码高亮start-->
+<script type="text/javascript" src="../code/highlight.js"></script>
+<script type="text/javascript" src="../code/lang-xml.js"></script>
+<script type="text/javascript" src="../code/lang-html.js"></script>
+<link href="../code/style.css" rel="stylesheet" type="text/css"/>
+<link href="../table/style.css" rel="stylesheet" type="text/css"/>
+
+<script>
+	$(function(){
+			showCode()
+	})
+	function showCode(){
+		$(".code").each(function(){
+			var code =$(this).val()
+			var hl = new DlHighlight({lang: "html",lineNumbers :false });
+			var formatted = hl.doItNow(code);
+			$(this).next().addClass("DlHighlight").html("<pre>" + formatted + "</pre>")
+		})
+	}
+</script>
+<!--代码高亮end-->
+</html>

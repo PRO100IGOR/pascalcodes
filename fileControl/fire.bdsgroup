@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<PersonalityInfo>
+		<Option>
+			<Option Name="Personality">Default.Personality</Option>
+			<Option Name="ProjectType"></Option>
+			<Option Name="Version">1.0</Option>
+			<Option Name="GUID">{07D85199-5D7F-412A-BADA-0B478D8DFCEE}</Option>
+		</Option>
+	</PersonalityInfo>
+	<Default.Personality>  
+    
+    <Projects>
+      <Projects Name="fileControl.exe">exes\service\fileControl.bdsproj</Projects>
+      <Projects Name="config.exe">exes\config\config.bdsproj</Projects>
+      <Projects Name="UDPDemo.exe">D:\BDS2007liteV8\mylib\cnvcl\Examples\CnUDP\UDPDemo.bdsproj</Projects>
+      <Projects Name="Targets">fileControl.exe config.exe UDPDemo.exe</Projects>
+    </Projects>
+    <Dependencies/>
+  </Default.Personality>
+</BorlandProject>

@@ -1,0 +1,42 @@
+@charset "utf-8";
+/* ------------------------------全局定义------------------------------ */
+*{ margin:0; padding:0; list-style:none;}
+body{  background:#e8eee3; font-size:12px;}
+img { border: 0;}
+
+/* 链接 */
+
+/* 表单 */
+select { font-size: 12px;}
+/* ------------------------------内容---------------------------- */
+#table{ width:100%; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-right-color: #c2d0b7;border-bottom-color: #c2d0b7; border-left-color: #c2d0b7; color:#fff; padding:10px 0 0 0px;}
+.d_bj{ background-color:#e5e5e5; width:100%; height:88px;}
+.d_bj01{width:100%; border: 1px solid #a4d1a2; color:#000; background:#cae1c9; margin-bottom:10px;}
+.d_bj02{width:100%; border: 1px solid #d3d6d3; color:#000; background:#ededed; margin-bottom:10px; padding-bottom:10px;}
+.d_bj03{width:100%; border: 1px solid #d3d6d3; color:#000; background:#ededed; margin:10px; padding-bottom:10px;}
+.d_bj04{width:100%; border: 1px solid #c1d3c0; color:#000; background:#ededed; margin-bottom:10px; padding:10px 0 10px 0;}
+#tab{ width:100%; height:27px; background:#9ecfa3;}
+#tab li{ width:110px; display:block; float:left; color:#000;}
+#tab li a{ width:110px; height:27px; background:#9ecfa3; color:#000; display:block; line-height:30px; text-align: center;border-right-width: 1px; border-right-style: solid; border-right-color: #c2d0b7;}
+#tab li a:hover{ width:110px; height:27px; background:#63be74; color:#000; display:block; line-height:30px; text-align: center; border-right-width: 1px; border-right-style: solid; border-right-color: #c2d0b7; border-left-width: 1px; border-left-style: solid; border-left-color: #c2d0b7;}
+#tab li a:visited{ width:110px; height:27px; background:#63be74; color:#000; display:block; line-height:30px; text-align: center; border-right-width: 1px; border-right-style: solid; border-right-color: #c2d0b7; border-left-width: 1px; border-left-style: solid; border-left-color: #c2d0b7;}
+.d_left{ float:left; margin-left:10px; font-size:14px; font-weight:bold;}
+.d_right{ float:right; font-size:12px;}
+.title{ font-size:12px; margin:10px; text-align: center;}
+.title_01{ font-size:12px; color:#055304; margin-bottom:5px;}
+.title_02{ font-size:12px;}
+.title_02 a{ vertical-align: bottom;}
+.title_03{ font-size:12px;}
+.title_03 a{vertical-align: middle;}
+.title_03 a:hover{ color:#FF0000;}
+.but_4{ background:url(../images/box_15.png) no-repeat; width:72px; height:21px; border:0;}
+.but_5{ background:url(../images/box_0.png) no-repeat; width:84px; height:30px; line-height:30px; color:#FFF; border:0;}
+.log{ width:486px; height:355px; border: 1px solid #c1d3c0; margin:auto; margin-top:100px; padding-top:25px;}
+.log_left{ float:left; font-size:12px;}
+.log_centre{ float:left; font-size:12px; margin-top:135px;}
+.log_right{ float:left; font-size:12px;}
+.log_text{ width:150px; font-size:12px; margin-top:8px;}
+.log_but{ background:url(../images/box_13.gif) no-repeat; width:64px; height:23px; border:0; color:#767575;}
+.log_btm{ width:488px; height:40px; background:#cad9c9; margin:auto;}
+.log_but3{ background:url(../images/box_14.gif) no-repeat; width:48px; height:19px; border:0; color:#3c3c3c; float:right; margin-right:15px; margin-top:10px; font-size:12px; line-height:19px;}
+.STYLE1 {color: #000000}

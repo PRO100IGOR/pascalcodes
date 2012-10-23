@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2011/06/27 08:50:24.886.pas,C:\Users\zcc\Documents\RAD Studio\Projects\Unit1.pas=D:\project\delpro\fileControl\main.pas</Transaction>
+    <Transaction>2011/06/27 08:50:24.886.dfm,C:\Users\zcc\Documents\RAD Studio\Projects\Unit1.dfm=D:\project\delpro\fileControl\main.dfm</Transaction>
+    <Transaction>2011/06/27 08:50:31.847.bdsproj,C:\Users\zcc\Documents\RAD Studio\Projects\Project1.bdsproj=D:\project\delpro\fileControl\fileControl.bdsproj</Transaction>
+    <Transaction>2011/06/27 14:44:53.855.pas,D:\project\delpro\fileControl\Unit1.pas=</Transaction>
+    <Transaction>2011/06/27 15:17:16.589.pas,D:\project\delpro\fileControl\base\Consts.pas=</Transaction>
+    <Transaction>2011/06/27 15:28:54.101.pas,D:\project\delpro\fileControl\exes\service\forms\main.pas=</Transaction>
+    <Transaction>2011/06/27 15:28:54.101.dfm,D:\project\delpro\fileControl\exes\service\forms\main.dfm=</Transaction>
+    <Transaction>2011/06/27 17:05:33.009.pas,D:\project\delpro\fileControl\exes\service\Unit1.pas=D:\project\delpro\fileControl\domain\PrinterUnit.pas</Transaction>
+    <Transaction>2011/06/27 17:19:04.106.pas,D:\project\delpro\fileControl\exes\service\Unit1.pas=D:\project\delpro\fileControl\sql\mysql\PrintLib.pas</Transaction>
+    <Transaction>2011/06/28 08:33:12.508.pas,D:\project\delpro\fileControl\domain\PrinterUnit.pas=</Transaction>
+    <Transaction>2011/07/06 17:45:57.575.pas,D:\project\delpro\fileControl\exes\service\FireDwr.pas=D:\project\delpro\fileControl\web\FireDwr.pas</Transaction>
+  </Transactions>
+</BorlandProject>

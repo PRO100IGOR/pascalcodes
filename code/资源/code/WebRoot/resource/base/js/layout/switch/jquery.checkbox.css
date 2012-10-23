@@ -1,0 +1,53 @@
+.jquery-checkbox       {display: inline; font-size: 20px; line-height: 20px; cursor: pointer; cursor: hand;}
+.jquery-checkbox .mark {display: inline;}
+
+.jquery-checkbox img {vertical-align: middle; width: 60px; height: 20px;}
+.jquery-checkbox img{background: transparent url(checkbox.png) no-repeat;}
+
+.jquery-checkbox img{
+	background-position: 0px 0px;
+}
+.jquery-checkbox-hover img{
+	background-position: 0px -20px;
+}
+.jquery-checkbox-checked img{
+	background-position: 0px -40px;
+}
+.jquery-checkbox-checked .jquery-checkbox-hover img {
+	background-position: 0px -60px;
+}
+
+.jquery-checkbox-disabled img{
+	background-position: 0px -80px;
+}
+.jquery-checkbox-checked .jquery-checkbox-disabled img{
+	background-position: 0px -100px;
+}
+
+
+
+
+.jquery-switchbox       {display: inline; font-size: 20px; line-height: 20px; cursor: pointer; cursor: hand;}
+.jquery-switchbox .mark {display: inline;}
+.jquery-switchbox img {vertical-align: middle; width: 60px; height: 20px;}
+.jquery-switchbox img{background: transparent url(switchbox.png) no-repeat;}
+
+.jquery-switchbox img{
+	background-position: 0px 0px;
+}
+.jquery-switchbox-hover img{
+	background-position: 0px -20px;
+}
+.jquery-switchbox-checked img{
+	background-position: 0px -40px;
+}
+.jquery-switchbox-checked .jquery-switchbox-hover img {
+	background-position: 0px -60px;
+}
+
+.jquery-switchbox-disabled img{
+	background-position: 0px -80px;
+}
+.jquery-switchbox-checked .jquery-switchbox-disabled img{
+	background-position: 0px -100px;
+}

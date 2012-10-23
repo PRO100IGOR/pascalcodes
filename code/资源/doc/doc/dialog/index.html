@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>LHGDIALOG - 弹出窗口组件演示</title>
+    <meta name="keywords" content="lhgdialog,dialog,弹出窗口,js窗口,js弹出窗口,js库,对话框,alert,提示,警告,确认,提问,ajax,tip,confirm,open,prompt,lhgcore,javascript,jquery,window,clientside,control,open source,LGPL,dhtml,html,xhtml,plugins"/>
+    <meta name="description" content="lhgdialog是一功能强大的简单迷你并且高效的弹出窗口插件,基于网络访问并且兼容IE 6.0+,Firefox 3.0+,Opera 9.6+,Chrome 1.0+,Safari 3.22+."/>
+    <meta name="copyright" content="lhgcore.com"/>
+    <link rel="icon" href="favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+    <link href="index.css" type="text/css" rel="stylesheet"/>
+</head>
+
+<body>
+    <div class="container">
+	    <div class="header">
+		    <div class="header_logo"><a href="index.html"><img border="0" src="images/lhgdg_logo.gif" alt="lhgdialog"/></a></div>
+			<div class="header_nav">
+			    首页 | <a href="api/basic.html">基本使用指南</a> | <a href="api/api.html">API参数控制接口</a> | <a href="demo/demo.html">在线演示</a> | <a href="valueDemo/demo.html">传值演示</a> |  <a href="frameDemo/demo.html">跨框架演示</a> | <a href="ui/ui.html">皮肤下载页</a> | <a href="donate/donate.html">捐赠</a>
+			</div>
+		</div>
+		<div class="line">&nbsp;</div>
+		<div class="content">
+		    <div class="right">
+			    <div id="download" class="box">
+				    <h2>最新下载</h2>
+					<p class="down_btn">
+					    <a href="http://lhgcore.com/lhgdialog.zip" title="立即下载 lhgdialog v3.5.2"><strong>立即下载 lhgdialog v3.5.2</strong><br/>更新：2011年7月4日</a>
+					</p>
+					<p class="down_relate">
+					    <span class="down_demo"><a href="demo/demo.html">在线演示</a></span>&nbsp;&nbsp;
+						<span class="down_donate"><a href="donate/donate.html">捐赠我们</a></span>
+					</p>
+				</div>
+				<div id="pluging" class="box">
+					<h2>本站其它组件</h2>
+					<p class="library"><a href="http://lhgcore.com/lhgcoreapi/index.html" target="_blank">组件核心JS库 v1.4.5</a></p>
+					<p class="calendar"><a href="http://lhgcore.com/lhgcalendar/index.html" target="_blank">弹出日历组件 v2.0.3</a></p>
+					<p class="select"><a href="http://lhgcore.com/lhgselect/index.html" target="_blank">联动选择下拉菜单 v1.0.0</a></p>
+				</div>
+				<div id="Adbox" class="box">
+					<p>
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-1019453600276922";
+/* 首页正方形广告 */
+google_ad_slot = "2635139927";
+google_ad_width = 250;
+google_ad_height = 250;
+//-->
+</script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+					</p>
+				</div>
+				<div id="about" class="box">
+				    <h2>联系方式</h2>
+					<p>
+					    EMAIL: lhg133@126.com<br/>QQ群: 72997291 (推荐方式)
+					</p>
+				</div>
+				<div id="update" class="box">
+				    <h2>最新更新 v3.5.2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="footer/update.txt" target="_blank">更多>></a></h2>
+					<ul>
+						<li style="color:red">增加lockScroll去掉页面滚动条参数</li>
+						<li>新增加一款facebook皮肤</li>
+						<li>closeTime方法增加第三个函数参数</li>
+					</ul>
+				</div>
+			</div>
+			<div class="left">
+			    <div class="banner">
+				    <div class="description">
+					    <h3>lhgdialog 弹出窗口组件</h3>
+						<p>lhgdialog是一功能强大的简单迷你并且高效的弹出窗口组件，基于网络访问并且兼容IE 6.0+,Firefox 3.0+,Opera 9.6+,Chrome 1.0+,Safari 3.22+。</p>
+					</div>
+				</div>
+				<div class="features">
+				    <h2 style="background:url(images/02.gif) no-repeat;">专为大型弹出窗口定制</h2>
+				    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;相对于网上其它弹出窗口组件主要功能是提示信息来说，本组件主要是用来制作窗口中内容较多，页面比较复杂的窗口。本组件的窗口内容面主要是以嵌入iframe框架为主，内容页为一个单独的页面。这样就可以更方便的管理内容页，页面的样式也不受其它页面的影响，而且内容页可以是静态或动态的任何一种文件。</p>
+			        <h2 style="background:url(images/01.gif) no-repeat;">强大灵活的接口机制</h2>
+				    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;由于本组件主要是用来制作大型的窗口，页面和窗口间的交互肯定会非常频繁，所以本组件提供了丰富的交互控制接口，可以非常方便的进行页面间的数据的传输。</p>
+			        <h2 style="background:url(images/03.gif) no-repeat;">完美的jQuery组件</h2>
+				    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;由于本组件所需的lhgcore.min.js库文件就相当于一个精简的jQuery库，所以本组件的代码的书写方式和jQ的一样精简。如果您想把它做的jQ的组件，只要在页面引入jQuery的库（此时不再需要引入lhgcore.min.js库文件），代码作一下非常简单的修改即可。</p>
+			        <h2 style="background:url(images/04.gif) no-repeat;">跨无限级框架显示自定义皮肤支持</h2>
+				    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;无论你把窗口组件放在哪里，你都不需要担心会被外层的frameset或iframe所遮挡进而影响客户体验，lhgdialog窗口组件是可以跨无限级框架显示的，lhgdialog采用九宫格的XHTML结构，CSS类钩子比较丰富，可以定制类似桌面软件般精致的皮肤。</p>
+				</div>
+				<div class="aliad">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-1019453600276922";
+/* 首页横幅广告 */
+google_ad_slot = "0372175849";
+google_ad_width = 607;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+				</div>
+				<div class="links">
+				    <p>友情链接：<a href="http://www.4488.com.cn" target="_blank">华易网络</a> | <a href="http://simpleframework.net/index.html" target="_blank">simpleframework</a> | <strong style="color:#f00">承接各种JS插件定制开发, QQ:1411008088 验证注明:js定制</strong></p>
+				</div>
+			</div>
+		</div>
+		<div class="line">&nbsp;</div>
+		<div class="footer">
+		    <div class="copyright">Copyright &copy <a href="http://www.lhgcore.com/" target="_blank">lhgcore.com</a>. All rights reserved. | 豫ICP备06002782号 | <script src="http://s15.cnzz.com/stat.php?id=2990550&web_id=2990550" language="JavaScript"></script></div>
+			<a href="footer/contact.html">联系我们</a> | <a href="footer/link.html">友情链接</a> | <a href="footer/ad.html">广告服务</a> | <a href="footer/partners.html">合作伙伴</a>
+		</div>
+	</div>
+<!-- JiaThis Button BEGIN -->
+<script type="text/javascript" src="http://v1.jiathis.com/code/jiathis_r.js?move=0" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+</body>
+</html>
