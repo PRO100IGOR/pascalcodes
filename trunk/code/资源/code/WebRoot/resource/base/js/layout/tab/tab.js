@@ -1,20 +1,20 @@
 
 (function ($) {
-    var getBasePath = (function() {
-            var strFullPath = window.document.location.href;
-            var strPath = window.document.location.pathname;
-            var pos = strFullPath.indexOf(strPath);
-            var prePath = strFullPath.substring(0, pos);
-            var postPath = strPath.substring(0, strPath.substr(1).indexOf('/') + 1);
-            return prePath + postPath;
-    })()+"/";
+	var jss = $("script"),basePath;
+	for(var i = 0;i<jss.length;i++){
+		if(jss[i].src.indexOf("tab.js") > -1){
+			basePath = jss[i].src.match(/http:\/*\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}:\d{1,5}\/*\w*\/*/i);
+		}
+	}
 	function Tab(obj){
 		$.extend(this,obj);
 		$.tabs = $.tabs || [];
 		this.index = $.tabs.length;
 		$.tabs.push(this);
+		
 		this.show = function(){
 			if($.nowIndex>=0)$.tabs[$.nowIndex].hide();
+			if(this.onShow)this.onShow(this);
 			$("#"+this.index+"_ccli").addClass("current");
 			$("#"+this.index+"_ccdiv").slideDown(function(){
 				var temp = $(this);
@@ -35,6 +35,7 @@
 			return this;
 		};
 		this.hide = function(){
+			if(this.onHide)this.onHide(this);
 			$("#"+this.index+"_ccli").removeClass("current");
 			$("#"+this.index+"_ccdiv").slideUp();
 			return this;
@@ -131,7 +132,7 @@
 		} else {
 			if (obj.url) {
 				if (obj.url) {
-					obj.url = getBasePath + "/core/tool/load.jsp?url=" + encodeURIComponent(obj.url);
+					obj.url = basePath + "/core/tool/load.jsp?url=" + encodeURIComponent(obj.url);
 					
 				}
 				div.attr("src",obj.url);
@@ -140,6 +141,6 @@
 		divsrc.append(div);
 		
 	};
-    document.write("<link href=\"" + getBasePath + "resource/base/js/layout/tab/tab.css" + "\" rel=\"stylesheet\" type=\"text/css\">");
+    document.write("<link href=\"" + basePath + "resource/base/js/layout/tab/tab.css" + "\" rel=\"stylesheet\" type=\"text/css\">");
 })(jQuery);
 
