@@ -3089,9 +3089,7 @@ $(function() {
 				});
 
 				a(f).prev("span").prev("label").unbind().click(function() {
-					if (a(f).attr("onclick") != null) {
-						a(a(f).attr("onclick"))
-					}
+					a(f).triggerHandler('click',[e]);
 					if (!c.disable_all) {
 						var l = a(this).next("span");
 						var j = a(l).next("input").attr("type");
@@ -3121,7 +3119,6 @@ $(function() {
 							}
 						}
 						c.callback.call(this);
-						a(l).next("input").triggerHandler('click',[e]);
 						a(l).next("input").triggerHandler('change',[e]);
 					}
 				}).hover(function() {
@@ -3144,9 +3141,7 @@ $(function() {
 					}
 				});
 				a(f).prev("span").unbind().click(function() {
-					if (a(f).attr("onclick")) {
-						a(a(f).attr("onclick"))
-					}
+					a(f).triggerHandler('click',[e]);
 					if (!c.disable_all) {
 						var j = a(this).next("input").attr("type");
 						var k = a(this).next("input").attr("disabled");
@@ -3166,7 +3161,6 @@ $(function() {
 							}
 						}
 						c.callback.call(this);
-						$(this).next("input").triggerHandler('click',[e]);
 						$(this).next("input").triggerHandler('change',[e]);
 					}
 				}).hover(function() {
@@ -4030,10 +4024,9 @@ $(function() {
 			var L = H.id;
 			var J = L.substr(K, L.length);
 			A.val(J);
-			A.triggerHandler('change',[e]);
-			A.triggerHandler('click',[e]);
 			A.attr("relText", $(H).text());
 			d.val($(H).html());
+			A.triggerHandler('click',[e]);
 			if (v == true) {
 				A.attr("editValue", d.val())
 			}
@@ -4124,9 +4117,7 @@ $(function() {
 					h();
 					A.get(0).blur();
 					l();
-					if (A.attr("onchange") != null) {
-						eval(A.attr("onchange"))
-					}
+					A.triggerHandler('change',[e]);
 					d.removeClass("tipColor");
 					if (H) {
 						t(A, A.val())
@@ -5024,16 +5015,17 @@ getArgs = function( name )
 	return null;
 },
 baseSkin = getArgs('s') || 'sheet1';
-var ZtreeBasePath = (function() {
-		var strFullPath = window.document.location.href;
-		var strPath = window.document.location.pathname;
-		var pos = strFullPath.indexOf(strPath);
-		var prePath = strFullPath.substring(0, pos);
-		var postPath = strPath.substring(0, strPath.substr(1).indexOf('/') + 1);
-		return prePath + postPath;
-	})()+"/";
-document.write("<link rel='stylesheet' type='text/css' href='"+ZtreeBasePath+"/resource/base/theme/"+baseSkin+"/base/style.css'/>");
-document.write("<link rel='stylesheet' type='text/css' href='"+ZtreeBasePath+"/resource/base/theme/icon/icon.css'/>");
+(function(){
+	var jss = $("script");
+	for(var i = 0;i<jss.length;i++){
+		if(jss[i].src.indexOf("base.js") > -1){
+			var basePath = jss[i].src.match(/http:\/*\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}:\d{1,5}\/*\w*\/*/i);
+			document.write("<link rel='stylesheet' type='text/css' href='"+basePath+"/resource/base/theme/"+baseSkin+"/base/style.css'/>");
+			document.write("<link rel='stylesheet' type='text/css' href='"+basePath+"/resource/base/theme/icon/icon.css'/>");
+		}
+	}
+})();
+
 function encode(strIn) {
 	var intLen = strIn.length;
 	var strOut = "";

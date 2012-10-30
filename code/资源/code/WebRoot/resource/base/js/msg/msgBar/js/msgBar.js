@@ -52,7 +52,6 @@
         }
         return bar
     };
-    
     $.cmoxhide = function(cookiename,types){
 	    var arrStr = document.cookie.split("; ");
 	    var strIn = "";
@@ -103,20 +102,24 @@
 			var domain = window.document.location.href.match(/\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/i);
 			document.cookie = cookiename + "=1; expires=" + date.toGMTString() + "; path=/; domain="+domain+";";
 	    }
-    }
-})(jQuery);
-
-
+    };
+    
+    
+(function(){
+	var jss = $("script");
+	for(var i = 0;i<jss.length;i++){
+		if(jss[i].src.indexOf("msgBar.js") > -1){
+			var basePath = jss[i].src.match(/http:\/*\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}:\d{1,5}\/*\w*\/*/i);
+			document.write("<link rel=\"stylesheet\" type=\"text/css\" href=\""+basePath+"/resource/base/js/msg/msgBar/css/msgBar.css\" charset=\"UTF-8\"/>");
+		}
+	}
+})();
 $(window).load(function(){
 	$.cmoxhide("oxhidemessage","success");
 	$.cmoxhide("oxhideerror","error");
-})
-var ZtreeBasePath = (function() {
-		var strFullPath = window.document.location.href;
-		var strPath = window.document.location.pathname;
-		var pos = strFullPath.indexOf(strPath);
-		var prePath = strFullPath.substring(0, pos);
-		var postPath = strPath.substring(0, strPath.substr(1).indexOf('/') + 1);
-		return prePath + postPath;
-	})()+"/";
-document.write("<link rel='stylesheet' type='text/css' href='"+ZtreeBasePath+"/resource/base/js/msg/msgBar/css/msgBar.css'/>");
+});
+})(jQuery);
+
+
+
+

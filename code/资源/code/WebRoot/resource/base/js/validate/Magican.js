@@ -252,21 +252,12 @@ $Form; (function() {
 	 * @returns
 	 */
         getBasePath: function() {
-            var strFullPath = window.document.location.href;
-            var strPath = window.document.location.pathname;
-            var pos = strFullPath.indexOf(strPath);
-            var prePath = strFullPath.substring(0, pos);
-            var postPath = strPath.substring(0, strPath.substr(1).indexOf('/') + 1);
-            return prePath + postPath;
-        },
-        /**
-	 * 获取自己的路径
-	 */
-        getPath: function() {
-            var strFullPath = window.document.location.href;
-            var pos = strFullPath.lastIndexOf("/");
-            var path = strFullPath.substring(0, pos);
-            return path + "/";
+			var jss = $("script");
+			for(var i = 0;i<jss.length;i++){
+				if(jss[i].src.indexOf("Magican.js") > -1){
+					return jss[i].src.match(/http:\/*\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}:\d{1,5}\/*\w*\/*/i);
+				}
+			}
         },
         /**
 	 * 导入js

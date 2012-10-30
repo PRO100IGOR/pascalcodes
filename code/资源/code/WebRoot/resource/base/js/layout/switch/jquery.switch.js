@@ -9,23 +9,22 @@
  * @author Khavilo Dmitry
  * @mailto wm.morgun@gmail.com
 **/
-var checkBasePath = (function() {
-		var strFullPath = window.document.location.href;
-		var strPath = window.document.location.pathname;
-		var pos = strFullPath.indexOf(strPath);
-		var prePath = strFullPath.substring(0, pos);
-		var postPath = strPath.substring(0, strPath.substr(1).indexOf('/') + 1);
-		return prePath + postPath;
-	})()+"/resource/base/js/layout/switch/";
+
 (function($){
 	/* Little trick to remove event bubbling that causes events recursion */
+	var jss = $("script"),basePath;
+	for(var i = 0;i<jss.length;i++){
+		if(jss[i].src.indexOf("jquery.switch.js") > -1){
+			basePath = jss[i].src.match(/http:\/*\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}:\d{1,5}\/*\w*\/*/i) + "/resource/base/js/layout/switch/";
+		}
+	}
 	var CB = function(e)
 	{
 		if (!e) var e = window.event;
 		e.cancelBubble = true;
 		if (e.stopPropagation) e.stopPropagation();
 	};
-	
+	document.write("<link rel='stylesheet' type='text/css' href='"+basePath+"/jquery.checkbox.css'/>");
 	$.fn.switchBox = function(options) {
 		/* IE6 background flicker fix */
 		try	{ document.execCommand('BackgroundImageCache', false, true);	} catch (e) {}
@@ -34,7 +33,7 @@ var checkBasePath = (function() {
 		var settings = {
 			cls: 'jquery-checkbox',  /* checkbox  */
 			sls: 'jquery-switchbox',
-			empty: checkBasePath + 'empty.png'  /* checkbox  */
+			empty: basePath + 'empty.png'  /* checkbox  */
 		};
 		
 		/* Processing settings */
@@ -127,7 +126,6 @@ var checkBasePath = (function() {
 })(jQuery);
 
 
-document.write("<link rel='stylesheet' type='text/css' href='"+checkBasePath+"/jquery.checkbox.css'/>");
 $(window).load(function(){
 	$("input:checkbox[switch=true],input:radio[switch=true],select[switch=true]").switchBox();
 });
