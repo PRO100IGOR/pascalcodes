@@ -150,9 +150,10 @@ import {{pacName}};
 	 * @param request
 	 * @param type
 	 */
-	public ActionForward preAdd(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws BaseException{
+	public ActionForward preAdd(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response, Serializable po) throws BaseException {
 		return null;
 	}
+
 	/**
 	 * 修改前调用的方法返回值不为空将引发跳转
 	 * 
@@ -160,13 +161,12 @@ import {{pacName}};
 	 * @param request
 	 * @param type
 	 */
-	public ActionForward preUpdate(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws BaseException{
+	public ActionForward preUpdate(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response, Serializable po) throws BaseException {
 		return null;
 	}
 	/**
 	 * 增加后调用的方法,返回null表示增加完成后跳到增加成功页面，否则跳到自定义地址
-	 * 
-	 * @param mainPo
+	 * @param po
 	 * @param request
 	 * @param type
 	 */
