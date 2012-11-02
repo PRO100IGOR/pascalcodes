@@ -27,6 +27,7 @@ type
     Button2: TButton;
     StringGrid: TStringGrid;
     ComboBox1: TComboBox;
+    IdHTTP1: TIdHTTP;
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
   private
@@ -143,8 +144,9 @@ begin
     if ComboBox1.Items.IndexOf(ComboBox1.Text) = -1 then
        ComboBox1.Items.Add(ComboBox1.Text);
     IdHTTP :=  TIdHTTP.Create(Application);
+
     Ret     :=TStringStream.Create('');
-    Content := TIdStringStream.Create(ComboBox1.Text);
+    Content := TIdStringStream.Create(UTF8Encode(ComboBox1.Text));
     IdHTTP.Post(Edit6.Text + '&SESSIONID=' + Id,Content,Ret);
     try
        RevObj := SO(UTF8Decode(ret.DataString)).AsArray;

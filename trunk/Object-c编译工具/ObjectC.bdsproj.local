@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2012-11-02 15:40:09.968.pas,C:\Documents and Settings\Administrator\My Documents\RAD Studio\Projects\Unit1.pas=E:\pro\gl\pascalcodes\Object-c编译工具\Main.pas</Transaction>
+    <Transaction>2012-11-02 15:40:09.968.dfm,C:\Documents and Settings\Administrator\My Documents\RAD Studio\Projects\Unit1.dfm=E:\pro\gl\pascalcodes\Object-c编译工具\Main.dfm</Transaction>
+    <Transaction>2012-11-02 15:40:17.656.bdsproj,C:\Documents and Settings\Administrator\My Documents\RAD Studio\Projects\Project2.bdsproj=E:\pro\gl\pascalcodes\Object-c编译工具\ObjectC.bdsproj</Transaction>
+    <Transaction>2012-11-02 17:16:33.234.pas,E:\pro\gl\pascalcodes\Object-c编译工具\Unit1.pas=E:\pro\gl\pascalcodes\Object-c编译工具\GetFile.pas</Transaction>
+    <Transaction>2012-11-02 17:16:33.234.dfm,E:\pro\gl\pascalcodes\Object-c编译工具\Unit1.dfm=E:\pro\gl\pascalcodes\Object-c编译工具\GetFile.dfm</Transaction>
+  </Transactions>
+</BorlandProject>
