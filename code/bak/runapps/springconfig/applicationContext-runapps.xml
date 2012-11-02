@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName"> 
+  <bean id="runappsDAO" class="com.sxsihe.coall.runapps.dao.hibernateImpl.RunappsDAOImpl"> 
+    <property name="template" ref="template"/> 
+  </bean>  
+  <bean id="runappsService" parent="baseTxService"> 
+    <property name="target"> 
+      <bean id="runappsServiceTarget" class="com.sxsihe.coall.runapps.service.RunappsServiceImpl"> 
+        <property name="dao" ref="runappsDAO"/> 
+      </bean> 
+    </property> 
+  </bean>
+  <bean name="/runappsLoadAction" class="com.sxsihe.coall.runapps.action.RunappsShowAction"> 
+    <property name="service" ref="runappsService"/> 
+  </bean>
+  <bean name="/runappsShowAction" class="com.sxsihe.coall.runapps.action.RunappsShowAction"> 
+    <property name="service" ref="runappsService"/> 
+  </bean>
+  <bean name="/runappsSaveAction" class="com.sxsihe.coall.runapps.action.RunappsSaveAction"> 
+    <property name="service" ref="runappsService"/> 
+  </bean>
+  <bean name="/runappsDeleteAction" class="com.sxsihe.coall.runapps.action.RunappsDeleteAction"> 
+    <property name="service" ref="runappsService"/> 
+  </bean>
+</beans>
+	

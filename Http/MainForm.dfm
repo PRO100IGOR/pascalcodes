@@ -80,7 +80,7 @@ object Form1: TForm1
       Width = 519
       Height = 21
       TabOrder = 2
-      Text = 'http://10.10.0.149:8080/oxhide'
+      Text = 'http://10.10.0.141:8081/oxhide'
     end
     object Button1: TButton
       Left = 496
@@ -105,7 +105,7 @@ object Form1: TForm1
       Width = 427
       Height = 21
       TabOrder = 5
-      Text = 'http://10.10.0.149:8080/coal/sqlqueryShowAction.do?action=query'
+      Text = 'http://10.10.0.141:8081/coal/sqlqueryShowAction.do?action=query'
     end
   end
   object GroupBox2: TGroupBox
@@ -160,5 +160,17 @@ object Form1: TForm1
     FixedRows = 0
     Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRowSizing, goColSizing, goEditing]
     TabOrder = 2
+  end
+  object IdHTTP1: TIdHTTP
+    AllowCookies = True
+    ProxyParams.BasicAuthentication = False
+    ProxyParams.ProxyPort = 0
+    Request.ContentLength = -1
+    Request.Accept = 'text/html, */*'
+    Request.BasicAuthentication = False
+    Request.UserAgent = 'Mozilla/3.0 (compatible; Indy Library)'
+    HTTPOptions = [hoForceEncodeParams]
+    Left = 600
+    Top = 56
   end
 end
