@@ -3,7 +3,7 @@ unit Common;
 interface
 
 uses
-  SysUtils, ActiveX, Winsock, Classes,StdCtrls,IdHTTP,ModelLib,Windows,XMLIntf, XMLDoc,Variants,bsSkinBoxCtrls,ShellAPI;
+  SysUtils, ActiveX, Winsock, Classes,StdCtrls,IdHTTP,Windows,XMLIntf, XMLDoc,Variants,bsSkinBoxCtrls,ShellAPI;
 const
   strEncryptCode : String = 'VZHLEPDQKYMGSOJX';
 type
@@ -49,14 +49,14 @@ procedure changeFileContext(filename,name1,name2:string);  //ÃÊªª÷∏∂®Œƒº˛÷–µƒƒ⁄»
 
 function getClassNameFromPack(pack:string):string;//¥”∞¸√˚Ω‚Œˆ¿‡√˚
 
-procedure readXml(xml,className:string;var ModelCode:TModelCode;classNameLarge :string = ''); //¥”xml÷–ππΩ® ModelCode
+
 function getIdFromXml(xml:string):string;//¥”÷∏∂®xml÷–∂¡»°÷˜º¸id
 procedure getHistoryFromtxt(author: TbsSkinComboBox;fileName:string);overload; //¥”txt÷–∂¡»°¿˙ ∑ƒ⁄»›£¨≤¢ƒ¨»œ—°‘Ò1
 procedure getHistoryFromtxt(author: TbsSkinListBox;fileName:string);overload; //¥”txt÷–∂¡»°¿˙ ∑ƒ⁄»›£¨≤¢ƒ¨»œ—°‘Ò1
 function getValueFromServer(fileName,url:string):TStrings; //¥”∑˛ŒÒ∆˜…œ∂¡»°Œƒº˛ƒ⁄»›
 function getServiceFromSpring(basePath,className:string;springs:TStrings):string;//¥”xml÷–∂¡»°spring≈‰÷√Œƒº˛÷–µƒservice
 function getPacFromHbm(fileName:string):string;
-procedure getProsFromHiberNate(var Model:TModel); //¥”hibernate÷–∂¡»° Ù–‘
+
 function trimFileContext(filename:string):TStrings;  //≤È’“xml
 function   CopyDirectory(const   Source,   Dest:   string):   boolean;
 function encode(text:String):string;    //◊™ªªunicode±‡¬Î
@@ -69,6 +69,7 @@ function WinUserName: string;
 function RunProcess(FileName: string; ShowCmd: DWORD; wait: Boolean; ProcID:PDWORD): Longword;
 function RunDOS(const CommandLine: string): string; //÷¥––CMD∫Û∑µªÿΩ·π˚
 implementation
+
 
 
  function RunDOS(const CommandLine: string): string;
@@ -127,6 +128,8 @@ begin
   CloseHandle(HRead);
   CloseHandle(HWrite);
 end;
+
+
 function ComputerLocalIP: string;
 var 
  ch: array [ 1 .. 32 ] of char; 
@@ -366,182 +369,6 @@ begin
 end;
 
 
-procedure readXml(xml,className:string;var ModelCode:TModelCode;classNameLarge :string = ''); //¥”xml÷–ππΩ® ModelCode
-var
-  XMLDocument: IXMLDocument;
-  rootnode, classNode,propertys: IXMLNode;
-  I:Integer;
-  Prototype:TPrototype;
-  temp,temp2:string;
-  AStringArray:StringArray;
-begin
-  XMLDocument := TXMLDocument.Create(nil);
-  if xml = '' then
-     xml := ModelCode.hibernatePath;
-  XMLDocument.LoadFromFile(xml);
-  rootnode := XMLDocument.DocumentElement;
-  classNode := rootnode.ChildNodes[0];
-  if className = '' then
-  begin
-    if ModelCode.changeHibernate then
-    begin
-      classNode.AttributeNodes.Delete('catalog');
-      classNode.AttributeNodes.Delete('schema');
-    end;
-
-    if ModelCode.dynamicUpdate  then
-    begin
-        classNode.Attributes['dynamic-insert'] := 'true';
-        classNode.Attributes['dynamic-update'] := 'true';
-    end;
-
-    
-  end;
-
-
-  for I := 0 to classNode.ChildNodes.Count - 1 do
-  begin
-    propertys := classNode.ChildNodes[I];
-
-    if propertys.NodeName = 'id' then
-    begin
-        Prototype := TPrototype.Create;
-        Prototype.dataType := 'id';
-        Prototype.ClassName := classNameLarge;
-        Prototype.dataType := propertys.NodeName;
-        Prototype.autoInsert := propertys.ChildNodes['generator'].Attributes['class'] <> 'assigned';
-        Prototype.dataData := propertys.Attributes['type'];
-        Prototype.dataName := className+propertys.Attributes['name'];
-        if propertys.ChildNodes['column'].Attributes['length'] = null then
-            Prototype.dataLength := 16
-        else
-            Prototype.dataLength := StrtoInt(propertys.ChildNodes['column'].Attributes['length']);
-        ModelCode.prototypes.Add(Prototype.dataName,Prototype);
-        ModelCode.proList.Add(Prototype.dataName);
-        if className <> '' then
-        begin
-          ModelCode.parentIds.Add(Prototype.dataName);
-          Prototype.enable := False;
-        end
-        else
-        begin
-          ModelCode.prototype := Prototype;
-        end;
-    end
-    else if propertys.NodeName = 'property' then
-    begin
-      Prototype := TPrototype.Create;
-      if propertys.ChildNodes[0].ChildNodes.Count > 0 then
-        Prototype.comment := propertys.ChildNodes[0].ChildNodes[0].Text
-      else
-        Prototype.comment :=  propertys.Attributes['name'];
-      Prototype.dataType := propertys.NodeName;
-      Prototype.ClassName := classNameLarge;
-      Prototype.dataData := propertys.Attributes['type'];
-      Prototype.dataName := className+propertys.Attributes['name'];
-      Prototype.dataType := 'property';
-      if propertys.ChildNodes[0].Attributes['length'] = null then
-          Prototype.dataLength := 16
-      else
-          Prototype.dataLength := propertys.ChildNodes[0].Attributes['length'];
-      ModelCode.prototypes.Add(Prototype.dataName,Prototype);
-      ModelCode.proList.Add(Prototype.dataName);
-      if className <> '' then
-      begin
-          Prototype.enable := False;
-      end;
-    end
-    else if propertys.NodeName = 'many-to-one' then
-    begin
-        temp2 := Common.getClassNameFromPack(propertys.Attributes['class']);
-        temp := ModelCode.hibernate + temp2+'.hbm.xml';
-        if ModelCode.xmlList.IndexOf(temp2) = -1 then
-        begin
-            ModelCode.xmlList.Add(temp2);
-            readXml(temp,className+propertys.Attributes['name']+'.',ModelCode,propertys.Attributes['name']);
-        end;
-        if className = '' then
-        begin
-          if ModelCode.ManyToOne <> '' then
-          begin
-             AStringArray := Split(ModelCode.ManyToOne,'=');
-             if Length(AStringArray) = 2  then
-             begin
-                propertys.Attributes[AStringArray[0]] := AStringArray[1];
-             end;
-          end;
-        end;
-    end
-    else if propertys.NodeName = 'set' then
-    begin
-        if className = '' then
-        begin
-          if ModelCode.OneToMany <> '' then
-          begin
-             AStringArray := Split(ModelCode.OneToMany,'=');
-             if Length(AStringArray) = 2  then
-             begin
-                propertys.Attributes[AStringArray[0]] := AStringArray[1];
-             end;
-          end;
-        end;
-    end;
-    XMLDocument.SaveToFile(xml);
-  end;
-  XMLDocument := nil;
-end;
-
-procedure getProsFromHiberNate(var Model:TModel); //¥”hibernate÷–∂¡»° Ù–‘
-var
-  XMLDocument: IXMLDocument;
-  rootnode, classNode,propertys: IXMLNode;
-  I:Integer;
-  Prototype:TPrototype;
-begin
-  XMLDocument := TXMLDocument.Create(nil);
-
-  XMLDocument.LoadFromFile(Model.hibernatePath);
-  rootnode := XMLDocument.DocumentElement;
-  classNode := rootnode.ChildNodes[0];
-  
-
-  for I := 0 to classNode.ChildNodes.Count - 1 do
-  begin
-    propertys := classNode.ChildNodes[I];
-    if propertys.NodeName = 'id' then
-    begin
-        Prototype := TPrototype.Create;
-        Prototype.dataType := 'id';
-        Prototype.dataType := propertys.NodeName;
-        Prototype.autoInsert := propertys.ChildNodes['generator'].Attributes['class'] <> 'assigned';
-        Prototype.dataData := propertys.Attributes['type'];
-        Prototype.dataName := propertys.Attributes['name'];
-        if propertys.ChildNodes['column'].Attributes['length'] = null then
-              Prototype.dataLength := 16
-        else
-              Prototype.dataLength := StrtoInt(propertys.ChildNodes['column'].Attributes['length']);
-        Model.prototypes.Add(Prototype.dataName,Prototype);
-    end
-    else if propertys.NodeName = 'property' then
-    begin
-      Prototype := TPrototype.Create;
-      if propertys.ChildNodes[0].ChildNodes.Count > 0 then
-        Prototype.comment := propertys.ChildNodes[0].ChildNodes[0].Text
-      else
-        Prototype.comment :=  propertys.Attributes['name'];
-      Prototype.dataType := propertys.NodeName;
-      Prototype.dataData := propertys.Attributes['type'];
-      Prototype.dataName := propertys.Attributes['name'];
-      Prototype.dataType := 'property';
-      if propertys.ChildNodes[0].Attributes['length'] = null then
-          Prototype.dataLength := 16
-      else
-          Prototype.dataLength := propertys.ChildNodes[0].Attributes['length'];
-      Model.prototypes.Add(Prototype.dataName,Prototype);
-    end;
-  end;
-  XMLDocument := nil;
-end;
 
 function getClassNameFromPack(pack:string):string;//¥”∞¸√˚Ω‚Œˆ¿‡√˚
 begin
