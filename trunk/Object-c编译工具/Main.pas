@@ -4,9 +4,10 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, ComCtrls, StdCtrls,FileCtrl,WinSock;
+  Dialogs, ComCtrls, StdCtrls,FileCtrl,WinSock,Ini,Common;
 
 type
+
   TMainForm = class(TForm)
     GroupBox1: TGroupBox;
     Install: TButton;
@@ -15,10 +16,18 @@ type
     ClearBtn: TButton;
     ShowArea: TMemo;
     InputArea: TEdit;
+    RunMe: TButton;
+    OpenDialog: TOpenDialog;
+    CSFiles: TButton;
     procedure InstallClick(Sender: TObject);
     procedure SetPathClick(Sender: TObject);
     procedure ClearBtnClick(Sender: TObject);
     procedure RunerClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure CSFilesClick(Sender: TObject);
+    procedure RunMeClick(Sender: TObject);
+    procedure InputAreaKeyUp(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
   private
     { Private declarations }
     procedure setMainPath;
@@ -28,91 +37,12 @@ type
 
 var
   MainForm : TMainForm;
-  BasePath : string;
+  ProPath:string;
+  fileName :string;
 implementation
 
 {$R *.dfm}
 
-
-function ComputerLocalIP: string; 
-var 
- ch: array [ 1 .. 32 ] of char; 
- wsData: TWSAData; 
- myHost: PHostEnt; 
- i: integer; 
-begin 
- Result := '' ;
- if WSAstartup( 2 ,wsData) <> 0 then Exit; // can’t start winsock
- try
-    if GetHostName(@ch[ 1 ], 32 ) <> 0 then Exit; // getHostName failed
- except 
-    Exit;
- end ; 
- myHost := GetHostByName(@ch[ 1 ]); // GetHostName error
- if myHost = nil then exit; 
- for i := 1 to 4 do
- begin 
-	Result := Result + IntToStr(Ord(myHost.h_addr^[i - 1 ]));
-	if i < 4 then 
-	   Result := Result + '.' ;
-	end ; 
-end ; 
-
- 
-function ComputerName: string;
-var
- FStr: PChar; 
- FSize: Cardinal;
-begin
- FSize := 255 ;
- GetMem(FStr, FSize); 
- Windows.GetComputerName(FStr, FSize); 
- Result := FStr;
- FreeMem(FStr); 
-end;
-
- 
-function WinUserName: string;
- var 
- FStr: PChar; 
- FSize: Cardinal; 
-begin
- FSize := 255 ;
- GetMem(FStr, FSize); 
- GetUserName(FStr, FSize); 
- Result := FStr; 
- FreeMem(FStr); 
-end ;
-
-
-function RunProcess(FileName: string; ShowCmd: DWORD; wait: Boolean; ProcID:PDWORD): Longword;
-var
-    StartupInfo: TStartupInfo;
-    ProcessInfo: TProcessInformation;
-begin
-    FillChar(StartupInfo, SizeOf(StartupInfo), #0);
-    StartupInfo.cb := SizeOf(StartupInfo);
-    StartupInfo.dwFlags := STARTF_USESHOWWINDOW or STARTF_FORCEONFEEDBACK;
-    StartupInfo.wShowWindow := ShowCmd;
-    if not CreateProcess(nil,@Filename[1],nil,nil,False,CREATE_NEW_CONSOLE or NORMAL_PRIORITY_CLASS,nil,nil,StartupInfo,ProcessInfo) then
-       Result := WAIT_FAILED
-    else
-    begin
-       if wait = FALSE then
-       begin
-            if ProcID <> nil then
-               ProcID^ := ProcessInfo.dwProcessId;
-            result := WAIT_FAILED;
-            exit;
-       end;
-       WaitForSingleObject(ProcessInfo.hProcess, INFINITE);
-       GetExitCodeProcess(ProcessInfo.hProcess, Result);
-    end;
-    if ProcessInfo.hProcess <> 0 then
-       CloseHandle(ProcessInfo.hProcess);
-    if ProcessInfo.hThread <> 0 then
-       CloseHandle(ProcessInfo.hThread);
-end;
 
 
 procedure TMainForm.setMainPath;
@@ -120,24 +50,116 @@ var
  FStr: PChar; 
  FSize: Cardinal;
 begin
-  ShowArea.Lines.Add('setMainPath: C:\GNUstep');
-  BasePath := 'C:\GNUstep';
-  if not DirectoryExists(BasePath + '\msys\1.0\home\' + WinUserName) then
+  if not DirectoryExists(ReadIni('C','BasePath') + '\bin\gcc.exe') then
   begin
-     ShowArea.Lines.Add('setMainPath fail on : ' + BasePath + '\msys\1.0\home\' + WinUserName + ' not exits');
+     ShowArea.Lines.Add(ReadIni('C','BasePath') + '\bin\gcc.exe' + ' not exits');
      Exit;
   end;
-  if not FileExists(BasePath + '\msys\1.0\msys.bat') then
+  if not DirectoryExists(ReadIni('C','BasePath') + '\msys\1.0\home\' + WinUserName) then
   begin
-     ShowArea.Lines.Add('setMainPath fail on : ' + BasePath + '\msys\1.0\msys.bat not exits');
+     ShowArea.Lines.Add('setWorkPath fail on : ' + ReadIni('C','BasePath') + '\msys\1.0\home\' + WinUserName + ' not exits');
      Exit;
   end;
+  if not FileExists(ReadIni('C','BasePath') + '\msys\1.0\msys.bat') then
+  begin
+     ShowArea.Lines.Add('setWorkPath fail on : ' +ReadIni('C','BasePath') + '\msys\1.0\msys.bat not exits');
+     Exit;
+  end;
+  ShowArea.Lines.Add('setWorkPath on : ' + ReadIni('C','BasePath'));
   Runer.Enabled := True;
+  CSFiles.Enabled := True;
+  RunMe.Enabled := True;
 end;
-
 procedure TMainForm.ClearBtnClick(Sender: TObject);
 begin
    ShowArea.Lines.Clear;
+end;
+procedure TMainForm.CSFilesClick(Sender: TObject);
+begin
+  if Filectrl.SelectDirectory('选择项目顶级目录', '', ProPath) then
+  begin
+     WriteIni('C','ProPath',ProPath);
+     ShowArea.Lines.Add('setProPath on : ' + ProPath);
+  end;
+end;
+procedure TMainForm.RunerClick(Sender: TObject);
+var
+  Lines:TStrings;
+begin
+  Lines := TStringList.Create;
+  OpenDialog.InitialDir := ProPath;
+  if OpenDialog.Execute then
+  begin
+     fileName := OpenDialog.FileName;
+     WriteIni('C','FileName',fileName);
+     ShowArea.Lines.Add('mainFile is : ' + fileName);
+  end;
+end;
+
+
+
+procedure TMainForm.RunMeClick(Sender: TObject);
+var
+  code,ProName :string;
+begin
+  ProName := Copy(ProPath,LastDelimiter('\',ProPath)+1,100);
+  code := Format('%6s\bin\gcc.exe '+fileName+' -o '+ProPath+'\'+ProName+'.exe -I '
+  +'%6s\GNUstep\System\Library\Headers -L %6s\GNUstep\System\Library\Libraries -lobjc -fobjc-exceptions -lgnustep-base '
+  +'-fconstant-string-class=NSConstantString -enable-auto-import',[ReadIni('C','BasePath'),ReadIni('C','BasePath'),ReadIni('C','BasePath')]);
+  ShowArea.Lines.Add(RunDOS(code));
+  ShowArea.Lines.Add('准备执行了！！');
+  ShowArea.Lines.Add('');
+  ShowArea.Lines.Add('');
+  ShowArea.Lines.Add(RunDOS(ProPath + '\' + ProName+'.exe'));
+  ShowArea.Lines.Add('执行结束了！！');
+end;
+
+procedure TMainForm.FormCreate(Sender: TObject);
+var
+   temp:TStrings;
+begin
+    if not FileExists(ExtractFileDir(PARAMSTR(0)) + '\config.ini') then 
+    begin
+        temp := TStringList.Create;
+        temp.Add('[C]');
+        temp.Add('BasePath=');
+        temp.SaveToFile(ExtractFileDir(PARAMSTR(0)) + '\config.ini');
+    end;
+    if ReadIni('C','BasePath') <> '' then
+       setMainPath;
+    ProPath := ReadIni('C','ProPath');
+    if ProPath <> '' then
+       ShowArea.Lines.Add('setProPath on : ' + ProPath);
+    fileName := ReadIni('C','FileName');
+    if fileName <> '' then
+       ShowArea.Lines.Add('mainFile is : ' + fileName);
+end;
+
+
+
+procedure TMainForm.SetPathClick(Sender: TObject);
+var
+  dir: string;
+begin
+  if Filectrl.SelectDirectory('选择目录', '', dir) then
+  begin
+     WriteIni('C','BasePath',dir);
+     setMainPath;
+  end;
+end;
+procedure TMainForm.InputAreaKeyUp(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+    if (key = 13)  and (InputArea.Text <> '')then
+    begin
+       try
+          ShowArea.Lines.Add(RunDOS(InputArea.Text));
+       except
+          ShowArea.Lines.Add('错误或不支持的命令！！');
+       end;
+
+       InputArea.Text := '';
+    end;
 end;
 
 procedure TMainForm.InstallClick(Sender: TObject);
@@ -149,28 +171,6 @@ begin
   RunProcess(ExtractFileDir(PARAMSTR(0)) + '/gnustep/gnustep-devel.exe',SW_SHOW,True,@ProcID);
   RunProcess(ExtractFileDir(PARAMSTR(0)) + '/gnustep/gnustep-cairo.exe',SW_SHOW,True,@ProcID);
 end;
-
-
-
-procedure TMainForm.RunerClick(Sender: TObject);
-var
-  Lines:TStrings;
-begin
-  Lines := TStringList.Create;
-  
-end;
-
-procedure TMainForm.SetPathClick(Sender: TObject);
-var
-  dir: string;
-begin
-  if Filectrl.SelectDirectory('选择目录', '', dir) then
-  begin
-     BasePath := dir;
-     setMainPath;
-  end;
-end;
-
 
 
 end.
