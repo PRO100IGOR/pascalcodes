@@ -166,7 +166,7 @@ begin
        except
           ShowArea.Lines.Add(RunDOS('cmd /k ' + code));
 //          try
-//             ShowArea.Lines.Add(RunDOS(GetEnvironmentVariable('Path') + '/' +  InputArea.Text));
+//             ShowArea.Lines.Add(RunDOS(GetEnvironmentVariable('Path') + '/' +  InputArea.Text));      //获取系统变量
 //          except
 //             ShowArea.Lines.Add(RunDOS(GetEnvironmentVariable('Path') + '/' + InputArea.Text));
 //          end;
