@@ -39,6 +39,8 @@ var
   MainForm : TMainForm;
   ProPath:string;
   fileName :string;
+  codes:TStrings;
+  his:Integer;
 implementation
 
 {$R *.dfm}
@@ -50,7 +52,7 @@ var
  FStr: PChar; 
  FSize: Cardinal;
 begin
-  if not DirectoryExists(ReadIni('C','BasePath') + '\bin\gcc.exe') then
+  if not FileExists(ReadIni('C','BasePath') + '\bin\gcc.exe') then
   begin
      ShowArea.Lines.Add(ReadIni('C','BasePath') + '\bin\gcc.exe' + ' not exits');
      Exit;
@@ -107,11 +109,7 @@ begin
   +'%6s\GNUstep\System\Library\Headers -L %6s\GNUstep\System\Library\Libraries -lobjc -fobjc-exceptions -lgnustep-base '
   +'-fconstant-string-class=NSConstantString -enable-auto-import',[ReadIni('C','BasePath'),ReadIni('C','BasePath'),ReadIni('C','BasePath')]);
   ShowArea.Lines.Add(RunDOS(code));
-  ShowArea.Lines.Add('准备执行了！！');
-  ShowArea.Lines.Add('');
-  ShowArea.Lines.Add('');
   ShowArea.Lines.Add(RunDOS(ProPath + '\' + ProName+'.exe'));
-  ShowArea.Lines.Add('执行结束了！！');
 end;
 
 procedure TMainForm.FormCreate(Sender: TObject);
@@ -128,11 +126,13 @@ begin
     if ReadIni('C','BasePath') <> '' then
        setMainPath;
     ProPath := ReadIni('C','ProPath');
-    if ProPath <> '' then
+    if (ProPath <> '') and (DirectoryExists(ProPath)) then
        ShowArea.Lines.Add('setProPath on : ' + ProPath);
     fileName := ReadIni('C','FileName');
-    if fileName <> '' then
+    if (fileName <> '') and (FileExists(fileName)) then
        ShowArea.Lines.Add('mainFile is : ' + fileName);
+    codes := TStringList.Create;
+    his := -1;
 end;
 
 
@@ -149,17 +149,52 @@ begin
 end;
 procedure TMainForm.InputAreaKeyUp(Sender: TObject; var Key: Word;
   Shift: TShiftState);
+var
+  code:string;
 begin
     if (key = 13)  and (InputArea.Text <> '')then
     begin
-       try
-          ShowArea.Lines.Add(RunDOS(InputArea.Text));
-       except
-          ShowArea.Lines.Add('错误或不支持的命令！！');
+       if codes.IndexOf(InputArea.Text) = -1 then
+       begin
+          codes.Add(InputArea.Text);
+          his := -1;
        end;
-
+       code := InputArea.Text;
        InputArea.Text := '';
-    end;
+       try
+          ShowArea.Lines.Add(RunDOS(code));
+       except
+          ShowArea.Lines.Add(RunDOS('cmd /k ' + code));
+//          try
+//             ShowArea.Lines.Add(RunDOS(GetEnvironmentVariable('Path') + '/' +  InputArea.Text));
+//          except
+//             ShowArea.Lines.Add(RunDOS(GetEnvironmentVariable('Path') + '/' + InputArea.Text));
+//          end;
+       end;
+    end
+//    else if key = 38 then
+//    begin
+//       if his = -1 then
+//       begin
+//          his := codes.Count - 1;
+//       end
+//       else if his > 0 then
+//       begin
+//          Dec(his);
+//       end;
+//       if (his > 0) and (his < codes.count)  then
+//       begin
+//          InputArea.Text := codes[his];
+//       end;
+//    end
+//    else if Key = 40 then
+//    begin
+//       if (his > -1) and (his < codes.Count - 1) then
+//       begin
+//          Inc(his);
+//          InputArea.Text := codes[his];
+//       end;
+//    end;
 end;
 
 procedure TMainForm.InstallClick(Sender: TObject);

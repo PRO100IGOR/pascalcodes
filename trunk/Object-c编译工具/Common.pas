@@ -104,15 +104,16 @@ begin
   StartInfo.hStdError := HWrite;
   StartInfo.hStdInput := GetStdHandle(STD_INPUT_HANDLE); // HRead;
   StartInfo.hStdOutput := HWrite;
+    b := CreateProcess(nil, // lpApplicationName: PChar
+      PChar(CommandLine), // lpCommandLine: PChar
+      nil, // lpProcessAttributes: PSecurityAttributes
+      nil, // lpThreadAttributes: PSecurityAttributes
+      True, // bInheritHandles: BOOL
+      CREATE_NEW_CONSOLE, nil, nil, StartInfo, ProceInfo);
+     CheckResult(b);
 
-  b := CreateProcess(nil, // lpApplicationName: PChar
-    PChar(CommandLine), // lpCommandLine: PChar
-    nil, // lpProcessAttributes: PSecurityAttributes
-    nil, // lpThreadAttributes: PSecurityAttributes
-    True, // bInheritHandles: BOOL
-    CREATE_NEW_CONSOLE, nil, nil, StartInfo, ProceInfo);
 
-  CheckResult(b);
+
   WaitForSingleObject(ProceInfo.hProcess, INFINITE);
 
   inS := THandleStream.Create(HRead);

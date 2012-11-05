@@ -91,6 +91,7 @@ object MainForm: TMainForm
     Font.Name = 'Tahoma'
     Font.Style = []
     ParentFont = False
+    ReadOnly = True
     ScrollBars = ssBoth
     TabOrder = 1
   end
