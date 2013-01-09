@@ -10,6 +10,7 @@ del /f /s /q *.cfg
 del /f /s /q *.ddp
 del /f /s /q *.dcu
 del /f /s /q *.dof
+del /f /s /q *.log
 echo ******************************************
 echo   成功清除Delphi备份文件！ 
 echo ******************************************

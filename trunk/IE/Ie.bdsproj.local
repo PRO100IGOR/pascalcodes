@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2012/12/10 13:09:17.567.pas,C:\Users\magican\Documents\RAD Studio\Projects\Unit1.pas=E:\delphi\IE\Main.pas</Transaction>
+    <Transaction>2012/12/10 13:09:17.567.dfm,C:\Users\magican\Documents\RAD Studio\Projects\Unit1.dfm=E:\delphi\IE\Main.dfm</Transaction>
+    <Transaction>2012/12/10 13:09:20.104.bdsproj,C:\Users\magican\Documents\RAD Studio\Projects\Project1.bdsproj=E:\delphi\IE\Ie.bdsproj</Transaction>
+    <Transaction>2012/12/10 13:17:31.027.pas,E:\delphi\IE\Ini.pas=</Transaction>
+  </Transactions>
+</BorlandProject>

@@ -308,7 +308,9 @@ begin
                begin
                   ALogicDevice.ItemsValues.Add(IntToStr(ItemHandle),'-');
                   if IsNewItem then
-                     Inc(PointCount);
+                     Inc(PointCount)
+                  else
+                     AddLogs(phDev.S['itemName'] + '添加失败，可能是已经添加过或者点不存在！');
                end
                else
                    Active := False;

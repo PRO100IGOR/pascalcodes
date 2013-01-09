@@ -47,7 +47,7 @@ object MainForm: TMainForm
       Width = 106
       Height = 25
       Caption = #36873#25321#20027#25991#20214#9313
-      TabOrder = 2
+      TabOrder = 3
       OnClick = RunerClick
     end
     object ClearBtn: TButton
@@ -56,7 +56,7 @@ object MainForm: TMainForm
       Width = 75
       Height = 25
       Caption = #28165#31354
-      TabOrder = 3
+      TabOrder = 5
       OnClick = ClearBtnClick
     end
     object RunMe: TButton
@@ -74,7 +74,7 @@ object MainForm: TMainForm
       Width = 104
       Height = 25
       Caption = #36873#25321#39033#30446#30446#24405#9312
-      TabOrder = 5
+      TabOrder = 2
       OnClick = CSFilesClick
     end
   end

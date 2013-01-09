@@ -1,0 +1,1 @@
+AutoRuner.exe /install

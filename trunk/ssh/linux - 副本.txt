@@ -1,0 +1,9 @@
+59.48.38.213,2222,root,sihe123,sh /opt/restart.sh,常寸
+60.220.238.166,2222,root,sihe123,sh /opt/restart.sh,高河
+60.220.255.158,2222,root,sihe123,sh /opt/restart.sh,郭庄
+124.163.246.5,2222,root,sihe123,sh /opt/restart.sh,路宁
+183.203.171.106,2222,root,sihe123,sh /opt/restart.sh,石圪节
+60.220.238.58,2222,root,sihe123,sh /opt/restart.sh,司马
+60.220.238.118,root,sihe123,sh /opt/restart.sh,五羊
+218.26.213.130,root,sihe123,sh /opt/restart.sh,余武
+60.220.238.46,root,sihe123,sh /opt/restart.sh,张村

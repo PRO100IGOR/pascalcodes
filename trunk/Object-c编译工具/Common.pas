@@ -3,7 +3,7 @@ unit Common;
 interface
 
 uses
-  SysUtils, ActiveX, Winsock, Classes,StdCtrls,IdHTTP,Windows,XMLIntf, XMLDoc,Variants,bsSkinBoxCtrls,ShellAPI;
+  SysUtils, ActiveX, Winsock, Classes,StdCtrls,IdHTTP,Windows,XMLIntf, XMLDoc,Variants,ShellAPI;
 const
   strEncryptCode : String = 'VZHLEPDQKYMGSOJX';
 type
@@ -51,8 +51,6 @@ function getClassNameFromPack(pack:string):string;//从包名解析类名
 
 
 function getIdFromXml(xml:string):string;//从指定xml中读取主键id
-procedure getHistoryFromtxt(author: TbsSkinComboBox;fileName:string);overload; //从txt中读取历史内容，并默认选择1
-procedure getHistoryFromtxt(author: TbsSkinListBox;fileName:string);overload; //从txt中读取历史内容，并默认选择1
 function getValueFromServer(fileName,url:string):TStrings; //从服务器上读取文件内容
 function getServiceFromSpring(basePath,className:string;springs:TStrings):string;//从xml中读取spring配置文件中的service
 function getPacFromHbm(fileName:string):string;
@@ -303,51 +301,7 @@ begin
   end;
 end;
 
-procedure getHistoryFromtxt(author: TbsSkinComboBox;fileName:string); //从txt中读取历史内容，并默认选择1
-var
-  I:Integer;
-  A:array of Integer;
-begin
-  if FileExists(fileName) then
-  begin
-    author.Items.LoadFromFile(fileName);
-    for I := 0 to author.Items.Count - 1 do begin
-        if author.Items[I] = '' then
-        begin
-             SetLength(A,Length(A) + 1);
-             A[Length(A) - 1] := I;
-        end;
-    end;
-    for I := 0 to Length(A) - 1 do
-        author.Items.Delete(A[I]);
-    if author.Items.Count > 0 then
-      author.ItemIndex := 0;
-  end;
-end;
 
-procedure getHistoryFromtxt(author: TbsSkinListBox;fileName:string); //从txt中读取历史内容，并默认选择1
-var
-  I:Integer;
-  A:array of Integer;
-begin
-  if FileExists(fileName) then
-  begin
-    author.Items.LoadFromFile(fileName);
-
-    for I := 0 to author.Items.Count - 1 do begin
-        if author.Items[I] = '' then
-        begin
-             SetLength(A,Length(A) + 1);
-             A[Length(A) - 1] := I;
-        end;
-    end;
-    for I := 0 to Length(A) - 1 do
-        author.Items.Delete(A[I]);
-
-    if author.Items.Count > 0 then
-      author.ItemIndex := 0;
-  end;
-end;
 
 function getIdFromXml(xml:string):string;//从指定xml中读取主键id
 var

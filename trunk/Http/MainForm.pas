@@ -138,6 +138,7 @@ var
     Content:TIdStringStream;
     RevObj,Names :TSuperArray;
     D : TSuperTableString;
+    A:TSuperTableString;
     I,K:Integer;
     IdHTTP: TIdHTTP;
 begin
@@ -150,6 +151,12 @@ begin
     IdHTTP.Post(Edit6.Text + '&SESSIONID=' + Id,Content,Ret);
     try
        RevObj := SO(UTF8Decode(ret.DataString)).AsArray;
+       if RevObj = nil then
+       begin
+           A := SO(UTF8Decode(ret.DataString)).AsObject;
+           RevObj := A.O['items'].AsArray;
+       end;
+       
        StringGrid.RowCount := 0;
        StringGrid.ColCount := 0;
        if RevObj.Length > 0 then
