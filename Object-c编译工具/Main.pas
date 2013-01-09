@@ -57,16 +57,6 @@ begin
      ShowArea.Lines.Add(ReadIni('C','BasePath') + '\bin\gcc.exe' + ' not exits');
      Exit;
   end;
-  if not DirectoryExists(ReadIni('C','BasePath') + '\msys\1.0\home\' + WinUserName) then
-  begin
-     ShowArea.Lines.Add('setWorkPath fail on : ' + ReadIni('C','BasePath') + '\msys\1.0\home\' + WinUserName + ' not exits');
-     Exit;
-  end;
-  if not FileExists(ReadIni('C','BasePath') + '\msys\1.0\msys.bat') then
-  begin
-     ShowArea.Lines.Add('setWorkPath fail on : ' +ReadIni('C','BasePath') + '\msys\1.0\msys.bat not exits');
-     Exit;
-  end;
   ShowArea.Lines.Add('setWorkPath on : ' + ReadIni('C','BasePath'));
   Runer.Enabled := True;
   CSFiles.Enabled := True;

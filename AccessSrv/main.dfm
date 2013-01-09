@@ -32,7 +32,7 @@ object MainForm: TMainForm
     Caption = #22823#20110'100'#34892#33258#21160#28165#31354
     Checked = True
     State = cbChecked
-    TabOrder = 1
+    TabOrder = 2
   end
   object ClearLogBtn: TButton
     Left = 389
@@ -40,7 +40,7 @@ object MainForm: TMainForm
     Width = 189
     Height = 25
     Caption = #28165#31354#26085#24535
-    TabOrder = 2
+    TabOrder = 1
   end
   object Timer: TTimer
     OnTimer = TimerTimer
@@ -54,13 +54,15 @@ object MainForm: TMainForm
     Top = 424
   end
   object UniConnection: TUniConnection
-    ProviderName = 'Oracle'
-    Port = 1521
+    ProviderName = 'Access'
+    Port = 3309
+    Database = 'coal'
     SpecificOptions.Strings = (
-      'Oracle.Direct=True')
-    Username = 'oxhide'
-    Password = 'oxhide'
-    Server = '10.10.0.158:1521:oracle'
+      'Oracle.Direct=True'
+      'MySQL.Charset=GBK')
+    Options.KeepDesignConnected = False
+    Username = 'root'
+    Server = '127.0.0.1'
     LoginPrompt = False
     Left = 272
     Top = 424
@@ -73,5 +75,9 @@ object MainForm: TMainForm
     Connection = UniConnection
     Left = 200
     Top = 424
+  end
+  object AccessUniProvider1: TAccessUniProvider
+    Left = 152
+    Top = 432
   end
 end

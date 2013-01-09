@@ -12,10 +12,11 @@ uses
   OPCtypes in 'opc\OPCtypes.pas',
   OPCutils in 'opc\OPCutils.pas',
   BaseTypes in 'BaseTypes.pas',
-  Common in 'tool\Common.pas',
   Ini in 'tool\Ini.pas',
   LogsUnit in 'tool\LogsUnit.pas',
-  superobject in 'tool\superobject.pas';
+  superobject in 'tool\superobject.pas',
+  TestLib in 'TestLib.pas' {TestForm},
+  Common in 'tool\Common.pas';
 
 {$R *.res}
 
@@ -23,5 +24,7 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TMainForm, MainForm);
+  Application.CreateForm(TTestForm, TestForm);
+  TestForm.Show;
   Application.Run;
 end.

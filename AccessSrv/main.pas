@@ -5,7 +5,8 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, ExtCtrls, StdCtrls,ADODB,LogsUnit,Ini, UniProvider,
-  OracleUniProvider, DB, DBAccess, Uni, MemDS,Common;
+  OracleUniProvider, DB, DBAccess, Uni, MemDS,Common, MySQLUniProvider,
+  ODBCUniProvider, AccessUniProvider;
 
 type
   TMainForm = class(TForm)
@@ -17,6 +18,7 @@ type
     UniConnection: TUniConnection;
     OracleUniProvider: TOracleUniProvider;
     UniQuery: TUniQuery;
+    AccessUniProvider1: TAccessUniProvider;
     procedure FormDestroy(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure TimerTimer(Sender: TObject);

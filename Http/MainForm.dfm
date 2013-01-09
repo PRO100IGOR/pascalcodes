@@ -79,7 +79,7 @@ object Form1: TForm1
       Top = 39
       Width = 519
       Height = 21
-      TabOrder = 2
+      TabOrder = 3
       Text = 'http://10.10.0.141:8081/oxhide'
     end
     object Button1: TButton
@@ -88,7 +88,7 @@ object Form1: TForm1
       Width = 86
       Height = 25
       Caption = #30331#24405
-      TabOrder = 3
+      TabOrder = 4
       OnClick = Button1Click
     end
     object Edit4: TEdit
@@ -96,7 +96,7 @@ object Form1: TForm1
       Top = 12
       Width = 137
       Height = 21
-      TabOrder = 4
+      TabOrder = 2
       Text = 'XTGL'
     end
     object Edit6: TEdit
@@ -160,6 +160,7 @@ object Form1: TForm1
     FixedRows = 0
     Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRowSizing, goColSizing, goEditing]
     TabOrder = 2
+    ExplicitHeight = 70
   end
   object IdHTTP1: TIdHTTP
     AllowCookies = True

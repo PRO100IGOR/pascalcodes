@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2012/11/13 20:00:17.841.pas,C:\Users\magican\Documents\RAD Studio\Projects\Unit1.pas=E:\delphi\启动器\MainLib.pas</Transaction>
+    <Transaction>2012/11/13 20:00:17.841.dfm,C:\Users\magican\Documents\RAD Studio\Projects\Unit1.dfm=E:\delphi\启动器\MainLib.dfm</Transaction>
+    <Transaction>2012/11/13 20:00:24.436.bdsproj,C:\Users\magican\Documents\RAD Studio\Projects\Project1.bdsproj=E:\delphi\启动器\AutoRuner.bdsproj</Transaction>
+    <Transaction>2012/11/13 20:01:04.454.pas,E:\delphi\启动器\Unit1.pas=E:\delphi\启动器\Ini.pas</Transaction>
+    <Transaction>2012/11/13 20:10:17.520.pas,E:\delphi\启动器\Unit1.pas=E:\delphi\启动器\MainLoader.pas</Transaction>
+    <Transaction>2012/11/13 20:10:17.520.dfm,E:\delphi\启动器\Unit1.dfm=E:\delphi\启动器\MainLoader.dfm</Transaction>
+  </Transactions>
+</BorlandProject>
