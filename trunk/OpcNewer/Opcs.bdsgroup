@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<PersonalityInfo>
+		<Option>
+			<Option Name="Personality">Default.Personality</Option>
+			<Option Name="ProjectType"></Option>
+			<Option Name="Version">1.0</Option>
+			<Option Name="GUID">{38D6541B-D414-4E19-99B3-B3EAC8D77B57}</Option>
+		</Option>
+	</PersonalityInfo>
+	<Default.Personality>  <Projects>
+      <Projects Name="Opc.exe">Opc.bdsproj</Projects>
+      <Projects Name="OpcServers.exe">OpcServers.bdsproj</Projects>
+      <Projects Name="OpcManager.exe">OpcManager.bdsproj</Projects>
+      <Projects Name="Targets">Opc.exe OpcServers.exe OpcManager.exe</Projects>
+    </Projects>
+    <Dependencies/>
+  </Default.Personality>
+</BorlandProject>
