@@ -11,7 +11,7 @@ var
   FilesName: string;
   FLogs: TextFile;
 begin
-  FilesName := ExtractFileDir(PARAMSTR(0)) + '\logs\' + FormatDateTime('yyyy-mm-dd', now);
+  FilesName := ExtractFileDir(PARAMSTR(0)) + '\logs\' + FormatDateTime('yyyy-mm-dd', now) + '.log';
   AssignFile(FLogs, FilesName);
   if FileExists(FilesName) then
   begin

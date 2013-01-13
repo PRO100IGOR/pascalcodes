@@ -23,7 +23,7 @@ object MainForm: TMainForm
     Top = 0
     Width = 670
     Height = 501
-    ActivePage = TabSheet1
+    ActivePage = TabSheet2
     Align = alClient
     TabOrder = 0
     object TabSheet1: TTabSheet
@@ -113,7 +113,6 @@ object MainForm: TMainForm
         Align = alTop
         Caption = #20219#21153#23646#24615
         TabOrder = 0
-        ExplicitTop = -6
         object Label1: TLabel
           Left = 16
           Top = 23

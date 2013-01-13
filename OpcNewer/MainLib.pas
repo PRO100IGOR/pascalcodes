@@ -45,7 +45,7 @@ type
     procedure OnClientRead(Sender: TObject;Socket: TCustomWinSocket);
     procedure OnErrorEvent(Sender: TObject; Socket: TCustomWinSocket; ErrorEvent: TErrorEvent; var ErrorCode: Integer);
     procedure OnClientError(Sender: TObject; Socket: TCustomWinSocket; ErrorEvent: TErrorEvent; var ErrorCode: Integer);
-    procedure OnDataChange(LogicDeviceId:TStrings;ItemHandel:Opchandle;ItemValue:string);
+    procedure OnDataChange(PreSends:TPreSends);
     procedure ClearData;
   end;
 
@@ -150,9 +150,12 @@ var
   ItemValue                 :string;
   ItemQuality               :Word;
   Item                      :TItem;
-  Counts        :Integer;
+  Counts                    :Integer;
+  PreSend                   :TPreSend;
+  PreSends                  :TPreSends;
 begin
   Counts := 0;
+  SetLength(PreSends,0);
   for I := 0 to Servers.Count - 1 do
   begin
      for K := 0 to Servers.Values[I].Items.Count - 1 do
@@ -162,7 +165,13 @@ begin
           if (ItemQuality = OPC_QUALITY_GOOD) and (Item.ItemValue <> ItemValue) and (Filters.IndexOf(ItemValue) = -1)then
           begin
                Item.ItemValue := ItemValue;
-               OnDataChange(Item.LogicDeviceId,Item.ItemHandel,ItemValue);
+               //OnDataChange(Item.LogicDeviceId,Item.ItemHandel,ItemValue);
+               PreSend := TPreSend.Create;
+               PreSend.LogicDeviceId := Item.LogicDeviceId;
+               PreSend.ItemHandel := Item.ItemHandel;
+               PreSend.ItemValue := ItemValue;
+               SetLength(PreSends,Length(PreSends) + 1);
+               PreSends[Length(PreSends) - 1] :=  PreSend;
                Servers.Values[I].Items.Add(Servers.Values[I].Items.Keys[K],Item);
           end;
           Inc(Counts);
@@ -353,39 +362,90 @@ begin
   ClearData;
   ErrorCode := 0;
 end;
-procedure TMainForm.OnDataChange(LogicDeviceId:TStrings;ItemHandel:Opchandle;ItemValue:string);
+procedure TMainForm.OnDataChange(PreSends:TPreSends);
  var
    LogicDevice :TLogicDevice;
    Value:string;
    Socket :TCustomWinSocket ;
-   I :Integer;
+   I,LengthA,K :Integer;
+   LogicDeviceId,PreAddess:TStrings;
  begin
-   for I := 0 to LogicDeviceId.Count - 1 do
+   LengthA := Length(PreSends) - 1;
+
+   PreAddess := TStringList.Create;
+
+   for K := 0 to LengthA  do
    begin
-     LogicDevice := LogicDevices.Items[LogicDeviceId[I]];
-     if Assigned(LogicDevice) then
-     begin
-         try
-            LogicDevice.ItemsValues.Add(InttoStr(ItemHandel),ItemValue);
-            Value := LogicDevice.getValueString;
-         except
-            Addlogs(LogicDeviceId[I] + '计算值时发生异常');
-         end;
-         if Value <> '' then
+       LogicDeviceId := PreSends[K].LogicDeviceId;
+       for I := 0 to LogicDeviceId.Count - 1 do
+       begin
+         LogicDevice := LogicDevices.Items[LogicDeviceId[I]];
+         if Assigned(LogicDevice) then
          begin
-             Socket := Scokets.Items[LogicDevice.Address];
-             if Assigned(Socket) then
-                Socket.SendText(Common.encode(Value) + #$D#$A)
-             else
-                Addlogs('找不到会话！' + LogicDevice.ID);
+             try
+                LogicDevice.ItemsValues.Add(InttoStr(PreSends[K].ItemHandel),PreSends[K].ItemValue);
+                Value := LogicDevice.getValueString;
+             except
+                Addlogs(LogicDeviceId[I] + '计算值时发生异常');
+             end;
+             if Value <> '' then
+             begin
+                 Socket := Scokets.Items[LogicDevice.Address];
+                 if Assigned(Socket) then
+                 begin
+                    if not Assigned(Socket.SendMsgOfOneScoket)  then
+                    begin
+                       Socket.SendMsgOfOneScoket := SO('[]');
+                       Socket.MsgCounts := 0;
+                    end;
+                    Socket.SendMsgOfOneScoket.S[IntToStr(Socket.MsgCounts)] :=  Value;
+                    Inc(Socket.MsgCounts);
+                    if PreAddess.IndexOf(LogicDevice.Address) = -1 then
+                       PreAddess.Add(LogicDevice.Address)
+                 end
+                 else
+                    Addlogs('找不到会话,id是' + LogicDevice.ID);
+             end
          end
-//         else
-//             Addlogs('其他设备没有值！' + LogicDevice.ID);
-     end
-     else
-     begin
-         Addlogs('找不到逻辑设备！' + ItemValue);
-     end;
+         else
+            Addlogs('找不到逻辑设备，id是' + LogicDeviceId[I]);
+       end;
    end;
+
+   for I := 0 to PreAddess.Count - 1 do
+   begin
+       Socket := Scokets.Items[PreAddess[I]];
+       Socket.SendText(Common.encode(Socket.SendMsgOfOneScoket.AsString) + #$D#$A);
+       Socket.MsgCounts := 0;
+   end;
+
+//
+//   for I := 0 to LogicDeviceId.Count - 1 do
+//   begin
+//     LogicDevice := LogicDevices.Items[LogicDeviceId[I]];
+//     if Assigned(LogicDevice) then
+//     begin
+//         try
+//            LogicDevice.ItemsValues.Add(InttoStr(ItemHandel),ItemValue);
+//            Value := LogicDevice.getValueString;
+//         except
+//            Addlogs(LogicDeviceId[I] + '计算值时发生异常');
+//         end;
+//         if Value <> '' then
+//         begin
+//             Socket := Scokets.Items[LogicDevice.Address];
+//             if Assigned(Socket) then
+//                Socket.SendText(Common.encode(Value) + #$D#$A)
+//             else
+//                Addlogs('找不到会话！' + LogicDevice.ID);
+//         end
+////         else
+////             Addlogs('其他设备没有值！' + LogicDevice.ID);
+//     end
+//     else
+//     begin
+//         Addlogs('找不到逻辑设备！' + ItemValue);
+//     end;
+//   end;
  end;
 end.

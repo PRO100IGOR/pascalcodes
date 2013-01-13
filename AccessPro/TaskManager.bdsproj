@@ -168,13 +168,13 @@
 		</VersionInfo>
 		<VersionInfoKeys>
 			<VersionInfoKeys Name="CompanyName">四和科技</VersionInfoKeys>
-			<VersionInfoKeys Name="FileDescription">Access数据库数据交换工具</VersionInfoKeys>
+			<VersionInfoKeys Name="FileDescription">数据库数据交换工具</VersionInfoKeys>
 			<VersionInfoKeys Name="FileVersion">1.0.0.4</VersionInfoKeys>
-			<VersionInfoKeys Name="InternalName">Access数据库数据交换工具</VersionInfoKeys>
+			<VersionInfoKeys Name="InternalName">数据库数据交换工具</VersionInfoKeys>
 			<VersionInfoKeys Name="LegalCopyright">2012-11-14</VersionInfoKeys>
 			<VersionInfoKeys Name="LegalTrademarks"></VersionInfoKeys>
 			<VersionInfoKeys Name="OriginalFilename"></VersionInfoKeys>
-			<VersionInfoKeys Name="ProductName">Access数据库数据交换工具</VersionInfoKeys>
+			<VersionInfoKeys Name="ProductName">数据库数据交换工具</VersionInfoKeys>
 			<VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys>
 			<VersionInfoKeys Name="Comments"></VersionInfoKeys>
 			<VersionInfoKeys Name="作者">Magican</VersionInfoKeys>

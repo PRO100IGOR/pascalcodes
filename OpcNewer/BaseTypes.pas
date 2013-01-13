@@ -133,6 +133,14 @@ type
     constructor Create; overload;
    end;
 
+   TPreSend = class(TObject)
+   public
+       LogicDeviceId : TStrings;
+       ItemHandel : Opchandle;
+       ItemValue : string;
+   end;
+   TPreSends = array of TPreSend;
+
 implementation
 
 uses

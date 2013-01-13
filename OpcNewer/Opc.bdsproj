@@ -152,8 +152,8 @@
 			<Signing Name="SignAssembly">False</Signing>
 		</Signing>
 		<VersionInfo>
-			<VersionInfo Name="IncludeVerInfo">False</VersionInfo>
-			<VersionInfo Name="AutoIncBuild">False</VersionInfo>
+			<VersionInfo Name="IncludeVerInfo">True</VersionInfo>
+			<VersionInfo Name="AutoIncBuild">True</VersionInfo>
 			<VersionInfo Name="MajorVer">1</VersionInfo>
 			<VersionInfo Name="MinorVer">0</VersionInfo>
 			<VersionInfo Name="Release">0</VersionInfo>
@@ -167,17 +167,17 @@
 			<VersionInfo Name="CodePage">936</VersionInfo>
 		</VersionInfo>
 		<VersionInfoKeys>
-			<VersionInfoKeys Name="CompanyName"></VersionInfoKeys>
-			<VersionInfoKeys Name="FileDescription"></VersionInfoKeys>
+			<VersionInfoKeys Name="CompanyName">四和科技</VersionInfoKeys>
+			<VersionInfoKeys Name="FileDescription">四和OPC服务测试程序</VersionInfoKeys>
 			<VersionInfoKeys Name="FileVersion">1.0.0.0</VersionInfoKeys>
-			<VersionInfoKeys Name="InternalName"></VersionInfoKeys>
-			<VersionInfoKeys Name="LegalCopyright"></VersionInfoKeys>
-			<VersionInfoKeys Name="LegalTrademarks"></VersionInfoKeys>
-			<VersionInfoKeys Name="OriginalFilename"></VersionInfoKeys>
-			<VersionInfoKeys Name="ProductName"></VersionInfoKeys>
+			<VersionInfoKeys Name="InternalName">四和OPC服务测试程序</VersionInfoKeys>
+			<VersionInfoKeys Name="LegalCopyright">四和OPC服务测试程序</VersionInfoKeys>
+			<VersionInfoKeys Name="LegalTrademarks">四和OPC服务测试程序</VersionInfoKeys>
+			<VersionInfoKeys Name="OriginalFilename">四和OPC服务测试程序</VersionInfoKeys>
+			<VersionInfoKeys Name="ProductName">四和OPC服务测试程序</VersionInfoKeys>
 			<VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys>
-			<VersionInfoKeys Name="Comments"></VersionInfoKeys>
-		</VersionInfoKeys>
+			<VersionInfoKeys Name="Comments"></VersionInfoKeys>  <VersionInfoKeys Name="作者">Magican</VersionInfoKeys>
+    </VersionInfoKeys>
 		<Excluded_Packages>
       <Excluded_Packages Name="$(BDS)\bin\bcboffice2k100.bpl">CodeGear C++Builder Office 2000 Servers Package</Excluded_Packages>
       <Excluded_Packages Name="$(BDS)\bin\bcbofficexp100.bpl">CodeGear C++Builder Office XP Servers Package</Excluded_Packages>
