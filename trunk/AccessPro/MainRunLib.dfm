@@ -13,7 +13,7 @@ object MainView: TMainView
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
-  Position = poDesigned
+  Position = poDesktopCenter
   PixelsPerInch = 96
   TextHeight = 13
   object mmoLogs: TMemo

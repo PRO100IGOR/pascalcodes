@@ -1,10 +1,10 @@
-object Form2: TForm2
+object MainForm: TMainForm
   Left = 0
   Top = 0
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = #26381#21153#31649#29702
-  ClientHeight = 328
-  ClientWidth = 655
+  ClientHeight = 419
+  ClientWidth = 667
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -13,18 +13,18 @@ object Form2: TForm2
   Font.Style = []
   OldCreateOrder = False
   Position = poDesktopCenter
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object GroupBox1: TGroupBox
     Left = 0
     Top = 0
-    Width = 655
+    Width = 667
     Height = 57
     Align = alTop
     Caption = #26381#21153#25511#21046
     TabOrder = 0
-    ExplicitLeft = -7
-    ExplicitWidth = 662
+    ExplicitWidth = 655
     object ServerColor: TShape
       Left = 16
       Top = 13
@@ -48,7 +48,8 @@ object Form2: TForm2
       Height = 25
       Caption = #21551#21160#26381#21153
       Enabled = False
-      TabOrder = 2
+      TabOrder = 1
+      OnClick = btnStopStartClick
     end
     object btnClearLog: TButton
       Left = 568
@@ -56,7 +57,8 @@ object Form2: TForm2
       Width = 75
       Height = 25
       Caption = #28165#31354#26085#24535
-      TabOrder = 3
+      TabOrder = 2
+      OnClick = btnClearLogClick
     end
     object btnInstallUnInstall: TButton
       Left = 391
@@ -65,31 +67,23 @@ object Form2: TForm2
       Height = 25
       Caption = #23433#35013#26381#21153
       Enabled = False
-      TabOrder = 1
-    end
-    object btnAccessPj: TButton
-      Left = 270
-      Top = 20
-      Width = 107
-      Height = 25
-      Caption = #23494#30721#30772#35299#24037#20855
       TabOrder = 0
+      OnClick = btnInstallUnInstallClick
     end
   end
   object LogMemo: TMemo
     Left = 0
     Top = 57
-    Width = 655
-    Height = 271
+    Width = 667
+    Height = 362
     Align = alClient
     ScrollBars = ssVertical
     TabOrder = 1
-    ExplicitLeft = -7
-    ExplicitTop = -88
-    ExplicitWidth = 662
-    ExplicitHeight = 416
+    ExplicitWidth = 655
+    ExplicitHeight = 271
   end
   object Timer: TTimer
+    OnTimer = TimerTimer
     Left = 536
     Top = 105
   end

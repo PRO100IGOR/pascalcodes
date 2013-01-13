@@ -16,13 +16,15 @@ uses
   LogsUnit in 'tool\LogsUnit.pas',
   superobject in 'tool\superobject.pas',
   TestLib in 'TestLib.pas' {TestForm},
-  Common in 'tool\Common.pas';
+  Common in 'tool\Common.pas',
+  ScktComp in 'tool\ScktComp.pas';
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
+  Application.Title := '四和OPC服务测试程序';
   Application.CreateForm(TMainForm, MainForm);
   Application.CreateForm(TTestForm, TestForm);
   TestForm.Show;

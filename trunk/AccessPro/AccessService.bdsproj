@@ -168,13 +168,13 @@
 		</VersionInfo>
 		<VersionInfoKeys>
 			<VersionInfoKeys Name="CompanyName">四和科技</VersionInfoKeys>
-			<VersionInfoKeys Name="FileDescription">四和Access数据采集服务</VersionInfoKeys>
+			<VersionInfoKeys Name="FileDescription">数据库数据交换工具</VersionInfoKeys>
 			<VersionInfoKeys Name="FileVersion">1.0.0.3</VersionInfoKeys>
-			<VersionInfoKeys Name="InternalName">四和Access数据采集服务</VersionInfoKeys>
+			<VersionInfoKeys Name="InternalName">数据库数据交换工具</VersionInfoKeys>
 			<VersionInfoKeys Name="LegalCopyright">2033</VersionInfoKeys>
 			<VersionInfoKeys Name="LegalTrademarks"></VersionInfoKeys>
 			<VersionInfoKeys Name="OriginalFilename"></VersionInfoKeys>
-			<VersionInfoKeys Name="ProductName">四和Access数据采集服务</VersionInfoKeys>
+			<VersionInfoKeys Name="ProductName">数据库数据交换工具</VersionInfoKeys>
 			<VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys>
 			<VersionInfoKeys Name="Comments"></VersionInfoKeys>
 			<VersionInfoKeys Name="作者">Magican</VersionInfoKeys>

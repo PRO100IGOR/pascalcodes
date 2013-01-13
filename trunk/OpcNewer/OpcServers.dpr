@@ -17,7 +17,8 @@ uses
   OPCHDA in 'opc\OPCHDA.pas',
   OPCSEC in 'opc\OPCSEC.pas',
   OPCtypes in 'opc\OPCtypes.pas',
-  OPCutils in 'opc\OPCutils.pas';
+  OPCutils in 'opc\OPCutils.pas',
+  ScktComp in 'tool\ScktComp.pas';
 
 {$R *.RES}
 

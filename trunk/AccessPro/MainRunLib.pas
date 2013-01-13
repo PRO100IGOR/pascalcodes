@@ -132,7 +132,7 @@ begin
       data.Connection.Open;
       addLogs('数据源'+data.DataName + '对应的文件打开了...');
     except
-      addLogs('数据源'+data.DataName + '对应的文件打开失败...');
+      addLogs('数据源'+data.DataName + '对应的文件打开失败...' + SysErrorMessage(GetLastError));
     end;
     //初始化连接结束
 end;
@@ -200,7 +200,7 @@ begin
                 try
                    Data.Connection.Open;
                 except
-                   addLogs(Data.DataName + '打开失败，本次任务跳过..');
+                   addLogs(Data.DataName + '打开失败，本次任务跳过..' + SysErrorMessage(GetLastError));
                 end;
             end;
         end;
@@ -331,7 +331,7 @@ begin
             DeleteFile(Data.FileName);
         end;
     end;
-    Task.isRun := False;
+   Task.isRun := False;
 end;
 
 procedure TMainView.TimerInitTimer(Sender: TObject);

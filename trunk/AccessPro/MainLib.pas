@@ -79,6 +79,7 @@ var
   MainForm: TMainForm;
   ComputName:string; //计算机名
   LinesCount :Integer; //读取到最新日志文件的第几行了.
+  HasReaded : Boolean;
 implementation
 
 {$R *.dfm}
@@ -486,6 +487,7 @@ begin
   LoadLogs;
   cbbDataName.Items := Tools.getAllFilesFromDir(ExtractFileDir(PARAMSTR(0)) + '\data\','*');
   cbbTaskNames.Items := Tools.getAllFilesFromDir(ExtractFileDir(PARAMSTR(0)) + '\task\','*');
+  HasReaded := False;
 end;
 procedure TMainForm.LoadLogs;
 var
@@ -517,7 +519,7 @@ begin
 
   if not FileExists(ExtractFileDir(PARAMSTR(0)) + '\logs\' + FormatDateTime('yyyy-mm-dd', now)) then
      Exit;
-  
+
   Logs.LoadFromFile(ExtractFileDir(PARAMSTR(0)) + '\logs\' + FormatDateTime('yyyy-mm-dd', now));
   if LinesCount = -1 then
   begin
@@ -538,6 +540,7 @@ begin
       begin
          LogMemo.Lines.AddStrings(Logs);
          LinesCount := Logs.Count;
+         HasReaded := True;
       end;
 
   end;
@@ -552,7 +555,11 @@ end;
 procedure TMainForm.TimerTimer(Sender: TObject);
 begin
 ReadLogs;
-LogMemo.Perform(EM_LINESCROLL, 0, LogMemo.Lines.Count);
+if HasReaded then
+begin
+   LogMemo.Perform(EM_LINESCROLL, 0, LogMemo.Lines.Count);
+   HasReaded := False;
+end;
 end;
 
 end.
