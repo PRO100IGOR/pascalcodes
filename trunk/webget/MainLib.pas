@@ -102,7 +102,7 @@ begin
     user := Ini.ReadIni('server','user');
     pass := Ini.ReadIni('server','pass');
     needs := Common.Split(Ini.ReadIni('server','need'),',');
-//    Timer.Interval := StrToInt(Ini.ReadIni('server','time')) * 60 * 1000;
+    Timer.Interval := StrToInt(Ini.ReadIni('server','time')) * 60 * 1000;
     for I := 0 to Length(needs) - 1 do
     begin
         if not DirectoryExists(ExtractFileDir(PARAMSTR(0)) + '\html\' + needs[I]) then  CreateDirectory(PChar(ExtractFilePath(ParamStr(0)) + '\html\' + needs[I]), nil);
