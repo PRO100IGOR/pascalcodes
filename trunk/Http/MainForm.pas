@@ -27,7 +27,6 @@ type
     Button2: TButton;
     StringGrid: TStringGrid;
     ComboBox1: TComboBox;
-    IdHTTP1: TIdHTTP;
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
   private
