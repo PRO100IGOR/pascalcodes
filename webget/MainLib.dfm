@@ -27,8 +27,6 @@ object MainForm: TMainForm
     Align = alClient
     ScrollBars = ssVertical
     TabOrder = 0
-    ExplicitWidth = 328
-    ExplicitHeight = 166
   end
   object CoolTrayIcon: TCoolTrayIcon
     CycleInterval = 0
