@@ -23,7 +23,7 @@ object MainForm: TMainForm
     Top = 0
     Width = 670
     Height = 501
-    ActivePage = TabSheet2
+    ActivePage = TabSheet1
     Align = alClient
     TabOrder = 0
     object TabSheet1: TTabSheet
@@ -194,6 +194,10 @@ object MainForm: TMainForm
     object TabSheet3: TTabSheet
       Caption = #25968#25454#28304#31649#29702
       ImageIndex = 2
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Label2: TLabel
         Left = 14
         Top = 43
@@ -258,7 +262,7 @@ object MainForm: TMainForm
         Top = 40
         Width = 277
         Height = 20
-        ItemHeight = 12
+        ItemHeight = 0
         TabOrder = 3
       end
       object lbledtPort: TLabeledEdit
@@ -303,7 +307,7 @@ object MainForm: TMainForm
         Width = 277
         Height = 20
         Style = csDropDownList
-        ItemHeight = 12
+        ItemHeight = 0
         TabOrder = 4
         OnChange = cbbDataTypeChange
         Items.Strings = (
@@ -370,6 +374,10 @@ object MainForm: TMainForm
     object TabSheet4: TTabSheet
       Caption = #24110#21161
       ImageIndex = 3
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Memo1: TMemo
         Left = 0
         Top = 0

@@ -1,4 +1,4 @@
-unit WebLib;
+unit WebLIb;
 
 interface
 
@@ -9,12 +9,15 @@ uses
 type
   TWebForm = class(TForm)
     WebBrowser: TWebBrowser;
+    procedure WebBrowserNewWindow2(ASender: TObject; var ppDisp: IDispatch;
+      var Cancel: WordBool);
     procedure WebBrowserDocumentComplete(ASender: TObject;
       const pDisp: IDispatch; var URL: OleVariant);
   private
     { Private declarations }
   public
     { Public declarations }
+    OldProgress : Integer;
   end;
 
 var
@@ -22,17 +25,23 @@ var
 
 implementation
 
+uses
+    MainLib;
 {$R *.dfm}
-  uses
-    main;
 
 procedure TWebForm.WebBrowserDocumentComplete(ASender: TObject;
   const pDisp: IDispatch; var URL: OleVariant);
 begin
-  if WebBrowser.Application = pDisp then
-  begin
-      MainForm.doweb(ASender);
-  end;
+  if not WebBrowser.Busy then MainForm.doweb(ASender);
+
+end;
+
+
+
+procedure TWebForm.WebBrowserNewWindow2(ASender: TObject; var ppDisp: IDispatch;
+  var Cancel: WordBool);
+begin
+     ppDisp := MainLib.WebForm2.WebBrowser.Application;
 end;
 
 end.

@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2013/01/15 16:45:31.256.pas,C:\Users\magican\Documents\RAD Studio\Projects\Unit1.pas=E:\delphi\webget\MainLib.pas</Transaction>
+    <Transaction>2013/01/15 16:45:31.256.dfm,C:\Users\magican\Documents\RAD Studio\Projects\Unit1.dfm=E:\delphi\webget\MainLib.dfm</Transaction>
+    <Transaction>2013/01/15 16:45:36.024.bdsproj,C:\Users\magican\Documents\RAD Studio\Projects\Project1.bdsproj=E:\delphi\webget\WebGet.bdsproj</Transaction>
+    <Transaction>2013/01/15 16:50:57.115.pas,E:\delphi\webget\Unit2.pas=E:\delphi\webget\WebLIb.pas</Transaction>
+    <Transaction>2013/01/15 16:50:57.115.dfm,E:\delphi\webget\Unit2.dfm=E:\delphi\webget\WebLIb.dfm</Transaction>
+  </Transactions>
+</BorlandProject>
