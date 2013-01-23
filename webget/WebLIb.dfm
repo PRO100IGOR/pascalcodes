@@ -1,11 +1,11 @@
 object WebForm: TWebForm
-  Left = 0
-  Top = 0
+  Left = -500
+  Top = -500
   AlphaBlend = True
-  BorderStyle = bsNone
+  BorderStyle = bsSingle
   Caption = #25235#21462
-  ClientHeight = 0
-  ClientWidth = 0
+  ClientHeight = 289
+  ClientWidth = 710
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -13,20 +13,22 @@ object WebForm: TWebForm
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
-  Position = poDesktopCenter
+  Position = poDesigned
   PixelsPerInch = 96
   TextHeight = 13
   object WebBrowser: TWebBrowser
     Left = 0
     Top = 0
-    Width = 0
-    Height = 0
+    Width = 710
+    Height = 289
     Align = alClient
     TabOrder = 0
     OnNewWindow2 = WebBrowserNewWindow2
     OnDocumentComplete = WebBrowserDocumentComplete
+    ExplicitWidth = 0
+    ExplicitHeight = 0
     ControlData = {
-      4C00000000000000000000000000000000000000000000000000000000000000
+      4C00000061490000DE1D00000000000000000000000000000000000000000000
       000000004C000000000000000000000001000000E0D057007335CF11AE690800
       2B2E126208000000000000004C0000000114020000000000C000000000000046
       8000000000000000000000000000000000000000000000000000000000000000

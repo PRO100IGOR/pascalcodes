@@ -1,4 +1,4 @@
-program fastCopy;
+program AutoLogin;
 
 uses
   Forms,
@@ -6,10 +6,10 @@ uses
   Windows,
   Dialogs,
   TLHelp32,
-  MainUnit in 'MainUnit.pas' {Main},
+  MainForm in 'MainForm.pas' {Main},
   Ini in 'Ini.pas';
 
-
+{$R *.res}
 
 function GetHWndByPIDSource(ProgressName: string): Integer;
 var
@@ -34,22 +34,21 @@ begin
   CloseHandle(FSnapshotHandle);
 end;
 
-{$R *.res}
-
 begin
+
   sleep(600);
-  if ExtractFileName(Application.ExeName) <> 'fastCopy.exe' then
+  if ExtractFileName(Application.ExeName) <> 'AutoLogin.exe' then
   begin
     ShowMessage('请不要修改程序名字！');
     Exit;
   end;
+  
   Application.Initialize;
-
-  if GetHWndByPIDSource('fastCopy.exe') = 1 then
+  if GetHWndByPIDSource('AutoLogin.exe') = 1 then
   begin
-    Application.MainFormOnTaskbar := True;
-    Application.Title := '四和快速复制工具';
-    Application.CreateForm(TMain, Main);
-    Application.Run;
+      Application.MainFormOnTaskbar := True;
+      Application.Title := '自动启动工具';
+      Application.CreateForm(TMain, Main);
+      Application.Run;
   end;
 end.
