@@ -333,29 +333,33 @@ public String sendTokenData(String data);
 
 data是一个json格式的数据
 {
-	"appcode":"系统编码",[必填]
-	"rescode":"资源编码"[选填]
-	"info":"发送的消息,要加码",[必填]
-	"type":"apple或android或dwr或mobile，多个用,分割",[必填]
-	"map":{   //当用apple方式时用苹果默认api传递map参数；用dwr的新窗体打开时，map参数用href传递。安卓方式传递json对象，map作为属性传递
-		附加参数键值对，[选填]
-	},
-	"msgtype":"消息类型，发送的消息在页面中将以此属性分类显示，默认是系统消息"[选填],
-	"organid":"机构id",[选填]
-	"organcode":"机构编码",[选填]
-	"deptid":"部门id",[选填]
-	"deptcode":"部门编码",[选填]
-	"postcode":"部门id",[选填]
-	"postid":"岗位id",[选填]
-	"postcode":"岗位编码",[选填]
-	"employeeid":"员工id",[选填]
-	"userid":"用户id",[选填],
-	"resid":"资源id",[选填],
-	"target"://默认空，表示用新窗体打开，此时必须传href属性，即窗体要跳转的地址，这个地址不需要写系统前缀，只需要写/xxxaction.do?action=cc之类的就行。当target是1时表示框架内打开，必须要传rescode或者resid;
-	"href":"dwr方式中打开的地址，请写绝对地址，即在资源模块中配置的地址"[选填],
-	"isnote":"是否是公告，只对dwr方式有效，默认不是，isnote=public表示是公告"[选填],
-	"btn":"可选true|false，表示dwr方式时打开的窗体是否有按钮栏，默认有"[选填],
-	"state":"发送接收者状态<只正对dwr方式,只有dwr才区分是否在线> on 只发给在线的人，off只发给离线的人 all发给所有人，默认是all所有人"[选填]
+/*确定接收者身份条件开始*/
+"appcode|appid":"系统编码|id",[必须二选一]
+"rescode|resid":"资源编码|id" [选填]
+"organcode|organid":"机构编码|机构id",[选填]
+"deptcode|deptid":"部门编码|部门id",[选填]
+"postcode|postid":"岗位id|岗位id",[选填]
+"employeeid":"员工id",[选填]
+"userid":"用户id",[选填],
+"state":"发送接收者状态<只正对dwr方式,只有dwr才区分是否在线> on 在线的人，off离线的人 all所有人，默认all"[选填]
+/*确定接收者身份条件结束*/
+
+/*发送内容、发送方式通用参数开始*/
+"info":"发送的消息,要加码",[必填]
+"type":"apple或android或dwr或mobile，多个用,分割",[必填]
+"map":{   //当用apple方式时用苹果默认api传递map参数；用dwr的新窗体打开时，map参数用href传递。安卓方式传递json对象，map作为属性传递
+	附加参数键值对，[选填]
+},
+/*发送内容、发送方式通用参数结束*/
+
+
+/*dwr特殊参数开始*/
+"msgtype":"消息类型，发送的消息在页面中将以此属性分类显示，默认是系统消息"[选填],
+"target"://默认空，表示用新窗体打开，此时必须传href属性，即窗体要跳转的地址，这个地址不需要写系统前缀，只需要写/xxxaction.do?action=cc之类的就行。当target是1时表示框架内打开，必须要传rescode或者resid;
+"href":"dwr方式中打开的地址，请写绝对地址，即在资源模块中配置的地址"[选填],
+"isnote":"是否是公告，只对dwr方式有效，默认不是，isnote=public表示是公告"[选填],
+"btn":"可选true|false，表示dwr方式时打开的窗体是否有按钮栏，默认有"[选填]
+/*dwr特殊参数结束*/
 }
 					</pre>
 			</ol>

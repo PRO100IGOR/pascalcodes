@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2013/01/23 21:04:23.631.pas,C:\Users\magican\Documents\RAD Studio\Projects\Unit2.pas=E:\delphi\ClassFinder\Main.pas</Transaction>
+    <Transaction>2013/01/23 21:04:23.631.dfm,C:\Users\magican\Documents\RAD Studio\Projects\Unit2.dfm=E:\delphi\ClassFinder\Main.dfm</Transaction>
+    <Transaction>2013/01/23 21:04:28.034.bdsproj,C:\Users\magican\Documents\RAD Studio\Projects\Project1.bdsproj=E:\delphi\ClassFinder\ClassFinder.bdsproj</Transaction>
+    <Transaction>2013/01/23 21:14:43.085.pas,E:\delphi\ClassFinder\Main.pas=E:\delphi\ClassFinder\MainLib.pas</Transaction>
+    <Transaction>2013/01/23 21:14:43.085.dfm,E:\delphi\ClassFinder\Main.dfm=E:\delphi\ClassFinder\MainLib.dfm</Transaction>
+    <Transaction>2013/01/23 21:18:49.142.pas,E:\delphi\ClassFinder\MainLib.pas=</Transaction>
+    <Transaction>2013/01/23 21:18:49.142.dfm,E:\delphi\ClassFinder\MainLib.dfm=</Transaction>
+  </Transactions>
+</BorlandProject>

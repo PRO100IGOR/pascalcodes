@@ -2938,6 +2938,7 @@ object MainForm: TMainForm
     end
   end
   object Timer: TTimer
+    Enabled = False
     Interval = 5000
     OnTimer = TimerTimer
     Left = 136

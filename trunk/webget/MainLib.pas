@@ -57,7 +57,7 @@ begin
     temp := FormatDateTime('hh:mm:ss', now) + ' : ' + logName;
     if Log.Lines.Count > 500 then  Log.Lines.Clear;
     Log.Lines.Add(temp);
-    ErrorLogsUnit.addErrors(temp);
+    //ErrorLogsUnit.addErrors(temp);
 end;
 procedure TMainForm.CoolTrayIconDblClick(Sender: TObject);
 begin
@@ -103,6 +103,7 @@ begin
     pass := Ini.ReadIni('server','pass');
     needs := Common.Split(Ini.ReadIni('server','need'),',');
     Timer.Interval := StrToInt(Ini.ReadIni('server','time')) * 60 * 1000;
+    Timer.Enabled := True;
     for I := 0 to Length(needs) - 1 do
     begin
         if not DirectoryExists(ExtractFileDir(PARAMSTR(0)) + '\html\' + needs[I]) then  CreateDirectory(PChar(ExtractFilePath(ParamStr(0)) + '\html\' + needs[I]), nil);
@@ -110,12 +111,10 @@ begin
 
     WebForm := TWebForm.Create(Application);
     WebForm.Show;
-    WebForm.WebBrowser.Navigate(path);
+    WebForm.WebBrowser.Tag := 1;
     WebForm2 :=  TWebForm.Create(Application);
     WebForm2.Show;
-
-
-
+    WebForm.WebBrowser.Tag := 2;
 end;
 procedure TMainForm.FormHide(Sender: TObject);
 begin
@@ -157,13 +156,11 @@ begin
        needIndex := 0;
        MainHtml := 0;
        isBusy := False;
-       WebForm.WebBrowser.Navigate(path);
-       Timer.Enabled := True;
     end
     else
     begin
-       AddLog('点击第' + needs[needIndex] + '个链接');
-       WebForm.WebBrowser.OleObject.document.parentWindow.go(needs[needIndex]);
+       AddLog('点击第' + IntToStr(needIndex + 1) + '个链接');
+       WebForm.WebBrowser.OleObject.document.parentWindow.go(StrToInt(needs[needIndex]) - 1);
     end;
 end;
 
@@ -183,11 +180,18 @@ begin
         if Pos('ieframe.dll',Temp) > 0 then
         begin
            AddLog('无法打开页面...');
+           needIndex := Length(needs);
            Exit;
         end;
+       WebBrowser.OleObject.document.parentWindow.execScript('window.onerror = function(){return false;}','JavaScript');
        if Pos('Login.aspx',Temp) > 0 then
        begin
           AddLog('准备登录...');
+          if WebBrowser.Tag = 1 then
+          begin
+              needIndex := 0;
+              MainHtml := 0;
+          end;
           WebBrowser.OleObject.document.getElementById('czgbm').value := user;
           WebBrowser.OleObject.document.getElementById('password').value := pass;
           WebBrowser.OleObject.document.getElementById('Button2').click();
@@ -203,15 +207,14 @@ begin
        end
        else if Pos('/Report/',Temp) > 0 then
        begin
-          AddLog('打开了第' + needs[needIndex] + '个报表...');
+          AddLog('打开了第' + IntToStr(needIndex + 1) + '个报表...');
           WebBrowser.OleObject.document.parentWindow.execScript('window.go=function(){var a = document.getElementById("__EVENTVALIDATION").parentNode.nextSibling;a.removeChild(a.childNodes[0]);return a.innerHTML};','JavaScript');
           temp := WebBrowser.OleObject.document.parentWindow.go();
-          //temp := WebBrowser.OleObject.document.getElementById('__EVENTVALIDATION').parentNode.nextSibling.innerHTML;
           Aline := TStringList.Create;
           Aline.Add('<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><html><head><title>日报</title><meta http-equiv="content-type" content="text/html;charset=gbk"></head><body>');
           Aline.Add(temp);
           Aline.Add('</body></html>');
-          Aline.SaveToFile(ExtractFileDir(PARAMSTR(0))+ '\html\'+ needs[needindex] + '\'+FormatDateTime('yyyy-dd-MM', now) +  '.html');
+          Aline.SaveToFile(ExtractFileDir(PARAMSTR(0))+ '\html\'+ needs[needindex] + '\'+FormatDateTime('yyyy-MM-dd', now) +  '.html');
           Inc(needIndex);
           exec;
        end;
