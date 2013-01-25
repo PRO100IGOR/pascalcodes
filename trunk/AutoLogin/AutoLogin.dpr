@@ -7,7 +7,8 @@ uses
   Dialogs,
   TLHelp32,
   MainForm in 'MainForm.pas' {Main},
-  Ini in 'Ini.pas';
+  Ini in 'Ini.pas',
+  ErrorLogsUnit in 'ErrorLogsUnit.pas';
 
 {$R *.res}
 
@@ -17,7 +18,6 @@ var
   FSnapshotHandle: THandle;
   FProcessEntry32: TProcessEntry32;
   ContinueLoop: BOOL;
-  MyHwnd: THandle;
 begin
   Result := 0;
   FSnapshotHandle := CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
@@ -49,6 +49,6 @@ begin
       Application.MainFormOnTaskbar := True;
       Application.Title := '自动启动工具';
       Application.CreateForm(TMain, Main);
-      Application.Run;
+  Application.Run;
   end;
 end.

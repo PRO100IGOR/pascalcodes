@@ -113,6 +113,7 @@ procedure TMain.TimerTimer(Sender: TObject);
 var
   sr:TSearchRec;
 begin
+    Application.ProcessMessages;
     if SysUtils.FindFirst(fileFrom + '\*', faAnyFile, sr) = 0 then
     begin
       repeat

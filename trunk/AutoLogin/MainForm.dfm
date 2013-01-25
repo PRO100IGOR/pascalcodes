@@ -17,10 +17,21 @@ object Main: TMain
   PixelsPerInch = 96
   TextHeight = 13
   object Timer: TTimer
-    Interval = 300000
+    Enabled = False
     OnTimer = TimerTimer
     Left = 40
     Top = 104
+  end
+  object PopupMenu1: TPopupMenu
+    Left = 96
+    Top = 88
+    object N1: TMenuItem
+      Caption = #33258#21160#21551#21160#20154#21592#20132#25442'!'
+    end
+    object N4: TMenuItem
+      Caption = #36864#20986
+      OnClick = N4Click
+    end
   end
   object CoolTrayIcon: TCoolTrayIcon
     CycleInterval = 0
@@ -2910,16 +2921,5 @@ object Main: TMain
     PopupMenu = PopupMenu1
     Left = 36
     Top = 55
-  end
-  object PopupMenu1: TPopupMenu
-    Left = 96
-    Top = 88
-    object N1: TMenuItem
-      Caption = #33258#21160#21551#21160#20154#21592#20132#25442'!'
-    end
-    object N4: TMenuItem
-      Caption = #36864#20986
-      OnClick = N4Click
-    end
   end
 end

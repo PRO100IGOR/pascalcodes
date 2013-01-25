@@ -26,6 +26,7 @@ object Main: TMain
     Width = 588
     Height = 400
     Align = alClient
+    ImeName = #20013#25991' - QQ'#25340#38899#36755#20837#27861
     ScrollBars = ssVertical
     TabOrder = 0
   end
