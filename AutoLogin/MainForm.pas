@@ -22,19 +22,20 @@ type
   public
     { Public declarations }
     procedure Login;
+    procedure ClearWarn;
     procedure AddLog(V:string);
   end;
 
 var
   Main: TMain;
 
-  FilePath,TitleText,UserName,PassWord,UserNameClass,PasswordClass,LoginClass,ClassNameNeedFind,ExeName,TitleClass:string;
+  FilePath,TitleText,UserName,PassWord,UserNameClass,PasswordClass,LoginClass,ClassNameNeedFind,ExeName,TitleClass,WarnTitle,WarnClass:string;
   
   UserNameIndex,PasswordIndex,LoginIndex :Integer;
   
   hwnds  : array of HWND;     //找到的句柄集合
 
-  ShowLogs:Boolean;
+  ShowLogs,WarnNeed:Boolean;
 implementation
 
 {$R *.dfm}
@@ -107,12 +108,35 @@ begin
     LoginClass := LowerCase(Ini.ReadIni('server','LoginClass'));
     LoginIndex := StrToInt(Ini.ReadIni('server','LoginIndex'));
 
+    ShowLogs := Ini.ReadIni('server','ShowLogs') = 'True';
+
+    WarnNeed := Ini.ReadIni('server','WarnNeed') = 'True';
+    WarnTitle := Ini.ReadIni('server','WarnTitle');
+    WarnClass := LowerCase(Ini.ReadIni('server','WarnClass'));
+
     Timer.Interval := StrToInt(Ini.ReadIni('server','Time')) * 1000 * 60;
     Timer.Enabled := True;
 
-    ShowLogs := Ini.ReadIni('server','ShowLogs') = 'True';
-end;
 
+end;
+procedure TMain.ClearWarn;
+var
+   WarnHwnd : LongWord;
+begin
+     if WarnNeed then
+     begin
+        WarnHwnd := FindWindow(PChar(WarnClass),PChar(WarnTitle));
+        FindWindowA
+        if WarnHwnd <> 0 then
+        begin
+           AddLog('找到警告窗体');
+           SendMessage(WarnHwnd,WM_CLOSE,0,0);
+           AddLog('关闭了警告窗体！');
+        end
+        else
+          AddLog('找不到警告窗体');
+     end;
+end;
 procedure TMain.Login;
 var
    AA,BB,CC,WindwoHwnd,ParentWnd : LongWord;
@@ -188,7 +212,9 @@ end;
 procedure TMain.TimerTimer(Sender: TObject);
 begin
     if GetHWndByPIDSource(ExeName) = 0 then
-       Login;
+       Login
+    else
+       ClearWarn;
 end;
 
 end.

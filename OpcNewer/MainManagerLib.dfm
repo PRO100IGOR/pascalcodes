@@ -24,7 +24,6 @@ object MainForm: TMainForm
     Align = alTop
     Caption = #26381#21153#25511#21046
     TabOrder = 0
-    ExplicitWidth = 655
     object ServerColor: TShape
       Left = 16
       Top = 13
@@ -61,7 +60,7 @@ object MainForm: TMainForm
       OnClick = btnClearLogClick
     end
     object btnInstallUnInstall: TButton
-      Left = 391
+      Left = 399
       Top = 20
       Width = 75
       Height = 25
@@ -79,8 +78,6 @@ object MainForm: TMainForm
     Align = alClient
     ScrollBars = ssVertical
     TabOrder = 1
-    ExplicitWidth = 655
-    ExplicitHeight = 271
   end
   object Timer: TTimer
     OnTimer = TimerTimer

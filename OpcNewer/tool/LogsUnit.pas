@@ -17,7 +17,7 @@ begin
     if FileExists(FilesName) then Append(FLogs)
     else ReWrite(FLogs);
     if Value <> '' then
-      WriteLn(FLogs, Value + '(' + FormatDateTime('hh:mm:ss', now) + ')')
+      WriteLn(FLogs, FormatDateTime('hh:mm:ss', now) + ' : ' + Value)
     else
       WriteLn(FLogs, Value);
     CloseFile(FLogs);

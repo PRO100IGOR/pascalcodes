@@ -20,7 +20,6 @@ uses
   ScktComp in 'tool\ScktComp.pas';
 
 {$R *.res}
-
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
