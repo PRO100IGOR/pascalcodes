@@ -8,7 +8,7 @@ uses
   Forms,Dialogs,ComObj,OPCtypes,OPCDA,
   OPCutils,ActiveX, StdCtrls,BaseTypes,
   ExtCtrls,LogsUnit,ScktComp,Ini,superobject,
-  Common,StrUtils,Clipbrd;
+  Common,StrUtils,Clipbrd, CoolTrayIcon, Menus;
 type
   TMainForm = class(TForm)
     Logs: TMemo;
@@ -18,12 +18,24 @@ type
     Timer: TTimer;
     TimeStart: TTimer;
     TimeRun: TTimer;
+    CoolTrayIcon: TCoolTrayIcon;
+    PopupMenu1: TPopupMenu;
+    N1: TMenuItem;
+    N2: TMenuItem;
+    N3: TMenuItem;
+    N4: TMenuItem;
     procedure ClearLogBtnClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure TimerTimer(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure TimeStartTimer(Sender: TObject);
     procedure TimeRunTimer(Sender: TObject);
+    procedure CoolTrayIconDblClick(Sender: TObject);
+    procedure N2Click(Sender: TObject);
+    procedure N3Click(Sender: TObject);
+    procedure N4Click(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormHide(Sender: TObject);
   private
     { Private declarations }
   public
@@ -51,6 +63,7 @@ type
 
 var
   MainForm: TMainForm;
+  Cl,shows:Boolean;
 implementation
 
 {$R *.dfm}
@@ -76,6 +89,21 @@ begin
   Clipboard.AsText := Logs.Text;
   Logs.Lines.Clear;
 end;
+procedure TMainForm.CoolTrayIconDblClick(Sender: TObject);
+begin
+  if shows then Hide
+  else Show;
+end;
+
+procedure TMainForm.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  if not Cl and CoolTrayIcon.Enabled then
+  begin
+    Hide;
+    Abort;
+  end;
+end;
+
 procedure TMainForm.FormDestroy(Sender: TObject);
 var
   I           :Integer;
@@ -85,10 +113,32 @@ begin
       Servers.Values[I].Free ;
   end;
 end;
+procedure TMainForm.FormHide(Sender: TObject);
+begin
+  shows := False;
+end;
+
 procedure TMainForm.FormShow(Sender: TObject);
 begin
     DeBugCk.Checked := True;
+    Shows := True;
 end;
+procedure TMainForm.N2Click(Sender: TObject);
+begin
+       Show;
+end;
+
+procedure TMainForm.N3Click(Sender: TObject);
+begin
+   Hide;
+end;
+
+procedure TMainForm.N4Click(Sender: TObject);
+begin
+     Cl := True;
+     Close;
+end;
+
 procedure TMainForm.Start;
 var
     temp : TStrings;
@@ -162,10 +212,10 @@ begin
      begin
           Item := Servers.Values[I].Items.Values[K];
           ReadOPCGroupItemValue(Servers.Values[I].GroupIf, Item.ItemHandel,ItemValue, ItemQuality);
-          if (ItemQuality = OPC_QUALITY_GOOD) and (Item.ItemValue <> ItemValue) and (Filters.IndexOf(ItemValue) = -1)then
+          //if (ItemQuality = OPC_QUALITY_GOOD) and (Item.ItemValue <> ItemValue) and (Filters.IndexOf(ItemValue) = -1)then
+          if (ItemQuality = OPC_QUALITY_GOOD)  and (Filters.IndexOf(ItemValue) = -1) then
           begin
                Item.ItemValue := ItemValue;
-               //OnDataChange(Item.LogicDeviceId,Item.ItemHandel,ItemValue);
                PreSend := TPreSend.Create;
                PreSend.LogicDeviceId := Item.LogicDeviceId;
                PreSend.ItemHandel := Item.ItemHandel;
@@ -177,6 +227,7 @@ begin
           Inc(Counts);
      end;
   end;
+  OnDataChange(PreSends);
   if Counts <> PointCount then
      AddLogs('扫描的OPC点与原先添加的点个数不符,添加了' + IntToStr(PointCount)+'个,扫描了'+InttoStr(Counts)+'个')
 end;

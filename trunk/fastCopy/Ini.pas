@@ -22,7 +22,7 @@ implementation
 procedure DeleteIni(MainName, ConfigName: string);
 var
   IniFile: TIniFile;
-  IniFileName, ReadIt: string;
+  IniFileName: string;
 begin
 
   IniFileName := ExtractFileDir(PARAMSTR(0)) + '\config.ini';
@@ -55,7 +55,7 @@ end;
 procedure WriteIni(MainName, ConfigName, Value: string);
 var
   IniFile: TIniFile;
-  IniFileName, ReadIt: string;
+  IniFileName: string;
 begin
 
   IniFileName := ExtractFileDir(PARAMSTR(0)) + '\config.ini';
@@ -70,7 +70,7 @@ end;
 procedure WriteIni(FileName, MainName, ConfigName,value: string);
 var
   IniFile: TIniFile;
-  IniFileName, ReadIt: string;
+  IniFileName: string;
 begin
 
   IniFileName := ExtractFileDir(PARAMSTR(0)) + '\configs\'+FileName;

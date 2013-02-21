@@ -73,12 +73,12 @@ procedure TMainForm.btnStopStartClick(Sender: TObject);
 begin
   if btnStopStart.Caption = '启动服务' then
   begin
-      Common.RunDOS('net start shService');
+      Common.RunDOS('net start SiheOpc');
       btnStopStart.Caption := '停止服务';
   end
   else
   begin
-      Common.RunDOS('net stop shService');
+      Common.RunDOS('net stop SiheOpc');
       btnStopStart.Caption := '启动服务';
   end;
   InitServiceState;

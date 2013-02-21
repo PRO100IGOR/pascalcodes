@@ -17,7 +17,6 @@ var
   FSnapshotHandle: THandle;
   FProcessEntry32: TProcessEntry32;
   ContinueLoop: BOOL;
-  MyHwnd: THandle;
 begin
   Result := 0;
   FSnapshotHandle := CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
@@ -38,11 +37,6 @@ end;
 
 begin
   sleep(600);
-  if ExtractFileName(Application.ExeName) <> 'fastCopy.exe' then
-  begin
-    ShowMessage('请不要修改程序名字！');
-    Exit;
-  end;
   Application.Initialize;
 
   if GetHWndByPIDSource('fastCopy.exe') = 1 then

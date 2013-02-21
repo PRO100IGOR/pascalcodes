@@ -12,7 +12,9 @@
       <Projects Name="Opc.exe">Opc.bdsproj</Projects>
       <Projects Name="OpcServers.exe">OpcServers.bdsproj</Projects>
       <Projects Name="OpcManager.exe">OpcManager.bdsproj</Projects>
-      <Projects Name="Targets">Opc.exe OpcServers.exe OpcManager.exe</Projects>
+      <Projects Name="fastCopy.exe">..\fastCopy\fastCopy.bdsproj</Projects>
+      <Projects Name="OpcDesTop.exe">OpcDesTop.bdsproj</Projects>
+      <Projects Name="Targets">Opc.exe OpcServers.exe OpcManager.exe fastCopy.exe OpcDesTop.exe</Projects>
     </Projects>
     <Dependencies/>
   </Default.Personality>
