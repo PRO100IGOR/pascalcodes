@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2013/01/30 10:04:44.000.432,=C:\Users\magican\Documents\RAD Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2013/01/30 10:05:23.000.007,E:\delphi\xe2\FastCopy2\MainLib.dfm=C:\Users\magican\Documents\RAD Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2013/01/30 10:05:23.000.007,E:\delphi\xe2\FastCopy2\MainLib.pas=C:\Users\magican\Documents\RAD Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2013/01/30 10:05:30.000.287,E:\delphi\xe2\FastCopy2\FastCopy2.dproj=C:\Users\magican\Documents\RAD Studio\Projects\Project1.dproj</Transaction>
+  </Transactions>
+</BorlandProject>
