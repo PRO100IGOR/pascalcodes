@@ -115,8 +115,8 @@
 	}
 })();
 $(window).load(function(){
-	$.cmoxhide("oxhidemessage","success");
-	$.cmoxhide("oxhideerror","error");
+	//$.cmoxhide("oxhidemessage","success");
+	//$.cmoxhide("oxhideerror","error");
 });
 })(jQuery);
 

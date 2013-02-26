@@ -182,16 +182,18 @@ $Form; (function() {
 	 * »ñÈ¡×ø±ê
 	 */
         getElementPos: function(el) {
+        	
             var ua = navigator.userAgent.toLowerCase();
             var isOpera = (ua.indexOf('opera') != -1);
             var isIE = (ua.indexOf('msie') != -1 && !isOpera); // not opera
             // spoof
-            if (el.parentNode === null || el.style.display == 'none') {
-                return false;
+            if (el.parentNode === null) {
+            	return {x:document.documentElement.scrollLeft,y:document.documentElement.scrollTop};
             }
             var parent = null;
             var pos = [];
             var box;
+           
             if (el.getBoundingClientRect) // IE
             {
                 box = el.getBoundingClientRect();
@@ -2043,9 +2045,10 @@ $Form; (function() {
             scrollTo: function() {
                 if (this.typeName === "M") {
                     for (var ruleName in this.rules) {
-                        $MStorage.coreMethodStorage.focus.apply(this.rules[ruleName]);
+                        $MStorage.coreMethodStorage.scrollTo.apply(this.rules[ruleName]);
                     }
                 } else {
+                	
                     if (!this.result) {
                         try {
                             var ee = this.ele.push ? this.ele[0] : this.ele;
