@@ -23,7 +23,7 @@
  <tlib-version>1.3</tlib-version>
  <jsp-version>1.2</jsp-version>
  <short-name>html</short-name>
- <uri>http://struts.apache.org/tags-html</uri>
+ <uri>/WEB-INF/tld/struts-html.tld</uri>
  <description>&lt;p&gt;
         This taglib contains tags used to create struts
         input forms, as well as other tags generally useful
@@ -5915,6 +5915,12 @@
    <required>true</required>
    <rtexprvalue>true</rtexprvalue>
    <type>java.lang.String</type>
+  </attribute>
+  <attribute>
+   <name>hiddenInput</name>
+   <rtexprvalue>false</rtexprvalue>
+   <type>java.lang.Boolean</type>
+   <description>true|false 是否要包含一个隐藏域，默认不包含</description>
   </attribute>
  </tag>
 </taglib>

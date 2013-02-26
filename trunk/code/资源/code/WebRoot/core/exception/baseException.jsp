@@ -12,12 +12,18 @@
 <c:set var="basePath" scope="page" value="${base}${contextPath}/" />
 <%
 		String error = request.getParameter("error");
-
+		Object needShowo =  request.getAttribute("needShow");
+		Boolean needShow = needShowo == null ? false : (Boolean)needShowo;
 		if(StringUtils.isEmpty(error)){
 			String showMsg = (String) request.getAttribute("showMsg");
 			if(showMsg == null)
 				request.setAttribute("error", "您登录的时间太久了，请重新登录以保证您的帐号安全！");
-			else{
+			else if(needShow){
+				request.setAttribute("error", showMsg);
+				if(showMsg.indexOf("用户名或密码错误") > -1){
+					request.setAttribute("loginPass", true);
+				}
+			}else{
 				Reader reader = new Reader("config.properties");
 				if("true".equals(reader.getProperty("debug", "false")))
 					request.setAttribute("error", showMsg);
@@ -81,6 +87,8 @@
 					}
 				}
 			});
+	    }else if("${loginPass}"){
+	    	 window.location = "${basePath}";
 	    }else
 	    	window.history.go(-1);
 	}

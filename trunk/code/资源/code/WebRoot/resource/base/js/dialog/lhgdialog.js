@@ -4,7 +4,7 @@
  * Copyright (c) 2009 - 2011 By Li Hui Gang
  */
 
-;(function(J){
+(function(J){
 
 var jhopath = (function() {
 			var strFullPath = window.document.location.href;
@@ -267,6 +267,7 @@ window.addWin = function(pa){
 	}catch(e){
 
 	}
+	window.lhgBackCall = pa.fn;
 	dg.SetCancelBtn('关闭',function(){
 		try{
 			var temp = dg.dgDoc.getElementById("isSaveAndAdd");
@@ -381,13 +382,15 @@ window.updateWin = function(pa){
 						cover:pa.cover == 'yes'
 					});
 	}
-	dg.ShowDialog();dg.SetIndex();
+	dg.ShowDialog();
+	dg.SetIndex();
 	try{
 		dg.dgWin.father = DG ? DG.dgWin : window;
 		dg.dgWin.dg = dg;
 		dg.father = dg.dgWin.father;
 	}catch(e){
 	}
+	window.lhgBackCall = pa.fn;
 	dg.SetCancelBtn('关闭',function(){
 		try{
 			var temp = dg.dgDoc.getElementById("isSaveAndAdd");
@@ -591,12 +594,8 @@ window.win = function(pa){
 			}
 		}
 	//}
-	if(pa.cancelFn){
-		dg.SetCancelBtn(pa.canelBtnTxt||"取消",function(){
-			pa.cancelFn();
-			dg.cancel();
-		});
-	}
+	pa.canelBtnTxt && dg.SetCancelBtn(pa.canelBtnTxt);
+	window.lhgBackCall = pa.onCancel || dg.cancel;
 	return dg;
 };
 
@@ -1369,7 +1368,7 @@ J.dialog = function( opts )
 		bodyObj = J('#lhgdg_content_'+opt.id,doc)[0];
 		maxBtnObj = J('#lhgdg_maxbtn_'+opt.id,doc)[0];
 		minBtnObj = J('#lhgdg_minbtn_'+opt.id,doc)[0];
-
+		
 		reContentSize( S.dg );
 		iPos( S.dg, opt.top, opt.left, opt.fixed );
 		SetDialog( S.dg );
@@ -1495,9 +1494,9 @@ J.dialog = function( opts )
 	};
 	S.openBar = function(open){
 		if(open)
-			J("#lhgdg_trbtnBar_" + opt.id).show();
+			$(btnBarObj).parent().show();
 		else
-			J("#lhgdg_trbtnBar_" + opt.id).hide();
+			$(btnBarObj).parent().hide();
 	}
 	S.removeBtn = function( id )
 	{
@@ -1618,6 +1617,12 @@ J.dialog = function( opts )
 		}
 		    
 	};
+	S.getCancelBtn = function(){
+		if( J('#lhgdg_'+opt.id+'_dgcancelBtn',doc)[0] ){
+			var t = J('#lhgdg_'+opt.id+'_dgcancelBtn',doc);
+			return t;
+		}
+	}
 	S.setArgs = function( args )
 	{
 	    opt.args = args;
@@ -1633,11 +1638,11 @@ J.dialog = function( opts )
 	J(window).bind( 'unload', S.cleanDialog );
 };
 
-J(function(){
-	var lhgDY = setTimeout(function(){
-	    new J.dialog({ id:'reLoadId', html:'lhgdialog', width:100, title:'reLoad', height:100, left:-9000, btnBar:false }).ShowDialog(); clearTimeout(lhgDY);
-	}, 150);
-});
+//J(function(){
+////	var lhgDY = setTimeout(function(){
+////	    new J.dialog({ id:'reLoadId', html:'lhgdialog', width:100, title:'reLoad', height:100, left:-9000, btnBar:false }).ShowDialog(); clearTimeout(lhgDY);
+////	}, 150);
+//});
 
 })(window.lhgcore||window.jQuery);
 

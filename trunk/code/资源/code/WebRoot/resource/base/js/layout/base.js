@@ -4279,27 +4279,17 @@ $(function() {
 					}else if(!t || t == "button" || t == "submit" || t == "reset"){
 						if (!tt.attr("class")) {
 							tt.addClass("button");
-							var C = $.modTool._getStrLength(tt.text() || tt.val());
-							if (C < 5) {
-								tt.width(60)
-							}
+	
 							var e = 0;
 							var D = 50;
 							e = $.modTool._getStrLength(tt.filter(":has(span)").find("span").text());
 							if (e != 0) {
 								D = 20 + 7 * e + 10
 							}
-							if ($.modTool.broswerFlag == "Firefox" || $.modTool.broswerFlag == "Opera" || $.modTool.broswerFlag == "Safari") {
-								tt.filter(":has(span)").css({
-									paddingLeft : "5px",
-									width : D + 8 + "px"
-								})
-							} else {
-								tt.filter(":has(span)").css({
-									paddingLeft : "5px",
-									width : D + "px"
-								})
-							}
+							tt.filter(":has(span)").css({
+								paddingLeft : "5px",
+								width : D + 8 + "px"
+							})
 							tt.filter(":has(span)").find("span").css({
 								cursor : "default"
 							})
@@ -4763,31 +4753,34 @@ $(window).load(function(){
 			$("#delete").bind("click",batchDelete);
 			$("#find").bind("click", conditionSelect);
 			$("#bubble").bind("click", clearConditionSelect);
+			
  			$(window).bind("scroll resize",function(){
  				var box = $(".box2[panelTitle=¹¦ÄÜ]");
  				if(!box.length) return;
+ 				
+ 				
  				if( !box.attr("topInit")){box.attr("topInit",box.find("button").position().top);box.attr("zindex",box.css("z-index"));box.attr("top",box.position().top);}
  				var top = $(window).scrollTop(),topFix = box.attr("topInit");
  				if(top > topFix){
- 					if(box.css("position") == "fixed") return;
+ 					if(box.css("position") != "absolute"){
+ 						window.divGui = $("<div/>").css({"height":box.height(),"width":box.width()});
+ 						window.divGui.insertBefore(box);
+ 						box.css({"position":"absolute","z-index":100});
+ 					}
  					box.css({
- 						position: "fixed",
- 						top: box.attr("top"),
- 						"z-index":100
+ 						top: + box.attr("top") + top - topFix
  					});
  				}
 				if(top == 0){
- 					if(box.css("position") == "static") return;
+ 					if(box.css("position") == "static"){
+ 						box.css({"position":"static","z-index":box.attr("zindex")});
+ 						window.divGui&&window.divGui.remove();
+ 					}
  					box.css({
- 						position: "static",
- 						top: box.attr("top"),
- 						"z-index":box.attr("zindex")
+ 						top: box.attr("top")
  					}).removeAttr("fix");
  				}
- 					 
- 			})
-
-			
+ 			});
 		}
 		if(window.boxMenu && window.oxhideUrl && window.sessionId){
 				var div = $("<div/>").append(
@@ -5054,3 +5047,37 @@ function encode(strIn) {
 }
 
 
+
+
+
+$(function() {
+	$.fn.manhuatoTop = function(options) {
+		var defaults = {			
+			showHeight : 150,
+			speed : 400
+		};
+		var options = $.extend(defaults,options);
+		$("body").prepend("<a class='bt-gotop' id='totopoxhide'>·µ»Ø</a>");
+		var $toTop = $(this);
+		var $top = $("#totopoxhide");
+		$toTop.scroll(function(){
+			var scrolltop=$(this).scrollTop();	
+			if(scrolltop>=options.showHeight){	
+				$top.show();
+			}
+			else{
+				$top.hide();
+			}
+		});	
+		$top.click(function(){
+			$("html,body").animate({scrollTop: 0}, options.speed);	
+		});
+	}
+});
+
+$(function (){
+	$(window).load(function(){
+		$(window).manhuatoTop({
+		});
+	});
+});

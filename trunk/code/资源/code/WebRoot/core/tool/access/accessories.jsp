@@ -39,7 +39,7 @@
 				}
 			}
 
-			var basePath = "${basePath}/resource/base/theme/public/img/ui/access/";
+			var basePath = "${basePath}/resource/base/theme/public/img/ui/access/",eid="${USERSESSION.employeeid}";
 			$.fn.upload = function(param){
 				$.paramAccess = $.extend({
 					max:0,
@@ -49,28 +49,29 @@
 				$.files = {};
 				window.countAdd = 0;
 				window.countInit = 0;
-				this.append(
-					$("<table/>").append(
-						$("<tr/>").append(
-							$("<td/>").append(
-								$("<input/>",{
-									type:"button",
-									value:"选择文件",
-									id:"addFile"
-								})
+				var tables = $("<table/>").append(
+							$("<tr/>").append(
+								$("<td/>").append(
+									$("<input/>",{
+										type:"button",
+										value:"选择文件",
+										id:"addFile"
+									})
+								)
 							)
-						)
-					).append(
-						$("<tr/>").append(
-							$("<td/>").attr(
-								"id","fileScope"
+						).append(
+							$("<tr/>").append(
+								$("<td/>").attr(
+									"id","fileScope"
+								)
 							)
-						)
-					)
-				);
+						);
+				
+				this.append(tables);
+				if("${isManager}"!="true")$("#addFile").css("display","none");
 				return this;
 			};
-			$.addFile = function(path,id,name){
+			$.addFile = function(path,id,name,fileeid){
 			    for(var i in $.files){
 					if($.files[i] == path){
 					    parent.info({message:"文件已经存在！"});
@@ -105,7 +106,8 @@
 										}
 									)
 						).append(
-							$("<img/>",{src:basePath+"uploadify-cancel.png",id:id+"_x",title:"删除"})
+							"${isManager}"=="true"&& ( (("${private}" == "true" && fileeid) && (fileeid == eid)) ||  "${private}" != "true" || "1" == eid   ) ? 	
+							($("<img/>",{src:basePath+"uploadify-cancel.png",id:id+"_x",title:"删除"})
 								.css({
 										float:"left","margin-left":"2px","margin-top":"5px",cursor:"pointer"
 								})
@@ -130,7 +132,7 @@
 											}
 										}
 									})
-								})
+								})) : ("")
 						).append(
 							$("<img/>",{
 								src:basePath+"download.png",
@@ -270,7 +272,7 @@
 					}
 				});
 				<c:forEach items="${list}" var="item">
-					$.addFile("${item.path}","${item.id}","${item.fileName}");
+					$.addFile("${item.path}","${item.id}","${item.fileName}","${item.employeeid}");
 				</c:forEach>
 				function initFile(){
 					if(window.parent.document.readyState == "complete"){
@@ -333,7 +335,7 @@
 							parentMessage(msg);
 					}
 				})();
-				if(!("${maxCount}" > 0 && $.paramAccess.count >= "${maxCount}")){
+				if("${isManager}"=="true" && !("${maxCount}" > 0 && $.paramAccess.count >= "${maxCount}")){
 				   $("#addFile").addFileCustom();
 				}
 				$("#addFile").refresh().bind("click",function(){
@@ -360,6 +362,7 @@
 <input type="hidden" name="type" value="${type }"/>
 <input type="hidden" name="maxCount" value="${maxCount }"/>
 <input type="hidden" name="path" value="${path }"/>
+<input type="hidden" name="private" value="${private }"/>
 <input type="hidden" name="fileName" />
 </form>
 <form name="upd" method="post" enctype="multipart/form-data" action="${basePath}/accessories.do?action=upload">
@@ -373,8 +376,10 @@
 <input type="hidden" name="type" value="${type }"/>
 <input type="hidden" name="maxCount" value="${maxCount }"/>
 <input type="hidden" name="path" value="${path }"/>
+<input type="hidden" name="private" value="${private }"/>
 <div id="main"></div>
 </form>
+<c:if test="${isManager == true }">
 单文件最大
 <c:choose>
 	<c:when test="${fsize > 1024}">
@@ -385,6 +390,8 @@
 	</c:otherwise>
 </c:choose>
 ,类型${extend }
+</c:if>
+
 	</body>
 	
 </html>
