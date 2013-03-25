@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>弹出窗口修改以及oxhide中使用</title>
+	<link href="../index.css" type="text/css" rel="stylesheet"/>
+	<link href="../prettify/prettify.css" type="text/css" rel="stylesheet"/>
+	<script type="text/javascript" src="../prettify/prettify.js"></script>
+</head>
+
+<body>
+    <div class="container">
+		<div class="line">&nbsp;</div>
+		<div class="lhgdg_body">
+		    <h2>版本 1.0</h2>
+			<ol>
+			    <li>
+				    <h3>开始</h3>
+					<pre class="prettyprint"><a href="FORMRECORD.pdm">建表</a>
+					</pre>
+				</li>
+				<li>
+				    <h3>引用</h3>
+					<pre class="prettyprint">引入<a href="applicationContext-formrecord.xml">applicationContext-formrecord.xml</a>、<a href="struts-config-formrecord.xml">struts-config-formrecord.xml</a>、<a href="Formrecord.hbm.xml">Formrecord.hbm.xml</a>,并在web.xml中配置struts-config-formrecord.xml
+</pre>
+				</li>
+				<li>
+				    <h3>调用</h3>
+					<pre class="prettyprint">
+sihe:log 标签
+</iframe>
+	参数说明：
+	formName ：* 表单NAME
+	explain ：设置表单字段的描述名称，优先获取DOM元素的alt属性(如 [html:text alt="名字" prototype="name"])，
+	否则读取window.${formName}Explain对象，该对象的格式是：{"字段名称1":"描述名称1","字段名称2":"描述名称2"...}，如果连这个对象也没有，则描述名称是控件name属性。
+	ignoreExpr 忽略字段的jquery选择字符串，如所有忽略字段加一个class not，则字符串是 .not
+	ignoreHidden：是否忽略隐藏域，默认为true,ignoreExpr优先级高于ignoreHidden
+	handle：监视表单字段的动作，默认为update,可选值“add|delete|update”
+</pre>
+注意：1：由于部分表单页面在页面加载完毕时会对字段用js赋值，而本组件必须获取到字段的初始值才能进行比对，所以尽量将本组件放在页面的最底部，这样能保证组件获取字段值是在页面加载完毕并js赋值完毕后才获取字段值。
+
+				</li>
+			</ol>		
+		</div>
+		<div class="line">&nbsp;</div>
+	</div>
+	<script type="text/javascript">prettyPrint();</script>
+</body>
+</html>

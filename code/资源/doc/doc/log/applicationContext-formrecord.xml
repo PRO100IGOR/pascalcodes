@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName"> 
+  <bean id="formrecordDAO" class="com.sxsihe.oxhide.formrecord.dao.hibernateImpl.FormrecordDAOImpl"> 
+    <property name="template" ref="template"/> 
+  </bean>  
+  <bean id="formrecordService" parent="baseTxService"> 
+    <property name="target"> 
+      <bean id="formrecordServiceTarget" class="com.sxsihe.oxhide.formrecord.service.FormrecordServiceImpl"> 
+        <property name="dao" ref="formrecordDAO"/> 
+      </bean> 
+    </property> 
+  </bean>
+  <bean name="/formrecordLoadAction" class="com.sxsihe.oxhide.formrecord.action.FormrecordShowAction"> 
+    <property name="service" ref="formrecordService"/> 
+  </bean>
+  <bean name="/formrecordShowAction" class="com.sxsihe.oxhide.formrecord.action.FormrecordShowAction"> 
+    <property name="service" ref="formrecordService"/> 
+  </bean>
+  <bean name="/formrecordSaveAction" class="com.sxsihe.oxhide.formrecord.action.FormrecordSaveAction"> 
+    <property name="service" ref="formrecordService"/> 
+  </bean>
+  <bean name="/formrecordDeleteAction" class="com.sxsihe.oxhide.formrecord.action.FormrecordDeleteAction"> 
+    <property name="service" ref="formrecordService"/> 
+  </bean>
+</beans>
+	

@@ -97,6 +97,10 @@
 				<li>
 				    <h3><a href="sihetable/index.html">新的表格</a></h3>
 				</li>
+				<li>
+				    <h3><a href="log/index.html">字段日志</a></h3>
+				</li>
+				
 			</ol>
 		</div>
 		<div class="lhgdg_body">
@@ -104,8 +108,54 @@
 
 
 		<div class="line">&nbsp;</div>
-		    <h2>版本号：1.07 alpha</h2>
+		    <h2>版本号：1.08 alpha</h2>
 			<ol  style="border:2px solid red">
+			    <h3>版本说明：</h3>
+				<li>
+					oxhide数据库更新脚本：<a href="sql/2013.03.23.sql">2013.03.23.sql</a>
+				</li>
+				<li>
+					增加sihe:dicCheckbox sihe:dicRadio sihe:log标签，其中dicCheckbox和dicRadio都是数据字典展示为checkbox和radio的标签。
+					log是字段日志标签，用法：<a href="log/index.html">字段日志</a>
+				</li>
+				<li>
+					升级ztree版本、下拉框版本，优化列表页功能模块的浮动问题
+				</li>
+				<li>
+					优化了内存数据库的使用方式，以后内存数据库都通过CacheClient.exec和CacheClient.query执行，不需要自己建立数据库连接了，CacheClient可根据配置自动选择本地内存和共享内存。
+				</li>
+				<li>
+					员工表增加字段人员性质，该字段在数据字典中配置，数据字典类型是RYXZ。
+				</li>
+				<li>
+					员工增加属性：所属机构、所属部门；岗位增加属性：所属机构
+				</li>
+				<li>
+					员工webservice中，支持根据机构ID查询该机构下所有员工，包括子机构的员工
+				</li>
+				<li>
+					userssion支持扩展属性，在loginServiceClient的webservice中，调用public void updateSession(UserSession userSession)，即可对usersession进行自定义，更改后同时影响当前访问的所有系统。UserSession中的属性private JSONObject expand; 是自定义属性键值对。
+				</li>
+				<li>
+					dao中提供了sql语句的查询（返回对象或者jsonarray）、执行，并支持 :参数名称的格式，参数可以用map或者jsonobject传。
+				</li>
+				<li>
+					CookieTool工具类提供方法getcookie和setcookie、delCookie，用来获取、设置cookie，addCookieMessage，设置一个cookie消息 ，addCookieError，设置一个cookie错误提示，在前台引用msgbar.js可以自动显示该提示、错误一次，不会象以前那样显示N次了。
+				</li>
+				<li>
+					CharsetSwitch提供字符串异或加密、解密方法，参数需要提供密钥、编码。加密后，只要不知道密钥，是不可能破解的。
+				</li>
+				<li>
+					试用分布式tomcat，oxhide的配置文件中填写 cache=10.10.0.158:2000 表示缓存服务器在158上，如果不配置该属性，表示本地缓存服务器，同时该配置也会影响CacheClient的本地内存和共享内存，目前稳定性有待验证，故先不放出。
+				</li>
+				<li>
+					新的session验证中，sessionid放在了cookie中，可能导致：
+					1：同一个浏览器上登录两个用户的话，用户的session会串。
+					2：如果你的项目的配置文件中写的cache属性和oxhide的一致，那么在后台中可以通过CookieTool获取到sessionid的cookie值，并通过sessionHouse对象的getsessionbyid方法获取该id对应的session，这样即使跳过session验证的后台也能通过这种方式获取到session，前提是有cookie，并且有效。
+				</li>
+			</ol>
+		    <h2>版本号：1.07 alpha</h2>
+			<ol>
 			    <h3>版本说明：</h3>
 				<li>
 					sihe:frame支持上下分栏

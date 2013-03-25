@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+	<form-beans>
+		<form-bean name="formrecordForm" type="com.sxsihe.oxhide.formrecord.form.FormrecordForm" />
+		<form-bean name="formrecordConditionForm" type="com.sxsihe.oxhide.formrecord.form.FormrecordConditionForm" />
+		</form-beans>
+	<action-mappings>
+		<action path="/formrecordLoadAction" parameter="action" type="org.springframework.web.struts.DelegatingActionProxy" name="formrecordConditionForm" scope="session"
+			input="/pages/admin/formrecord/formrecordlist.jsp">
+			<forward name="showList" path="/pages/admin/formrecord/formrecordlist.jsp" />
+		</action>
+		<action path="/formrecordShowAction" parameter="action" type="org.springframework.web.struts.DelegatingActionProxy" name="formrecordForm" scope="request"
+			input="/pages/admin/formrecord/formrecordform.jsp">
+			<forward name="showAdd" path="/pages/admin/formrecord/formrecordform.jsp?action=add" />
+			<forward name="showView" path="/pages/admin/formrecord/formrecordview.jsp" />
+			<forward name="showUpdate" path="/pages/admin/formrecord/formrecordform.jsp?action=update" />
+		</action>
+		<action path="/formrecordSaveAction" parameter="action" type="org.springframework.web.struts.DelegatingActionProxy" name="formrecordForm" scope="request"
+			input="/pages/admin/formrecord/formrecordform.jsp">
+		</action>
+		<action path="/formrecordDeleteAction" parameter="action" type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="successForDelete" path="/formrecordLoadAction.do?action=showList" />
+		</action>
+	</action-mappings>
+</struts-config>
+	
