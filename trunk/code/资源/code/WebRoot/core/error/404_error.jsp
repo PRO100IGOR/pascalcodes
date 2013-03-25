@@ -1,6 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=GBK" pageEncoding="GBK"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%
-	request.setCharacterEncoding("GBK");
+	request.setCharacterEncoding("utf-8");
 	response.setStatus(HttpServletResponse.SC_OK);
 	request.setAttribute("pathself", request.getAttribute("javax.servlet.forward.request_uri").toString().toLowerCase());
 %>

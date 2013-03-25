@@ -7,7 +7,7 @@
 		<c:set var="base" scope="page"value="${request.scheme}://${request.serverName}:${request.serverPort}" />
 		<c:set var="contextPath" scope="page" value="${request.contextPath}" />
 		<c:set var="basePath" scope="page" value="${base}${contextPath}/" />
-		<title>é¡µé¢åŠ è½½ä¸­</title>
+		<title>Ò³Ãæ¼ÓÔØÖĞ</title>
 		<script type="text/javascript" src="${basePath}resource/base/js/tool/XQzyDIV.js"></script>
 		<style type="text/css">
 		body{
@@ -20,7 +20,7 @@
 
 	</form>
 	<script type="text/javascript">
-	 XqTipOpen("é¡µé¢åŠ è½½ä¸­,è¯·ç¨å");
+	 XqTipOpen("Ò³Ãæ¼ÓÔØÖĞ,ÇëÉÔºó");
 	 var url = decodeURIComponent("${param.url}");
 	 document.loadForm.action = url;
 	 document.loadForm.submit();

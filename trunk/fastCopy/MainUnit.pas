@@ -124,7 +124,7 @@ var
   Today : string;
 begin
     Application.ProcessMessages;
-    Today := FormatDateTime('yyyy-mm-dd',Now);
+    Today := FormatDateTime('yyyy-MM-dd',Now);
     if SysUtils.FindFirst(fileFrom + '\*', faAnyFile, sr) = 0 then
     begin
       repeat
@@ -135,13 +135,15 @@ begin
           Logs.Lines.Add(FormatDateTime('hh:mm:ss', now) + ' ∏¥÷∆¡À:' + sr.Name);
           if Del then
           begin
-            HFile := FileOpen(fileFrom + '\' + sr.Name,fmOpenRead);
-            Times := FileGetDate(HFile);
-            if FormatDateTime('yyyy-mm-dd',FileDateToDateTime(Times)) <> Today then
-            begin
+//            HFile := FileOpen(fileFrom + '\' + sr.Name,fmOpenRead);
+//            Times := FileGetDate(HFile);
+//            FileClose(HFile);
+//
+//            if FormatDateTime('yyyy-mm-dd',FileDateToDateTime(Times)) <> Today then
+//            begin
                DeleteFile(PChar(fileFrom + '\' + sr.Name));
                Logs.Lines.Add(FormatDateTime('hh:mm:ss', now) + ' …æ≥˝¡À:' + sr.Name);
-            end;
+//            end;
           end;
         end;
       until SysUtils.FindNext(sr) <> 0;

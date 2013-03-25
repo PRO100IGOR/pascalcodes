@@ -1,4 +1,4 @@
-﻿/*
+/*
  * FCKeditor - The text editor for Internet - http://www.fckeditor.net
  * Copyright (C) 2003-2009 Frederico Caldeira Knabben
  *
@@ -20,8 +20,8 @@
  *
  * Placholder Polish language file.
  */
-FCKLang.PlaceholderBtn			= 'Wstaw/Edytuj nagłówek' ;
-FCKLang.PlaceholderDlgTitle		= 'Właśności nagłówka' ;
-FCKLang.PlaceholderDlgName		= 'Nazwa nagłówka' ;
-FCKLang.PlaceholderErrNoName	= 'Proszę wprowadzić nazwę nagłówka' ;
-FCKLang.PlaceholderErrNameInUse	= 'Podana nazwa jest już w użyciu' ;
+FCKLang.PlaceholderBtn			= 'Wstaw/Edytuj nag?��wek' ;
+FCKLang.PlaceholderDlgTitle		= 'W?a?no?ci nag?��wka' ;
+FCKLang.PlaceholderDlgName		= 'Nazwa nag?��wka' ;
+FCKLang.PlaceholderErrNoName	= 'Prosz? wprowadzi? nazw? nag?��wka' ;
+FCKLang.PlaceholderErrNameInUse	= 'Podana nazwa jest ju? w u?yciu' ;

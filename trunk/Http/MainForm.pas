@@ -152,8 +152,10 @@ begin
        RevObj := SO(UTF8Decode(ret.DataString)).AsArray;
        if RevObj = nil then
        begin
-           A := SO(UTF8Decode(ret.DataString)).AsObject;
-           RevObj := A.O['items'].AsArray;
+        Content.Free;
+        Ret.Free;
+        IdHTTP.Free;
+        Exit;
        end;
        
        StringGrid.RowCount := 0;

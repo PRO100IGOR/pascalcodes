@@ -8,6 +8,8 @@
 	<uri>/WEB-INF/tld/sihe.tld</uri>
 	<display-name>sihe</display-name>
 	<description>四合标签库</description>
+	
+	
 	<tag>
 		<name>page</name>
 		<tag-class>com.sxsihe.utils.tld.tool.Pager</tag-class>
@@ -72,26 +74,9 @@
 			<description>当前一页显示多少条记录</description>
 		</attribute>
 	</tag>
-	<tag>
-		<name>dicoption</name>
-		<tag-class>com.sxsihe.utils.tld.dictory.DictoryOption</tag-class>
-		<body-content>JSP</body-content>
-		<description>按照指定的数据字典类型组成select标签的option属性，并选中match编码的内容</description>
-		<attribute>
-			<name>dic</name>
-			<required>true</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>java.lang.String</type>
-			<description>*数据字典类型名称</description>
-		</attribute>
-		<attribute>
-			<name>match</name>
-			<required>true</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>java.lang.String</type>
-			<description>*默认选中的数据字典内容编码</description>
-		</attribute>
-	</tag>
+	
+	
+	
 	<tag>
 		<name>dicvalue</name>
 		<tag-class>com.sxsihe.utils.tld.dictory.DicValue</tag-class>
@@ -117,6 +102,133 @@
 			<description>默认值</description>
 		</attribute>
 	</tag>
+	
+	<tag>
+		<name>dicoption</name>
+		<tag-class>com.sxsihe.utils.tld.dictory.DictoryOption</tag-class>
+		<body-content>JSP</body-content>
+		<description>按照指定的数据字典类型组成select标签的option属性，并选中match编码的内容</description>
+		<attribute>
+			<name>dic</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>*数据字典类型编码</description>
+		</attribute>
+		<attribute>
+			<name>match</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>*默认选中的数据字典内容编码</description>
+		</attribute>
+	</tag>
+	
+	<tag>
+		<name>dicCheckbox</name>
+		<tag-class>com.sxsihe.utils.tld.dictory.DicCheckBox</tag-class>
+		<body-content>JSP</body-content>
+		<description>按照指定的数据字典类型取得数据字典内容并以checkbox方式显示</description>
+		<attribute>
+			<name>dic</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>*数据字典类型编码</description>
+		</attribute>
+		<attribute>
+			<name>match</name>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>*默认选中的数据字典内容编码,多个用,分割</description>
+		</attribute>
+		<attribute>
+			<name>name</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>*控件的name属性</description>
+		</attribute>
+		<attribute>
+			<name>onclick</name>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>控件的onclick事件</description>
+		</attribute>
+	</tag>
+	
+	<tag>
+		<name>dicRadio</name>
+		<tag-class>com.sxsihe.utils.tld.dictory.DicRadio</tag-class>
+		<body-content>JSP</body-content>
+		<description>按照指定的数据字典类型取得数据字典内容并以radio方式显示</description>
+		<attribute>
+			<name>dic</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>*数据字典类型编码</description>
+		</attribute>
+		<attribute>
+			<name>match</name>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>*默认选中的数据字典内容编码,多个用,分割</description>
+		</attribute>
+		<attribute>
+			<name>name</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>*控件的name属性</description>
+		</attribute>
+		<attribute>
+			<name>onclick</name>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>控件的onclick事件</description>
+		</attribute>
+	</tag>
+	
+	<tag>
+		<name>log</name>
+		<tag-class>com.sxsihe.utils.tld.formrecord.FormRecord</tag-class>
+		<body-content>JSP</body-content>
+		<description>记录表单内的字段被修改,删除,添加的日志</description>
+		<attribute>
+			<name>formName</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>* 表单NAME</description>
+		</attribute>
+		<attribute>
+			<name>explain</name>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>设置表单字段的描述名称，优先获取DOM元素的alt属性，默认为window.${formName}Explain,</description>
+		</attribute>
+		<attribute>
+			<name>ignoreExpr</name>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>一个jquery选择器字符串,对于忽略的字段不做处理</description>
+		</attribute>
+		<attribute>
+			<name>ignoreHidden</name>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>是否忽略隐藏域，默认为true,ignoreExpr优先级高于ignoreHidden</description>
+		</attribute>
+		<attribute>
+			<name>handle</name>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>监视表单的动作，默认为update,可选值“add|delete|update”</description>
+		</attribute>
+	</tag>
+	
+	
 	<tag>
 		<name>resource</name>
 		<tag-class>com.sxsihe.utils.tld.resource.Resource</tag-class>
@@ -144,6 +256,8 @@
 			<description>*用户id</description>
 		</attribute>
 	</tag>
+	
+	
 	<tag>
 		<name>access</name>
 		<tag-class>com.sxsihe.utils.tld.access.Access</tag-class>
@@ -156,6 +270,8 @@
 			<description>*业务ID</description>
 		</attribute>
 	</tag>
+	
+	
 	<tag>
 		<name>tree</name>
 		<tag-class>com.sxsihe.utils.tld.tree.Tree</tag-class>
@@ -410,6 +526,8 @@
 			<description>是否开启过滤功能,默认否,如果开启的话,将会有一个form, 所以请不要将开启filter的树放在已有form中.[需要引用codeutil.js转码] 点击查询按钮后,将会请求原地址,并在源地址后将会加一个参数filterValue=xxx(可以在paramIn中获取), 如果通过request获取该参数,需要解码.service方式直接使用即可</description>
 		</attribute>
 	</tag>
+	
+	
 	<tag>
 		<name>table</name>
 		<tag-class>com.sxsihe.utils.tld.table.Table</tag-class>
@@ -504,6 +622,8 @@
 			<description>是否启用多行选中变色</description>
 		</attribute>
 	</tag>
+	
+	
 	<tag>
 		<name>row</name>
 		<tag-class>com.sxsihe.utils.tld.table.Tr</tag-class>
@@ -535,6 +655,8 @@
 			<description>行style</description>
 		</attribute>
 	</tag>
+	
+	
 	<tag>
 		<name>column</name>
 		<tag-class>com.sxsihe.utils.tld.table.Td</tag-class>
@@ -571,6 +693,8 @@
 			<description>样式</description>
 		</attribute>
 	</tag>
+	
+	
 	<tag>
 		<name>frame</name>
 		<tag-class>com.sxsihe.utils.tld.tool.Frame</tag-class>

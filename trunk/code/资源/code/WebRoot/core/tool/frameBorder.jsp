@@ -1,4 +1,4 @@
-<!-- frame‰∏≠Èó¥ÁöÑÂàáÊç¢ÊòæÁ§∫È°µÈù¢ -->
+<!-- frame÷–º‰µƒ«–ªªœ‘ æ“≥√Ê -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib uri="/WEB-INF/tld/c.tld" prefix="c"%>
@@ -8,7 +8,7 @@
 		<c:set var="base" scope="page"value="${request.scheme}://${request.serverName}:${request.serverPort}" />
 		<c:set var="contextPath" scope="page" value="${request.contextPath}" />
 		<c:set var="basePath" scope="page" value="${base}${contextPath}/" />
-		<title>È°µÈù¢Âä†ËΩΩ‰∏≠</title>
+		<title>“≥√Êº”‘ÿ÷–</title>
 		<script type="text/javascript" src="${basePath}/resource/base/js/frame/jquery/jquery.js"></script>
 		<script type="text/javascript" src="${basePath}/resource/base/js/layout/base.js?s=${faceStyle}"></script>
 		<style>
@@ -28,7 +28,7 @@
 						<table width="7" height="100%" border="0" cellspacing="0" cellpadding="0">
 							<tr>
 								<td align="left" >
-									<img src="${ basePath}/resource/base/theme/${faceStyle }/base/img/fg_jt.gif" title="ÂÖ≥Èó≠/ÊâìÂºÄÂ∑¶Ê†è" id="jt" />
+									<img src="${ basePath}/resource/base/theme/${faceStyle }/base/img/fg_jt.gif" title="πÿ±’/¥Úø™◊Û¿∏" id="jt" />
 								</td>
 							</tr>
 						</table>

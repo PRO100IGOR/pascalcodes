@@ -2,7 +2,7 @@
  * @license Highcharts JS v2.2.1 (2012-03-15)
  * Exporting module
  *
- * (c) 2010-2011 Torstein Hønsi
+ * (c) 2010-2011 Torstein H?nsi
  *
  * License: www.highcharts.com/license
  */

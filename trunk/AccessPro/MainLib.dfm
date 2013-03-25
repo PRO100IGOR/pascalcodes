@@ -121,7 +121,7 @@ object MainForm: TMainForm
           Caption = #36873#25321#25110#26032#24314#65306
         end
         object Label7: TLabel
-          Left = 466
+          Left = 473
           Top = 58
           Width = 152
           Height = 19
@@ -140,9 +140,10 @@ object MainForm: TMainForm
           Height = 20
           ItemHeight = 12
           TabOrder = 3
+          OnChange = cbbTaskNamesChange
         end
         object btnLoad: TButton
-          Left = 385
+          Left = 379
           Top = 17
           Width = 75
           Height = 25
@@ -151,7 +152,7 @@ object MainForm: TMainForm
           OnClick = btnLoadClick
         end
         object btnSave: TButton
-          Left = 481
+          Left = 473
           Top = 17
           Width = 75
           Height = 25
@@ -160,7 +161,7 @@ object MainForm: TMainForm
           OnClick = btnSaveClick
         end
         object btnDelTask: TButton
-          Left = 584
+          Left = 567
           Top = 17
           Width = 75
           Height = 25
@@ -181,7 +182,7 @@ object MainForm: TMainForm
           TabOrder = 5
         end
         object btnAddSql: TButton
-          Left = 385
+          Left = 379
           Top = 57
           Width = 75
           Height = 25
@@ -194,10 +195,6 @@ object MainForm: TMainForm
     object TabSheet3: TTabSheet
       Caption = #25968#25454#28304#31649#29702
       ImageIndex = 2
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Label2: TLabel
         Left = 14
         Top = 43
@@ -262,8 +259,9 @@ object MainForm: TMainForm
         Top = 40
         Width = 277
         Height = 20
-        ItemHeight = 0
+        ItemHeight = 12
         TabOrder = 3
+        OnChange = cbbDataNameChange
       end
       object lbledtPort: TLabeledEdit
         Left = 92
@@ -307,7 +305,7 @@ object MainForm: TMainForm
         Width = 277
         Height = 20
         Style = csDropDownList
-        ItemHeight = 0
+        ItemHeight = 12
         TabOrder = 4
         OnChange = cbbDataTypeChange
         Items.Strings = (
@@ -374,10 +372,6 @@ object MainForm: TMainForm
     object TabSheet4: TTabSheet
       Caption = #24110#21161
       ImageIndex = 3
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Memo1: TMemo
         Left = 0
         Top = 0

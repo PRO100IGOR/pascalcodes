@@ -8,7 +8,8 @@ uses
   TLHelp32,
   MainForm in 'MainForm.pas' {Main},
   Ini in 'Ini.pas',
-  ErrorLogsUnit in 'ErrorLogsUnit.pas';
+  ErrorLogsUnit in 'ErrorLogsUnit.pas',
+  Tool in 'Tool.pas';
 
 {$R *.res}
 

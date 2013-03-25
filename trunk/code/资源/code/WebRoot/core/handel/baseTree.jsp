@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=gbk"  
+<%@ page contentType="text/html; charset=utf-8"  
 import="net.sf.json.JSONArray,
 java.util.List,
 com.sxsihe.oxhide.spring.SpringContextUtil,

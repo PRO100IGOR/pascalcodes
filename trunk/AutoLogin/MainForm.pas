@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, Ini,TLHelp32, ExtCtrls, CoolTrayIcon, Menus,ErrorLogsUnit,
-  TextTrayIcon;
+  TextTrayIcon,Tool;
 
 type
   TMain = class(TForm)
@@ -14,9 +14,11 @@ type
     N1: TMenuItem;
     N4: TMenuItem;
     CoolTrayIcon: TCoolTrayIcon;
+    TimeKill: TTimer;
     procedure TimerTimer(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure N4Click(Sender: TObject);
+    procedure TimeKillTimer(Sender: TObject);
   private
     { Private declarations }
   public
@@ -117,7 +119,9 @@ begin
     Timer.Interval := StrToInt(Ini.ReadIni('server','Time')) * 1000 * 60;
     Timer.Enabled := True;
 
-
+    TimeKill.Interval := StrToInt(Ini.ReadIni('server','AutoKill')) * 1000 * 60;
+    if TimeKill.Interval > 0 then TimeKill.Enabled := True;
+    TimeKillTimer(nil);
 end;
 procedure TMain.ClearWarn;
 var
@@ -126,7 +130,6 @@ begin
      if WarnNeed then
      begin
         WarnHwnd := FindWindow(PChar(WarnClass),PChar(WarnTitle));
-        FindWindowA
         if WarnHwnd <> 0 then
         begin
            AddLog('ÕÒµ½¾¯¸æ´°Ìå');
@@ -207,6 +210,12 @@ end;
 procedure TMain.N4Click(Sender: TObject);
 begin
     Close;
+end;
+
+procedure TMain.TimeKillTimer(Sender: TObject);
+begin
+    Tool.EnableDebugPrivilege;
+    Tool.KillTask(ExeName);
 end;
 
 procedure TMain.TimerTimer(Sender: TObject);

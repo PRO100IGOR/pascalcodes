@@ -1,7 +1,7 @@
 <%@page import="com.sxsihe.utils.common.CharsetSwitch"%>
 <%@page import="com.sxsihe.utils.properties.Reader"%>
 <%@page import="com.sxsihe.utils.common.StringUtils"%>
-<%@ page language="java" contentType="text/html; charset=GBK" pageEncoding="GBK"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib uri="/WEB-INF/tld/struts-html.tld" prefix="html"%>
 <%@ taglib uri="/WEB-INF/tld/c.tld" prefix="c"%>
 <%@ taglib uri="/WEB-INF/tld/sihe.tld" prefix="sihe"%>

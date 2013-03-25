@@ -1,4 +1,4 @@
-/*���*/
+/*面板*/
 
 .searchMain {
 	position: fixed;
@@ -10,7 +10,7 @@
 	border-bottom: solid 1px #9ebaea;
 	background-image: url(floatPanel/searchPan.jpg);
 	background-position: 0 100%;
-	background-repeat: repeat-x;
+	background-repeat: repeat-x; 
 }
 .searchPanLeft {
 	background-color: #f8fbfe;
@@ -101,7 +101,7 @@
 	clear: both;
 	line-height: 1px;
 }
-/*���*/
+/*面板*/
 
 
 a{ text-decoration:none;}
@@ -1712,7 +1712,7 @@ a {
 
 
 
-/*����ģ��*/
+/*锟斤拷锟斤拷模锟斤拷*/
 .box1{
 	
 }
@@ -1958,7 +1958,7 @@ a {
 	color:white;
 	text-decoration: underline;
 }
-/*����ģ��*/
+/*锟斤拷锟斤拷模锟斤拷*/
 .progressBar{width:305px;height:22px;background-image:url(img/progressBar.gif);background-repeat:no-repeat;}
 html{
 	scrollbar-face-color: #DDEEFF; 
@@ -2145,37 +2145,13 @@ div.text_select_button { background-image:url(img/zoom.png); width:11px; height:
 }
 
 
-/*单�1�??�下拉框样式*/
+/*鍗曪拷1锟??戒笅鎷夋鏍峰紡box/btn_bg.jpg*/
+
 .mainCon{
 	position: relative;
-	display: inline;
+	display: inline-block;
 	z-index: 500;
-}
-div.selectbox-wrapper {
-	border:#b7d1eb 1px solid;  /*展开层边框色*/
-	position: absolute; 
-	background-color:#fff; 
-	text-align:left;
-	z-index: 100;
-	display:block;
-	left:0px;
-	top:18px;
-	>top:25px;
-}
-div.selectbox-wrapper ul li.selected {
-	background-color: #e0ecf7;/*选中项背景色*/
-}
-div.selectbox-wrapper ul li.current {
-	color: #fff;
-	background-color: #3366cc;/*鼠标移入项背景色*/
-}
-div.selectbox-wrapper ul li.group{
-	font-weight:bold;
-	background-image:url(img/selArr.gif);
-	background-repeat:no-repeat;
-	background-position:0% 50%;
-	padding-left:15px;
-	_width:80%;
+	float:left;
 }
 div.selectbox-wrapper ul li {
 	padding-right:3px;
@@ -2187,6 +2163,63 @@ div.selectbox-wrapper ul li {
 	padding-top:3px;
 	_width:100%;
 }
+.selectbox_disabled{
+	border-left: solid 1px #cccccc!important;
+	border-top: solid 1px #cccccc!important;
+	border-bottom: solid 1px #cccccc!important;
+}
+.loader{
+	position:absolute;
+	z-index:500;
+	left:0px;
+	top:0px;
+	padding-left:5px;
+	padding-top:3px;
+	width:100%;
+	height:25px;
+	-moz-opacity:0.8;opacity:.80;filter:alpha(opacity=80);
+	background-color:white;
+}
+.li_left{
+	float:left;
+	overflow:hidden;
+}
+.mainCon .inputDisabled{
+	background-color:#eeeeee!important;
+	background-image:none!important;
+	color:#c0bfbf!important;
+	cursor: default!important;
+}
+div.selectbox-wrapper {
+	border:#80c0e7 1px solid;  
+	position: absolute; 
+	background-color:#fff; 
+	text-align:left;
+	z-index: 100;
+	display:block;
+	left:0px;
+	top:18px;
+	>top:25px;
+}
+div.selectbox-wrapper ul li{
+	white-space:nowrap;
+}
+div.selectbox-wrapper ul li.selected {
+	background-color: #d9ebf5;
+}
+div.selectbox-wrapper ul li.current {
+	color: #fff;
+	background-color: #0081dd;
+	border:0!important;
+}
+div.selectbox-wrapper ul li.group{
+	font-weight:bold;
+	background-image:url(box/selArr.gif);
+	background-repeat:no-repeat;
+	background-position:0% 50%;
+	padding-left:15px;
+	_width:80%;
+}
 .selectbox { 
 	border:none;  
 	cursor: pointer;  
@@ -2195,87 +2228,33 @@ div.selectbox-wrapper ul li {
 	HEIGHT: 20px; 
 	line-height: 20px;
 	overflow-y:hidden;
-	border-left: solid 1px #cccccc;
-	border-top: solid 1px #cccccc;
-	border-bottom: solid 1px #cccccc;
-	background-image: url(img/textinput_bg.jpg);
+	border-left: solid 1px #80c0e7;
+	border-top: solid 1px #80c0e7;
+	border-bottom: solid 1px #80c0e7;
+	background-image: url(box/selInputBg.jpg);
 	background-repeat: repeat-x;
-	background-color:#F7FAFC;
-	padding-left: 4px;
-	min-width:30px;
-}
-.selectboxFont{
-	font-family: "Lucida Console","Eras Medium ITC","Goudy Old Style",Default;
+	background-color:#ffffff;
+	padding-left:2px;
 }
 .tipColor{
 	color:gray;
 }
 .selBtn{
-	background-image: url(img/selBtn.jpg);
-	width: 22px;
-
-	height: 24px;
-	border: 0;
-	background-repeat: no-repeat;
-	cursor: pointer;
-	cursor: hand;
-
-	border-bottom:solid 1px #bdcfde;
-    *border-bottom:0;
-    _border-bottom:0;
-}
-.selBtn_ie9 { 
-	padding: 8px 0 1px 0!important; 
-	border-bottom:0!important; 
-}
-.selBtn_safari{
-	background-image: url(img/selBtn.jpg);
+	
 	width: 22px;
 	height: 24px;
 	border: 0;
+	border-style:none;
+	background-image: url(box/selBtn.jpg);
 	background-repeat: no-repeat;
 	cursor: pointer;
-	cursor: hand;
-	padding: 0;
-	border-bottom:solid 1px #bdcfde;
-}
-.selBtn_linux{
-	background-image: url(img/selBtn.jpg);
-	width: 22px;
-	height: 24px;
-	border: 0;
-	background-repeat: no-repeat;
-	cursor: pointer;
-	cursor: hand;
-	padding: 1px 0 8px 0;
-}
-.loader{
-	position:absolute;
-	z-index:500;
-	left:0px;
-	top:-8px;
-	padding-left:5px;
-	padding-top:3px;
-	>padding-top:8px;
-	width:100%;
-	height:30px;
-	-moz-opacity:0.8;opacity:.80;filter:alpha(opacity=80);
-	background-color:white;
-}
-.li_left{
-	float:left;
-}
-.mainCon .inputDisabled{
-	background-color:#eeeeee!important;
-	background-image:none!important;
-	color:#c0bfbf!important;
-	cursor: default!important;
+	cursor: hand;	
 }
 .selBtn_disabled{
-	background-image: url(img/selBtn_disabled.jpg)!important;
+	background-image: url(box/selBtn_disabled.jpg)!important;
 	cursor: default!important;
 }
-/*单�1�??�下拉框样式*/
+/*鍗曪拷1锟??戒笅鎷夋鏍峰紡*/
 div.grippie {
 	background:#EEE url(img/grippie.png) no-repeat scroll center 2px;
 	border-color:#DDD;
@@ -3073,3 +3052,91 @@ div.pGroup {
 .jumpPage {background-image: url(img/gotoPage.gif)}
 .pageNav {BORDER-RIGHT: #dddddd 0px solid; BACKGROUND-POSITION: center 50%; BORDER-TOP: #dddddd 0px solid; BORDER-LEFT: #dddddd 0px solid; WIDTH: 25px; CURSOR: pointer; BORDER-BOTTOM: #dddddd 0px solid; BACKGROUND-REPEAT: no-repeat; HEIGHT: 25px; BACKGROUND-COLOR: transparent}
 .jumpPageInput {WIDTH: 30px; HEIGHT: 19px}
+
+
+
+
+
+
+/*ex*/
+
+.mainConEx{
+	display:inline-block;
+	white-space:nowrap;
+	font-size:12px;
+	margin:0;
+	padding:0;
+	border:1px solid #A4BED4;
+	background:#fff;
+}
+.selBtnEx{
+	background-image: url(img/selBtn.jpg);
+	width: 22px;
+	height: 23px;
+	border: 0;
+	background-repeat: no-repeat;
+	cursor: pointer;
+	cursor: hand;
+	overflow:hidden;
+	display:inline-block;
+	vertical-align:top;
+	opacity:0.6;
+	filter:alpha(opacity=60);
+}
+.selectboxEx{
+    border:none;  
+	cursor: pointer;  
+	cursor: hand;
+	font-size: 12px;
+	HEIGHT: 20px; 
+	line-height: 20px;
+	overflow-y:hidden;
+	
+	background-image: url(img/textinput_bg.jpg);
+	background-repeat: repeat-x;
+	background-color:#F7FAFC;
+	padding-left: 4px;
+	min-width:30px;
+}
+div.selectbox-wrapperEx {
+	border:#b7d1eb 1px solid;  /*灞曞紑灞傝竟妗嗚壊*/
+	position: absolute; 
+	background-color:#fff; 
+	text-align:left;
+	z-index: 100;
+}
+div.selectbox-wrapperEx ul li.selected {
+	background-color: #e0ecf7;/*閫変腑椤硅儗鏅壊*/
+}
+div.selectbox-wrapperEx ul li.current {
+	color: #fff;
+	background-color: #3366cc;/*榧犳爣绉诲叆椤硅儗鏅壊*/
+}
+div.selectbox-wrapperEx ul li.group{
+	font-weight:bold;
+	background-image:url(img/selArr.gif);
+	background-repeat:no-repeat;
+	background-position:0% 50%;
+	padding-left:15px;
+	_width:80%;
+}
+div.selectbox-wrapperEx ul li {
+	padding-right:3px;
+	padding-left:3px;
+	padding-bottom:3px;
+	cursor:pointer;
+	cursor:hand;
+	line-height:20px;
+	padding-top:3px;
+	_width:100%;
+}
+.mainConEx .inputDisabled{
+	background-color:#eeeeee!important;
+	background-image:none!important;
+	color:#c0bfbf!important;
+	cursor: default!important;
+}
+.mainConEx .selBtn_disabled{
+	background-image: url(img/selBtn_disabled.jpg)!important;
+	cursor: default!important;
+}

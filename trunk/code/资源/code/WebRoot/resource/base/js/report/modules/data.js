@@ -1,7 +1,7 @@
 /*
  Data plugin for Highcharts v0.1
 
- (c) 2012 Torstein Hønsi
+ (c) 2012 Torstein H?nsi
 
  License: www.highcharts.com/license
 */

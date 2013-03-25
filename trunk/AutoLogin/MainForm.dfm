@@ -2922,4 +2922,10 @@ object Main: TMain
     Left = 36
     Top = 55
   end
+  object TimeKill: TTimer
+    Enabled = False
+    OnTimer = TimeKillTimer
+    Left = 40
+    Top = 144
+  end
 end

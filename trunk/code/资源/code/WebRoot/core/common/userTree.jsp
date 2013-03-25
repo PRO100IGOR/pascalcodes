@@ -7,7 +7,7 @@
  @version: 1.0           
  @time: 2010-03-01
 --%>
-<%@ page language="java" contentType="text/html; charset=GBK" pageEncoding="GBK"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib uri="/WEB-INF/tld/struts-html.tld" prefix="html"%>
 <%@ taglib uri="/WEB-INF/tld/c.tld" prefix="c"%>
 <%@ taglib uri="/WEB-INF/tld/sihe.tld" prefix="sihe"%>
@@ -32,7 +32,7 @@
 			   employeeId
 --%>
 <%
-	request.setCharacterEncoding("GBK");
+	request.setCharacterEncoding("utf-8");
 %>
 
 <html:html>

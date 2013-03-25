@@ -80,7 +80,7 @@ object Form1: TForm1
       Width = 519
       Height = 21
       TabOrder = 3
-      Text = 'http://10.10.0.141:8081/oxhide'
+      Text = 'http://60.220.238.166:9091/oxhide'
     end
     object Button1: TButton
       Left = 496
@@ -105,7 +105,9 @@ object Form1: TForm1
       Width = 427
       Height = 21
       TabOrder = 5
-      Text = 'http://10.10.0.141:8081/coal/sqlqueryShowAction.do?action=query'
+      Text = 
+        'http://60.220.238.166:9091/coal/sqlqueryShowAction.do?action=que' +
+        'ry'
     end
   end
   object GroupBox2: TGroupBox

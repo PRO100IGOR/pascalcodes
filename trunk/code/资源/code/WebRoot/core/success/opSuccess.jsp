@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=gbk" pageEncoding="gbk"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib uri="/WEB-INF/tld/struts-html.tld" prefix="html"%>
 <%@ taglib uri="/WEB-INF/tld/struts-bean.tld" prefix="bean"%>
 <%@ taglib uri="/WEB-INF/tld/c.tld" prefix="c"%>
@@ -65,11 +65,15 @@
 				<script type="text/javascript">
 					$(window).load(function(){
 						var DG = frameElement.lhgDG;
-						DG.openBar(0);
 						DG.reDialogSize(360,200);
 						DG.SetTitle("ÌבÊ¾");
+						DG.openBar(0);
 						DG.father.lhgBackCall();
-						DG.cancel();
+						setTimeout(function(){
+						   if(DG){
+						     DG.cancel();
+						   }
+						},500)
 					});
 
 				</script>
