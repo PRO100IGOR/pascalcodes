@@ -1,13 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<%@ page language="java" contentType="text/html; charset=GBK" pageEncoding="GBK"%>
-<%--
-@version: 1.0
-@author: ÕÅ³¬³¬
-@time: 2011-04-21
---%>
-<%
-	request.setCharacterEncoding("GBK");
-%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib uri="/WEB-INF/tld/c.tld" prefix="c"%>
 <%@ taglib prefix="fmt" uri="/WEB-INF/tld/fmt.tld"%>
 <html>
@@ -273,6 +265,7 @@
 				});
 				<c:forEach items="${list}" var="item">
 					$.addFile("${item.path}","${item.id}","${item.fileName}","${item.employeeid}");
+					countInit ++;
 				</c:forEach>
 				function initFile(){
 					if(window.parent.document.readyState == "complete"){
@@ -395,3 +388,4 @@
 	</body>
 	
 </html>
+

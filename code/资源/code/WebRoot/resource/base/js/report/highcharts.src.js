@@ -4,7 +4,7 @@
 /**
  * @license Highcharts JS v2.2.1 (2012-03-15)
  *
- * (c) 2009-2011 Torstein Hønsi
+ * (c) 2009-2011 Torstein H?nsi
  *
  * License: www.highcharts.com/license
  */

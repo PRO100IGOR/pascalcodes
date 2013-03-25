@@ -1,4 +1,4 @@
-Ôªø/*
+/*
  * FCKeditor - The text editor for Internet - http://www.fckeditor.net
  * Copyright (C) 2003-2009 Frederico Caldeira Knabben
  *
@@ -20,7 +20,7 @@
  *
  * Placholder German language file.
  */
-FCKLang.PlaceholderBtn			= 'Einf√ºgen/editieren Platzhalter' ;
+FCKLang.PlaceholderBtn			= 'Einf®πgen/editieren Platzhalter' ;
 FCKLang.PlaceholderDlgTitle		= 'Platzhalter Eigenschaften' ;
 FCKLang.PlaceholderDlgName		= 'Platzhalter Name' ;
 FCKLang.PlaceholderErrNoName	= 'Bitte den Namen des Platzhalters schreiben' ;

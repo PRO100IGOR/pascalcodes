@@ -4,7 +4,7 @@
 /**
  * @license Highstock JS v1.1.5 (2012-03-15)
  *
- * (c) 2009-2011 Torstein Hønsi
+ * (c) 2009-2011 Torstein H?nsi
  *
  * License: www.highcharts.com/license
  */

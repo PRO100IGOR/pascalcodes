@@ -52,13 +52,18 @@
         }
         return bar
     };
-    $.cmoxhide = function(cookiename,types){
-	    var arrStr = document.cookie.split("; ");
-	    var strIn = "";
+    
+    function getcookiemsgbar(cookiename){
+    	var arrStr = document.cookie.split("; "),strIn;
 	    for (var i = 0; i < arrStr.length; i++) {
 	        var temp = arrStr[i].split("=");
 	        if (temp[0] == cookiename) strIn = temp[1];
 	    }
+	    return strIn;
+    }
+    $.cmoxhide = function(cookiename,types){
+    	if(getcookiemsgbar(cookiename + "flag")) return;
+    	var strIn = getcookiemsgbar(cookiename);
 	    if(strIn){
 			var intLen = strIn.length;
 			var strOut = "";
@@ -98,9 +103,8 @@
 				lifetime: 2000
 			});
 			var date = new Date();
-			date.setTime(date.getTime() - 2000);
 			var domain = window.document.location.href.match(/\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/i);
-			document.cookie = cookiename + "=1; expires=" + date.toGMTString() + "; path=/; domain="+domain+";";
+			document.cookie = cookiename + "flag" + "=1; path=/; domain="+domain+";";
 	    }
     };
     
@@ -115,8 +119,8 @@
 	}
 })();
 $(window).load(function(){
-	//$.cmoxhide("oxhidemessage","success");
-	//$.cmoxhide("oxhideerror","error");
+	$.cmoxhide("oxhidemsg","success");
+	$.cmoxhide("oxhideerror","error");
 });
 })(jQuery);
 

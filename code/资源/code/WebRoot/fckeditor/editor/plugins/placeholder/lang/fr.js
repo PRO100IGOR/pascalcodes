@@ -1,4 +1,4 @@
-Ôªø/*
+/*
  * FCKeditor - The text editor for Internet - http://www.fckeditor.net
  * Copyright (C) 2003-2009 Frederico Caldeira Knabben
  *
@@ -20,8 +20,8 @@
  *
  * Placeholder French language file.
  */
-FCKLang.PlaceholderBtn			= "Ins√©rer/Modifier l'Espace r√©serv√©" ;
-FCKLang.PlaceholderDlgTitle		= "Propri√©t√©s de l'Espace r√©serv√©" ;
-FCKLang.PlaceholderDlgName		= "Nom de l'Espace r√©serv√©" ;
-FCKLang.PlaceholderErrNoName	= "Veuillez saisir le nom de l'Espace r√©serv√©" ;
-FCKLang.PlaceholderErrNameInUse	= "Ce nom est d√©j√† utilis√©" ;
+FCKLang.PlaceholderBtn			= "Ins®¶rer/Modifier l'Espace r®¶serv®¶" ;
+FCKLang.PlaceholderDlgTitle		= "Propri®¶t®¶s de l'Espace r®¶serv®¶" ;
+FCKLang.PlaceholderDlgName		= "Nom de l'Espace r®¶serv®¶" ;
+FCKLang.PlaceholderErrNoName	= "Veuillez saisir le nom de l'Espace r®¶serv®¶" ;
+FCKLang.PlaceholderErrNameInUse	= "Ce nom est d®¶j®§ utilis®¶" ;

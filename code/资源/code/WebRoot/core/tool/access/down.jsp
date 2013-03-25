@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=GBK" pageEncoding="GBK"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ page import="com.jspsmart.upload.SmartUpload"%>
 <%
 String filePath = request.getParameter("filePath");

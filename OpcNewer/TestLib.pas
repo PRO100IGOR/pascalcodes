@@ -55,7 +55,8 @@ procedure TTestForm.AddBtnClick(Sender: TObject);
 var
   code:string;
 begin
-  code := '{"device":[{"id":"'+RandomStr+'","device":[{"serverName":"'+SERVERNAME.Text +'","itemName":"'+GROUPNAME.Text +'"}]}]}^_^';
+//  code := '{"device":[{"id":"'+RandomStr+'","device":[{"serverName":"'+SERVERNAME.Text +'","itemName":"'+GROUPNAME.Text +'"}]}]}^_^';
+  code := '{"device":[{"id":"'+GROUPNAME.Text+'","device":[{"serverName":"'+SERVERNAME.Text +'","itemName":"'+GROUPNAME.Text +'"}]}]}^_^';
   ClientSocket.Socket.SendText(code);
 end;
 

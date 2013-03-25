@@ -64,6 +64,8 @@ type
     procedure btnInstallUnInstallClick(Sender: TObject);
     procedure btnStopStartClick(Sender: TObject);
     procedure btnAccessPjClick(Sender: TObject);
+    procedure cbbTaskNamesChange(Sender: TObject);
+    procedure cbbDataNameChange(Sender: TObject);
   private
     { Private declarations }
     procedure btnDelClick(Sender: TObject);
@@ -378,6 +380,12 @@ begin
   InitServiceState;
 end;
 
+procedure TMainForm.cbbDataNameChange(Sender: TObject);
+begin
+    if cbbDataName.Items.IndexOf(cbbDataName.Text) > -1 then
+       btnLoadDataClick(nil);
+end;
+
 procedure TMainForm.cbbDataTypeChange(Sender: TObject);
 begin
     if cbbDataType.Text = 'MySql' then
@@ -448,6 +456,12 @@ begin
         lbledtPassWord.Enabled := True;
         lbledtPassWord.Text := '';
     end
+end;
+
+procedure TMainForm.cbbTaskNamesChange(Sender: TObject);
+begin
+    if cbbTaskNames.Items.IndexOf(cbbTaskNames.Text) > -1 then
+       btnLoadClick(nil);
 end;
 
 procedure TMainForm.btnAccessPjClick(Sender: TObject);

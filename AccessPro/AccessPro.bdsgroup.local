@@ -2,6 +2,6 @@
 <BorlandProject>
 	<Transactions/>
 	<Default.Personality>
-		<Projects ActiveProject="TaskManager.exe"/>
+		<Projects ActiveProject="TaskRunerView.exe"/>
 	</Default.Personality>
 </BorlandProject>

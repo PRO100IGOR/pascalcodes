@@ -1,4 +1,4 @@
-/*ˮƽѡ���ʽ1*/
+/*水平选项卡样式1*/
 .simpleTab .simpleTab_top {padding:5px 0 0 1em; margin:0; list-style:none; height:40px; position:relative; background:transparent url(tab/pro_five_0c.gif) repeat-x left bottom; }
 .simpleTab .simpleTab_top li {float:left; height:40px; margin-right:1px;}
 .simpleTab .simpleTab_top li a {display:block; float:left; height:40px; line-height:35px; color:#333; text-decoration:none;font-weight:bold; text-align:center; padding:0 0 0 4px; cursor:pointer; background:url(tab/pro_five_0a.gif) no-repeat;}
@@ -10,4 +10,4 @@
 .simpleTab .simpleTab_top li.current a:hover {text-decoration:none;color:#000; background: url(tab/pro_five_2a.gif) no-repeat; cursor:default;}
 .simpleTab .simpleTab_top li.current a:hover span {text-decoration:none;background:url(tab/pro_five_2b.gif) no-repeat right top;}
 .simpleTab_con{position:relative;}
-/*ˮƽѡ���ʽ1*/
+/*水平选项卡样式1*/

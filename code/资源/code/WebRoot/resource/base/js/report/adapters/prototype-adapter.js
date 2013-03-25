@@ -2,7 +2,7 @@
  Highstock JS v1.2.2 (2012-08-31)
  Prototype adapter
 
- @author Michael Nelson, Torstein Hønsi.
+ @author Michael Nelson, Torstein H?nsi.
 
  Feel free to use and modify this script.
  Highcharts license: www.highcharts.com/license.

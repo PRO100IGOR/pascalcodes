@@ -4,7 +4,8 @@ uses
   SvcMgr,
   MainLib in 'MainLib.pas' {Runner: TService},
   Ini in 'Ini.pas',
-  MainLoader in 'MainLoader.pas' {LoaderForm};
+  MainLoader in 'MainLoader.pas' {LoaderForm},
+  ErrorLogsUnit in 'ErrorLogsUnit.pas';
 
 {$R *.RES}
 

@@ -1,6 +1,6 @@
 
 function cookie(name, value, options) {
-	if (typeof value != "undefined") { // name and value given, set cookie
+	if (typeof value != "undefined"){// name and value given, set cookie
 		options = options || {};
 		if (value === null) {
 			value = "";

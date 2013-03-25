@@ -1,7 +1,7 @@
 <!-- 文件上传工具页 -->
 <%@page import="com.sxsihe.utils.common.StringUtils"%>
 <%@page import="com.sxsihe.utils.common.CharsetSwitch"%>
-<%@ page language="java" contentType="text/html; charset=GBK" pageEncoding="GBK"  
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"  
 		import="com.sxsihe.utils.file.FileUtils,
 				com.oreilly.servlet.MultipartRequest,
 				java.io.File,
@@ -15,7 +15,7 @@
 	if (!fileTempPath.isDirectory()) fileTempPath.mkdirs();
 	MultipartRequest multipartRequest = null;
 	try{
-		multipartRequest = new MultipartRequest(request, tempPath, Integer.MAX_VALUE, "GBK");
+		multipartRequest = new MultipartRequest(request, tempPath, Integer.MAX_VALUE, "utf-8");
 	}catch(Exception e){
 		e.printStackTrace();
 		response.sendRedirect(path + "/core/exception/baseException.jsp?error="+CharsetSwitch.encode("文件流获取错误！"));

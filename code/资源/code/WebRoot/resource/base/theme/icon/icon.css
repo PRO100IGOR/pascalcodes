@@ -1,3 +1,6 @@
+.bt-gotop{ display:none; overflow:hidden; position:fixed; _position:absolute; z-index:900; right:0; bottom:20px; width:62px; height:62px; line-height:20em; background:url(img/go_top.png) 0 0px no-repeat}
+.bt-gotop:hover{ background-position:-63px 0px}
+
 
 .icon_add {
 	background-image: url(img/add.gif);
@@ -2481,7 +2484,7 @@
 	color: #3c76da;
 	display: block;
 	padding: 20px 0 0 130px;
-	font-family: "Î¢ÈíÑÅºÚ", Verdana, Arial, Helvetica, sans-serif;
+	font-family: "å¾®è½¯é›…é»‘", Verdana, Arial, Helvetica, sans-serif;
 }
 .img_checkAllOff {
 	background-image: url(img/checkAllOff.gif);
